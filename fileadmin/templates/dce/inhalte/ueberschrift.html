@@ -1,0 +1,9 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+	<h{field.hsize} class="text-center">
+		<f:format.raw>{field.ueberschrift}</f:format.raw>
+		<f:if condition="{field.ueberschriftextra}"><span><f:format.raw>{field.ueberschriftextra}</f:format.raw></span></f:if>
+	</h{field.hsize}>
+</f:section>

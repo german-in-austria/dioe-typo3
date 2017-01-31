@@ -1,0 +1,30 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+	<article class="preview<f:switch expression="{contentObject.pid}"><f:case value="30"> articleBeitraege</f:case><f:case value="35"> articlePublikationen</f:case><f:case value="31"> articleVortrag</f:case><f:case value="32"> articleVeranstaltung</f:case><f:case value="33"> articleLehre</f:case><f:case default="TRUE"> article-p{contentObject.pid}</f:case></f:switch><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> articleTCA</f:case><f:case value="17"> articleTCB</f:case><f:case value="18"> articleTCC</f:case><f:case value="19"> articleTCD</f:case><f:case value="20"> articleTCE</f:case><f:case value="2"> articleBlog</f:case><f:case value="3"> articlePodcast</f:case><f:case value="4"> articleNachricht</f:case><f:case value="5"> articleBericht</f:case><f:case value="6"> articleMemo</f:case><f:case value="7"> articleKonferenz</f:case><f:case value="8"> articleWorkshop</f:case><f:case value="9"> articleArbeitstreffen</f:case><f:case value="10"> articlePodiumsdiskussion</f:case><f:case value="11"> articleAusstellung</f:case><f:case value="12"> articleVeranstaltung</f:case><f:case value="21"> articleStartPinned</f:case><f:case value="22"> articleKategoriePinned</f:case><f:case default="TRUE"> article-{kategorie}</f:case></f:switch></f:for>">
+		<div class="publishing-date pull-right"><f:format.date format="d.">{field.datum}</f:format.date> <f:switch expression="{field.datum -> f:format.date(format: 'm')}"><f:case value="1">Jänner</f:case><f:case value="2">Februar</f:case><f:case value="3">März</f:case><f:case value="4">April</f:case><f:case value="5">Mai</f:case><f:case value="6">Juni</f:case><f:case value="7">Juli</f:case><f:case value="8">August</f:case><f:case value="9">September</f:case><f:case value="10">Oktober</f:case><f:case value="11">November</f:case><f:case value="12">Dezember</f:case></f:switch> <f:format.date format="Y">{field.datum}</f:format.date></div>
+		<h5><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16">Cluster A</f:case><f:case value="17">Cluster B</f:case><f:case value="18">Cluster C</f:case><f:case value="19">Cluster D</f:case><f:case value="20">Cluster E</f:case></f:switch></f:for> – <f:switch expression="{contentObject.pid}"><f:case value="30"><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="2">Blog</f:case><f:case value="3">Podcast</f:case><f:case value="4">Nachricht</f:case><f:case value="5">Bericht</f:case><f:case value="6">Memo</f:case></f:switch></f:for></f:case><f:case value="35">Publikationen</f:case><f:case value="31">Vortrag</f:case><f:case value="32"><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="7">Konferenz</f:case><f:case value="8">Workshop</f:case><f:case value="9">Arbeitstreffen</f:case><f:case value="10">Podiumsdiskussion</f:case><f:case value="11">Ausstellung</f:case><f:case value="12">Veranstaltung</f:case></f:switch></f:for></f:case><f:case value="33">Lehre</f:case></f:switch></h5>
+		<h1 class="title">{field.uebersichtUeberschrift}</h1>
+		<f:for each="{dce:fal(field:'uebersichtBild', contentObject:contentObject)}" as="fileReference" iteration="iterator">
+		<f:if condition="{iterator.isFirst}">
+			<f:switch expression="{field.uebersichtBildVerh}">
+				<f:case value="1">
+					<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-left mir2e mib1e" width="330c" height="467c"/>
+				</f:case>
+				<f:case value="2">
+					<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-left mir2e mib1e" width="330"/>
+				</f:case>
+				<f:case default="TRUE">
+					<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-left mir2e mib1e" width="330c" height="330c"/>
+				</f:case>
+			</f:switch>
+		</f:if>
+		</f:for>
+		<f:if condition="{field.uebersichtText}">
+			<f:then><f:format.html>{field.uebersichtText}</f:format.html></f:then>
+			<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE">{field.detailseiteText}</f:format.crop></f:format.html></f:else>
+		</f:if>
+		<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" class="btn btn-default">Beitrag anzeigen</f:link.page>
+	</article>
+</f:section>

@@ -1,0 +1,52 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="None" />
+<f:section name="main">
+	<f:if condition="{field.anzeigeart} == 5"><f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}"><f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded w100" maxWidth="840"/></f:if></f:for></f:if>
+
+	<f:if condition="{field.anzeigeart} == 0"><f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}"><f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-left mir2e mib1e" width="{f:if(condition: '{field.bilderVerh} == 2', then: '330', else: '330c')}" height="{f:if(condition: '{field.bilderVerh} == 2', then: '', else: '330c')}"/></f:if></f:for></f:if>
+	<f:if condition="{field.anzeigeart} == 1"><f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}"><f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-right mil2e mib1e" width="{f:if(condition: '{field.bilderVerh} == 2', then: '330', else: '330c')}" height="{f:if(condition: '{field.bilderVerh} == 2', then: '', else: '330c')}"/></f:if></f:for></f:if>
+	<f:if condition="{field.anzeigeart} == 2">
+		<div class="row">
+			<div class="col-xs-12 col-sm-5">
+				<f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded w100 mib1e" width="{f:if(condition: '{field.bilderVerh} == 2', then: '330', else: '330c')}" height="{f:if(condition: '{field.bilderVerh} == 2', then: '', else: '330c')}"/></f:for>
+			</div>
+			<div class="col-xs-12 col-sm-7">
+	</f:if>
+	<f:if condition="{field.anzeigeart} == 3">
+		<div class="row">
+			<div class="col-xs-12 col-sm-7">
+	</f:if>
+	<f:format.html>{field.text}</f:format.html>
+	<f:if condition="{field.anzeigeart} == 2"></div></div></f:if>
+	<f:if condition="{field.anzeigeart} == 3">
+		</div>
+		<div class="col-xs-12 col-sm-5">
+			<f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded w100 mib1e" width="{f:if(condition: '{field.bilderVerh} == 2', then: '330', else: '330c')}" height="{f:if(condition: '{field.bilderVerh} == 2', then: '', else: '330c')}"/></f:for>
+		</div>
+	</div>
+	</f:if>
+	<f:if condition="{field.anzeigeart} == 4">
+		<f:if condition="{field.bilder}">
+			<br>
+			<div class="row">
+			<f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator">
+				<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
+					<a href="{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{fileReference.title}" data-footer="{fileReference.description}">
+					<f:switch expression="{field.bilderVerh}">
+						<f:case value="1">
+							<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mib1e" width="{f:if(condition: '{iterator.total} > 9', then: '115c', else: '188c')}" height="{f:if(condition: '{iterator.total} > 9', then: '163c', else: '266c')}"/>
+						</f:case>
+						<f:case value="2">
+							<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mib1e" width="{f:if(condition: '{iterator.total} > 9', then: '115', else: '188')}"/>
+						</f:case>
+						<f:case default="TRUE">
+							<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mib1e" width="{f:if(condition: '{iterator.total} > 9', then: '115c', else: '188c')}" height="{f:if(condition: '{iterator.total} > 9', then: '115c', else: '188c')}"/>
+						</f:case>
+					</f:switch>
+					</a>
+				</div>
+			</f:for>
+			</div>
+		</f:if>
+	</f:if>
+</f:section>
