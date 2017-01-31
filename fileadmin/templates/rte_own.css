@@ -1,0 +1,27 @@
+span.cred {
+  color:#f00;
+}
+span.cgreen {
+  color:#0f0;
+}
+span.cblue {
+  color:#00f;
+}
+p.text-left {
+  text-align:left;
+}
+p.text-center {
+  text-align:center;
+}
+p.text-right {
+  text-align:right;
+}
+p.text-justify {
+  text-align:justify;
+}
+span.text-nowrap {
+  white-space:nowrap;
+}
+div.indent {
+  margin-left: 30px;
+}

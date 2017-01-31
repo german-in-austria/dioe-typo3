@@ -1,0 +1,351 @@
+a {
+  color: #34a2cb;
+}
+body {
+  font-family: 'Lato', sans-serif;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f5f5+0,ffffff+100 */
+  background: rgba(255,255,255,0.9) /* Old browsers */;
+  font-size: 130%;
+  line-height: 163%;
+  font-weight: 300;
+}
+.container.narrow {
+  max-width: 870px !important;
+}
+.nav-pills {
+  background-size: 40px;
+  background-color: rgba(255,255,255,0.97);
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-weight: 400;
+  text-align: center;
+}
+.nav-pills > li {
+  margin: 0;
+  display: inline-block;
+  float: none;
+}
+.nav-pills > li + li {
+  margin: 0;
+}
+.nav-pills > li > a {
+  padding: 1.25em 0.5em;
+}
+.nav-pills > li > a:hover,
+.nav-pills > li > a.active:hover {
+  color: #333;
+  background: transparent;
+}
+.nav-pills img.logo {
+  width: 30px;
+  vertical-align: middle;
+  margin: -3px 20px 0 -50px;
+}
+.navbar {
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border: 0;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
+  background: -moz-linear-gradient(top, #fff 45%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #fff 45%, rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #fff 45%, rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.navbar .navbar-brand {
+  height: 120px;
+  float: none;
+  padding: 0;
+}
+.navbar .search-field {
+  height: 50px;
+  margin: 15px 0 0 10px;
+}
+.navbar .navbar-nav a {
+  line-height: 50px;
+  font-weight: 400;
+}
+.nav>li>a {
+  color: #777;
+  border-radius: 0;
+  border-bottom: 3px solid #f4f4f4;
+}
+.navbar .navbar-nav li.active,
+.navbar .navbar-nav li.active a,
+.navbar .navbar-nav li.active a:hover {
+  background: transparent;
+}
+.nav-pills>li.active>a {
+  background: transparent;
+  border-bottom: 3px solid #777;
+  color: #777;
+}
+.navbar-spacer {
+  height: 100px;
+}
+.dropdown-menu {
+  border: 0;
+  font-size: 20px;
+  background: #f5f5f5;
+  box-shadow: none;
+  pointer-events: none;
+  display: block;
+  opacity: 0;
+  transition: 0.4s;
+  transform: translateY(-10px);
+}
+.dropdown:hover .dropdown-menu {
+  transform: translateY(0px);
+  pointer-events: auto;
+  opacity: 1;
+  margin-top: 0;
+}
+.dropdown-menu > li > a {
+  line-height: 2em;
+  padding: 3px 40px;
+  color: #34a2cb;
+}
+nav input.search-field {
+  background-image: url("../img/magnifying-glass.svg");
+  background-position: 90% center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  width: 30px;
+  border-color: transparent;
+  background-color: transparent;
+  transition: 0.5s;
+  box-shadow: none;
+  cursor: pointer;
+  color: transparent;
+}
+nav input.search-field::-webkit-input-placeholder {
+  color: transparent;
+}
+nav input.search-field:-moz-placeholder {
+  color: transparent;
+}
+nav input.search-field::-moz-placeholder {
+  color: transparent;
+}
+nav input.search-field:-ms-input-placeholder {
+  color: transparent;
+}
+nav input.search-field:focus {
+  cursor: auto;
+  width: 250px;
+  border-color: #66afe9;
+  background-color: #fff;
+  color: #333;
+}
+nav input.search-field:focus::-webkit-input-placeholder {
+  color: #333;
+}
+nav input.search-field:focus:-moz-placeholder {
+  color: #333;
+}
+nav input.search-field:focus::-moz-placeholder {
+  color: #333;
+}
+nav input.search-field:focus:-ms-input-placeholder {
+  color: #333;
+}
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  position: relative;
+}
+.bold {
+  font-weight: 400;
+}
+header.main {
+  width: 100%;
+  height: 390px;
+  overflow: hidden;
+  position: relative;
+}
+header.main img.logo {
+  transform: translateZ(1px);
+  width: 80px;
+  margin: 70px auto;
+  display: block;
+}
+header.main img.hero {
+  max-width: 1010px;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 70%;
+  margin: 0 auto;
+  transition: opacity 4s;
+}
+header.main img.hero.active {
+  opacity: 1;
+}
+footer {
+  display: block;
+  height: 400px;
+  width: 100%;
+  background: url("../img/mountains.png");
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.footer-logos img {
+  max-height: 80px;
+  max-width: 210px;
+  line-height: 130px;
+  margin: 260px 30px 30px 0;
+}
+article.sub-page {
+  font-size: 120%;
+  line-height: 160%;
+}
+article.sub-page h2 {
+  padding-bottom: 1em;
+}
+section.citation {
+  color: #999;
+  font-size: 80%;
+}
+section.citation h6 {
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+section.citation table {
+  margin: 0 auto;
+}
+section.citation table td:first-child {
+  padding-right: 2em;
+}
+article .publishing-date {
+  position: relative;
+  font-size: 0.8em;
+  font-weight: 400;
+  margin-top: 0.3em;
+}
+article.intro-text {
+  margin-top: 5em;
+  text-align: justify;
+}
+article.intro-text h1 span {
+  display: block;
+  font-size: 0.6em;
+  margin-top: 0.5em;
+}
+article.preview {
+  padding: 2em 0em;
+}
+article.preview h1.title {
+  line-height: 140%;
+  margin-top: 0;
+}
+article.preview h5 {
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+.news-main article img {
+  float: left;
+  max-width: 40%;
+  margin-right: 2em;
+  border-radius: 5px;
+}
+
+article.articleStartPinned .publishing-date:after, article.articleKategoriePinned .publishing-date:after {
+  content: "\e146";
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  right: -30px;
+  top: 8px;
+  font-size: 20px;
+}
+article.articleStartPinned .publishing-date:after {
+  content: "\e101";
+}
+#hp1 article.articleKategoriePinned .publishing-date:after {
+  content: "\e101" !important;
+}
+#hp1 article.articleStartPinned .publishing-date:after {
+  content: "\e146" !important;
+}
+
+article.preview h1.title:before {
+  content: " ";
+  position: absolute;
+  left: -0.85em;
+  display: block;
+  height: 1.5em;
+  width: 0.25em;
+  background: #000;
+}
+
+article.articleVortrag h5 {
+  color: #3757a7;
+}
+article.articleVortrag h1.title:before {
+  background: #3757a7;
+}
+article.articleVortrag .publishing-date {
+  color: #3757a7;
+}
+
+article.articleBlog h5 {
+  color: #66be5e;
+}
+article.articleBlog h1.title:before {
+  background: #66be5e;
+}
+article.articleBlog .publishing-date {
+  color: #66be5e;
+}
+
+.panel.citation .panel-body {
+  font-size: 0.7em;
+}
+
+.w100 {
+  width:100%;
+}
+.mw40 {
+  max-width: 40%;
+}
+.mir2e {
+  margin-right: 2em;
+}
+.mil2e {
+  margin-left: 2em;
+}
+.mib1e {
+  margin-bottom: 1em;
+}
+
+.ekko-lightbox-nav-overlay a {
+  text-decoration: none !important;
+}
+.ekko-lightbox-nav-overlay a span {
+  text-shadow: 1px 0px 2px #000;
+}
+.ekko-lightbox-container {
+  overflow: hidden;
+}
+.ekko-lightbox-container>div.ekko-lightbox-item.fade {
+  opacity:0 !important;
+  transition: none;
+}
+.ekko-lightbox-container>div.ekko-lightbox-item.fade.in {
+  opacity:1 !important;
+  transition: none;
+}

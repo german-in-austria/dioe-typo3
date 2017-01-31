@@ -1,0 +1,249 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_grid/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_panel/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/misc/setup.txt">
+page = PAGE
+
+config {
+  language = de
+  doctype = html5
+  xmlprologue = none
+  xhtml_cleaning = all
+  htmlTag_setParams = lang="de" dir="ltr" class="no-js"
+  disablePrefixComment = true
+//  concatenateCss = 1
+//  compressCss = 1
+//  concatenateJs = 1
+//  compressJs = 1
+}
+config.spamProtectEmailAddresses = ascii
+config.pageRendererTemplateFile = fileadmin/templates/tslib_page_frontend.html
+
+#RealUrl
+/*
+config {
+  prefixLocalAnchors = all
+  simulateStaticDocuments = 0
+  baseURL = http://typo3.dioe.at/
+  tx_realurl_enable = 1
+}
+*/
+
+config.headerComment (
+)
+
+page.headerData.1010 = TEXT
+page.headerData.1010.value (
+  <link rel="icon" href="fileadmin/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="fileadmin/apple-touch-icon.png">
+)
+page.headerData.1010.insertData = 1
+
+page.includeCSS {
+  file1 = https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&amp;subset=latin-ext
+  file2 = https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+  file3 = fileadmin/css/normalize.css
+  file4 = fileadmin/css/main.css
+  file5 = fileadmin/css/ekko-lightbox.min.css
+  file6 = fileadmin/css/style.css
+}
+page.includeJS {
+  file1 = fileadmin/js/vendor/modernizr-2.8.3.min.js
+}
+
+
+page.bodyTag >
+page.bodyTagCObject = TEXT
+page.bodyTagCObject.field = uid
+page.bodyTagCObject.wrap = <body id="hp|">
+
+page.10 = COA
+page.10 {
+  1 = TEXT
+  1.value (
+    <!--if lt IE 8
+    p.browserupgrade
+      | You are using an
+      strong outdated
+      |  browser. Please
+      a(href='http://browsehappy.com/') upgrade your browser
+      |  to improve your experience.
+    -->
+  )
+
+  10 = COA
+  10 {
+    wrap =<nav data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills"><a href="/"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a>|</nav>
+    20 = COA
+    20 {
+      10  = HMENU
+      10 {
+        special = directory
+        //special = categories
+        special.value = 1
+        entryLevel = 0
+        target = _top
+        excludeUidList = 50
+        //includeNotInMenu = 1
+        //wrap = <ul>|</ul>
+        1 = TMENU
+        1 {
+          expAll=1
+          NO = 1
+          NO {
+            wrapItemAndSub.cObject = TEXT
+            wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation">|</li>
+            wrapItemAndSub.cObject.insertData = 1
+            wrapItemAndSub.cObject.if.value = 1
+            wrapItemAndSub.cObject.if.isInList.field = categories
+            doNotShowLink.stdWrap.cObject = TEXT
+            doNotShowLink.stdWrap.cObject.value = 1
+            doNotShowLink.stdWrap.cObject.if.value = 1
+            doNotShowLink.stdWrap.cObject.if.isInList.field = categories
+            doNotShowLink.stdWrap.cObject.if.negate = 1
+            ATagTitle.field = abstract
+            ATagBeforeWrap = 1
+            linkWrap = |
+          }
+          IFSUB < .NO
+          IFSUB.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation" class="dropdown">|</li>
+          IFSUB.ATagParams = class="dropdown-toggle" data-toggle="dropdown"
+          IFSUB.linkWrap = |<span class="caret"></span>
+          CUR < .NO
+          CUR.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation" class="active">|</li>
+          CURIFSUB < .IFSUB
+          CURIFSUB.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation" class="active dropdown">|</li>
+          ACT < .CUR
+          ACTIFSUB < .CURIFSUB
+        }
+        2 < .1
+        2.wrap >
+        2.stdWrap.wrap = <ul class="dropdown-menu">|</ul>
+        2.stdWrap.required = 1
+        2.NO.wrapItemAndSub.cObject.value = <li id="mp{field:uid}">|</li>
+        2.CUR.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" class="active">|</li>
+        2.ACT.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" class="active">|</li>
+        2.IFSUB >
+        2.CURIFSUB >
+        2.ACTIFSUB >
+      }
+    }
+  }
+
+  // Content
+  20 = COA
+  20 {
+    10 = CONTENT
+    10 {
+      table = tt_content
+      select {
+        where = colPos = 0
+      }
+      wrap = <article class="intro-text"><br>|</article>
+    }
+    wrap = <div class="content container narrow">|</div>
+  }
+
+  // Footer
+  30 = COA
+  30 {
+    10 = CONTENT
+    10 {
+      table = tt_content
+      select {
+        where = colPos = 0
+        pidInList = 27
+      }
+    }
+    wrap = <br><br><footer>|</footer>
+  }
+}
+
+lib.artikel = COA
+lib.artikel {
+  10 = CONTENT
+  10 {
+    table = tt_content
+    select {
+      pidInList = 28,30,35,31,32,33
+      orderBy = date desc
+      where = FIND_IN_SET('22',selected_categories)
+    }
+  }
+  20 < .10
+  20.select.where = NOT FIND_IN_SET('22',selected_categories)
+  20.select.max = 10
+  wrap = <div class="article-list">|</div>
+}
+
+
+// Startseite
+[globalVar = TSFE:id = 1]
+page.10 {
+  5 = TEXT
+  5.value (
+<header class="main">
+  <img class="hero mountains active" data-0="transform: translateY(40%)" data-390="transform: translateY(70%)" src="fileadmin/img/mountains.png" />
+  <img class="hero city" data-0="transform: translateY(40%)" data-390="transform: translateY(70%)" src="fileadmin/img/city.png" />
+  <img class="logo" src="fileadmin/img/dioe-logo-gray.png" data-0="transform:translateY(0%); opacity: 1" data-390="transform:translateY(150%); opacity:.7">
+</header>
+)
+  10.wrap = <nav data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt="">|</nav>
+  20.20 < lib.artikel
+  20.20.10.select.where = FIND_IN_SET('21',selected_categories)
+  20.20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
+  20.20.20.select.max = 5
+}
+[global]
+
+// Task-Cluster A
+[globalVar = TSFE:id = 14]
+page.10.20.20 < lib.artikel
+page.10.20.20.10.select.andWhere = FIND_IN_SET('16',selected_categories)
+page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
+[global]
+
+// Task-Cluster B
+[globalVar = TSFE:id = 15]
+page.10.20.20 < lib.artikel
+page.10.20.20.10.select.andWhere = FIND_IN_SET('17',selected_categories)
+page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
+[global]
+
+// Task-Cluster C
+[globalVar = TSFE:id = 16]
+page.10.20.20 < lib.artikel
+page.10.20.20.10.select.andWhere = FIND_IN_SET('18',selected_categories)
+page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
+[global]
+
+// Task-Cluster D
+[globalVar = TSFE:id = 17]
+page.10.20.20 < lib.artikel
+page.10.20.20.10.select.andWhere = FIND_IN_SET('19',selected_categories)
+page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
+[global]
+
+// Task-Cluster E
+[globalVar = TSFE:id = 18]
+page.10.20.20 < lib.artikel
+page.10.20.20.10.select.andWhere = FIND_IN_SET('20',selected_categories)
+page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
+[global]
+
+// Artikel - Details
+[globalVar = TSFE:id = 39]
+page.10.20 {
+20 = CONTENT
+20 {
+  table = tt_content
+  select {
+    pidInList = 28,30,35,31,32,33
+    where = deleted=0 AND hidden=0
+    andWhere.data = GP:artikel
+    andWhere.wrap = uid=|
+    andWhere.intval = 1
+    max = 1
+  }
+}
+}
+[global]

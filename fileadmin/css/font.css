@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'VCR OSD Mono';
+  src: url('VCR_OSD_MONO_1.001.eot'); /* IE9 Compat Modes */
+  src: url('VCR_OSD_MONO_1.001.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('VCR_OSD_MONO_1.001.woff') format('woff'), /* Modern Browsers */
+       url('VCR_OSD_MONO_1.001.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('VCR_OSD_MONO_1.001.svg#484c29527d9efc96212632a686eaea09') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+

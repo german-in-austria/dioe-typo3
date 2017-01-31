@@ -1,0 +1,71 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_grid/page_ts.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_panel/page_ts.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/misc/page_ts.txt">
+
+
+TCEMAIN.table.pages.disablePrependAtCopy = 1
+TCEMAIN.table.tt_content.disablePrependAtCopy = 1
+
+TCEMAIN.table.pages.disableHideAtCopy = 1
+TCEMAIN.table.tt_content.disableHideAtCopy = 1
+
+RTE.classes >
+RTE.classes {
+	cred {
+		name = Rot
+		value = color: #f00;
+	}
+	cgreen {
+		name = Grün
+		value = color: #0f0;
+	}
+	cblue {
+		name = Blau
+		value = color: #00f;
+	}
+	text-left {
+		name = Text links
+	}
+	text-center {
+		name = Text zentriert
+	}
+	text-right {
+		name = Text rechts
+	}
+	text-justify {
+		name = Blocksatz
+	}
+	text-nowrap {
+		name = Text ohne automatischen Zeilenumbruch
+	}
+}
+
+RTE {
+	classesAnchor := addToList(bold)
+	classesAnchor.bold.name = bold
+	default {
+		proc.allowedClasses >
+		proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold
+		classesAnchor := addToList(bold)
+		buttons {
+			blockstyle.tags {
+				div.allowedClasses = text-left,text-center,text-right,text-justify
+			}
+			textstyle.tags {
+				span.allowedClasses = cred,cgreen,cblue,text-nowrap
+			}
+			link.properties.class.allowedClasses := addToList(bold)
+		}
+		contentCSS = fileadmin/templates/rte_own.css
+		showTagFreeClasses = 0
+		enableWordClean = 1
+		useCSS = 0
+	}
+}
+
+
+
+RTE.default.FE < RTE.default
+RTE.default.FE.FE >
+
+RTE.config.tt_content.bodytext.proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap

@@ -1,0 +1,128 @@
+#
+# Grid elements
+# Backend Layouts
+#
+tx_gridelements.setup.uebb_bootstrap_2col {
+  	title = Zwei Spalten
+	description = Ein Element um Spalten darstellen zu können.
+	flexformDS = FILE:fileadmin/templates/gridelements/bootstrap3_grid/bootstrap3_columns_2col.xml
+
+	config {
+		colCount = 2
+		rowCount = 1
+
+		rows {
+			1 {
+				columns {
+					1 {
+						name = Spalte 1
+						colPos = 0
+					}
+					2 {
+						name = Spalte 2
+						colPos = 1
+					}
+				}
+			}
+		}
+	}
+}
+tx_gridelements.setup.uebb_bootstrap_3col {
+	title = Drei Spalten
+	description = Ein Element um Spalten darstellen zu können.
+	flexformDS = FILE:fileadmin/templates/gridelements/bootstrap3_grid/bootstrap3_columns_3col.xml
+
+	config {
+		colCount = 3
+		rowCount = 1
+
+		rows {
+			1 {
+				columns {
+					1 {
+						name = Spalte 1
+						colPos = 0
+					}
+					2 {
+						name = Spalte 2
+						colPos = 1
+					}
+					3 {
+						name = Spalte 3
+						colPos = 2
+					}
+				}
+			}
+		}
+	}
+}
+tx_gridelements.setup.uebb_bootstrap_4col {
+	title = Vier Spalten
+	description = Ein Element um Spalten darstellen zu können.
+	flexformDS = FILE:fileadmin/templates/gridelements/bootstrap3_grid/bootstrap3_columns_4col.xml
+
+	config {
+		colCount = 4
+		rowCount = 1
+
+		rows {
+			1 {
+				columns {
+					1 {
+						name = Spalte 1
+						colPos = 0
+					}
+					2 {
+						name = Spalte 2
+						colPos = 1
+					}
+					3 {
+						name = Spalte 3
+						colPos = 2
+					}
+					4 {
+						name = Spalte 4
+						colPos = 3
+					}
+				}
+			}
+		}
+	}
+}
+tx_gridelements.setup.uebb_bootstrap_5col {
+	title = Fünf Spalten
+	description = Ein Element um Spalten darstellen zu können.
+	flexformDS = FILE:fileadmin/templates/gridelements/bootstrap3_grid/bootstrap3_columns_5col.xml
+
+	config {
+		colCount = 5
+		rowCount = 1
+
+		rows {
+			1 {
+				columns {
+					1 {
+						name = Spalte 1
+						colPos = 0
+					}
+					2 {
+						name = Spalte 2
+						colPos = 1
+					}
+					3 {
+						name = Spalte 3
+						colPos = 2
+					}
+					4 {
+						name = Spalte 4
+						colPos = 3
+					}
+					5 {
+						name = Spalte 5
+						colPos = 4
+					}
+				}
+			}
+		}
+	}
+}
