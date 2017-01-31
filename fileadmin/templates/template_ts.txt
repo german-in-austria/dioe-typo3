@@ -158,6 +158,15 @@ page.10 {
   }
 }
 
+lib.dateiextension = COA
+lib.dateiextension {
+  10 = TEXT
+  10.value = 1
+  10.stdWrap.wrap = |
+  10.stdWrap.if.value = gif,jpg,jpeg,tif,tiff,bmp,pcx,tga,png,pdf,ai
+  10.stdWrap.if.isInList.current = 1
+}
+
 lib.artikel = COA
 lib.artikel {
   10 = CONTENT

@@ -349,3 +349,61 @@ article.articleBlog .publishing-date {
   opacity:1 !important;
   transition: none;
 }
+
+.dateien {
+  padding: 2em 0px;
+}
+.datei {
+  display: block;
+  margin-bottom: 1em;
+}
+.datei:hover {
+  background:#fcfcfc;
+}
+.datei .imgfrm {
+  position: relative;
+  display: block;
+  float: left;
+  width: 25%;
+  min-height: 175px;
+  background: #eee;
+  margin-right: 5%;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+.datei .filefrm {
+  display: block;
+  width: 70%;
+  float: left;
+}
+.datei .imgfrm .extension {
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  top: 42%;
+  line-height: 0;
+  font-size: 70px;
+  z-index: 1;
+}
+.datei .imgfrm .imgbg {
+  display:block;
+  background:#fff;
+}
+.datei .imgfrm img {
+  position: relative;
+  z-index: 2;
+}
+.datei .imgfrm .size {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  padding: 2px 13px;
+  color:#fff;
+  background: rgba(24, 24, 24, 0.5);
+  border-radius: 5px 0px 0px 0px;
+  font-size: 18px;
+  line-height: 1.6;
+  z-index: 3;
+}
