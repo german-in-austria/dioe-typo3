@@ -165,6 +165,24 @@ lib.dateiextension {
   10.stdWrap.if.isInList.current = 1
 }
 
+lib.namebe = COA
+lib.namebe {
+  10 = CONTENT
+  10 {
+    table = be_users
+    select {
+      uidInList.current = 1
+      pidInList = root
+    }
+    renderObj = COA
+    renderObj {
+      10 = TEXT
+      10.field = realName // username
+    }
+  }
+}
+
+
 lib.artikel = COA
 lib.artikel {
   10 = CONTENT
