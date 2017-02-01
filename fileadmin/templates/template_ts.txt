@@ -19,14 +19,12 @@ config.spamProtectEmailAddresses = ascii
 config.pageRendererTemplateFile = fileadmin/templates/tslib_page_frontend.html
 
 #RealUrl
-/*
 config {
   prefixLocalAnchors = all
   simulateStaticDocuments = 0
   baseURL = http://typo3.dioe.at/
   tx_realurl_enable = 1
 }
-*/
 
 config.headerComment (
 )

@@ -4,10 +4,10 @@
 <f:section name="main">
 	<div class="dateien">
 	<f:for each="{field.dateien}" as="datei" iteration="i">
-		<a href="fileadmin/{datei.datei.0.identifier}" target="_BLANK" title="{datei.datei.0.name} - {datei.datei.0.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}" class="datei clearfix datei-ext-{datei.datei.0.extension}">
+		<a href="fileadmin{datei.datei.0.identifier}" target="_BLANK" title="{datei.datei.0.name} - {datei.datei.0.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}" class="datei clearfix datei-ext-{datei.datei.0.extension}">
 			<span class="imgfrm">
 				<span class="extension">{datei.datei.0.extension}</span>
-				<f:if condition="{datei.datei.0.extension -> f:cObject(typoscriptObjectPath:'lib.dateiextension')}"><f:if condition="{datei.vorschaubild}"><span class="imgbg"><f:image src="fileadmin/{datei.datei.0.identifier}" alt="" class="img-responsive w100" width="210"/></span></f:if></f:if>
+				<f:if condition="{datei.datei.0.extension -> f:cObject(typoscriptObjectPath:'lib.dateiextension')}"><f:if condition="{datei.vorschaubild}"><span class="imgbg"><f:image src="fileadmin{datei.datei.0.identifier}" alt="" class="img-responsive w100" width="210"/></span></f:if></f:if>
 				<span class="size">{datei.datei.0.extension} - {datei.datei.0.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}</span>
 			</span>
 			<span class="filefrm">
