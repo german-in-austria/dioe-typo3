@@ -407,3 +407,8 @@ article.articleBlog .publishing-date {
   line-height: 1.6;
   z-index: 3;
 }
+@media print {
+  a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
+    content: "";
+  }
+}

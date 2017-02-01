@@ -31,7 +31,7 @@
 			<div class="row">
 			<f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator">
 				<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
-					<a href="{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-gallery="article-gallery-{contentObject.uid}" data-title="{fileReference.title}" data-footer="{fileReference.description}">
+					<a href="{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-gallery="article-gallery-{contentObject.uid}" data-title="{fileReference.title}" data-footer="{fileReference.description}" class="hide-url-printer">
 					<f:switch expression="{field.bilderVerh}">
 						<f:case value="1">
 							<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mib1e" width="{f:if(condition: '{iterator.total} > 9', then: '115c', else: '188c')}" height="{f:if(condition: '{iterator.total} > 9', then: '163c', else: '266c')}"/>
