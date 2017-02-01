@@ -292,25 +292,32 @@ article.preview h1.title:before {
   background: #000;
 }
 
-article.articleVortrag h5 {
-  color: #3757a7;
-}
-article.articleVortrag h1.title:before {
-  background: #3757a7;
-}
-article.articleVortrag .publishing-date {
-  color: #3757a7;
-}
-
-article.articleBlog h5 {
-  color: #66be5e;
-}
-article.articleBlog h1.title:before {
-  background: #66be5e;
-}
-article.articleBlog .publishing-date {
-  color: #66be5e;
-}
+article.articleBlog h5, article.articleBlog .publishing-date {  color: #269196; }
+article.articleBlog h1.title:before { background: #269196;  }
+article.articleNachricht h5, article.articleNachricht .publishing-date {  color: #66be5e; }
+article.articleNachricht h1.title:before { background: #66be5e;  }
+article.articleBericht h5, article.articleBericht .publishing-date {  color: #66be5e; }
+article.articleBericht h1.title:before { background: #66be5e;  }
+article.articleMemo h5, article.articleMemo .publishing-date {  color: #66be5e; }
+article.articleMemo h1.title:before { background: #66be5e;  }
+article.articlePodcast h5, article.articlePodcast .publishing-date {  color: #d64f9d; }
+article.articlePodcast h1.title:before { background: #d64f9d;  }
+article.articlePublikationen h5, article.articlePublikationen .publishing-date {  color: #5dc3e9; }
+article.articlePublikationen h1.title:before { background: #5dc3e9;  }
+article.articleKonferenz h5, article.articleKonferenz .publishing-date {  color: #f68939; }
+article.articleKonferenz h1.title:before { background: #f68939;  }
+article.articleWorkshop h5, article.articleWorkshop .publishing-date {  color: #f68939; }
+article.articleWorkshop h1.title:before { background: #f68939;  }
+article.articleArbeitstreffen h5, article.articleArbeitstreffen .publishing-date {  color: #f68939; }
+article.articleArbeitstreffen h1.title:before { background: #f68939;  }
+article.articleVortrag h5, article.articleVortrag .publishing-date {  color: #3757a7; }
+article.articleVortrag h1.title:before { background: #3757a7;  }
+article.articlePodiumsdiskussion h5, article.articlePodiumsdiskussion .publishing-date {  color: #3757a7; }
+article.articlePodiumsdiskussion h1.title:before { background: #3757a7;  }
+article.articleAusstellung h5, article.articleAusstellung .publishing-date {  color: #f15f7d; }
+article.articleAusstellung h1.title:before { background: #f15f7d;  }
+article.articleLehre h5, article.articleLehre .publishing-date {  color: #fbc820; }
+article.articleLehre h1.title:before { background: #fbc820;  }
 
 .panel.citation .panel-body {
   font-size: 0.7em;
