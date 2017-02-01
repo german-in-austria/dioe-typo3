@@ -70,7 +70,7 @@ page.10 {
 
   10 = COA
   10 {
-    wrap =<nav data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills"><a href="/"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a>|</nav>
+    wrap =<nav data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><a href="/"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a>|</nav>
     20 = COA
     20 {
       10  = HMENU
@@ -152,7 +152,7 @@ page.10 {
         pidInList = 27
       }
     }
-    wrap = <br><br><footer>|</footer>
+    wrap = <br><br><footer class="hidden-print">|</footer>
   }
 }
 
@@ -188,13 +188,13 @@ lib.artikel {
 page.10 {
   5 = TEXT
   5.value (
-<header class="main">
+<header class="main hidden-print">
   <img class="hero mountains active" data-0="transform: translateY(40%)" data-390="transform: translateY(70%)" src="fileadmin/img/mountains.png" />
   <img class="hero city" data-0="transform: translateY(40%)" data-390="transform: translateY(70%)" src="fileadmin/img/city.png" />
   <img class="logo" src="fileadmin/img/dioe-logo-gray.png" data-0="transform:translateY(0%); opacity: 1" data-390="transform:translateY(150%); opacity:.7">
 </header>
 )
-  10.wrap = <nav data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt="">|</nav>
+  10.wrap = <nav data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt="">|</nav>
   20.20 < lib.artikel
   20.20.10.select.where = FIND_IN_SET('21',selected_categories)
   20.20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
