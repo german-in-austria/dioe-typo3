@@ -182,6 +182,12 @@ lib.namebe {
   }
 }
 
+lib.seitentitel = COA
+lib.seitentitel {
+  10 = TEXT
+  10.data =  page:subtitle // page:title
+}
+
 
 lib.artikel = COA
 lib.artikel {

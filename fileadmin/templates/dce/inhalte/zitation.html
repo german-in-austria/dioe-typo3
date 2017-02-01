@@ -1,0 +1,34 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+	<div class="panel panel-default citation">
+      <div class="panel-heading">Zitation</div>
+      <div class="panel-body">
+		  <f:if condition='{field.zitationName}'>
+			  <f:then>{field.zitationName}</f:then>
+			  <f:else>
+				  <f:if condition='{field.zitationNameBE} == -1'>
+					  <f:then>DiÖ</f:then>
+					  <f:else>
+						  <f:if condition='{field.zitationNameBE}'>
+							  <f:then>
+								  {field.zitationNameBE -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+							  </f:then>
+							  <f:else>
+								  {contentObject.cruser_id -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+							  </f:else>
+						  </f:if>
+					  </f:else>
+				  </f:if>
+			  </f:else>
+		  </f:if> (<f:format.date format="Y">{f:if(condition: '{contentObject.starttime}', then: '{contentObject.starttime}', else: '{contentObject.tstamp}')}</f:format.date>): <f:if condition='{field.zitationUeberschrift}'><f:then>{field.zitationUeberschrift}.</f:then><f:else>{f:cObject(typoscriptObjectPath:'lib.seitentitel')}.</f:else></f:if> In:
+		  <f:switch expression="{field.zitationStandort}">
+			  <f:case default="TRUE">DiÖ-Online.</f:case>
+		  </f:switch>
+		  <br>
+		  URL: {f:uri.page(pageUid:'39', absolute:'TRUE')}<br>
+		  [Zugriff: <f:format.date date="now" format="d.m.Y" />]
+		</div>
+    </div>
+</f:section>
