@@ -4,6 +4,8 @@
 <f:section name="main">
 	<div class="dateien">
 	<f:for each="{field.dateien}" as="datei" iteration="i">
+
+		<!-- Copyright: <dce:fileInfo fileUid="{datei.datei.0.uid}" attribute="copyright" /> -->
 		<a href="{dce:typolinkUrl(parameter:'file:{datei.datei.0.uid}')}" target="_BLANK" title="{datei.datei.0.name} - {datei.datei.0.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}" class="datei clearfix datei-ext-{datei.datei.0.extension}">
 			<span class="imgfrm">
 				<span class="extension">{datei.datei.0.extension}</span>
