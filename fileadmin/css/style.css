@@ -414,6 +414,26 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   line-height: 1.6;
   z-index: 3;
 }
+
+.lizenz-cc>a {
+  display: block;
+}
+.lizenz-cc>a>img {
+  display: block;
+}
+.citation>.panel-heading>.lizenz {
+  float:right;
+}
+
+
+
+
+
+
+
+
+
+
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";

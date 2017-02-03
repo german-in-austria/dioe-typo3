@@ -3,7 +3,18 @@
 
 <f:section name="main">
 	<div class="panel panel-default citation">
-      <div class="panel-heading">Zitation</div>
+      <div class="panel-heading">Zitation
+				<f:if condition='{field.lizenzFreitext}'>
+					<f:then>{field.lizenzFreitext -> f:cObject(typoscriptObjectPath:'lib.lizenz')}</f:then>
+					<f:else>
+						<f:if condition="{field.lizenzBearbeiten} != 'kl'">
+							<f:alias map="{alizenz: 'cc-by{field.lizenzKommerziell}{field.lizenzBearbeiten}'}">
+								{alizenz -> f:cObject(typoscriptObjectPath:'lib.lizenz')}
+							</f:alias>
+						</f:if>
+					</f:else>
+				</f:if>
+			</div>
       <div class="panel-body">
 		  <f:if condition='{field.zitationName}'>
 			  <f:then>{field.zitationName}</f:then>
