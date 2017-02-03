@@ -13,6 +13,7 @@
 				<span class="size">{datei.datei.0.extension} - {datei.datei.0.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}</span>
 			</span>
 			<span class="filefrm">
+				<f:if condition="{dce:fileInfo(fileUid:'{datei.datei.0.uid}', attribute:'copyright')}">{dce:fileInfo(fileUid:'{datei.datei.0.uid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzNolinkKleinSpan')}</f:if>
 				<p><b>{datei.titel}</b></p>
 				<p><f:format.nl2br>{datei.text}</f:format.nl2br></p>
 			</span>

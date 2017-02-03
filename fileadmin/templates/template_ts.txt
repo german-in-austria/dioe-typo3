@@ -166,6 +166,14 @@ lib.lizenz {
 }
 lib.lizenzKlein < lib.lizenz
 lib.lizenzKlein.10.klein = 1
+lib.lizenzNolink < lib.lizenz
+lib.lizenzNolink.10.keinlink = 1
+lib.lizenzNolinkKlein < lib.lizenzNolink
+lib.lizenzNolinkKlein.10.klein = 1
+lib.lizenzNolinkSpan < lib.lizenzNolink
+lib.lizenzNolinkSpan.10.span = 1
+lib.lizenzNolinkKleinSpan < lib.lizenzNolinkKlein
+lib.lizenzNolinkKleinSpan.10.span = 1
 lib.lizenzImg < lib.lizenz
 lib.lizenzImg.10.bild = 1
 lib.lizenzImgKlein < lib.lizenzImg

@@ -463,6 +463,10 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   padding: 5px;
   background: transparent;
 }
+.datei .lizenz {
+  float: right;
+  padding: 0px 10px;
+}
 
 
 
