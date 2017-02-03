@@ -415,6 +415,23 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   z-index: 3;
 }
 
+.img {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.img>img {
+  display:block;
+}
+.img.img-responsive>img {
+  max-width:100%;
+  height:auto;
+}
+.img>span.img-add {
+  position: absolute;
+  display: none;
+}
+
 .lizenz-cc>a {
   display: block;
 }
@@ -424,11 +441,28 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 .citation>.panel-heading>.lizenz {
   float:right;
 }
-
-
-
-
-
+.img>span.img-add.lizenz {
+  position: absolute;
+  display: block;
+  right: 0px;
+  bottom: 0px;
+  padding: 2px 13px;
+  color: #fff;
+  background: rgba(24, 24, 24, 0.5);
+  border-radius: 5px 0px 0px 0px;
+  font-size: 18px;
+  line-height: 1.6;
+  transition: 0.5s;
+  opacity:0;
+}
+.img:hover>span.img-add.lizenz {
+  transition: 0.1s;
+  opacity:1;
+}
+.img>span.img-add.lizenz.lizenz-cc {
+  padding: 5px;
+  background: transparent;
+}
 
 
 

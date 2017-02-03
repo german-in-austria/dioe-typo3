@@ -43,10 +43,10 @@ class user_funktionen_class {
         $alizenzout.=$alizenzoutArray[0].$alizenzoutArray[1];
       }
       if($alerr==0) {
-        return '<div class="lizenz lizenz-cc"><a rel="license" href="http://creativecommons.org/licenses/'.$alizenzout.'/4.0/" alt="cc-'.$alizenzout.'" target="_BLANK"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/'.$alizenzout.'/4.0/'.(($conf['klein'])?'80x15':'88x31').'.png" /></a></div>';
+        return '<'.(($conf['bild'])?'span':'div').' class="'.(($conf['bild'])?'img-add ':'').'lizenz lizenz-cc">'.(($conf['keinlink'])?'':'<a rel="license" href="http://creativecommons.org/licenses/'.$alizenzout.'/4.0/" alt="cc-'.$alizenzout.'" target="_BLANK">').'<img alt="Creative Commons Lizenzvertrag" src="https://i.creativecommons.org/l/'.$alizenzout.'/4.0/'.(($conf['klein'])?'80x15':'88x31').'.png" />'.(($conf['keinlink'])?'':'</a>').'</'.(($conf['bild'])?'span':'div').'>';
       };
     }
-    return '<div class="lizenz lizenz-text">'.$alizenz.'</div>';
+    return '<'.(($conf['bild'])?'span':'div').' class="lizenz lizenz-text">'.$alizenz.'</'.(($conf['bild'])?'span':'div').'>';
   }
 }
 
