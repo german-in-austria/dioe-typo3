@@ -1,0 +1,20 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+  <b>Foto:</b> {field.foto}<br>
+	<b>Titel:</b> {field.titel}<br>
+	<b>Name:</b> {field.name}<br>
+	<b>Vorname:</b> {field.vorname}<br>
+	<b>Funktion allgemein:</b> {field.funktionAllgemein}<br>
+	<b>Institution:</b> {field.institution} - {field.institutionUrl}<br>
+	<b>Institut:</b> {field.institut} - {field.institutUrl}<br>
+	<b>Kurzbeschreibung:</b><br>
+	<f:format.nl2br>{field.kurzbeschreibung}</f:format.nl2br><br>
+	<b>E-Mail:</b> {field.email}<br>
+	<b>Homepage:</b> {field.homepage}<br>
+	<b>Teilprojekte:</b><br>
+	<f:for each="{field.teilprojekte}" as="teilprojekt">
+		- {teilprojekt.tpTeilprojekt} - {teilprojekt.tpFunktion}<br>
+	</f:for>
+</f:section>

@@ -184,7 +184,6 @@ lib.lizenzImgNolinkKlein < lib.lizenzImgNolink
 lib.lizenzImgNolinkKlein.10.klein = 1
 
 
-
 lib.dateiextension = COA
 lib.dateiextension {
   10 = TEXT
