@@ -477,19 +477,22 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   padding: 0px 10px;
 }
 
-.mitarbeiter {
+.mitarbeiter-liste.list-view {
+  text-align: justify;
+}
+.list-view .mitarbeiter {
   margin-bottom: 4em;
   padding-top:0.25em;
   border-left:4px solid #fff;
 }
-.mitarbeiter:hover {
+.list-view .mitarbeiter:hover {
   border-color:#ddd;
 }
-.mitarbeiter-name>.zusaetze {
+.list-view .mitarbeiter-name>.zusaetze {
   display:inline-block;
   margin-left:1em;
 }
-.mitarbeiter-name>.zusaetze>a {
+.list-view .mitarbeiter-name>.zusaetze>a {
   margin-right:0.5em;
 }
 

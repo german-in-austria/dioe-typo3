@@ -156,6 +156,9 @@ page.10 {
   }
 }
 
+lib.isOne = TEXT
+lib.isOne.value = 1
+
 lib.lizenz = COA
 lib.lizenz {
   10 = USER
@@ -182,7 +185,6 @@ lib.lizenzImgNolink < lib.lizenzImg
 lib.lizenzImgNolink.10.keinlink = 1
 lib.lizenzImgNolinkKlein < lib.lizenzImgNolink
 lib.lizenzImgNolinkKlein.10.klein = 1
-
 
 lib.dateiextension = COA
 lib.dateiextension {
@@ -216,6 +218,26 @@ lib.seitentitel {
   10.data =  page:subtitle // page:title
 }
 
+lib.mitarbeiter < page.10.20.10
+lib.mitarbeiter {
+  select.pidInList = 12
+  select.where = colPos = 1
+  renderObj = < tt_content
+  renderObj.stdWrap.noTrimWrap = ||###SPLITTER### |
+  stdWrap.split {
+    token = ###SPLITTER###
+    cObjNum = 1 |*| 1 |*| 2||3
+    1 {
+      current = 1
+      wrap = |,
+    }
+    2 {
+      current = 1
+      wrap = |
+    }
+  }
+  wrap = |
+}
 
 lib.artikel = COA
 lib.artikel {
@@ -256,6 +278,9 @@ page.10 {
 
 // Task-Cluster A
 [globalVar = TSFE:id = 14]
+lib.mitarbeiterNurNamen < lib.isOne
+page.10.20.15 < lib.mitarbeiter
+page.10.20.15.select.andWhere = FIND_IN_SET('24',selected_categories)
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere = FIND_IN_SET('16',selected_categories)
 page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
@@ -263,6 +288,9 @@ page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
 
 // Task-Cluster B
 [globalVar = TSFE:id = 15]
+lib.mitarbeiterNurNamen < lib.isOne
+page.10.20.15 < lib.mitarbeiter
+page.10.20.15.select.andWhere = FIND_IN_SET('26',selected_categories) OR FIND_IN_SET('27',selected_categories) OR FIND_IN_SET('28',selected_categories)
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere = FIND_IN_SET('17',selected_categories)
 page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
@@ -270,6 +298,9 @@ page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
 
 // Task-Cluster C
 [globalVar = TSFE:id = 16]
+lib.mitarbeiterNurNamen < lib.isOne
+page.10.20.15 < lib.mitarbeiter
+page.10.20.15.select.andWhere = FIND_IN_SET('30',selected_categories) OR FIND_IN_SET('31',selected_categories)
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere = FIND_IN_SET('18',selected_categories)
 page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
@@ -277,6 +308,9 @@ page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
 
 // Task-Cluster D
 [globalVar = TSFE:id = 17]
+lib.mitarbeiterNurNamen < lib.isOne
+page.10.20.15 < lib.mitarbeiter
+page.10.20.15.select.andWhere = FIND_IN_SET('33',selected_categories) OR FIND_IN_SET('34',selected_categories)
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere = FIND_IN_SET('19',selected_categories)
 page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
@@ -284,6 +318,9 @@ page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
 
 // Task-Cluster E
 [globalVar = TSFE:id = 18]
+lib.mitarbeiterNurNamen < lib.isOne
+page.10.20.15 < lib.mitarbeiter
+page.10.20.15.select.andWhere = FIND_IN_SET('36',selected_categories)
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere = FIND_IN_SET('20',selected_categories)
 page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
@@ -307,5 +344,17 @@ page.10.20 {
       }
     }
   }
+}
+[global]
+
+// Mitarbeiter
+[globalVar = TSFE:id = 12]
+page.10.20 {
+  20 < .10
+  20.select.where = colPos = 1
+  20.wrap = <div class="mitarbeiter-liste list-view clearfix">|</div>
+  99 < .10
+  99.select.where = colPos = 99
+  99.wrap = <article class="outro-text">|</article>
 }
 [global]
