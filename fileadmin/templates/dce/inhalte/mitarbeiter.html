@@ -3,9 +3,9 @@
 
 <f:section name="main">
   <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.mitarbeiterNurNamen')}">
-    <f:then>{f:if(condition: '{field.titel}', then: '{field.titel} ', else: '')} {field.vorname} {field.name}{f:if(condition: '{field.titelNachgestellt}', then: ', {field.titelNachgestellt} ', else: '')}</f:then>
+    <f:then><f:link.page pageUid="12" section="m{contentObject.uid}">{field.vorname} {field.name}</f:link.page></f:then>
     <f:else>
-      <article class="mitarbeiter row" data-sort-projekte="{field.kategorie}">
+      <article id="m{contentObject.uid}" class="mitarbeiter row" data-sort-projekte="{field.kategorie}">
         <div class="col-sm-3 col-md-4">
           <f:if condition="{field.foto}">
             <f:then>
@@ -27,7 +27,7 @@
           <f:if condition="{field.funktionAllgemein}"><p>{field.funktionAllgemein}</p></f:if>
           <p><b>Projekt<f:if condition="{f:count(subject: field.teilprojekte)} > 1">e</f:if>:</b><br>
           	<f:for each="{field.teilprojekte}" as="teilprojekt">
-          		- {teilprojekt.tpTeilprojekt}<f:if condition="{teilprojekt.tpFunktion}"> - {teilprojekt.tpFunktion}</f:if><br>
+          		{teilprojekt.tpTeilprojekt}<f:if condition="{teilprojekt.tpFunktion}"> - {teilprojekt.tpFunktion}</f:if><br>
           	</f:for>
           </p>
         </div>

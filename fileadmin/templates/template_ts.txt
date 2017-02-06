@@ -222,6 +222,7 @@ lib.mitarbeiter < page.10.20.10
 lib.mitarbeiter {
   select.pidInList = 12
   select.where = colPos = 1
+  select.orderBy = sorting asc
   renderObj = < tt_content
   renderObj.stdWrap.noTrimWrap = ||###SPLITTER### |
   stdWrap.split {
