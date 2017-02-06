@@ -2,19 +2,36 @@
 <f:layout name="None" />
 
 <f:section name="main">
-  <b>Foto:</b> {field.foto}<br>
-	<b>Titel:</b> {field.titel}<br>
-	<b>Name:</b> {field.name}<br>
-	<b>Vorname:</b> {field.vorname}<br>
-	<b>Funktion allgemein:</b> {field.funktionAllgemein}<br>
-	<b>Institution:</b> {field.institution} - {field.institutionUrl}<br>
-	<b>Institut:</b> {field.institut} - {field.institutUrl}<br>
-	<b>Kurzbeschreibung:</b><br>
-	<f:format.nl2br>{field.kurzbeschreibung}</f:format.nl2br><br>
-	<b>E-Mail:</b> {field.email}<br>
-	<b>Homepage:</b> {field.homepage}<br>
-	<b>Teilprojekte:</b><br>
-	<f:for each="{field.teilprojekte}" as="teilprojekt">
-		- {teilprojekt.tpTeilprojekt} - {teilprojekt.tpFunktion}<br>
-	</f:for>
+  <div class="mitarbeiter row" data-sort-projekte="{field.kategorie}">
+    <div class="col-sm-3 col-md-4">
+      <f:if condition="{field.foto}">
+        <f:then>
+          <f:for each="{dce:fal(field:'foto', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}">
+            <span class="img img-responsive img-rounded w100 mib05e border-gray"><f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" width="260c" height="260c"/><f:if condition="{dce:fileInfo(fileUid:'{fileReference.originalFile.properties.uid}', attribute:'copyright')}"><f:then>{dce:fileInfo(fileUid:'{fileReference.originalFile.properties.uid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}</f:then><f:else><f:alias map="{copyright: 'Alle Rechte am Foto vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}</f:alias></f:else></f:if></span>
+          </f:if></f:for>
+        </f:then>
+        <f:else>
+        <span class="img img-responsive img-rounded w100 mib05e border-gray"><f:image src="fileadmin/img/dioe-logo-gray.png" alt="" width="260c" height="260c"/></span>
+        </f:else>
+      </f:if>
+    </div>
+    <div class="col-sm-9 col-md-8">
+      <div class="mitarbeiter-name"><b>{f:if(condition: '{field.titel}', then: '{field.titel} ', else: '')} {field.vorname} {field.name}{f:if(condition: '{field.titelNachgestellt}', then: ', {field.titelNachgestellt} ', else: '')}</b><div class="zusaetze"><f:if condition="{field.email}"> <a href="mailto:{field.email}" title="E-Mail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></f:if><f:if condition="{field.homepage}"><f:if condition="{field.homepage}!='http://'"> <a href="{field.homepage}" target="_BLANK" title="Homepage"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></f:if></f:if></div></div>
+      <p>
+      	<f:if condition="{field.institution}"><f:if condition="{field.institutionUrl}"><f:then><f:if condition="{field.institutionUrl}!='http://'"><f:then><a href="{field.institutionUrl}" target="_BLANK" title="Institution">{field.institution}</a></f:then><f:else>{field.institution}</f:else></f:if></f:then><f:else>{field.institution}</f:else></f:if><f:if condition="{field.institut}"><f:then> - </f:then><f:else><br></f:else></f:if></f:if>
+        <f:if condition="{field.institut}"><f:if condition="{field.institutUrl}"><f:then><f:if condition="{field.institutUrl}!='http://'"><f:then><a href="{field.institutUrl}" target="_BLANK" title="Institution">{field.institut}</a></f:then><f:else>{field.institut}</f:else></f:if></f:then><f:else>{field.institut}</f:else></f:if><br></f:if>
+      </p>
+      <f:if condition="{field.funktionAllgemein}"><p>{field.funktionAllgemein}</p></f:if>
+      <p><b>Projekte:</b><br>
+      	<f:for each="{field.teilprojekte}" as="teilprojekt">
+      		- {teilprojekt.tpTeilprojekt}<f:if condition="{teilprojekt.tpFunktion}"> - {teilprojekt.tpFunktion}</f:if><br>
+      	</f:for>
+      </p>
+    </div>
+    <f:if condition="{field.kurzbeschreibung}">
+    <div class="col-xs-12">
+      <f:format.nl2br>{field.kurzbeschreibung}</f:format.nl2br><br>
+    </div>
+    </f:if>
+  </div>
 </f:section>

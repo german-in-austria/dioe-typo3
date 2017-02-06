@@ -338,6 +338,12 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 .mib1e {
   margin-bottom: 1em;
 }
+.mib05e {
+  margin-bottom: 0.5em;
+}
+.border-gray {
+  border: 1px solid #ddd;
+}
 
 .ekko-lightbox-nav-overlay a {
   text-decoration: none !important;
@@ -427,6 +433,9 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   max-width:100%;
   height:auto;
 }
+.img.w100>img {
+  width:100%;
+}
 .img>span.img-add {
   position: absolute;
   display: none;
@@ -450,10 +459,10 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   color: #fff;
   background: rgba(24, 24, 24, 0.5);
   border-radius: 5px 0px 0px 0px;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 1.6;
   transition: 0.5s;
-  opacity:0;
+  opacity:0.75;
 }
 .img:hover>span.img-add.lizenz {
   transition: 0.1s;
@@ -468,12 +477,32 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   padding: 0px 10px;
 }
 
-
+.mitarbeiter {
+  margin-bottom: 4em;
+  padding-top:0.25em;
+  border-left:4px solid #fff;
+}
+.mitarbeiter:hover {
+  border-color:#ddd;
+}
+.mitarbeiter-name>.zusaetze {
+  display:inline-block;
+  margin-left:1em;
+}
+.mitarbeiter-name>.zusaetze>a {
+  margin-right:0.5em;
+}
 
 
 
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";
+  }
+  .img>span.img-add.lizenz {
+    font-size: 14px !important;
+    color: #000 !important;
+    background-color: #fff !important;
+    opacity:1;
   }
 }
