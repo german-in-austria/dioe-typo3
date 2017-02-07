@@ -8,17 +8,7 @@
 		<h1 class="title">{field.uebersichtUeberschrift}</h1>
 		<f:for each="{dce:fal(field:'uebersichtBild', contentObject:contentObject)}" as="fileReference" iteration="iterator">
 		<f:if condition="{iterator.isFirst}">
-			<f:switch expression="{field.uebersichtBildVerh}">
-				<f:case value="1">
-					<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-left mir2e mib1e" width="330c" height="467c"/>
-				</f:case>
-				<f:case value="2">
-					<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-left mir2e mib1e" width="330"/>
-				</f:case>
-				<f:case default="TRUE">
-					<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mw40 pull-left mir2e mib1e" width="330c" height="330c"/>
-				</f:case>
-			</f:switch>
+			<f:render partial="Image" arguments="{src: fileReference.uid, treatIdAsReference: 1, width: '330', bildVerh: field.uebersichtBildVerh, class: 'img-responsive img-rounded mw40 pull-left mir2e mib1e', fileUid: fileReference.originalFile.properties.uid}" />
 		</f:if>
 		</f:for>
 		<f:if condition="{field.uebersichtText}">

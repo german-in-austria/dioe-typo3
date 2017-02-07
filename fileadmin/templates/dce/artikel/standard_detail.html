@@ -18,18 +18,15 @@
 			<f:for each="{dce:fal(field:'detailseiteBild', contentObject:contentObject)}" as="fileReference" iteration="iterator">
 				<!-- Copyright: <dce:fileInfo fileUid="{fileReference.originalFile.properties.uid}" attribute="copyright" /> -->
 				<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
-					<a href="{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{fileReference.title}" data-footer="{fileReference.description}" class="hide-url-printer">
-					<f:switch expression="{field.detailseiteBildVerh}">
-						<f:case value="1">
-							<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mib1e" width="{f:if(condition: '{iterator.total} > 9', then: '115c', else: '188c')}" height="{f:if(condition: '{iterator.total} > 9', then: '163c', else: '266c')}"/>
-						</f:case>
-						<f:case value="2">
-							<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mib1e" width="{f:if(condition: '{iterator.total} > 9', then: '115', else: '188')}"/>
-						</f:case>
-						<f:case default="TRUE">
-							<f:image src="{fileReference.uid}" alt="" treatIdAsReference="1" class="img-responsive img-rounded mib1e" width="{f:if(condition: '{iterator.total} > 9', then: '115c', else: '188c')}" height="{f:if(condition: '{iterator.total} > 9', then: '115c', else: '188c')}"/>
-						</f:case>
-					</f:switch>
+					<a href="{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{fileReference.title}" data-footer="{fileReference.description}" class="img img-responsive img-rounded mib1e hide-url-printer">
+						<f:if condition="{iterator.total} > 9">
+							<f:then>
+								<f:render partial="Image" arguments="{src: fileReference.uid, treatIdAsReference: 1, width: '115', bildVerh: field.detailseiteBildVerh, hideSpan: 1, class: 'img-responsive img-rounded w100 mib1e', fileUid: fileReference.originalFile.properties.uid, lizenzImgNolinkKlein: 1}" />
+							</f:then>
+							<f:else>
+								<f:render partial="Image" arguments="{src: fileReference.uid, treatIdAsReference: 1, width: '188', bildVerh: field.detailseiteBildVerh, hideSpan: 1, class: 'img-responsive img-rounded w100 mib1e', fileUid: fileReference.originalFile.properties.uid, lizenzImgNolinkKlein: 1}" />
+							</f:else>
+						</f:if>
 					</a>
 				</div>
 			</f:for>

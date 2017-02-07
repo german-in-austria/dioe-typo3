@@ -1,0 +1,13 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<a href="{dce:typolinkUrl(parameter:'file:{datei.datei.0.uid}')}" target="_BLANK" title="{datei.datei.0.name} - {datei.datei.0.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}" class="datei clearfix datei-ext-{datei.datei.0.extension}">
+  <span class="imgfrm">
+    <span class="extension">{datei.datei.0.extension}</span>
+    <f:if condition="{datei.datei.0.extension -> f:cObject(typoscriptObjectPath:'lib.dateiextension')}"><f:if condition="{datei.vorschaubild}"><span class="imgbg"><f:image src="{dce:typolinkUrl(parameter:'file:{datei.datei.0.uid}')}" alt="" class="img-responsive w100" width="210"/></span></f:if></f:if>
+    <span class="size">{datei.datei.0.extension} - {datei.datei.0.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}</span>
+  </span>
+  <span class="filefrm">
+    <f:if condition="{dce:fileInfo(fileUid:'{datei.datei.0.uid}', attribute:'copyright')}">{dce:fileInfo(fileUid:'{datei.datei.0.uid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzNolinkKleinSpan')}</f:if>
+    <p><b>{datei.titel}</b></p>
+    <p><f:format.nl2br>{datei.text}</f:format.nl2br></p>
+  </span>
+</a>

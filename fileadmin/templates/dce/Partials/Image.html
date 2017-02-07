@@ -1,0 +1,37 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:spaceless>
+<f:if condition="{hideSpan}"><f:else><span class="img {class}"></f:else></f:if>
+  <f:if condition="{bildVerh}">
+    <f:then>
+      <f:image src="{src}" alt="" treatIdAsReference="{treatIdAsReference}" width="{width}c" height="{width}c"/>
+    </f:then>
+    <f:else>
+      <f:image src="{src}" alt="" treatIdAsReference="{treatIdAsReference}" width="{width}" height="{height}" maxWidth="{maxWidth}" maxHeight="{maxHeight}"/>
+    </f:else>
+  </f:if>
+  <f:if condition="{fileUid}">
+    <f:if condition="{dce:fileInfo(fileUid:'{fileUid}', attribute:'copyright')}">
+      <f:then>
+      <f:if condition="{lizenzImgNolinkKlein}">
+        <f:then>
+          {dce:fileInfo(fileUid:'{fileUid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}
+        </f:then>
+        <f:else>
+          {dce:fileInfo(fileUid:'{fileUid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}
+        </f:else>
+      </f:if>
+      </f:then>
+      <f:else>
+        <f:if condition="{lizenzImgNolinkKlein}">
+          <f:then>
+            <f:alias map="{copyright: 'Alle Rechte am Bild vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}</f:alias>
+          </f:then>
+          <f:else>
+            <f:alias map="{copyright: 'Alle Rechte am Bild vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}</f:alias>
+          </f:else>
+        </f:if>
+      </f:else>
+    </f:if>
+  </f:if>
+<f:if condition="{hideSpan}"><f:else></span></f:else></f:if>
+</f:spaceless>

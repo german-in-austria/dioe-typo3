@@ -456,13 +456,17 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   right: 0px;
   bottom: 0px;
   padding: 2px 13px;
+  margin-left: -3px;
   color: #fff;
   background: rgba(24, 24, 24, 0.5);
-  border-radius: 5px 0px 0px 0px;
+  border-radius: 5px 0px 5px 0px;
   font-size: 12px;
   line-height: 1.6;
   transition: 0.5s;
   opacity:0.75;
+}
+.img>span.img-add.lizenz.klein {
+  font-size: 10px;
 }
 .img:hover>span.img-add.lizenz {
   transition: 0.1s;
