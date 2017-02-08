@@ -7,6 +7,11 @@
         <f:else><f:if condition="{iterator.isFirst}"><f:else> / </f:else></f:if>{author.authorNachname}, {author.authorVorname}</f:else>
       </f:if>
     </f:for>
+    <f:for each="{field.authorSektion}" as="author" iteration="iterator">
+      <f:if condition="{author.authorIsEditor}">
+        <f:if condition="{iterator.isFirst}"><f:else> / </f:else></f:if>{author.authorNachname}, {author.authorVorname}
+      </f:if>
+    </f:for>
     ({field.year}): {field.title}
     <f:switch expression="{field.art}">
       <f:case value="1">
@@ -20,7 +25,6 @@
         {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
       </f:case>
       <f:case value="2">
-        editor?
         In:
         {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
         {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
@@ -33,7 +37,6 @@
         {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
       </f:case>
       <f:case value="3">
-        editor?
         In:
         {f:if(condition: '{field.booktitle}', then: 'Buch: {field.booktitle}', else: '')}
         {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
@@ -99,4 +102,42 @@
     {field.note}
   </li>
   </f:spaceless>
+</f:section>
+
+<f:section name="BibTex">
+    @<f:switch expression="{field.art}"><f:case value="1">article</f:case><f:case value="2">book</f:case><f:case value="3">inbook</f:case><f:case value="4">masterthesis</f:case><f:case value="5">phdthesis</f:case><f:case value="6">unpublished</f:case><f:case value="7">online</f:case><f:case default="TRUE">unbekannt</f:case></f:switch>{<f:switch expression="{field.art}"><f:case value="1">article</f:case><f:case value="2">book</f:case><f:case value="3">inbook</f:case><f:case value="4">masterthesis</f:case><f:case value="5">phdthesis</f:case><f:case value="6">unpublished</f:case><f:case value="7">online</f:case><f:case default="TRUE">unbekannt</f:case></f:switch>,
+    <f:for each="{field}" as="val" key="key">
+      <f:switch expression="{key}">
+        <f:case value="datum"></f:case><f:case value="uebersichtUeberschrift"></f:case><f:case value="uebersichtText"></f:case><f:case value="kategorien"></f:case><f:case value="uebersichtBild"></f:case><f:case value="uebersichtBildVerh"></f:case><f:case value="art"></f:case>
+        <f:case default="TRUE">
+          <f:if condition="{val}">
+            <f:if condition="{val -> dce:isArray()}">
+              <f:then>
+                <f:if condition="{key} == 'authorSektion'">
+                  <f:then>
+                    author =
+                    <f:for each="{val}" as="uval" key="ukey" iteration="uiterator">
+                      <f:if condition="{uval -> dce:isArray()}">
+                        <f:then>
+                          <f:if condition="{uiterator.isFirst}"><f:else> AND </f:else></f:if><![CDATA[{]]>{uval.authorVorname} {uval.authorNachname}<![CDATA[}]]>
+                        </f:then>
+                        <f:else><f:if condition="{uiterator.isFirst}"><f:else> AND </f:else></f:if><![CDATA[{]]>{uval}<![CDATA[}]]></f:else>
+                      </f:if>
+                    </f:for>
+                    ,
+                  </f:then>
+                  <f:else>
+                    {key} = <f:for each="{val}" as="uval" key="ukey" iteration="uiterator"><f:if condition="{uval -> dce:isArray()}"><f:then><f:if condition="{uiterator.isFirst}"><f:else> AND</f:else></f:if><![CDATA[{]]><f:for each="{uval}" as="uuval" key="uukey"> {uuval}</f:for><![CDATA[}]]></f:then><f:else><f:if condition="{uiterator.isFirst}"><f:else> AND </f:else></f:if><![CDATA[{]]>{uval}<![CDATA[}]]></f:else></f:if></f:for>,
+                  </f:else>
+                </f:if>
+              </f:then>
+              <f:else>
+                {key} = <![CDATA[{]]>{val}<![CDATA[}]]>,
+              </f:else>
+            </f:if>
+          </f:if>
+        </f:case>
+      </f:switch>
+    </f:for>
+  }
 </f:section>
