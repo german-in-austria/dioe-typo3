@@ -1,16 +1,40 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
 <f:spaceless>
 
-<li class="<f:spaceless><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case></f:switch></f:for></f:spaceless>">
+<li class="<f:spaceless><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case></f:switch></f:for> typ-<f:switch expression="{field.art}"><f:case value="1">article</f:case><f:case value="2">book</f:case><f:case value="3">inbook</f:case><f:case value="4">masterthesis</f:case><f:case value="5">phdthesis</f:case><f:case value="6">unpublished</f:case><f:case value="7">online</f:case><f:case default="TRUE">unbekannt</f:case></f:switch></f:spaceless>">
+  <f:for each="{field.authorSektion}" as="author" iteration="iterator">
+    <f:if condition="{author.authorIsEditor}">
+      <f:else><f:if condition="{iterator.isFirst}"><f:else> / </f:else></f:if>{author.authorNachname}, {author.authorVorname}</f:else>
+    </f:if>
+  </f:for>
+  ({field.year}): {field.title}
   <f:switch expression="{field.art}">
-    <f:case value="99">
-      xxx
+    <f:case value="1">
+      Artikel
+    </f:case>
+    <f:case value="2">
+      Buch
+    </f:case>
+    <f:case value="3">
+      In Buch
+    </f:case>
+    <f:case value="4">
+      Masterthesis
+    </f:case>
+    <f:case value="5">
+      Doktorarbeit
+    </f:case>
+    <f:case value="6">
+      Unveröffentlicht
+    </f:case>
+    <f:case value="7">
+      Online
     </f:case>
     <f:case default="TRUE">
       <b><u>Unbekannt:</u></b>&nbsp;
       <f:for each="{field}" as="val" key="key">
         <f:switch expression="{key}">
-          <f:case value="datum"></f:case><f:case value="uebersichtUeberschrift"></f:case><f:case value="uebersichtText"></f:case><f:case value="kategorien"></f:case><f:case value="uebersichtBild"></f:case><f:case value="uebersichtBildVerh"></f:case>
+          <f:case value="datum"></f:case><f:case value="uebersichtUeberschrift"></f:case><f:case value="uebersichtText"></f:case><f:case value="kategorien"></f:case><f:case value="uebersichtBild"></f:case><f:case value="uebersichtBildVerh"></f:case><f:case value="title"></f:case><f:case value="authorSektion"></f:case><f:case value="year"></f:case>
           <f:case default="TRUE">
             <f:if condition="{val}">
               <f:if condition="{val -> dce:isArray()}">

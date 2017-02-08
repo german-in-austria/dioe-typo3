@@ -359,3 +359,23 @@ page.10.20 {
   99.wrap = <article class="outro-text">|</article>
 }
 [global]
+
+// Publikationen
+[globalVar = TSFE:id = 19]
+lib.pageublikationsListe = TEXT
+lib.pageublikationsListe.value = 1
+page.10.20 {
+  20 = COA
+  20 {
+    10 = CONTENT
+    10 {
+      table = tt_content
+      select {
+        pidInList = 35
+        orderBy = date desc
+      }
+      wrap = <h2 class="text-center">XXXX</h2><ul class="publicationen-liste">|</ul>
+    }
+  }
+}
+[global]
