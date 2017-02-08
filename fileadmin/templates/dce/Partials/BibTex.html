@@ -10,25 +10,63 @@
   ({field.year}): {field.title}
   <f:switch expression="{field.art}">
     <f:case value="1">
-      Artikel
+      In:
+      {field.journal}
+      {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+      {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
+      {f:if(condition: '{field.pages}', then: 'Seite: {field.pages}', else: '')}
+      {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
+      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
     </f:case>
     <f:case value="2">
-      Buch
+      editor?
+      In:
+      {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+      {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
+      {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
+      {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
+      {f:if(condition: '{field.publisher}', then: 'Publisher: {field.publisher}', else: '')}
+      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+      {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
+      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
     </f:case>
     <f:case value="3">
-      In Buch
+      editor?
+      In:
+      {f:if(condition: '{field.booktitle}', then: 'Buch: {field.booktitle}', else: '')}
+      {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+      {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
+      {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
+      {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
+      {f:if(condition: '{field.pages}', then: 'Seite: {field.pages}', else: '')}
+      {f:if(condition: '{field.publisher}', then: 'Publisher: {field.publisher}', else: '')}
+      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+      {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
+      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
     </f:case>
     <f:case value="4">
-      Masterthesis
+      In:
+      {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
+      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
     </f:case>
     <f:case value="5">
-      Doktorarbeit
+    In:
+      {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
+      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
     </f:case>
     <f:case value="6">
       Unveröffentlicht
     </f:case>
     <f:case value="7">
-      Online
+      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a> ({urldate})', else: '')}
+      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
     </f:case>
     <f:case default="TRUE">
       <b><u>Unbekannt:</u></b>&nbsp;
@@ -57,6 +95,7 @@
       </f:for>
     </f:case>
   </f:switch>
+  {field.note}
 </li>
 
 </f:spaceless>
