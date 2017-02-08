@@ -1,101 +1,102 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
-<f:spaceless>
-
-<li class="<f:spaceless><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case></f:switch></f:for> typ-<f:switch expression="{field.art}"><f:case value="1">article</f:case><f:case value="2">book</f:case><f:case value="3">inbook</f:case><f:case value="4">masterthesis</f:case><f:case value="5">phdthesis</f:case><f:case value="6">unpublished</f:case><f:case value="7">online</f:case><f:case default="TRUE">unbekannt</f:case></f:switch></f:spaceless>">
-  <f:for each="{field.authorSektion}" as="author" iteration="iterator">
-    <f:if condition="{author.authorIsEditor}">
-      <f:else><f:if condition="{iterator.isFirst}"><f:else> / </f:else></f:if>{author.authorNachname}, {author.authorVorname}</f:else>
-    </f:if>
-  </f:for>
-  ({field.year}): {field.title}
-  <f:switch expression="{field.art}">
-    <f:case value="1">
-      In:
-      {field.journal}
-      {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
-      {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
-      {f:if(condition: '{field.pages}', then: 'Seite: {field.pages}', else: '')}
-      {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
-      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
-      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
-    </f:case>
-    <f:case value="2">
-      editor?
-      In:
-      {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
-      {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
-      {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
-      {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
-      {f:if(condition: '{field.publisher}', then: 'Publisher: {field.publisher}', else: '')}
-      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
-      {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
-      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
-      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
-    </f:case>
-    <f:case value="3">
-      editor?
-      In:
-      {f:if(condition: '{field.booktitle}', then: 'Buch: {field.booktitle}', else: '')}
-      {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
-      {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
-      {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
-      {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
-      {f:if(condition: '{field.pages}', then: 'Seite: {field.pages}', else: '')}
-      {f:if(condition: '{field.publisher}', then: 'Publisher: {field.publisher}', else: '')}
-      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
-      {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
-      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
-      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
-    </f:case>
-    <f:case value="4">
-      In:
-      {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
-      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
-      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
-      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
-    </f:case>
-    <f:case value="5">
-    In:
-      {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
-      {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
-      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
-      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
-    </f:case>
-    <f:case value="6">
-      Unveröffentlicht
-    </f:case>
-    <f:case value="7">
-      {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a> ({urldate})', else: '')}
-      {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
-    </f:case>
-    <f:case default="TRUE">
-      <b><u>Unbekannt:</u></b>&nbsp;
-      <f:for each="{field}" as="val" key="key">
-        <f:switch expression="{key}">
-          <f:case value="datum"></f:case><f:case value="uebersichtUeberschrift"></f:case><f:case value="uebersichtText"></f:case><f:case value="kategorien"></f:case><f:case value="uebersichtBild"></f:case><f:case value="uebersichtBildVerh"></f:case><f:case value="title"></f:case><f:case value="authorSektion"></f:case><f:case value="year"></f:case>
-          <f:case default="TRUE">
-            <f:if condition="{val}">
-              <f:if condition="{val -> dce:isArray()}">
-                <f:then>
-                  - <b>{key}:</b> (
-                  <f:for each="{val}" as="uval" key="ukey">
-                    <f:if condition="{uval -> dce:isArray()}">
-                      <f:then>
-                        , <b>{ukey}:</b> ( <f:for each="{uval}" as="uuval" key="uukey">, <b>{uukey}:</b> "{uuval}"</f:for> )
-                      </f:then>
-                      <f:else>, <b>{ukey}:</b> "{uval}"</f:else>
-                    </f:if>
-                  </f:for>
-                  )
-                </f:then>
-              <f:else>- <b>{key}:</b> "{val}"</f:else></f:if>
-            </f:if>
-          </f:case>
-        </f:switch>
-      </f:for>
-    </f:case>
-  </f:switch>
-  {field.note}
-</li>
-
-</f:spaceless>
+<f:section name="Liste">
+  <f:spaceless>
+  <li class="<f:spaceless><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case></f:switch></f:for> typ-<f:switch expression="{field.art}"><f:case value="1">article</f:case><f:case value="2">book</f:case><f:case value="3">inbook</f:case><f:case value="4">masterthesis</f:case><f:case value="5">phdthesis</f:case><f:case value="6">unpublished</f:case><f:case value="7">online</f:case><f:case default="TRUE">unbekannt</f:case></f:switch></f:spaceless>">
+    <f:for each="{field.authorSektion}" as="author" iteration="iterator">
+      <f:if condition="{author.authorIsEditor}">
+        <f:else><f:if condition="{iterator.isFirst}"><f:else> / </f:else></f:if>{author.authorNachname}, {author.authorVorname}</f:else>
+      </f:if>
+    </f:for>
+    ({field.year}): {field.title}
+    <f:switch expression="{field.art}">
+      <f:case value="1">
+        In:
+        {field.journal}
+        {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+        {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
+        {f:if(condition: '{field.pages}', then: 'Seite: {field.pages}', else: '')}
+        {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
+        {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+        {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
+      </f:case>
+      <f:case value="2">
+        editor?
+        In:
+        {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+        {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
+        {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
+        {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
+        {f:if(condition: '{field.publisher}', then: 'Publisher: {field.publisher}', else: '')}
+        {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+        {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
+        {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+        {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
+      </f:case>
+      <f:case value="3">
+        editor?
+        In:
+        {f:if(condition: '{field.booktitle}', then: 'Buch: {field.booktitle}', else: '')}
+        {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+        {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
+        {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
+        {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
+        {f:if(condition: '{field.pages}', then: 'Seite: {field.pages}', else: '')}
+        {f:if(condition: '{field.publisher}', then: 'Publisher: {field.publisher}', else: '')}
+        {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+        {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
+        {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+        {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
+      </f:case>
+      <f:case value="4">
+        In:
+        {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
+        {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+        {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+        {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
+      </f:case>
+      <f:case value="5">
+        In:
+        {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
+        {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
+        {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+        {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
+      </f:case>
+      <f:case value="6">
+        Unveröffentlicht
+      </f:case>
+      <f:case value="7">
+        In:
+        {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a> ({urldate})', else: '')}
+        {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
+      </f:case>
+      <f:case default="TRUE">
+        <b><u>Unbekannt:</u></b>&nbsp;
+        <f:for each="{field}" as="val" key="key">
+          <f:switch expression="{key}">
+            <f:case value="datum"></f:case><f:case value="uebersichtUeberschrift"></f:case><f:case value="uebersichtText"></f:case><f:case value="kategorien"></f:case><f:case value="uebersichtBild"></f:case><f:case value="uebersichtBildVerh"></f:case><f:case value="title"></f:case><f:case value="authorSektion"></f:case><f:case value="year"></f:case>
+            <f:case default="TRUE">
+              <f:if condition="{val}">
+                <f:if condition="{val -> dce:isArray()}">
+                  <f:then>
+                    - <b>{key}:</b> (
+                    <f:for each="{val}" as="uval" key="ukey">
+                      <f:if condition="{uval -> dce:isArray()}">
+                        <f:then>
+                          , <b>{ukey}:</b> ( <f:for each="{uval}" as="uuval" key="uukey">, <b>{uukey}:</b> "{uuval}"</f:for> )
+                        </f:then>
+                        <f:else>, <b>{ukey}:</b> "{uval}"</f:else>
+                      </f:if>
+                    </f:for>
+                    )
+                  </f:then>
+                <f:else>- <b>{key}:</b> "{val}"</f:else></f:if>
+              </f:if>
+            </f:case>
+          </f:switch>
+        </f:for>
+      </f:case>
+    </f:switch>
+    {field.note}
+  </li>
+  </f:spaceless>
+</f:section>
