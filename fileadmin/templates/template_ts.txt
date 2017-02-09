@@ -388,9 +388,42 @@ page.10.20 {
       table = tt_content
       select {
         pidInList = 35
-        orderBy = date desc
+        andWhere = bibtex_art = 6
       }
-      wrap = <h2 class="text-center">XXXX</h2><ul class="publicationen-liste">|</ul>
+      stdWrap.required = 1
+      stdWrap.wrap = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="publicationen-liste">|</ul>
+    }
+    20 = CONTENT
+    20 {
+      table = tt_content
+      select {
+        pidInList = 35
+        orderBy = bibtex_year desc, sorting
+        groupBy = bibtex_year
+        andWhere = NOT bibtex_art = 6
+      }
+      renderObj = COA
+      renderObj {
+        5 = TEXT
+        5.value = <div id="p{field:bibtex_year}"><h2 class="text-center">{field:bibtex_year}</h2></div>
+        5.value.insertData = 1
+        10 = COA
+        10 {
+          10 < tt_content
+          20 = CONTENT
+          20 {
+            table = tt_content
+            select {
+              pidInList = 35
+              where = bibtex_year={field:bibtex_year}
+              where.insertData = 1
+              orderBy = sorting
+              andWhere = NOT bibtex_art = 6
+            }
+          }
+          wrap = <ul class="publicationen-liste">|</ul>
+        }
+      }
     }
   }
 }
