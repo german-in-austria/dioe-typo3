@@ -270,7 +270,7 @@ lib.artikel {
   20 < .10
   20.select.where = NOT FIND_IN_SET('22',selected_categories)
   20.select.max = 10
-  wrap = <div class="article-list">|</div>
+  wrap = <div class="article-list">|<div class="article-laden"></div></div>
 }
 
 
@@ -291,6 +291,15 @@ page.10 {
   20.20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
   20.20.20.select.max = 5
 }
+[global]
+
+// Aktuelles
+[globalVar = TSFE:id = 6]
+lib.mitarbeiterNurNamen < lib.isOne
+page.10.20.20 < lib.artikel
+page.10.20.20.10.select.where >
+page.10.20.20.10.select.max = 10
+page.10.20.20.20 >
 [global]
 
 // Task-Cluster A
