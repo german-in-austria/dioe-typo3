@@ -167,6 +167,22 @@ lib.lizenz {
     userFunc = user_funktionen_class->user_lizenz
   }
 }
+lib.PublikationAuthoren = COA
+lib.PublikationAuthoren {
+  10 = USER
+  10 {
+    includeLibs = fileadmin/templates/php/funktionen.php
+    userFunc = user_funktionen_class->user_publikation_authoren
+  }
+}
+lib.PublikationBibTex = COA
+lib.PublikationBibTex {
+  10 = USER
+  10 {
+    includeLibs = fileadmin/templates/php/funktionen.php
+    userFunc = user_funktionen_class->user_publikation_bibtex
+  }
+}
 lib.lizenzKlein < lib.lizenz
 lib.lizenzKlein.10.klein = 1
 lib.lizenzNolink < lib.lizenz
@@ -362,8 +378,8 @@ page.10.20 {
 
 // Publikationen
 [globalVar = TSFE:id = 19]
-lib.pageublikationsListe = TEXT
-lib.pageublikationsListe.value = 1
+lib.pagePublikationsListe = TEXT
+lib.pagePublikationsListe.value = 1
 page.10.20 {
   20 = COA
   20 {
