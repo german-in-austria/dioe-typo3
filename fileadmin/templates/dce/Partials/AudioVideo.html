@@ -1,0 +1,60 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<div class="col-md-{avData.spalten} mib1e">
+  <div class="av-titel">{avData.datei.titel}</div>
+  <f:if condition="{avData.seitenverhaeltniss}"><div class="embed-responsive embed-responsive-{avData.seitenverhaeltniss}"></f:if>
+    <f:if condition="{avData.datei.youtube}">
+      <f:then>
+        <f:if condition="{avData.seitenverhaeltniss}"><f:else><div class="embed-responsive embed-responsive-16by9"></f:else></f:if>
+        <iframe src="https://www.youtube-nocookie.com/embed/{avData.datei.youtube}?rel=0&amp;showinfo=0" class="embed-responsive-item av-objekt av-youtube" frameborder="0" allowfullscreen></iframe>
+        <f:if condition="{avData.seitenverhaeltniss}"><f:else></div></f:else></f:if>
+      </f:then>
+      <f:else>
+          <f:if condition="{avData.datei.datei}">
+            <f:then>
+              <f:if condition="{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'extension')} == 'mp4'">
+                <f:then>
+                  <video controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-mp4">
+                    <source src="{dce:typolinkUrl(parameter:'file:{avData.datei.datei.0.uid}')}" type="video/mp4">
+                  </video>
+                </f:then>
+                <f:else>
+                  <audio controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-audio">
+                    <source src="{dce:typolinkUrl(parameter:'file:{avData.datei.datei.0.uid}')}" type="audio/{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'extension')}">
+                  </audio>
+                </f:else>
+              </f:if>
+            </f:then>
+            <f:else>
+              <div class="{f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: '')}av-objekt">
+                Keine Datei vorhanden!
+              </div>
+            </f:else>
+          </f:if>
+      </f:else>
+    </f:if>
+  <f:if condition="{avData.seitenverhaeltniss}"></div></f:if>
+  <div class="av-copyright">
+    <f:if condition="{avData.datei.copyright}">
+      <f:then>
+        {avData.datei.copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
+      </f:then>
+      <f:else>
+        <f:if condition="{avData.datei.datei}">
+          <f:then>
+            <f:if condition="{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'copyright')}">
+              <f:then>
+                {dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
+              </f:then>
+              <f:else>
+                <f:alias map="{copyright: 'Alle Rechte am Medium vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}</f:alias>
+              </f:else>
+            </f:if>
+          </f:then>
+          <f:else>
+            <f:alias map="{copyright: 'Alle Rechte am Medium vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}</f:alias>
+          </f:else>
+        </f:if>
+      </f:else>
+    </f:if>
+  </div>
+</div>

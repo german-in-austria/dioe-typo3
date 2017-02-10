@@ -329,6 +329,9 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 .mw40 {
   max-width: 40%;
 }
+.mw100 {
+  max-width: 100%;
+}
 .mir2e {
   margin-right: 2em;
 }
@@ -499,6 +502,35 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 .list-view .mitarbeiter-name>.zusaetze>a {
   margin-right:0.5em;
 }
+
+.av-objekt {
+  background: #333;
+  color: #fff;
+  border-left: 1px solid #555 !important;
+  border-right: 1px solid #555 !important;
+  text-align: center;
+}
+.av-titel {
+  background: #555;
+  padding: 2px 14px;
+  text-align: center;
+  border-radius: 5px 5px 0px 0px;
+  color: #fff;
+}
+.av-copyright {
+  background: #555;
+  padding: 2px 14px;
+  text-align: center;
+  border-radius: 0px 0px 5px 5px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.av-copyright>.lizenz-cc>a {
+  display: inline-block;
+  margin-top: 0px;
+}
+
 
 
 
