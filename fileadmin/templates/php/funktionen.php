@@ -74,7 +74,7 @@ class user_funktionen_class {
     $outAuthoren = ''; $adg=0;
     foreach ($aAuthoren as $val) {
       if(!($val['authorIsEditor']==0 && $aNurEditoren) && !($val['authorIsEditor']==1 && $aNurAuthoren)) {
-        $outAuthoren.= (($adg>0)?' / ':'').$val['authorNachname'].', '.$val['authorVorname'].(($val['authorIsEditor'])?' (Hgg.)':'');
+        $outAuthoren.= (($adg>0)?' / ':'').$val['authorNachname'].', '.$val['authorVorname'].(($val['authorIsEditor'])?' (Hg.)':'');
         $adg++;
       }
     }
