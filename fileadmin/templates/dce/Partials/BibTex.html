@@ -28,8 +28,8 @@
         {field.journal}
         {f:if(condition: '{field.volume}', then: 'Band {field.volume}.', else: '')}
         {f:if(condition: '{field.number}', then: ' {field.number}', else: '')}
-        {f:if(condition: '{field.pages}', then: ', {field.pages}', else: '')}.
-        {f:if(condition: '{field.note}', then: ' {field.note}', else: '')}
+        {f:if(condition: '{field.pages}', then: ', {field.pages}.', else: '')}
+        {f:if(condition: '{field.note}', then: ' {field.note}.', else: '')}
         {f:if(condition: '{field.isbn}', then: '[ISBN: {field.isbn}]', else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
         {f:if(condition: '{field.url}', then: '[URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>]', else: '')}
@@ -39,8 +39,8 @@
         {f:if(condition: '{field.edition}', then: ' {field.edition},', else: '')}
         {f:if(condition: '{field.address}', then: ' {field.address}:', else: '')}
         {f:if(condition: '{field.publisher}', then: ' {field.publisher}.', else: '')}
-        {f:if(condition: '{field.series}', then: ' ({field.series} {field.number})', else: '')}.
-        {f:if(condition: '{field.note}', then: ' {field.note}', else: '')}
+        {f:if(condition: '{field.series}', then: ' ({field.series} {field.number}).', else: '')}
+        {f:if(condition: '{field.note}', then: ' {field.note}.', else: '')}
         {f:if(condition: '{field.isbn}', then: '[ISBN: {field.isbn}]', else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
         {f:if(condition: '{field.url}', then: '[URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>]', else: '')}
@@ -52,22 +52,22 @@
         {f:if(condition: '{field.volume}', then: ' Band {field.volume}.', else: '')}
         {f:if(condition: '{field.edition}', then: ' {field.edition},', else: '')}
         {f:if(condition: '{field.address}', then: ' {field.address}:', else: '')}
-        {f:if(condition: '{field.publisher}', then: ' {field.publisher}.', else: '')}
+        {f:if(condition: '{field.publisher}', then: ' {field.publisher}', else: '')}
         <f:if condition="{field.series}"> ({field.series} {f:if(condition: '{field.number}', then: ' {field.number}', else: '')})</f:if>{f:if(condition: '{field.pages}', then: ', {field.pages}', else: '')}.
-        {f:if(condition: '{field.note}', then: ' {field.note}', else: '')}
+        {f:if(condition: '{field.note}', then: ' {field.note}.', else: '')}
         {f:if(condition: '{field.isbn}', then: '[ISBN: {field.isbn}]', else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
         {f:if(condition: '{field.url}', then: '[URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>]', else: '')}
       </f:case>
       <f:case value="4"><f:comment>masterthesis</f:comment>
         <f:if condition="{field.school}">[Abschlussarbeit {field.school}. {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}]</f:if>.
-        {f:if(condition: '{field.note}', then: ' {field.note}', else: '')}
+        {f:if(condition: '{field.note}', then: ' {field.note}.', else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
         {f:if(condition: '{field.url}', then: '[URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>]', else: '')}
       </f:case>
       <f:case value="5"><f:comment>phdthesis</f:comment>
         <f:if condition="{field.school}">[Dissertation {field.school}. {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}]</f:if>.
-        {f:if(condition: '{field.note}', then: ' {field.note}', else: '')}
+        {f:if(condition: '{field.note}', then: ' {field.note}.', else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
         {f:if(condition: '{field.url}', then: '[URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>]', else: '')}
       </f:case>
@@ -76,8 +76,8 @@
       </f:case>
       <f:case value="7"><f:comment>online</f:comment>
         <f:if condition="{field.url}">URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>{f:if(condition: '{field.urldate}', then: ' ({field.urldate})' else: '')}</f:if>
+        {f:if(condition: '{field.note}', then: ' {field.note}.', else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
-        {f:if(condition: '{field.note}', then: ' {field.note}', else: '')}
         [Online-Publikation]
       </f:case>
       <f:case default="TRUE"><f:comment>Unbekannt</f:comment>
