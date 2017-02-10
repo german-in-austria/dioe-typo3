@@ -12,16 +12,17 @@
     </f:if>
     <f:if condition="{field.year} > 9">
       <f:then>
-        ({field.year})
+        ({field.year}):
       </f:then>
       <f:else>
         <f:switch expression="{field.year}">
-          <f:case value="0">(in Planung)</f:case>
-          <f:case value="1">(in Druck)</f:case>
-          <f:case value="2">(eingereicht)</f:case>
+          <f:case value="0">(in Planung):</f:case>
+          <f:case value="1">(in Druck):</f:case>
+          <f:case value="2">(eingereicht):</f:case>
         </f:switch>
       </f:else>
     </f:if>
+    {field.title}.
     <f:switch expression="{field.art}">
       <f:case value="1"><f:comment>article</f:comment>
         In:
