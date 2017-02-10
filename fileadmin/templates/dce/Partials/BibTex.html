@@ -15,15 +15,15 @@
       <f:case value="1"><f:comment>article</f:comment>
         In:
         {field.journal}
-        {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
-        {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
-        {f:if(condition: '{field.pages}', then: 'Seite: {field.pages}', else: '')}
-        {f:if(condition: '{field.isbn}', then: 'ISBN: {field.isbn}', else: '')}
-        {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
-        {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
+        {f:if(condition: '{field.volume}', then: ' {field.volume}', else: '')}
+        {f:if(condition: '{field.number}', then: ' {field.number}', else: '')}','
+        {f:if(condition: '{field.pages}', then: ' {field.pages}', else: '')}'.'
+        {f:if(condition: '{field.isbn}', then: '[ISBN: {field.isbn}]', else: '')}
+        {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}'], else: '')}
+        {f:if(condition: '{field.url}', then: '[URL: <a href="{field.url}" target:"_BLANK">{field.url}]</a>', else: '')}
       </f:case>
       <f:case value="2"><f:comment>book</f:comment>
-        {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+        {f:if(condition: '{field.volume}', then: ' {field.volume}', else: '')}
         {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
         {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
         {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
@@ -37,7 +37,7 @@
         In:
         {f:if(condition: '{field.booktitle}', then: 'Buch: {field.booktitle}', else: '')}
         Editoren: <f:alias map="{pAuthData: {field: field, nurEditoren: 1}}">{pAuthData -> f:cObject(typoscriptObjectPath:'lib.PublikationAuthoren')}</f:alias>
-        {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
+        {f:if(condition: '{field.volume}', then: ' {field.volume}', else: '')}
         {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
         {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
         {f:if(condition: '{field.edition}', then: 'Edition: {field.edition}', else: '')}
