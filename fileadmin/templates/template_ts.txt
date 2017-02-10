@@ -397,7 +397,7 @@ page.10.20 {
       table = tt_content
       select {
         pidInList = 35
-        andWhere = bibtex_art = 6
+        andWhere = bibtex_year < 10
       }
       stdWrap.required = 1
       stdWrap.wrap = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="publicationen-liste">|</ul>
@@ -409,7 +409,7 @@ page.10.20 {
         pidInList = 35
         orderBy = bibtex_year desc, sorting
         groupBy = bibtex_year
-        andWhere = NOT bibtex_art = 6
+        andWhere = NOT bibtex_year < 10
       }
       renderObj = COA
       renderObj {
