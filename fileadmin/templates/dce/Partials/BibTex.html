@@ -67,7 +67,7 @@
       <f:case value="7"><f:comment>online</f:comment>
         {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a> {f:if(condition: '{urldate}', then: '({urldate})' else: '')} else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
-        {f:if(condition: '{field.note}', then: ' {field.note}', else: ')}'
+        {f:if(condition: '{field.note}', then: ' {field.note}', else: '')}'
         '[Online-Publikation]'
       </f:case>
       <f:case default="TRUE"><f:comment>Unbekannt</f:comment>
