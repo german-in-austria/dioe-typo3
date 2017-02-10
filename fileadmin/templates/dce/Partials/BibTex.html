@@ -10,13 +10,6 @@
         {field -> f:cObject(typoscriptObjectPath:'lib.PublikationAuthoren')}
       </f:else>
     </f:if>
-<f:comment>
-    <f:groupedFor each="{field.authorSektion}" as="gval" groupBy="authorIsEditor" groupKey="authorIsEditor">
-      <f:for each="{gval}" as="author" iteration="iterator">
-        <f:if condition="{iterator.isFirst}"><f:else> / </f:else></f:if>{author.authorNachname}, {author.authorVorname}
-      </f:for>
-    </f:groupedFor>
-</f:comment>
     ({field.year}): {field.title}
     <f:switch expression="{field.art}">
       <f:case value="1"><f:comment>article</f:comment>
@@ -30,7 +23,6 @@
         {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
       </f:case>
       <f:case value="2"><f:comment>book</f:comment>
-        In:
         {f:if(condition: '{field.volume}', then: 'Band: {field.volume}', else: '')}
         {f:if(condition: '{field.number}', then: 'Nummer: {field.number}', else: '')}
         {f:if(condition: '{field.series}', then: 'Serie: {field.series}', else: '')}
@@ -57,14 +49,12 @@
         {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
       </f:case>
       <f:case value="4"><f:comment>masterthesis</f:comment>
-        In:
         {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
         {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
         {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
         {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a>', else: '')}
       </f:case>
       <f:case value="5"><f:comment>phdthesis</f:comment>
-        In:
         {f:if(condition: '{field.school}', then: 'Schule: {field.school}', else: '')}
         {f:if(condition: '{field.address}', then: 'Adresse: {field.address}', else: '')}
         {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
@@ -74,7 +64,6 @@
         Unveröffentlicht
       </f:case>
       <f:case value="7"><f:comment>online</f:comment>
-        In:
         {f:if(condition: '{field.url}', then: 'URL: <a href="{field.url}" target:"_BLANK">{field.url}</a> ({urldate})', else: '')}
         {f:if(condition: '{field.doi}', then: 'DOI: {field.doi}', else: '')}
       </f:case>
