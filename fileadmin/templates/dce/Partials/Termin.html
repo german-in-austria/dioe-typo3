@@ -22,15 +22,18 @@
       </f:else>
     </f:if>
     - {field.terminTitel}
-    <f:if condition="{field.terminSektionPersonen}">- Personen: <f:for each="{field.terminSektionPersonen}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for></f:if>
+    <f:if condition="{field.terminSektionPersonen}">- Vortragende: <f:for each="{field.terminSektionPersonen}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for></f:if>
     <f:if condition="{field.terminSektionOrganiser}">- Organisatoren: <f:for each="{field.terminSektionOrganiser}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for></f:if>
-    <f:if condition="{field.terminSektionOrganisation}">- Organisationen: <f:for each="{field.terminSektionOrganisation}" as="organisation" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{organisation.organisation}</f:for></f:if>
-    <f:if condition="{field.terminSektionParticipants}">- Teilnehmer: <f:for each="{field.terminSektionParticipants}" as="teilnehmer" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{teilnehmer.teilnehmer}</f:for></f:if>
+    <f:if condition="{field.terminSektionOrganisation}">- Organisationen: <f:for each="{field.terminSektionOrganisation}" as="organisation" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}({f:if(condition: '{organisation.url}', then: '<a href="{organisation.url}" target="_blank">', else: ', ')}{organisation.organisation}){f:if(condition: '{organisation.url}', then: '</a>', else: ', ')}</f:for></f:if>
+    <f:if condition="{field.terminSektionParticipants}">- Teilnehmer: <f:for each="{field.terminSektionParticipants}" as="teilnehmer" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{teilnehmer.vorname} {teilnehmer.nachname}<f:if condition="{field.terminEvent}">({f:if(condition: '{teilnehmer.url}', then: '<a href="{teilnehmer.url}" target="_blank">', else: ', ')}{teilnehmer.institution}){f:if(condition: '{teilnehmer.url}', then: '</a>', else: ', ')}</f:if></f:for></f:if>
     <f:if condition="{field.terminEvent}">- Event: {field.terminEvent}</f:if>
     <f:if condition="{field.terminAdress}">- Adresse: {field.terminAdress}</f:if>
     <f:if condition="{field.terminNote}">- {field.terminNote}</f:if>
     <f:if condition="{field.terminUrl}">[URL: <a href="{field.terminUrl}" target="_blank">{field.terminUrl}</a>]</f:if>
     <f:if condition="{field.terminDoi}">[DOI: {field.terminDoi}]</f:if>
+    <f:if condition="{field.terminKeywords}">
+      Schlagwörter:  {field.terminKeywords}.
+    </f:if>
   </li>
   </f:spaceless>
 </f:section>
