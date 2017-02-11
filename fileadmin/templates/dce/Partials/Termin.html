@@ -1,11 +1,37 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
 <f:section name="Liste">
   <f:spaceless>
-  <li class="<f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case></f:switch></f:for>
-<f:switch expression="{contentObject.pid}"><f:case value="31"> terminVortrag</f:case><f:case value="32"> terminVeranstaltung</f:case><f:case default="TRUE"> termin-p{contentObject.pid}</f:case></f:switch>
-
-    ">
-    xxxx
+  <li class="<f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case><f:case value="7"> terminKonferenz</f:case><f:case value="8"> terminWorkshop</f:case><f:case value="9"> terminArbeitstreffen</f:case><f:case value="10"> terminPodiumsdiskussion</f:case><f:case value="11"> terminAusstellung</f:case></f:switch></f:for><f:switch expression="{contentObject.pid}"><f:case value="31"> terminVortrag</f:case><f:case value="32"> terminVeranstaltung</f:case><f:case default="TRUE"> termin-p{contentObject.pid}</f:case></f:switch>">
+    <f:if condition="{field.terminUhrzeit}">
+      <f:then>
+        <f:if condition="{field.terminZeit} < {field.terminBisZeit}">
+          <f:then>
+            <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
+              <f:then>
+                <f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" /> bis <f:format.date date="{field.terminBisZeit}" format="H:i" /> Uhr
+              </f:then>
+              <f:else>
+                <f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y H:i" /> Uhr
+              </f:else>
+            </f:if>
+          </f:then>
+          <f:else>
+            <f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr
+          </f:else>
+        </f:if>
+      </f:then>
+      <f:else>
+        <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
+          <f:then>
+            <f:format.date date="{field.terminZeit}" format="d.m.Y" />
+          </f:then>
+          <f:else>
+            <f:format.date date="{field.terminZeit}" format="d.m.Y" /> bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y" />
+          </f:else>
+        </f:if>
+      </f:else>
+    </f:if>
+    - {field.terminTitel}
   </li>
   </f:spaceless>
 </f:section>

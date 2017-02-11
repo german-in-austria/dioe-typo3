@@ -15,7 +15,7 @@
 			<f:then><f:format.html>{field.uebersichtText}</f:format.html></f:then>
 			<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE">{field.detailseiteText}</f:format.crop></f:format.html></f:else>
 		</f:if>
-		<ul class="termin-liste"><f:render partial="Termin" arguments="{field: field}" section="Liste" /></ul>
+		<ul class="termin-liste"><f:render partial="Termin" arguments="{field: field, contentObject: contentObject}" section="Liste" /></ul>
 		<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">Beitrag anzeigen</f:link.page>
 		<div class="visible-print-block">Artikel URL: {f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE',absolute:'TRUE')}</div>
 	</article>
