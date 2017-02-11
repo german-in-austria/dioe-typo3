@@ -531,6 +531,17 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   margin-top: 0px;
 }
 
+.publicationen-einzeln, .termin-einzeln {
+  display: block;
+  display: -webkit-box;
+  list-style: none;
+  padding: 10px 15px;
+  margin: 20px 0px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.8em;
+  line-height: 1.4;
+}
 
 
 

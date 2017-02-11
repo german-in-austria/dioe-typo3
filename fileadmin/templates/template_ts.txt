@@ -273,6 +273,54 @@ lib.artikel {
   wrap = <div class="article-list">|<div class="article-laden"></div></div>
 }
 
+lib.termine = COA
+lib.termine {
+  10 = CONTENT
+  10 {
+    table = tt_content
+    select {
+      pidInList = 31
+      andWhere = terminzeit > UNIX_TIMESTAMP(NOW())
+    }
+    stdWrap.required = 1
+    stdWrap.wrap = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="termin-liste">|</ul>
+  }
+  20 = CONTENT
+  20 {
+    table = tt_content
+    select {
+      pidInList = 31
+      orderBy = terminzeit desc, sorting
+      groupBy = FROM_UNIXTIME(terminzeit, '%Y')
+      andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
+    }
+    renderObj = COA
+    renderObj {
+      5 = TEXT
+      5.field = terminzeit
+      5.strftime = %Y
+      5.wrap = <div id="p|">
+      6 < .5
+      6.wrap = <h2 class="text-center">|</h2></div>
+      10 = COA
+      10 {
+        10 < tt_content
+        20 = CONTENT
+        20 {
+          table = tt_content
+          select {
+            pidInList = 31
+            where = FROM_UNIXTIME(terminzeit, '%Y')=FROM_UNIXTIME({field:terminzeit}, '%Y')
+            where.insertData = 1
+            orderBy = terminzeit desc, sorting
+            andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
+          }
+        }
+        wrap = <ul class="publicationen-liste">|</ul>
+      }
+    }
+  }
+}
 
 // Startseite
 [globalVar = TSFE:id = 1]
@@ -354,6 +402,7 @@ page.10.20.20.20.select.andWhere < page.10.20.20.10.select.andWhere
 
 // Artikel - Details
 [globalVar = TSFE:id = 39]
+lib.pageDetails < lib.isOne
 page.10.20 {
   20 = COA_INT
   20 {
@@ -369,6 +418,7 @@ page.10.20 {
         max = 1
       }
     }
+    wrap = <div class="hidden-print"><a href="#" onClick="window.history.back()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true" style="top: 3px;"></span> Zurück</a></div>|<div class="hidden-print"><a href="#" onClick="window.history.back()"><span class="glyphicon glyphicon-menu-left" aria-hidden="true" style="top: 3px;"></span> Zurück</a></div>
   }
 }
 [global]
@@ -438,55 +488,7 @@ page.10.20 {
 }
 [global]
 
-lib.termine = COA
-lib.termine {
-  10 = CONTENT
-  10 {
-    table = tt_content
-    select {
-      pidInList = 31
-      andWhere = terminzeit > UNIX_TIMESTAMP(NOW())
-    }
-    stdWrap.required = 1
-    stdWrap.wrap = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="termin-liste">|</ul>
-  }
-  20 = CONTENT
-  20 {
-    table = tt_content
-    select {
-      pidInList = 31
-      orderBy = terminzeit desc, sorting
-      groupBy = FROM_UNIXTIME(terminzeit, '%Y')
-      andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
-    }
-    renderObj = COA
-    renderObj {
-      5 = TEXT
-      5.field = terminzeit
-      5.strftime = %Y
-      5.wrap = <div id="p|">
-      6 < .5
-      6.wrap = <h2 class="text-center">|</h2></div>
-      10 = COA
-      10 {
-        10 < tt_content
-        20 = CONTENT
-        20 {
-          table = tt_content
-          select {
-            pidInList = 31
-            where = FROM_UNIXTIME(terminzeit, '%Y')=FROM_UNIXTIME({field:terminzeit}, '%Y')
-            where.insertData = 1
-            orderBy = terminzeit desc, sorting
-            andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
-          }
-        }
-        wrap = <ul class="publicationen-liste">|</ul>
-      }
-    }
-  }
-}
-
+// Veranstaltungen
 [globalVar = TSFE:id = 20]
 lib.pageTerminListe = TEXT
 lib.pageTerminListe.value = 1
@@ -498,6 +500,7 @@ page.10.20 {
 }
 [global]
 
+// Vorträge
 [globalVar = TSFE:id = 21]
 lib.pageTerminListe = TEXT
 lib.pageTerminListe.value = 1

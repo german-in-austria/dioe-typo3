@@ -17,8 +17,12 @@
 				<f:format.html>{field.uebersichtText}</f:format.html>
 				<div class="clearfix"></div>
 				<ul class="publicationen-liste publicationen-einzeln"><f:render partial="BibTex" arguments="{field: field}" section="Liste" /></ul>
-				<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">Beitrag anzeigen</f:link.page>
-				<div class="visible-print-block">Artikel URL: {f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE',absolute:'TRUE')}</div>
+				<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageDetails')}">
+					<f:else>
+						<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">Beitrag anzeigen</f:link.page>
+						<div class="visible-print-block">Artikel URL: {f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE',absolute:'TRUE')}</div>
+					</f:else>
+				</f:if>
 				<f:comment><code style="display:block;white-space:pre; padding:10px 20px; display:none;"><f:render partial="BibTex" arguments="{field: field}" section="BibTex" /></code></f:comment>
 			</article>
 		</f:else>
