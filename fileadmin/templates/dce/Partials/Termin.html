@@ -7,31 +7,30 @@
         <f:if condition="{field.terminZeit} < {field.terminBisZeit}">
           <f:then>
             <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
-              <f:then>
-                <f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" /> bis <f:format.date date="{field.terminBisZeit}" format="H:i" /> Uhr
-              </f:then>
-              <f:else>
-                <f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y H:i" /> Uhr
-              </f:else>
+              <f:then><f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" /> bis <f:format.date date="{field.terminBisZeit}" format="H:i" /> Uhr</f:then>
+              <f:else><f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y H:i" /> Uhr</f:else>
             </f:if>
           </f:then>
-          <f:else>
-            <f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr
-          </f:else>
+          <f:else><f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr</f:else>
         </f:if>
       </f:then>
       <f:else>
         <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
-          <f:then>
-            <f:format.date date="{field.terminZeit}" format="d.m.Y" />
-          </f:then>
-          <f:else>
-            <f:format.date date="{field.terminZeit}" format="d.m.Y" /> bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y" />
-          </f:else>
+          <f:then><f:format.date date="{field.terminZeit}" format="d.m.Y" /></f:then>
+          <f:else><f:format.date date="{field.terminZeit}" format="d.m.Y" /> bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y" /></f:else>
         </f:if>
       </f:else>
     </f:if>
     - {field.terminTitel}
+    <f:if condition="{field.terminSektionPersonen}">- Personen: <f:for each="{field.terminSektionPersonen}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for></f:if>
+    <f:if condition="{field.terminSektionOrganiser}">- Organisatoren: <f:for each="{field.terminSektionOrganiser}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for></f:if>
+    <f:if condition="{field.terminSektionOrganisation}">- Organisationen: <f:for each="{field.terminSektionOrganisation}" as="organisation" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{organisation.organisation}</f:for></f:if>
+    <f:if condition="{field.terminSektionParticipants}">- Teilnehmer: <f:for each="{field.terminSektionParticipants}" as="teilnehmer" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{teilnehmer.teilnehmer}</f:for></f:if>
+    <f:if condition="{field.terminEvent}">- Event: {field.terminEvent}</f:if>
+    <f:if condition="{field.terminAdress}">- Adresse: {field.terminAdress}</f:if>
+    <f:if condition="{field.terminNote}">- {field.terminNote}</f:if>
+    <f:if condition="{field.terminUrl}">[URL: <a href="{field.terminUrl}" target="_blank">{field.terminUrl}</a>]</f:if>
+    <f:if condition="{field.terminDoi}">[DOI: {field.terminDoi}]</f:if>
   </li>
   </f:spaceless>
 </f:section>
