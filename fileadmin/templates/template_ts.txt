@@ -437,3 +437,71 @@ page.10.20 {
   }
 }
 [global]
+
+lib.termine = COA
+lib.termine {
+  10 = CONTENT
+  10 {
+    table = tt_content
+    select {
+      pidInList = 31
+      andWhere = terminzeit > UNIX_TIMESTAMP(NOW())
+    }
+    stdWrap.required = 1
+    stdWrap.wrap = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="termin-liste">|</ul>
+  }
+  20 = CONTENT
+  20 {
+    table = tt_content
+    select {
+      pidInList = 31
+      orderBy = terminzeit desc, sorting
+      groupBy = FROM_UNIXTIME(terminzeit, '%Y')
+      andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
+    }
+    renderObj = COA
+    renderObj {
+      5 = TEXT
+      5.field = terminzeit
+      5.strftime = %Y
+      5.wrap = <div id="p|">
+      6 < .5
+      6.wrap = <h2 class="text-center">|</h2></div>
+      10 = COA
+      10 {
+        10 < tt_content
+        20 = CONTENT
+        20 {
+          table = tt_content
+          select {
+            pidInList = 31
+            where = FROM_UNIXTIME(terminzeit, '%Y')=FROM_UNIXTIME({field:terminzeit}, '%Y')
+            where.insertData = 1
+            orderBy = terminzeit desc, sorting
+            andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
+          }
+        }
+        wrap = <ul class="publicationen-liste">|</ul>
+      }
+    }
+  }
+}
+
+[globalVar = TSFE:id = 20]
+lib.pageTerminListe = TEXT
+lib.pageTerminListe.value = 1
+page.10.20 {
+  20 < lib.termine
+  20.10.select.pidInList = 32
+  20.20.select.pidInList = 32
+  20.20.renderObj.10.20.select.pidInList = 32
+}
+[global]
+
+[globalVar = TSFE:id = 21]
+lib.pageTerminListe = TEXT
+lib.pageTerminListe.value = 1
+page.10.20 {
+  20 < lib.termine
+}
+[global]
