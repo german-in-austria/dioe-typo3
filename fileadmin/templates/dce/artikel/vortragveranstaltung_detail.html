@@ -12,12 +12,12 @@
 			<f:then><f:format.html>{field.detailseiteText}</f:format.html></f:then>
 			<f:else><f:format.html>{field.uebersichtText}</f:format.html></f:else>
 		</f:if>
+		<ul class="termin-liste"><f:render partial="Termin" arguments="{field: field}" section="Liste" /></ul>
 
 		<f:if condition="{field.detailseiteBild}">
 			<br>
 			<div class="row">
 			<f:for each="{dce:fal(field:'detailseiteBild', contentObject:contentObject)}" as="fileReference" iteration="iterator">
-				<!-- Copyright: <dce:fileInfo fileUid="{fileReference.originalFile.properties.uid}" attribute="copyright" /> -->
 				<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
 					<a href="{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{fileReference.title}" data-footer="{fileReference.description}" class="img img-responsive img-rounded mib1e hide-url-printer">
 						<f:if condition="{iterator.total} > 9">

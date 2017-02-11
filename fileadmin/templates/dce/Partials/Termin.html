@@ -1,0 +1,15 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:section name="Liste">
+  <f:spaceless>
+  <li class="<f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case></f:switch></f:for>
+<f:switch expression="{contentObject.pid}"><f:case value="31"> terminVortrag</f:case><f:case value="32"> terminVeranstaltung</f:case><f:case default="TRUE"> termin-p{contentObject.pid}</f:case></f:switch>
+
+    ">
+    xxxx
+  </li>
+  </f:spaceless>
+</f:section>
+
+<f:section name="Termin">
+  xxxx
+</f:section>
