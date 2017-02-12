@@ -200,7 +200,7 @@ footer {
   max-height: 80px;
   max-width: 210px;
   line-height: 130px;
-  margin: 260px 30px 30px 0;
+  margin: 260px 30px 20px 0;
 }
 article.sub-page {
   font-size: 120%;
@@ -543,7 +543,21 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   line-height: 1.4;
 }
 
-
+footer .fxnav {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  display: block;
+  float:right;
+  margin-right: 30px;
+}
+footer .fxnav>li {
+  float: left;
+  margin-right: 1em;
+}
+footer .fxnav>li>a {
+  color:#333;
+}
 
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {

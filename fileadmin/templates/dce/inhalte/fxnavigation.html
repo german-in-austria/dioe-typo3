@@ -1,0 +1,10 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+  <ul class="fxnav">
+	<f:for each="{field.sektionLinks}" as="link">
+		<li><dce:typolink parameter="{link.link}">{link.titel}</dce:typolink></li>
+	</f:for>
+  </fxnav>
+</f:section>
