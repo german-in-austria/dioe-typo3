@@ -152,7 +152,7 @@ page.10 {
         pidInList = 27
       }
     }
-    wrap = <br><br><footer class="hidden-print">|</footer>
+    wrap = <br><br><footer class="clearfix hidden-print">|</footer>
   }
 }
 

@@ -188,7 +188,6 @@ header.main img.hero.active {
 }
 footer {
   display: block;
-  height: 400px;
   width: 100%;
   background: url("../img/mountains.png");
   background-size: cover;
@@ -196,11 +195,20 @@ footer {
   background-repeat: no-repeat;
   text-align: center;
 }
+.footer-logos {
+  min-height: 360px;
+  padding-top: 240px;
+}
+.footer-logos a {
+  display: inline-block;
+  padding: 10px 5px;
+  margin: 10px 10px;
+}
 .footer-logos img {
   max-height: 80px;
   max-width: 210px;
   line-height: 130px;
-  margin: 260px 30px 20px 0;
+  margin: 0px;
 }
 article.sub-page {
   font-size: 120%;
