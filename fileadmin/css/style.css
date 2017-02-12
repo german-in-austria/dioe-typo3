@@ -545,6 +545,15 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   font-size: 12px;
   line-height: 1.6;
 }
+.av-copyright a {
+  color:#fff;
+}
+.av-copyright .ccby {
+  display: inline-block;
+  padding-left: 4px;
+  vertical-align: middle;
+  line-height: 10px;
+}
 .av-copyright>.lizenz-cc>a {
   display: inline-block;
   margin-top: 0px;
