@@ -13,7 +13,7 @@ class user_funktionen_class {
   /     nix > Ja
   /     -nd > Nein
   /   - sa > Ja, solange andere unter denselben Bedingungen weitergeben
-  /   > cc-by-lizenzKommerziell-lizenzBearbeiten
+  /   > cc-by-lizenzKommerziell-lizenzBearbeiten;Name
   */
   function user_lizenz($content,$conf)    {
     global $TSFE;
@@ -22,8 +22,9 @@ class user_funktionen_class {
     if(strlen($alizenz)<1) { return ''; }
     if(substr($alizenz,0,5)=='cc-by') {
       $alizenzout = 'by';
-      if(strlen(substr($alizenz,6))>0) {
-        $alizenzArray = split('-', substr($alizenz,6));
+      list($alizenzby, $alizenzname) = split(';',$alizenz,2);
+      if(strlen(substr($alizenzby,6))>0) {
+        $alizenzArray = split('-', substr($alizenzby,6));
         $alerr = 0; $alizenzoutArray = array();
         foreach ($alizenzArray as $val) {
           switch ($val) {
@@ -46,7 +47,7 @@ class user_funktionen_class {
         $alizenzout.=$alizenzoutArray[0].$alizenzoutArray[1];
       }
       if($alerr==0) {
-        return '<'.(($conf['bild']||$conf['span'])?'span':'div').' class="'.(($conf['bild'])?'img-add ':'').'lizenz lizenz-cc'.(($conf['klein'])?' klein':'').'">'.(($conf['keinlink'])?'':'<a rel="license" href="http://creativecommons.org/licenses/'.$alizenzout.'/4.0/" alt="cc-'.$alizenzout.'" target="_BLANK">').'<img alt="Creative Commons Lizenzvertrag" src="https://i.creativecommons.org/l/'.$alizenzout.'/4.0/'.(($conf['klein'])?'80x15':'88x31').'.png" />'.(($conf['keinlink'])?'':'</a>').'</'.(($conf['bild']||$conf['span'])?'span':'div').'>';
+        return '<'.(($conf['bild']||$conf['span'])?'span':'div').' class="'.(($conf['bild'])?'img-add ':'').'lizenz lizenz-cc'.(($conf['klein'])?' klein':'').'">'.(($conf['keinlink'])?'':'<a rel="license" href="http://creativecommons.org/licenses/'.$alizenzout.'/4.0/" alt="cc-'.$alizenzout.'" target="_BLANK">').'<img alt="Creative Commons Lizenzvertrag" src="https://i.creativecommons.org/l/'.$alizenzout.'/4.0/'.(($conf['klein'])?'80x15':'88x31').'.png" />'.((strlen($alizenzname)>0)?'<span class="ccby"> by '.$alizenzname.'</span>':'').(($conf['keinlink'])?'':'</a>').'</'.(($conf['bild']||$conf['span'])?'span':'div').'>';
       }
     }
     return '<'.(($conf['bild']||$conf['span'])?'span':'div').' class="'.(($conf['bild'])?'img-add ':'').'lizenz lizenz-text'.(($conf['klein'])?' klein':'').'">'.$alizenz.'</'.(($conf['bild']||$conf['span'])?'span':'div').'>';

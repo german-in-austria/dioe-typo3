@@ -8,7 +8,7 @@
 					<f:then>{field.lizenzFreitext -> f:cObject(typoscriptObjectPath:'lib.lizenz')}</f:then>
 					<f:else>
 						<f:if condition="{field.lizenzBearbeiten} != 'kl'">
-							<f:alias map="{alizenz: 'cc-by{field.lizenzKommerziell}{field.lizenzBearbeiten}'}">
+							<f:alias map="{alizenz: 'cc-by{field.lizenzKommerziell}{field.lizenzBearbeiten};{field.lizenzName}'}">
 								{alizenz -> f:cObject(typoscriptObjectPath:'lib.lizenz')}
 							</f:alias>
 						</f:if>

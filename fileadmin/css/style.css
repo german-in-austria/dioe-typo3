@@ -446,9 +446,11 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 
 .lizenz-cc>a {
   display: block;
+  color:#333;
+  text-decoration: none;
 }
 .lizenz-cc>a>img {
-  display: block;
+  display: inline-block;
 }
 .citation>.panel-heading>.lizenz {
   float:right;
@@ -479,6 +481,23 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   padding: 5px;
   background: transparent;
 }
+.img>span.img-add.lizenz.lizenz-cc>img {
+  display: inline-block;
+}
+.img .img-add.lizenz-cc .ccby {
+  background: rgba(24, 24, 24, 0.6);
+  padding: 6px 10px 6px 2px;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 0px 3px 3px 0px;
+}
+.img .img-add.lizenz-cc.klein .ccby {
+  padding: 2px 6px 2px 0px;
+  font-size: 9px;
+  border-radius: 0px;
+}
+
 .datei .lizenz {
   float: right;
   padding: 0px 10px;
