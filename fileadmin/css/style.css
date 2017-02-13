@@ -326,6 +326,8 @@ article.articleArbeitstreffen h5, article.articleArbeitstreffen .publishing-date
 article.articleArbeitstreffen h1.title:before { background: #f68939;  }
 article.articleVortrag h5, article.articleVortrag .publishing-date {  color: #3757a7; }
 article.articleVortrag h1.title:before { background: #3757a7;  }
+article.articleGastvortrag h5, article.articleGastvortrag .publishing-date {  color: #3757a7; }
+article.articleGastvortrag h1.title:before { background: #3757a7;  }
 article.articlePodiumsdiskussion h5, article.articlePodiumsdiskussion .publishing-date {  color: #3757a7; }
 article.articlePodiumsdiskussion h1.title:before { background: #3757a7;  }
 article.articleAusstellung h5, article.articleAusstellung .publishing-date {  color: #f15f7d; }
@@ -360,6 +362,9 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 }
 .border-gray {
   border: 1px solid #ddd;
+}
+.indent {
+  padding-left: 2em;
 }
 
 .ekko-lightbox-nav-overlay a {

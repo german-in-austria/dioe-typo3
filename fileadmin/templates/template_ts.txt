@@ -263,7 +263,7 @@ lib.mitarbeiter {
       wrap = |
     }
   }
-  wrap = |
+  wrap = Team:&nbsp;|
 }
 
 lib.artikel = COA_INT
