@@ -41,24 +41,28 @@ RTE.classes {
 	table-horizontal {
     name = table-horizontal
 	}
+	table-horizontal-center {
+		name = table-horizontal-center
+	}
 }
 RTE {
 	classesAnchor := addToList(bold)
 	classesAnchor.bold.name = bold
 	default {
 		proc.allowedClasses >
-		proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold,table-horizontal,no-border
+		proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold,table-horizontal,table-horizontal-center,no-border,td-center
 		proc.entryHTMLparser_db.tags.table {
 		     fixAttrib.width.unset = 1
 		     fixAttrib.height.unset = 1
 		}
-		classesTable := addToList(table-horizontal)
+		classesTable := addToList(table-horizontal,table-horizontal-center)
 		classesAnchor := addToList(bold)
 		buttons {
 			blockstyle.tags {
 				div.allowedClasses = text-left,text-center,text-right,text-justify
-				table.allowedClasses = table-horizontal
+				table.allowedClasses = table-horizontal, table-horizontal-center
 				tr.allowedClasses = no-border
+				td.allowedClasses = td-center
 			}
 			textstyle.tags {
 				span.allowedClasses = cred,cgreen,cblue,text-nowrap
@@ -76,4 +80,4 @@ RTE {
 RTE.default.FE < RTE.default
 RTE.default.FE.FE >
 
-RTE.config.tt_content.bodytext.proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,table-horizontal,no-border
+RTE.config.tt_content.bodytext.proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,table-horizontal,table-horizontal-center,no-border,td-center

@@ -29,12 +29,18 @@ table.table-horizontal {
   border:none;
   width:100%;
 }
-table.table-horizontal th {
+table.table-horizontal-center {
+  border:none;
+}
+table.table-horizontal th, table.table-horizontal-center th {
   border-bottom:2px solid #ddd;
 }
-table.table-horizontal td {
+table.table-horizontal td, table.table-horizontal-center td {
   border-bottom:1px solid #ddd;
 }
 tr.no-border, tr.no-border>td {
   border:none;
+}
+td.td-center {
+  text-align: center;
 }

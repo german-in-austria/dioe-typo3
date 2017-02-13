@@ -162,3 +162,15 @@ article.preview h1.title {
   margin-top: 0;
   font-size: 1.6em;
 }
+
+footer {
+  background-size: inherit;
+}
+.footer-logos a {
+  display: inline-block;
+}
+.footer-logos {
+  display: block;
+  padding-top: 30px;
+  min-height: 160px;
+}
