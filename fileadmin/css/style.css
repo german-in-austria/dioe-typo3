@@ -609,6 +609,19 @@ footer .fxnav>li>a {
   border-radius: 4px;
 }
 
+table.table-horizontal {
+  border:none;
+  width:100%;
+}
+table.table-horizontal th {
+  border-bottom:2px solid #ddd;
+}
+table.table-horizontal td {
+  border-bottom:1px solid #ddd;
+  font-size: 80%;
+}
+
+
 /*
 footer {
   background-size: inherit;

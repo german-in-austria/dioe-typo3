@@ -48,6 +48,7 @@ page.includeJS {
   file1 = fileadmin/js/vendor/modernizr-2.8.3.min.js
 }
 
+lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.class.list = contenttable, table-horizontal
 
 page.bodyTag >
 page.bodyTagCObject = TEXT
