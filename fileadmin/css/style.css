@@ -424,7 +424,9 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 }
 .datei .imgfrm .imgbg {
   display:block;
+  position: relative;
   background:#fff;
+  z-index: 2;
 }
 .datei .imgfrm img {
   position: relative;
