@@ -152,6 +152,9 @@ nav input.search-field:focus::-moz-placeholder {
 nav input.search-field:focus:-ms-input-placeholder {
   color: #333;
 }
+#mp53 {
+  display:none;
+}
 h1,
 h2,
 h3 {
