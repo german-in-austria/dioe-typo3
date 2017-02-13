@@ -620,7 +620,9 @@ table.table-horizontal td {
   border-bottom:1px solid #ddd;
   font-size: 80%;
 }
-
+tr.no-border, tr.no-border>td {
+  border:none;
+}
 
 /*
 footer {

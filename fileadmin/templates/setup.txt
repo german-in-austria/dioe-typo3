@@ -38,15 +38,17 @@ RTE.classes {
 	text-nowrap {
 		name = Text ohne automatischen Zeilenumbruch
 	}
+	table-horizontal {
+    name = table-horizontal
+	}
 }
 RTE {
 	classesAnchor := addToList(bold)
 	classesAnchor.bold.name = bold
 	default {
 		proc.allowedClasses >
-		proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold,table-horizontal
+		proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold,table-horizontal,no-border
 		proc.entryHTMLparser_db.tags.table {
-		     fixAttrib.style.unset = 1
 		     fixAttrib.width.unset = 1
 		     fixAttrib.height.unset = 1
 		}
@@ -56,6 +58,7 @@ RTE {
 			blockstyle.tags {
 				div.allowedClasses = text-left,text-center,text-right,text-justify
 				table.allowedClasses = table-horizontal
+				tr.allowedClasses = no-border
 			}
 			textstyle.tags {
 				span.allowedClasses = cred,cgreen,cblue,text-nowrap
@@ -68,10 +71,9 @@ RTE {
 		useCSS = 0
 	}
 }
-RTE.config.tt_news.bodytext.proc.allowedClasses = deineklassennamen
 
 
 RTE.default.FE < RTE.default
 RTE.default.FE.FE >
 
-RTE.config.tt_content.bodytext.proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,table-horizontal
+RTE.config.tt_content.bodytext.proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,table-horizontal,no-border

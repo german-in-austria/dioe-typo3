@@ -35,3 +35,6 @@ table.table-horizontal th {
 table.table-horizontal td {
   border-bottom:1px solid #ddd;
 }
+tr.no-border, tr.no-border>td {
+  border:none;
+}
