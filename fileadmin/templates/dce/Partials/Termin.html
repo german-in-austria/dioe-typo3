@@ -1,39 +1,67 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
 <f:section name="Liste">
   <f:spaceless>
-  <li class="<f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case><f:case value="7"> terminKonferenz</f:case><f:case value="8"> terminWorkshop</f:case><f:case value="9"> terminArbeitstreffen</f:case><f:case value="10"> terminPodiumsdiskussion</f:case><f:case value="11"> terminAusstellung</f:case></f:switch></f:for><f:switch expression="{contentObject.pid}"><f:case value="31"> terminVortrag</f:case><f:case value="32"> terminVeranstaltung</f:case><f:case default="TRUE"> termin-p{contentObject.pid}</f:case></f:switch>">
-    <b><f:if condition="{field.terminSektionPersonen}"><f:for each="{field.terminSektionPersonen}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{personen.nachname}, {personen.vorname}</f:for></f:if>
-    <f:if condition="{field.terminUhrzeit}">
-      <f:then>
-        <f:if condition="{field.terminZeit} < {field.terminBisZeit}">
+  <f:if condition="{contentObject.pid} == 33">
+    <f:then>
+      <li class="<f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case><f:case value="7"> terminKonferenz</f:case><f:case value="8"> terminWorkshop</f:case><f:case value="9"> terminArbeitstreffen</f:case><f:case value="10"> terminPodiumsdiskussion</f:case><f:case value="11"> terminAusstellung</f:case></f:switch></f:for><f:switch expression="{contentObject.pid}"><f:case value="31"> terminVortrag</f:case><f:case value="32"> terminVeranstaltung</f:case><f:case default="TRUE"> termin-p{contentObject.pid}</f:case></f:switch>">
+        <b>{field.terminTitel}</b><br>
+        <f:if condition="{field.terminSektionPersonen}">Personen: <f:for each="{field.terminSektionPersonen}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{personen.nachname}, {personen.vorname}</f:for><br></f:if>
+        <f:if condition="{field.terminEvent}">{field.terminEvent}<br></f:if>
+        Beginn:
+        <f:if condition="{field.terminUhrzeit}">
+          <f:then><f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr</f:then>
+          <f:else><f:format.date date="{field.terminZeit}" format="d.m.Y" /></f:else>
+        </f:if>
+        <br>
+        <f:if condition="{field.terminTermintext}">Zeit: {field.terminTermintext}<br></f:if>
+        <f:if condition="{field.terminAdress}">Ort: {field.terminAdress}<br></f:if>
+        <f:if condition="{field.terminNote}"> {field.terminNote}<br></f:if>
+        <f:if condition="{field.terminSektionOrganiser}"> Organisiert von <f:for each="{field.terminSektionOrganiser}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for>.<br></f:if>
+        <f:if condition="{field.terminSektionOrganisation}"> Beteiligte Institutionen: <f:for each="{field.terminSektionOrganisation}" as="organisation" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{f:if(condition: '{organisation.url}', then: '<a href="{organisation.url}" target="_blank">', else: '')}{organisation.organisation}{f:if(condition: '{organisation.url}', then: '</a>', else: '')}</f:for>.<br></f:if>
+        <f:if condition="{field.terminSektionParticipants}"> Teilnehmer: <f:for each="{field.terminSektionParticipants}" as="teilnehmer" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{teilnehmer.nachname}, {teilnehmer.vorname}<f:if condition="{teilnehmer.institution}"> ({f:if(condition: '{teilnehmer.url}', then: '<a href="{teilnehmer.url}" target="_blank">', else: '')}{teilnehmer.institution}{f:if(condition: '{teilnehmer.url}', then: '</a>', else: '')})</f:if></f:for>.<br></f:if>
+        <f:if condition="{field.terminUrl}">[URL: <a href="{field.terminUrl}" target="_blank">{field.terminUrl}</a>]<br></f:if>
+        <f:if condition="{field.terminDoi}">[DOI: {field.terminDoi}]<br></f:if>
+        <f:if condition="{field.terminKeywords}">
+          Schlagwörter:  {field.terminKeywords}.<br>
+        </f:if>
+      </li>
+    </f:then>
+    <f:else>
+      <li class="<f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case><f:case value="7"> terminKonferenz</f:case><f:case value="8"> terminWorkshop</f:case><f:case value="9"> terminArbeitstreffen</f:case><f:case value="10"> terminPodiumsdiskussion</f:case><f:case value="11"> terminAusstellung</f:case></f:switch></f:for><f:switch expression="{contentObject.pid}"><f:case value="31"> terminVortrag</f:case><f:case value="32"> terminVeranstaltung</f:case><f:case default="TRUE"> termin-p{contentObject.pid}</f:case></f:switch>">
+        <b><f:if condition="{field.terminSektionPersonen}"><f:for each="{field.terminSektionPersonen}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{personen.nachname}, {personen.vorname}</f:for></f:if>
+        <f:if condition="{field.terminUhrzeit}">
           <f:then>
-            <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
-              <f:then>(<f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" />–<f:format.date date="{field.terminBisZeit}" format="H:i" /> Uhr): </f:then>
-              <f:else>(<f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y H:i" /> Uhr): </f:else>
+            <f:if condition="{field.terminZeit} < {field.terminBisZeit}">
+              <f:then>
+                <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
+                  <f:then>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" />–<f:format.date date="{field.terminBisZeit}" format="H:i" /> Uhr{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:then>
+                  <f:else>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr bis <f:format.date date="{field.terminBisZeit}" format="d.m.Y H:i" /> Uhr{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:else>
+                </f:if>
+              </f:then>
+              <f:else>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:else>
             </f:if>
           </f:then>
-          <f:else>(<f:format.date date="{field.terminZeit}" format="d.m.Y H:i" /> Uhr): </f:else>
+          <f:else>
+            <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
+              <f:then>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y" />{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:then>
+              <f:else>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y" />–<f:format.date date="{field.terminBisZeit}" format="d.m.Y" />{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:else>
+            </f:if>
+          </f:else>
         </f:if>
-      </f:then>
-      <f:else>
-        <f:if condition="{f:format.date(date: field.terminZeit format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit format: 'd.m.Y')}">
-          <f:then>(<f:format.date date="{field.terminZeit}" format="d.m.Y" />): </f:then>
-          <f:else>(<f:format.date date="{field.terminZeit}" format="d.m.Y" />–<f:format.date date="{field.terminBisZeit}" format="d.m.Y" />): </f:else>
+        {field.terminTitel}</b>.
+        <f:if condition="{field.terminEvent}">({field.terminEvent}, <f:if condition="{field.terminAdress}"> {field.terminAdress}</f:if>)</f:if>
+        <f:if condition="{field.terminSektionOrganiser}"> Organisiert von <f:for each="{field.terminSektionOrganiser}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for>.</f:if>
+        <f:if condition="{field.terminSektionOrganisation}"> Beteiligte Institutionen: <f:for each="{field.terminSektionOrganisation}" as="organisation" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{f:if(condition: '{organisation.url}', then: '<a href="{organisation.url}" target="_blank">', else: '')}{organisation.organisation}{f:if(condition: '{organisation.url}', then: '</a>', else: '')}</f:for>.</f:if>
+        <f:if condition="{field.terminSektionParticipants}"> Teilnehmer: <f:for each="{field.terminSektionParticipants}" as="teilnehmer" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{teilnehmer.nachname}, {teilnehmer.vorname}<f:if condition="{teilnehmer.institution}"> ({f:if(condition: '{teilnehmer.url}', then: '<a href="{teilnehmer.url}" target="_blank">', else: '')}{teilnehmer.institution}{f:if(condition: '{teilnehmer.url}', then: '</a>', else: '')})</f:if></f:for>.</f:if>
+        <f:if condition="{field.terminNote}"> {field.terminNote}</f:if>
+        <f:if condition="{field.terminUrl}">[URL: <a href="{field.terminUrl}" target="_blank">{field.terminUrl}</a>]</f:if>
+        <f:if condition="{field.terminDoi}">[DOI: {field.terminDoi}]</f:if>
+        <f:if condition="{field.terminKeywords}">
+          Schlagwörter:  {field.terminKeywords}.
         </f:if>
-      </f:else>
+      </li>
+    </f:else>
     </f:if>
-    {field.terminTitel}</b>.
-    <f:if condition="{field.terminEvent}">({field.terminEvent}, <f:if condition="{field.terminAdress}"> {field.terminAdress}</f:if>)</f:if>
-    <f:if condition="{field.terminSektionOrganiser}"> Organisiert von <f:for each="{field.terminSektionOrganiser}" as="personen" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ', ')}{personen.vorname} {personen.nachname}</f:for>.</f:if>
-    <f:if condition="{field.terminSektionOrganisation}"> Beteiligte Institutionen: <f:for each="{field.terminSektionOrganisation}" as="organisation" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{f:if(condition: '{organisation.url}', then: '<a href="{organisation.url}" target="_blank">', else: '')}{organisation.organisation}{f:if(condition: '{organisation.url}', then: '</a>', else: '')}</f:for>.</f:if>
-    <f:if condition="{field.terminSektionParticipants}"> Teilnehmer: <f:for each="{field.terminSektionParticipants}" as="teilnehmer" iteration="i">{f:if(condition: '{i.isFirst}', then: '', else: ' / ')}{teilnehmer.nachname}, {teilnehmer.vorname}<f:if condition="{teilnehmer.institution}"> ({f:if(condition: '{teilnehmer.url}', then: '<a href="{teilnehmer.url}" target="_blank">', else: '')}{teilnehmer.institution}{f:if(condition: '{teilnehmer.url}', then: '</a>', else: '')})</f:if></f:for>.</f:if>
-    <f:if condition="{field.terminNote}"> {field.terminNote}</f:if>
-    <f:if condition="{field.terminUrl}">[URL: <a href="{field.terminUrl}" target="_blank">{field.terminUrl}</a>]</f:if>
-    <f:if condition="{field.terminDoi}">[DOI: {field.terminDoi}]</f:if>
-    <f:if condition="{field.terminKeywords}">
-      Schlagwörter:  {field.terminKeywords}.
-    </f:if>
-  </li>
   </f:spaceless>
 </f:section>
 

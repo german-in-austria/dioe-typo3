@@ -307,7 +307,7 @@ lib.artikelNachladen {
   }
 }
 
-lib.termine = COA
+lib.termine = COA_INT
 lib.termine {
   10 = CONTENT
   10 {
@@ -350,7 +350,7 @@ lib.termine {
             andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
           }
         }
-        wrap = <ul class="publicationen-liste">|</ul>
+        wrap = <ul class="termin-liste">|</ul>
       }
     }
   }
@@ -510,7 +510,7 @@ page.10.20 {
 lib.pagePublikationsListe = TEXT
 lib.pagePublikationsListe.value = 1
 page.10.20 {
-  20 = COA
+  20 = COA_INT
   20 {
     10 = CONTENT
     10 {
@@ -576,5 +576,16 @@ lib.pageTerminListe = TEXT
 lib.pageTerminListe.value = 1
 page.10.20 {
   20 < lib.termine
+}
+[global]
+
+[globalVar = TSFE:id = 22]
+lib.pageTerminListe = TEXT
+lib.pageTerminListe.value = 1
+page.10.20 {
+  20 < lib.termine
+  20.10.select.pidInList = 33
+  20.20.select.pidInList = 33
+  20.20.renderObj.10.20.select.pidInList = 33
 }
 [global]
