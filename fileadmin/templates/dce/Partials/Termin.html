@@ -25,6 +25,7 @@
           Schlagwörter:  {field.terminKeywords}.<br>
         </f:if>
       </li>
+      <f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default detaillnk hidden-print">Details anzeigen</f:link.page>
     </f:then>
     <f:else>
       <li class="<f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> tca</f:case><f:case value="17"> tcb</f:case><f:case value="18"> tcc</f:case><f:case value="19"> tcd</f:case><f:case value="20"> tce</f:case><f:case value="7"> terminKonferenz</f:case><f:case value="8"> terminWorkshop</f:case><f:case value="9"> terminArbeitstreffen</f:case><f:case value="10"> terminPodiumsdiskussion</f:case><f:case value="11"> terminAusstellung</f:case></f:switch></f:for><f:switch expression="{contentObject.pid}"><f:case value="31"> terminVortrag</f:case><f:case value="32"> terminVeranstaltung</f:case><f:case default="TRUE"> termin-p{contentObject.pid}</f:case></f:switch>">
@@ -59,6 +60,7 @@
         <f:if condition="{field.terminKeywords}">
           Schlagwörter:  {field.terminKeywords}.
         </f:if>
+        <f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="detaillnk hidden-print"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></f:link.page>
       </li>
     </f:else>
     </f:if>

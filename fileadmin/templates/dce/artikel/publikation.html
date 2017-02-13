@@ -4,7 +4,7 @@
 <f:section name="main">
 	<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pagePublikationsListe')}">
 		<f:then>
-			<f:render partial="BibTex" arguments="{field: field}" section="Liste" />
+			<f:render partial="BibTex" arguments="{field: field, contentObject: contentObject}" section="Liste" />
 		</f:then>
 		<f:else>
 			<article class="preview<f:switch expression="{contentObject.pid}"><f:case value="30"> articleBeitraege</f:case><f:case value="35"> articlePublikationen</f:case><f:case value="31"> articleVortrag</f:case><f:case value="38"> articleGastvortrag</f:case><f:case value="32"> articleVeranstaltung</f:case><f:case value="33"> articleLehre</f:case><f:case default="TRUE"> article-p{contentObject.pid}</f:case></f:switch><f:for each="{field.kategorien -> dce:explode()}" as="kategorie"><f:switch expression="{kategorie}"><f:case value="16"> articleTCA</f:case><f:case value="17"> articleTCB</f:case><f:case value="18"> articleTCC</f:case><f:case value="19"> articleTCD</f:case><f:case value="20"> articleTCE</f:case><f:case value="37"> articleSFB</f:case><f:case value="2"> articleBlog</f:case><f:case value="3"> articlePodcast</f:case><f:case value="4"> articleNachricht</f:case><f:case value="5"> articleBericht</f:case><f:case value="6"> articleMemo</f:case><f:case value="7"> articleKonferenz</f:case><f:case value="8"> articleWorkshop</f:case><f:case value="9"> articleArbeitstreffen</f:case><f:case value="10"> articlePodiumsdiskussion</f:case><f:case value="11"> articleAusstellung</f:case><f:case value="12"> articleVeranstaltung</f:case><f:case value="21"> articleStartPinned</f:case><f:case value="22"> articleKategoriePinned</f:case><f:case default="TRUE"> article-{kategorie}</f:case></f:switch></f:for> clearfix">
@@ -16,14 +16,14 @@
 				</f:if></f:for>
 				<f:format.html>{field.uebersichtText}</f:format.html>
 				<div class="clearfix"></div>
-				<ul class="publicationen-liste publicationen-einzeln"><f:render partial="BibTex" arguments="{field: field}" section="Liste" /></ul>
+				<ul class="publicationen-liste publicationen-einzeln"><f:render partial="BibTex" arguments="{field: field, contentObject: contentObject}" section="Liste" /></ul>
 				<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageDetails')}">
 					<f:else>
 						<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">Beitrag anzeigen</f:link.page>
 						<div class="visible-print-block">Artikel URL: {f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE',absolute:'TRUE')}</div>
 					</f:else>
 				</f:if>
-				<f:comment><code style="display:block;white-space:pre; padding:10px 20px; display:none;"><f:render partial="BibTex" arguments="{field: field}" section="BibTex" /></code></f:comment>
+				<f:comment><code style="display:block;white-space:pre; padding:10px 20px; display:none;"><f:render partial="BibTex" arguments="{field: field, contentObject: contentObject}" section="BibTex" /></code></f:comment>
 			</article>
 		</f:else>
 	</f:if>

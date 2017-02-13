@@ -578,6 +578,9 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   margin-top: 0px;
 }
 
+.publicationen-einzeln .detaillnk, .termin-einzeln .detaillnk {
+  display: none;
+}
 .publicationen-einzeln, .termin-einzeln {
   display: block;
   display: -webkit-box;
@@ -588,6 +591,11 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   border-radius: 5px;
   font-size: 0.8em;
   line-height: 1.4;
+}
+
+.publicationen-liste .detaillnk .glyphicon, .termin-liste .detaillnk .glyphicon {
+  font-size: 18px;
+  top: 2px;
 }
 
 footer .fxnav {
