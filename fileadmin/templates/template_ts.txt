@@ -279,7 +279,7 @@ lib.artikel {
   20 < .10
   20.select.where = NOT FIND_IN_SET('22',selected_categories)
   20.select.max = 10
-  wrap = <div class="article-list">|<div class="article-laden laden" data-loadbegin="10">Weitere laden ...</div></div>
+  wrap = <div class="article-list">|<div class="article-laden laden" data-loadbegin="10">Weitere Artikel werden nur bei aktivierten JavaScript angezeigt.</div></div>
 }
 lib.artikelNachladen = PAGE
 lib.artikelNachladen {
@@ -301,7 +301,7 @@ lib.artikelNachladen {
       20.setCurrent.wrap = | + 10
       20.prioriCalc = intval
       30 = TEXT
-      30.value = ">Weitere laden ...</div>
+      30.value = ">Weitere Artikel werden nur bei aktivierten JavaScript angezeigt.</div>
     }
   }
 }

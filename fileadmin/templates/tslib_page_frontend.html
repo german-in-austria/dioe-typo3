@@ -35,13 +35,14 @@
           forceHeight: true
       });
     }
-    
+
     $('body').on('click touchstart', '.trigger-mobile-menu', function (e) {
       console.log(e)
       $('body').toggleClass('show-mobile-nav')
     })
 
     $('body').on('click', function(e){
+      /*
       if (
         $(e.target).parents('.nav-pills').length == 0 &&
         !$(e.target).hasClass('glyphicon-menu-hamburger') &&
@@ -52,6 +53,7 @@
         e.preventDefault()
         $('body').removeClass('show-mobile-nav')
       }
+      */
     })
     $('body').on('click touchend', '.dropdown-menu li', function (e) {
 

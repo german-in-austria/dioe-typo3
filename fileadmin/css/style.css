@@ -257,6 +257,7 @@ article.preview {
 article.preview h1.title {
   line-height: 140%;
   margin-top: 0;
+  font-size: 1.9em;
 }
 article.preview h5 {
   letter-spacing: 0.1em;
@@ -302,6 +303,7 @@ article.preview h1.title:before {
   height: 1.5em;
   width: 0.25em;
   background: #000;
+    height: 100%;
 }
 
 article.articleBlog h5, article.articleBlog .publishing-date {  color: #269196; }
@@ -589,7 +591,6 @@ footer .fxnav {
   text-align: left;
   display: block;
   float:right;
-  margin-right: 30px;
 }
 footer .fxnav>li {
   float: left;
@@ -598,6 +599,22 @@ footer .fxnav>li {
 footer .fxnav>li>a {
   color:#333;
 }
+.socials {
+  float: right;
+  margin-right: 70px;
+}
+.socials img {
+  display: inline-block;
+  width: 29px;
+  border-radius: 4px;
+}
+
+/*
+footer {
+  background-size: inherit;
+}
+*/
+
 
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
