@@ -5,10 +5,14 @@ page = PAGE
 
 config {
   language = de
+  locale_all = de_DE.utf8
+  htmlTag_setParams = lang="de" dir="ltr" class="no-js"
+  sys_language_uid = 0
+  linkVars = L(1)
+  sys_language_overlay = 1
   doctype = html5
   xmlprologue = none
   xhtml_cleaning = all
-  htmlTag_setParams = lang="de" dir="ltr" class="no-js"
   disablePrefixComment = true
 //  concatenateCss = 1
 //  compressCss = 1
@@ -80,7 +84,7 @@ page.10 {
 
   10 = COA
   10 {
-    wrap =<ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|</ul>
+    wrap =<ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
     20 = COA
     20 {
       10  = HMENU
@@ -135,6 +139,19 @@ page.10 {
         2.ACTIFSUB >
       }
     }
+
+    25 = TEXT
+    25 {
+      value = EN
+      typolink {
+        parameter.data = page:uid
+        additionalParams = &L=1
+      }
+      wrap = <li id="ml{GP:L}" role="presentation langswitch">|</li>
+      wrap.insertData = 1
+    }
+    30 = TEXT
+    30.value = </ul>
   }
 
   // Content
@@ -359,6 +376,21 @@ lib.termine {
   }
 }
 
+// Sprachen
+// Englisch
+[globalVar = GP:L = 1]
+config {
+  language = en
+  locale_all = en_GB.utf8
+  htmlTag_setParams = lang="en" dir="ltr" class="no-js"
+  sys_language_uid = 1
+}
+page.10.10.25 {
+  value = DE
+  typolink.additionalParams = &L=0
+}
+[global]
+
 // Startseite
 [globalVar = TSFE:id = 1]
 page.10 {
@@ -370,7 +402,7 @@ page.10 {
   <img class="logo" src="fileadmin/img/dioe-logo-gray.png" data-0="transform:translateY(0%); opacity: 1" data-390="transform:translateY(220%); opacity:.7">
 </header>
 )
-  10.wrap = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></li>|</ul>
+  10.wrap = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></li>|
   20.20 < lib.artikel
   20.20.10.select.where = FIND_IN_SET('21',selected_categories)
   20.20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
