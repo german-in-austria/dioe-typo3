@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <type>module</type>
+        <description>Language file.</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+          <label index="img_copyright">All rights reserved!</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+          <label index="img_copyright">Alle Rechte am Bild vorbehalten!</label>
+        </languageKey>
+    </data>
+</T3locallang>

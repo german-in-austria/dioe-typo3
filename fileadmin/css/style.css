@@ -694,6 +694,10 @@ tr.no-border, tr.no-border>td {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
+.langswitch {
+  font-weight: 300;
+}
+
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";

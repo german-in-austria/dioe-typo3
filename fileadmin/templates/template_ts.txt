@@ -147,7 +147,7 @@ page.10 {
         parameter.data = page:uid
         additionalParams = &L=1
       }
-      wrap = <li id="ml{GP:L}" role="presentation langswitch">|</li>
+      wrap = <li id="ml{GP:L}" role="presentation" class="langswitch">|</li>
       wrap.insertData = 1
     }
     30 = TEXT

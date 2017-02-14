@@ -24,10 +24,10 @@
       <f:else>
         <f:if condition="{lizenzImgNolinkKlein}">
           <f:then>
-            <f:alias map="{copyright: 'Alle Rechte am Bild vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}</f:alias>
+            {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:img_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}
           </f:then>
           <f:else>
-            <f:alias map="{copyright: 'Alle Rechte am Bild vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}</f:alias>
+            {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:img_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}
           </f:else>
         </f:if>
       </f:else>
