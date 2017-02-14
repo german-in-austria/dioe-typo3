@@ -25,6 +25,33 @@
 
           <label index="audiovideo_keine_datei_vorhanden">Keine Datei vorhanden!</label>
 
+          <label index="zitation_zitation">Zitation</label>
+          <label index="zitation_standort_default">DiÖ-Online.</label>
+          <label index="zitation_zugriff">Zugriff</label>
+
+          <label index="kategorien_cluster_a">Cluster A</label>
+          <label index="kategorien_cluster_b">Cluster B</label>
+          <label index="kategorien_cluster_c">Cluster C</label>
+          <label index="kategorien_cluster_d">Cluster D</label>
+          <label index="kategorien_cluster_e">Cluster E</label>
+          <label index="kategorien_gesamt_sfb">Gesamt-SFB</label>
+          <label index="kategorien_blog">Blog</label>
+          <label index="kategorien_podcast">Podcast</label>
+          <label index="kategorien_nachricht">Nachricht</label>
+          <label index="kategorien_bericht">Bericht</label>
+          <label index="kategorien_memo">Memo</label>
+          <label index="kategorien_publikationen">Publikationen</label>
+          <label index="kategorien_vortrag">Vortrag</label>
+          <label index="kategorien_gastvortrag">Gastvortrag</label>
+          <label index="kategorien_konferenz">Konferenz</label>
+          <label index="kategorien_workshop">Workshop</label>
+          <label index="kategorien_arbeitstreffen">Arbeitstreffen</label>
+          <label index="kategorien_podiumsdiskussion">Podiumsdiskussion</label>
+          <label index="kategorien_ausstellung">Ausstellung</label>
+          <label index="kategorien_gastvortrag">Gastvortrag</label>
+          <label index="kategorien_veranstaltung">Veranstaltung</label>
+          <label index="kategorien_lehre">Lehre</label>
+
         </languageKey>
         <languageKey index="de" type="array">
           <label index="img_copyright">Alle Rechte am Bild vorbehalten!</label>
@@ -46,6 +73,33 @@
           <label index="bibtex_band">Band</label>
 
           <label index="audiovideo_keine_datei_vorhanden">Keine Datei vorhanden!</label>
+
+          <label index="zitation_zitation">Zitation</label>
+          <label index="zitation_standort_default">DiÖ-Online.</label>
+          <label index="zitation_zugriff">Zugriff</label>
+
+          <label index="kategorien_cluster_a">Cluster A</label>
+          <label index="kategorien_cluster_b">Cluster B</label>
+          <label index="kategorien_cluster_c">Cluster C</label>
+          <label index="kategorien_cluster_d">Cluster D</label>
+          <label index="kategorien_cluster_e">Cluster E</label>
+          <label index="kategorien_gesamt_sfb">Gesamt-SFB</label>
+          <label index="kategorien_blog">Blog</label>
+          <label index="kategorien_podcast">Podcast</label>
+          <label index="kategorien_nachricht">Nachricht</label>
+          <label index="kategorien_bericht">Bericht</label>
+          <label index="kategorien_memo">Memo</label>
+          <label index="kategorien_publikationen">Publikationen</label>
+          <label index="kategorien_vortrag">Vortrag</label>
+          <label index="kategorien_gastvortrag">Gastvortrag</label>
+          <label index="kategorien_konferenz">Konferenz</label>
+          <label index="kategorien_workshop">Workshop</label>
+          <label index="kategorien_arbeitstreffen">Arbeitstreffen</label>
+          <label index="kategorien_podiumsdiskussion">Podiumsdiskussion</label>
+          <label index="kategorien_ausstellung">Ausstellung</label>
+          <label index="kategorien_gastvortrag">Gastvortrag</label>
+          <label index="kategorien_veranstaltung">Veranstaltung</label>
+          <label index="kategorien_lehre">Lehre</label>
 
         </languageKey>
     </data>
