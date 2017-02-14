@@ -697,6 +697,22 @@ tr.no-border, tr.no-border>td {
 .langswitch {
   font-weight: 300;
 }
+.langswitch>a>img.flag-icon {
+  height: 21px;
+  width: auto;
+  display: inline-block;
+  margin-top: -5px;
+  margin-bottom: -3px;
+  -webkit-filter: grayscale(33%);
+  filter: grayscale(50%);
+  transition: 0.25s;
+  opacity: 0.5;
+}
+.langswitch>a>img.flag-icon:hover {
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+  opacity: 1;
+}
 
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {

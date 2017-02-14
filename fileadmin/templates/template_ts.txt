@@ -142,7 +142,8 @@ page.10 {
 
     25 = TEXT
     25 {
-      value = EN
+      value = <img src="fileadmin/img/flag_unionjack_kl.png" class="flag-icon">
+      value = en
       typolink {
         parameter.data = page:uid
         additionalParams = &L=1
@@ -404,7 +405,8 @@ config {
 }
 page.bodyTagCObject.wrap = <body id="hp|" class="lang-en">
 page.10 {
-  10.25.value = DE
+  10.25.value = <img src="fileadmin/img/flag_austria_kl.png" class="flag-icon">
+  10.25.value = de
   10.25.typolink.additionalParams = &L=0
   35.value = Back to top
 }
