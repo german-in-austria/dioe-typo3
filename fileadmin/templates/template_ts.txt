@@ -57,7 +57,7 @@ lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.c
 page.bodyTag >
 page.bodyTagCObject = TEXT
 page.bodyTagCObject.field = uid
-page.bodyTagCObject.wrap = <body id="hp|">
+page.bodyTagCObject.wrap = <body id="hp|" class="lang-de">
 page.typeNum = 0
 page.10 = COA
 page.10 {
@@ -402,6 +402,7 @@ config {
   htmlTag_setParams = lang="en" dir="ltr" class="no-js"
   sys_language_uid = 1
 }
+page.bodyTagCObject.wrap = <body id="hp|" class="lang-en">
 page.10 {
   10.25.value = DE
   10.25.typolink.additionalParams = &L=0
