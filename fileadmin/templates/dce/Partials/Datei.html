@@ -11,7 +11,7 @@
         {dce:fileInfo(fileUid:'{datei.datei.0.uid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzNolinkKleinSpan')}
       </f:then>
       <f:else>
-        <f:alias map="{copyright: 'Alle Rechte an Datei vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzNolinkKleinSpan')}</f:alias>
+        {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:file_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzNolinkKleinSpan')}
       </f:else>
     </f:if>
     <p><b>{datei.titel}</b></p>

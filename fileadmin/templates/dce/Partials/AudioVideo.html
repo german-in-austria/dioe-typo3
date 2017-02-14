@@ -26,7 +26,7 @@
             </f:then>
             <f:else>
               <div class="{f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: '')}av-objekt">
-                Keine Datei vorhanden!
+                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:audiovideo_keine_datei_vorhanden')}
               </div>
             </f:else>
           </f:if>
@@ -46,12 +46,12 @@
                 {dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
               </f:then>
               <f:else>
-                <f:alias map="{copyright: 'Alle Rechte am Medium vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}</f:alias>
+                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:media_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
               </f:else>
             </f:if>
           </f:then>
           <f:else>
-            <f:alias map="{copyright: 'Alle Rechte am Medium vorbehalten!'}">{copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}</f:alias>
+            {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:media_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
           </f:else>
         </f:if>
       </f:else>
