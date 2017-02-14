@@ -669,6 +669,30 @@ tr.no-border, tr.no-border>td {
   float: right;
 }
 
+.article-laden {
+  position: relative;
+}
+.article-laden.lade:after {
+  content: "\e031";
+  position: absolute;
+  top: 50%;
+  left: 49%;
+  height: 0px;
+  display: block;
+  font-family: 'Glyphicons Halflings';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
