@@ -52,6 +52,22 @@
           <label index="kategorien_veranstaltung">Veranstaltung</label>
           <label index="kategorien_lehre">Lehre</label>
 
+          <label index="allgemein_beitrag_anzeigen">Beitrag anzeigen</label>
+          <label index="allgemein_artikel_url">Artikel URL</label>
+
+          <label index="monat_jaenner">Jänner</label>
+          <label index="monat_februar">Februar</label>
+          <label index="monat_maerz">März</label>
+          <label index="monat_april">April</label>
+          <label index="monat_mai">Mai</label>
+          <label index="monat_juni">Juni</label>
+          <label index="monat_juli">Juli</label>
+          <label index="monat_august">August</label>
+          <label index="monat_september">September</label>
+          <label index="monat_oktober">Oktober</label>
+          <label index="monat_november">November</label>
+          <label index="monat_dezember">Dezember</label>
+
         </languageKey>
         <languageKey index="de" type="array">
           <label index="img_copyright">Alle Rechte am Bild vorbehalten!</label>
@@ -101,6 +117,22 @@
           <label index="kategorien_veranstaltung">Veranstaltung</label>
           <label index="kategorien_lehre">Lehre</label>
 
+          <label index="allgemein_beitrag_anzeigen">Beitrag anzeigen</label>
+          <label index="allgemein_artikel_url">Artikel URL</label>
+
+          <label index="monat_jaenner">Jänner</label>
+          <label index="monat_februar">Februar</label>
+          <label index="monat_maerz">März</label>
+          <label index="monat_april">April</label>
+          <label index="monat_mai">Mai</label>
+          <label index="monat_juni">Juni</label>
+          <label index="monat_juli">Juli</label>
+          <label index="monat_august">August</label>
+          <label index="monat_september">September</label>
+          <label index="monat_oktober">Oktober</label>
+          <label index="monat_november">November</label>
+          <label index="monat_dezember">Dezember</label>
+          
         </languageKey>
     </data>
 </T3locallang>
