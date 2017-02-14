@@ -164,6 +164,9 @@ page.10 {
     }
     wrap = <br><br><footer class="clearfix hidden-print">|</footer>
   }
+
+  35 = TEXT
+  35.value = <div id="top-link-block" class="hidden"><div class="container hidden-print"><a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;" title="Zum Seitenanfang"><span class="glyphicon glyphicon-chevron-up"></span></a></div></div>
 }
 
 lib.isOne = TEXT
