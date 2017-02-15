@@ -620,6 +620,9 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   position: relative;
   text-align: justify;
   border-bottom: 3px solid #f4f4f4;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .publicationen-liste li:last-child{
   border-bottom: 0;
@@ -632,6 +635,9 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   list-style-type: none;
   padding: 2em;
   border-bottom: 3px solid #f4f4f4;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .termin-liste li:last-child{
   border-bottom: 0;
