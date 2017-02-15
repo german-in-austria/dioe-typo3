@@ -10,7 +10,7 @@
           <f:if condition="{field.foto}">
             <f:then>
               <f:for each="{dce:fal(field:'foto', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}">
-                <f:render partial="Image" arguments="{src: fileReference.uid, treatIdAsReference: 1, width: '260c', height: '260c', class: 'img-responsive img-rounded w100 mib05e border-gray', fileUid: fileReference.originalFile.properties.uid}" />
+                <f:render partial="Image" arguments="{src: fileReference.uid, treatIdAsReference: 1, width: '260c', height: '260c-50', class: 'img-responsive img-rounded w100 mib05e border-gray', fileUid: fileReference.originalFile.properties.uid}" />
               </f:if></f:for>
             </f:then>
             <f:else>

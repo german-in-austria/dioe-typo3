@@ -36,28 +36,15 @@
       });
     }
 
-    $('body').on('click touchstart', '.trigger-mobile-menu', function (e) {
+    $('body').on('touchend', '.trigger-mobile-menu', function (e) {
+      e.preventDefault()
+      e.stopPropagation()
       console.log(e)
-      $('body').toggleClass('show-mobile-nav')
+      setTimeout(function(){
+        $('body').toggleClass('show-mobile-nav')
+      }, 250)
     })
 
-    $('body').on('click', function(e){
-      /*
-      if (
-        $(e.target).parents('.nav-pills').length == 0 &&
-        !$(e.target).hasClass('glyphicon-menu-hamburger') &&
-        !$(e.target).hasClass('dropdown-backdrop')
-      ) {
-        console.log(e.target);
-        e.stopPropagation()
-        e.preventDefault()
-        $('body').removeClass('show-mobile-nav')
-      }
-      */
-    })
-    $('body').on('click touchend', '.dropdown-menu li', function (e) {
-
-    })
     setInterval(function() {
         $('.hero').toggleClass('active');
     }, 8000);
