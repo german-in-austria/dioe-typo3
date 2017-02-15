@@ -624,6 +624,18 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 .publicationen-liste li:last-child{
   border-bottom: 0;
 }
+.termin-liste{
+  margin: 0;
+  padding: 1em;
+}
+.termin-liste li{
+  list-style-type: none;
+  padding: 2em;
+  border-bottom: 3px solid #f4f4f4;
+}
+.termin-liste li:last-child{
+  border-bottom: 0;
+}
 footer .fxnav {
   list-style: none;
   padding: 0;
