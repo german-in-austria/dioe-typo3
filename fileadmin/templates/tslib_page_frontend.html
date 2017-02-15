@@ -28,54 +28,28 @@
 <script src="fileadmin/js/main.js"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
 <script>
-    // DESKTOP
-    if (!("ontouchstart" in document)) {
-      var s = skrollr.init({
-          smoothScrolling: false,
-          forceHeight: true
-      });
-    }
-
-    $('body').on('touchend', '.trigger-mobile-menu', function (e) {
-      e.preventDefault()
-      e.stopPropagation()
-      console.log(e)
-      setTimeout(function(){
-        $('body').toggleClass('show-mobile-nav')
-      }, 250)
-    })
-
-    setInterval(function() {
-        $('.hero').toggleClass('active');
-    }, 8000);
-
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });
-
-    var gaProperty = 'UA-XXXXXXX-X';
-    var disableStr = 'ga-disable-' + gaProperty;
-    if (document.cookie.indexOf(disableStr + '=true') > -1) {
-      window[disableStr] = true;
-    }
-    function gaOptout() {
-      document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-      window[disableStr] = true;
-    }
-    (function(b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] =
-            function() {
-                (b[l].q = b[l].q || []).push(arguments)
-            });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = 'https://www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', gaProperty, 'auto');
-    ga('send', 'pageview');
+  var gaProperty = 'UA-XXXXXXX-X';
+  var disableStr = 'ga-disable-' + gaProperty;
+  if (document.cookie.indexOf(disableStr + '=true') > -1) {
+    window[disableStr] = true;
+  }
+  function gaOptout() {
+    document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+    window[disableStr] = true;
+  }
+  (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] =
+          function() {
+              (b[l].q = b[l].q || []).push(arguments)
+          });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = 'https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+  }(window, document, 'script', 'ga'));
+  ga('create', gaProperty, 'auto');
+  ga('send', 'pageview');
 </script>
 </body></html>
