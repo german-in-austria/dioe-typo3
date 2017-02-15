@@ -9,6 +9,7 @@ body > header.main,
 body > .content,
 body > footer{
   transition: .5s transform;
+  -webkit-transition: .5s -webkit-transform;
 }
 
 body.show-mobile-nav > .content,
@@ -16,6 +17,7 @@ body.show-mobile-nav > header.main,
 body.show-mobile-nav > .content,
 body.show-mobile-nav > footer {
   transform: translateX(320px);
+  -webkit-transform: translateX(320px);
 }
 
 .mobile-header{
@@ -27,9 +29,11 @@ body.show-mobile-nav > footer {
   height: 44px;
   line-height: 44px;
   transition: .5s transform;
+  -webkit-transition: .5s -webkit-transform;
 }
 .show-mobile-nav .mobile-header{
   transform: translateX(320px);
+  -webkit-transform: translateX(320px);
 }
 .trigger-mobile-menu{
   text-align: center;
@@ -67,13 +71,16 @@ header.main img.logo{
   right: 0;
   height: 100%;
   transform: translateX(-320px);
+  -webkit-transform: translateX(-320px);
   box-shadow: inset -20px 0 60px 0px rgba(0,0,0,.1);
   transition: .5s transform;
+  -webkit-transition: .5s -webkit-transform;
   z-index: 98;
 }
 
 .show-mobile-nav .nav-pills{
   transform: translateX(0px);
+  -webkit-transform: translateX(0px);
 }
 
 .nav-pills img.logo{
@@ -86,6 +93,7 @@ header.main img.logo{
   background: #ff9000;
   margin-top: 0;
   transition: none;
+  -webkit-transition: none;
   height: 0;
   padding: 0;
   margin: 0;
@@ -101,6 +109,7 @@ header.main img.logo{
   padding: 20px 0 20px 0;
   height: auto;
   transform: translateY(0px);
+  -webkit-transform: translateY(0px);
   pointer-events: auto;
   opacity: 1;
   margin-top: 0;
@@ -127,6 +136,11 @@ header.main img.logo{
   float: none;
   display: block;
   color: white;
+}
+.nav-pills li .dropdown-menu a {
+  padding: 12px 0px;
+  margin-bottom: 1px;
+  background-color: rgba(255,255,255,.1);
 }
 #mp53 {
   display:block;

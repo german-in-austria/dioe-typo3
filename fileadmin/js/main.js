@@ -1,25 +1,31 @@
 (function($){jQuery(document).ready(function($){
-  // DESKTOP
+  // Mobiles Menü
   if (!("ontouchstart" in document)) {
     var s = skrollr.init({
         smoothScrolling: false,
         forceHeight: true
     });
   }
+  var mobileToggle = 0;
+  $('body').on('click touchend', '.trigger-mobile-menu', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if(mobileToggle==0) {
+      mobileToggle = 1;
+      console.log(e);
+      setTimeout(function(){
+        $('body').toggleClass('show-mobile-nav');
+        mobileToggle = 0;
+      }, 250);
+    };
+  });
 
-  $('body').on('touchend', '.trigger-mobile-menu', function (e) {
-    e.preventDefault()
-    e.stopPropagation()
-    console.log(e)
-    setTimeout(function(){
-      $('body').toggleClass('show-mobile-nav')
-    }, 250)
-  })
-
+  // Animation Berge
   setInterval(function() {
       $('.hero').toggleClass('active');
   }, 8000);
 
+  // Lightbox
   $(document).on('click', '[data-toggle="lightbox"]', function(event) {
       event.preventDefault();
       $(this).ekkoLightbox();
