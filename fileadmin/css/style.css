@@ -762,6 +762,14 @@ tr.no-border, tr.no-border>td {
   opacity: 1;
 }
 
+.team-mitarbeiter>span:before {
+  content: ", ";
+}
+.team-mitarbeiter>span:first-child:before {
+  content: "";
+}
+
+
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";

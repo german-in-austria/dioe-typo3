@@ -191,6 +191,9 @@ page.10 {
 lib.isOne = TEXT
 lib.isOne.value = 1
 
+lib.pageid = TEXT
+lib.pageid.data = page:uid
+
 lib.lizenz = COA
 lib.lizenz {
   10 = USER
