@@ -6,67 +6,68 @@
     </meta>
     <data type="array">
         <languageKey index="default" type="array">
-          <label index="img_copyright">All rights reserved!</label>
-          <label index="file_copyright">Alle Rechte an Datei vorbehalten!</label>
-          <label index="media_copyright">Alle Rechte am Medium vorbehalten!</label>
+          <label index="img_copyright">All rights to image reserved!</label>
+          <label index="file_copyright">All rights to document image reserved!</label>
+          <label index="media_copyright">All rights to medium reserved!</label>
 
-          <label index="termin_personen">Personen</label>
-          <label index="termin_uhr">Uhr</label>
-          <label index="termin_zeit">Zeit</label>
-          <label index="termin_ort">Ort</label>
-          <label index="termin_organisiert_von">Organisiert von</label>
-          <label index="termin_beteiligte_institutionen">Beteiligte Institutionen</label>
-          <label index="termin_teilnehmer">Teilnehmer</label>
+          <label index="termin_personen">Persons</label>
+          <label index="termin_bis">until</label>
+          <label index="termin_uhr">h</label>
+          <label index="termin_zeit">Time</label>
+          <label index="termin_ort">Location </label>
+          <label index="termin_organisiert_von">Organised by</label>
+          <label index="termin_beteiligte_institutionen">Participating institutions</label>
+          <label index="termin_teilnehmer">Participants</label>
 
-          <label index="bibtex_in_planung">(in Planung)</label>
-          <label index="bibtex_in_druck">(in Druck)</label>
-          <label index="bibtex_eingereicht">(eingereicht)</label>
-          <label index="bibtex_band">Band</label>
+          <label index="bibtex_in_planung">(in planning)</label>
+          <label index="bibtex_in_druck">(in print)</label>
+          <label index="bibtex_eingereicht">(submitted)</label>
+          <label index="bibtex_band">volume</label>
 
-          <label index="audiovideo_keine_datei_vorhanden">Keine Datei vorhanden!</label>
+          <label index="audiovideo_keine_datei_vorhanden">no data available</label>
 
-          <label index="zitation_zitation">Zitation</label>
+          <label index="zitation_zitation">Citation</label>
           <label index="zitation_standort_default">DiÖ-Online.</label>
-          <label index="zitation_zugriff">Zugriff</label>
+          <label index="zitation_zugriff">Access</label>
 
           <label index="kategorien_cluster_a">Cluster A</label>
           <label index="kategorien_cluster_b">Cluster B</label>
           <label index="kategorien_cluster_c">Cluster C</label>
           <label index="kategorien_cluster_d">Cluster D</label>
           <label index="kategorien_cluster_e">Cluster E</label>
-          <label index="kategorien_gesamt_sfb">Gesamt-SFB</label>
+          <label index="kategorien_gesamt_sfb">All SFB</label>
           <label index="kategorien_blog">Blog</label>
           <label index="kategorien_podcast">Podcast</label>
-          <label index="kategorien_nachricht">Nachricht</label>
-          <label index="kategorien_bericht">Bericht</label>
+          <label index="kategorien_nachricht">News</label>
+          <label index="kategorien_bericht">Report</label>
           <label index="kategorien_memo">Memo</label>
-          <label index="kategorien_publikationen">Publikationen</label>
-          <label index="kategorien_vortrag">Vortrag</label>
-          <label index="kategorien_gastvortrag">Gastvortrag</label>
-          <label index="kategorien_konferenz">Konferenz</label>
+          <label index="kategorien_publikationen">Publications</label>
+          <label index="kategorien_vortrag">Presentation</label>
+          <label index="kategorien_gastvortrag">Guest lecture</label>
+          <label index="kategorien_konferenz">Conference</label>
           <label index="kategorien_workshop">Workshop</label>
-          <label index="kategorien_arbeitstreffen">Arbeitstreffen</label>
-          <label index="kategorien_podiumsdiskussion">Podiumsdiskussion</label>
-          <label index="kategorien_ausstellung">Ausstellung</label>
-          <label index="kategorien_gastvortrag">Gastvortrag</label>
-          <label index="kategorien_veranstaltung">Veranstaltung</label>
-          <label index="kategorien_lehre">Lehre</label>
+          <label index="kategorien_arbeitstreffen">Meeting</label>
+          <label index="kategorien_podiumsdiskussion">Panel discussion</label>
+          <label index="kategorien_ausstellung">Exhibition</label>
+          <label index="kategorien_gastvortrag">Guest lecture</label>
+          <label index="kategorien_veranstaltung">Event</label>
+          <label index="kategorien_lehre">Teaching</label>
 
-          <label index="allgemein_beitrag_anzeigen">Beitrag anzeigen</label>
-          <label index="allgemein_artikel_url">Artikel URL</label>
+          <label index="allgemein_beitrag_anzeigen">Show post</label>
+          <label index="allgemein_artikel_url">Article URL</label>
 
-          <label index="monat_jaenner">Jänner</label>
-          <label index="monat_februar">Februar</label>
-          <label index="monat_maerz">März</label>
+          <label index="monat_jaenner">January</label>
+          <label index="monat_februar">February</label>
+          <label index="monat_maerz">March</label>
           <label index="monat_april">April</label>
-          <label index="monat_mai">Mai</label>
-          <label index="monat_juni">Juni</label>
-          <label index="monat_juli">Juli</label>
+          <label index="monat_mai">May</label>
+          <label index="monat_juni">June</label>
+          <label index="monat_juli">July</label>
           <label index="monat_august">August</label>
           <label index="monat_september">September</label>
-          <label index="monat_oktober">Oktober</label>
+          <label index="monat_oktober">October</label>
           <label index="monat_november">November</label>
-          <label index="monat_dezember">Dezember</label>
+          <label index="monat_dezember">December</label>
 
         </languageKey>
         <languageKey index="de" type="array">
@@ -132,7 +133,7 @@
           <label index="monat_oktober">Oktober</label>
           <label index="monat_november">November</label>
           <label index="monat_dezember">Dezember</label>
-          
+
         </languageKey>
     </data>
 </T3locallang>
