@@ -1,4 +1,14 @@
 (function($){jQuery(document).ready(function($){
+  // Wörter/Sätze
+  var lang = [];
+  lang['wirdgeladen'] = 'Wird geladen ...';
+  lang['ladefehler'] = 'Fehler beim laden!';
+  // Englisch
+  if($('body').hasClass('lang-en')) {
+    lang['wirdgeladen'] = 'Loading ...';
+    lang['ladefehler'] = 'Error at loading!';
+  };
+
   // Mobiles Menü
   if (!("ontouchstart" in document)) {
     var s = skrollr.init({
@@ -34,14 +44,14 @@
   // Nachladen
   $(window).scroll(function(event) {
     if($('.article-laden.laden').length==1 && $('.article-laden.laden').offset().top < $(window).scrollTop() + $(window).outerHeight()) {
-      $('.article-laden').html('Wird geladen ...').removeClass('laden').addClass('lade');
+      $('.article-laden').html(lang['wirdgeladen']).removeClass('laden').addClass('lade');
       console.log('Lade Inhalte ab Eintrag: '+$('.article-laden').data("loadbegin"))
       $.post( "", { getlist: "1", begin: $('.article-laden').data("loadbegin") }).done(function( data ) {
         $('.article-laden.lade').replaceWith(data);
         setTimeout(function(){ $('#top-link-block').affix('checkPosition'); }, 500);
       }).fail(function( data ) {
         console.log(data);
-        $('.article-laden.lade').replaceWith('<div>Fehler beim laden!</div>');
+        $('.article-laden.lade').replaceWith('<div>'+lang['ladefehler']+'</div>');
       });
     };
   }).scroll();
