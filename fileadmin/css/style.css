@@ -768,7 +768,9 @@ tr.no-border, tr.no-border>td {
 .team-mitarbeiter>span:first-child:before {
   content: "";
 }
-
+.publicationen-liste .detaillnk {
+  margin-left: 1.1em;
+}
 
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
