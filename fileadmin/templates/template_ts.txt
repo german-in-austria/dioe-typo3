@@ -203,6 +203,14 @@ lib.newline {
   20.value.char = 10
 }
 
+lib.htmlEntityDecodeRssEncode = COA
+lib.htmlEntityDecodeRssEncode {
+  10 = USER
+  10 {
+    includeLibs = fileadmin/templates/php/funktionen.php
+    userFunc = user_funktionen_class->user_php_html_entity_decode_rss_encode
+  }
+}
 lib.lizenz = COA
 lib.lizenz {
   10 = USER

@@ -163,5 +163,15 @@ class user_funktionen_class {
     $outBibTex = substr($outBibTex,0,-2)."\n}";
     return $outBibTex;
   }
+
+  /*
+  /   user_php_html_entity_decode:
+  */
+  function user_php_html_entity_decode_rss_encode($content,$conf)    {
+    global $TSFE;
+    $TSFE->set_no_cache();
+    return htmlentities(html_entity_decode($this->cObj->data[0]),ENT_XML1);
+  }
+
 }
 ?>
