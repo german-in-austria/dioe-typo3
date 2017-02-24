@@ -41,6 +41,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']=array (
             'type' => 98,
           ),
         ),
+        'rss.xml' =>
+        array (
+          'keyValues' =>
+          array (
+            'rss' => 1,
+          ),
+        ),
       ),
     ),
   ),
