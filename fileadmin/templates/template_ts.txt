@@ -195,6 +195,14 @@ lib.isOne.value = 1
 lib.pageid = TEXT
 lib.pageid.data = page:uid
 
+lib.newline = COA
+lib.newline {
+  10 = TEXT
+  10.value.char = 13
+  20 = TEXT
+  20.value.char = 10
+}
+
 lib.lizenz = COA
 lib.lizenz {
   10 = USER
@@ -672,6 +680,8 @@ page.10.20 {
 
 // RSS Feed
 [globalVar = GP:rss = 1]
+config.disableCharsetHeader = 1
+config.additionalHeaders = Content-Type: application/rss+xml
 lib.rssFeed = TEXT
 lib.rssFeed.value = 1
 page >
@@ -683,29 +693,56 @@ page.10 {
   10.value = Der FWF Spezialforschungsbereich (SFB) „Deutsch in Österreich. Variation – Kontakt – Perzeption” (F 60) beschäftigt sich mit der Vielfalt und dem Wandel der deutschen Sprache in Österreich. Die drei thematischen Säulen des Projekts sind Variation, Kontakt und Perzeption. Das heißt: Der SFB behandelt den Gebrauch und die subjektive Wahrnehmung von deutscher Sprache in Österreich und zeigt Einflüsse durch Kontaktsprachen auf.
   10.wrap (
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deutsch in Österreich</title>
     <link>http://www.dioe.at/</link>
     <description>|</description>
   )
-  11 = TEXT
-  11.value = de-de
-  11.wrap (
+  11 < lib.newline
+  14 = TEXT
+  14.value = de-de
+  14.wrap (
     <language>|</language>
     <copyright>DiÖ</copyright>
   )
-  12 = TEXT
-  12.data = date:U
-  12.strftime = %a, %d %b %Y %H:%M:%S GMT
-  12.wrap (
+  15 < lib.newline
+  18 = COA
+  18 {
+    10 = CASE
+    10 {
+      key.cObject = TEXT
+      key.cObject.data = date:U
+      key.cObject.strftime = %w
+      0 = TEXT
+      0.value = Sun
+      1 = TEXT
+      1.value = Mon
+      2 = TEXT
+      2.value = Tue
+      3 = TEXT
+      3.value = Wed
+      4 = TEXT
+      4.value = Thu
+      5 = TEXT
+      5.value = Fri
+      6 = TEXT
+      6.value = Sat
+    }
+    20 = TEXT
+    20.data = date:U
+    20.strftime = , %d %b %Y %H:%M:%S %z
+    wrap (
     <pubDate>|</pubDate>
     <image>
       <url>http://dioe.at/fileadmin/tile.png</url>
       <title>Deutsch in Österreich</title>
       <link>http://www.dioe.at/</link>
     </image>
-  )
+    <atom:link href="http://www.dioe.at/rss.xml" rel="self" type="application/rss+xml" />
+    )
+  }
+  19 < lib.newline
 
   20 < lib.artikel
   20.10.select.where >
@@ -715,6 +752,7 @@ page.10 {
 
   30 = TEXT
   30.value (
+
   </channel>
 </rss>
   )
