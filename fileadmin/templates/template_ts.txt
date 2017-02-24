@@ -432,12 +432,17 @@ page.10 {
 </header>
 )
   10.wrap = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
-  20.20 < lib.artikel
-  20.20.10.select.where = FIND_IN_SET('21',selected_categories)
-  20.20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
-  20.20.20.select.max = 5
-  20.20.wrap >
-  20.20.wrap = <div class="article-list">|</div>
+  20 {
+    20 < lib.artikel
+    20.10.select.where = FIND_IN_SET('21',selected_categories)
+    20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
+    20.20.select.max = 5
+    20.wrap >
+    20.wrap = <div class="article-list">|</div>
+    99 < .10
+    99.select.where = colPos = 99
+    99.wrap = <article class="outro-text">|</article>
+  }
 }
 [global]
 
