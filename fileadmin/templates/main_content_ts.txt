@@ -1,0 +1,154 @@
+page = PAGE
+
+page.headerData.1010 = TEXT
+page.headerData.1010.value (
+  <link rel="icon" href="fileadmin/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="fileadmin/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.dioe.at/rss.xml">
+)
+page.headerData.1010.insertData = 1
+
+page.includeCSS {
+  file1 = https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&amp;subset=latin-ext
+  file2 = https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+  file3 = fileadmin/css/normalize.css
+  file4 = fileadmin/css/main.css
+  file5 = fileadmin/css/ekko-lightbox.min.css
+  file6 = fileadmin/css/style.css
+}
+page.includeJS {
+  file1 = fileadmin/js/vendor/modernizr-2.8.3.min.js
+}
+
+page.bodyTag >
+page.bodyTagCObject = TEXT
+page.bodyTagCObject.field = uid
+page.bodyTagCObject.wrap = <body id="hp|" class="lang-de">
+page.typeNum = 0
+page.10 = COA
+page.10 {
+  1 = TEXT
+  1.value (
+    <!--if lt IE 8
+    p.browserupgrade
+      | You are using an
+      strong outdated
+      |  browser. Please
+      a(href='http://browsehappy.com/') upgrade your browser
+      |  to improve your experience.
+    -->
+  )
+
+  6 = TEXT
+  6.value (
+    <div class="mobile-header">
+      <a class="trigger-mobile-menu pull-left">
+        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+      </a>
+    </div>
+  )
+
+  10 = COA
+  10 {
+    wrap =<ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+    20 = COA
+    20 {
+      10  = HMENU
+      10 {
+        special = directory
+        special.value = 1
+        entryLevel = 0
+        target = _top
+        excludeUidList = 50
+        //wrap = <ul>|</ul>
+        1 = TMENU
+        1 {
+          expAll=1
+          NO = 1
+          NO {
+            wrapItemAndSub.cObject = TEXT
+            wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation">|</li>
+            wrapItemAndSub.cObject.insertData = 1
+            wrapItemAndSub.cObject.if.value = 1
+            wrapItemAndSub.cObject.if.isInList.field = categories
+            doNotShowLink.stdWrap.cObject = TEXT
+            doNotShowLink.stdWrap.cObject.value = 1
+            doNotShowLink.stdWrap.cObject.if.value = 1
+            doNotShowLink.stdWrap.cObject.if.isInList.field = categories
+            doNotShowLink.stdWrap.cObject.if.negate = 1
+            ATagTitle.field = abstract
+            ATagBeforeWrap = 1
+            linkWrap = |
+          }
+          IFSUB < .NO
+          IFSUB.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation" class="dropdown">|</li>
+          IFSUB.ATagParams = class="dropdown-toggle" data-toggle="dropdown"
+          IFSUB.linkWrap = |<span class="caret"></span>
+          CUR < .NO
+          CUR.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation" class="active">|</li>
+          CURIFSUB < .IFSUB
+          CURIFSUB.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" role="presentation" class="active dropdown">|</li>
+          ACT < .CUR
+          ACTIFSUB < .CURIFSUB
+        }
+        2 < .1
+        2.wrap >
+        2.stdWrap.wrap = <ul class="dropdown-menu">|</ul>
+        2.stdWrap.required = 1
+        2.NO.wrapItemAndSub.cObject.value = <li id="mp{field:uid}">|</li>
+        2.CUR.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" class="active">|</li>
+        2.ACT.wrapItemAndSub.cObject.value = <li id="mp{field:uid}" class="active">|</li>
+        2.IFSUB >
+        2.CURIFSUB >
+        2.ACTIFSUB >
+      }
+    }
+
+    25 = TEXT
+    25 {
+      value = <img src="fileadmin/img/flag_unionjack_kl.png" class="flag-icon">
+      value = en
+      typolink {
+        parameter.data = page:uid
+        additionalParams = &L=1
+      }
+      wrap = <li id="ml{GP:L}" role="presentation" class="langswitch">|</li>
+      wrap.insertData = 1
+    }
+    30 = TEXT
+    30.value = </ul>
+  }
+
+  // Content
+  20 = COA
+  20 {
+    10 = CONTENT
+    10 {
+      table = tt_content
+      select {
+        where = colPos = 0
+      }
+      wrap = <article class="intro-text"><br>|</article>
+    }
+    wrap = <div class="content container narrow">|</div>
+  }
+
+  // Footer
+  30 = COA
+  30 {
+    10 = CONTENT
+    10 {
+      table = tt_content
+      select {
+        where = colPos = 0
+        pidInList = 27
+      }
+    }
+    wrap = <br><br><footer class="clearfix hidden-print">|</footer>
+  }
+
+  // Nach oben Knopf
+  35 = TEXT
+  35.value = Zum Seitenanfang
+  35.wrap = <div id="top-link-block" class="hidden"><div class="container hidden-print"><a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;" title="|"><span class="glyphicon glyphicon-chevron-up"></span></a></div></div>
+}
