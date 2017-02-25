@@ -48,6 +48,13 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']=array (
             'rss' => 1,
           ),
         ),
+        'BibTex.bib' =>
+        array (
+          'keyValues' =>
+          array (
+            'bibTex' => 1,
+          ),
+        ),
       ),
     ),
   ),

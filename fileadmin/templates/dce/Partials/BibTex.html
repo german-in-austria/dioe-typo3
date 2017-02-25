@@ -76,7 +76,7 @@
         [unveröffentlicht]
       </f:case>
       <f:case value="7"><f:comment>online</f:comment>
-        <f:if condition="{field.url}">URL: <a href="{field.url}" target="_BLANK" class="hide-url-printer">{field.url}</a>{f:if(condition: '{field.urldate}', then: ' ({field.urldate})' else: '')}</f:if>
+        <f:if condition="{field.url}">URL: <a href="{field.url}" target="_BLANK" class="hide-url-printer">{field.url}</a><f:if condition="{field.urldate}"> (<f:format.date date="{field.urldate}" format="d.m.Y" />)</f:if></f:if>
         {f:if(condition: '{field.note}', then: ' {field.note}.', else: '')}
         {f:if(condition: '{field.doi}', then: '[DOI: {field.doi}]', else: '')}
         [Online-Publikation]
@@ -112,10 +112,7 @@
       Schlagwörter:  {field.keywords}.
     </f:if>
     <f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="detaillnk hidden-print"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></f:link.page>
+    <f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}', bibTex: '1'}" noCacheHash="TRUE" class="bibtexbtn hidden-print"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></f:link.page>
   </li>
   </f:spaceless>
-</f:section>
-
-<f:section name="BibTex">
-  {field -> f:cObject(typoscriptObjectPath:'lib.PublikationBibTex')}
 </f:section>

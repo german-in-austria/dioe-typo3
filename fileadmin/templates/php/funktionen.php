@@ -69,9 +69,9 @@ class user_funktionen_class {
     }
     $aArt = $aField['art'];
     $aAuthoren = $aField['authorSektion'];
-    $xAuthorIsEditor = array(); foreach ($aAuthoren as $key => $row) { $xAuthorIsEditor[$key] = $row['authorIsEditor']; };
-    $xAuthorIsEditor = array_reverse($xAuthorIsEditor);
-    array_multisort($xAuthorIsEditor, SORT_DESC, $aAuthoren);
+    $lNurAuthoren = array(); $lNurEditoren = array();
+    foreach ($aAuthoren as $val) { if($val['authorIsEditor']==1) { $lNurEditoren[] = $val; } else { $lNurAuthoren[] = $val; };};
+    if(!empty($lNurEditoren) && !empty($lNurAuthoren)) { $aAuthoren = array_merge($lNurAuthoren,$lNurEditoren); };
     $outAuthoren = ''; $adg=0;
     foreach ($aAuthoren as $val) {
       if(!($val['authorIsEditor']==0 && $aNurEditoren) && !($val['authorIsEditor']==1 && $aNurAuthoren)) {
@@ -103,9 +103,9 @@ class user_funktionen_class {
     );
     $ignoreFields = array('datum','uebersichtUeberschrift','uebersichtText','kategorien','uebersichtBild','uebersichtBildVerh','art');
     $aAuthoren = $this->cObj->data['authorSektion'];
-    $xAuthorIsEditor = array(); foreach ($aAuthoren as $key => $row) { $xAuthorIsEditor[$key] = $row['authorIsEditor']; };
-    $xAuthorIsEditor = array_reverse($xAuthorIsEditor);
-    array_multisort($xAuthorIsEditor, SORT_DESC, $aAuthoren);
+    $lNurAuthoren = array(); $lNurEditoren = array();
+    foreach ($aAuthoren as $val) { if($val['authorIsEditor']==1) { $lNurEditoren[] = $val; } else { $lNurAuthoren[] = $val; };};
+    if(!empty($lNurEditoren) && !empty($lNurAuthoren)) { $aAuthoren = array_merge($lNurAuthoren,$lNurEditoren); };
     if(isset($aArtenFelder[$aArt])) {
       foreach ($aField as $key => $val) {
         if(!in_array($key,$aArtenFelder[$aArt])) {
@@ -117,23 +117,23 @@ class user_funktionen_class {
     }
     $aArtText = $aArten[$aArt];
     if(strlen($aArtText)<1) {$aArtText = 'unknown';};
-    $outBibTex = '@'.$aArtText.'{'.$aArtText.",\n";
+    $outBibTex = '@'.$aArtText.'{'.hash("md5",multi_implode($aField,',')).",\n";
     foreach ($aField as $key => $val) {
       if(!empty($val)) {
         if($key=='authorSektion') {
           $lAuthorIsEditor = -1; $audg = 0; $audg2 = 0;
           foreach ($aAuthoren as $ukey => $uval) {
             if($lAuthorIsEditor<>$uval['authorIsEditor']) {
-              if($audg>0) { $outBibTex.= ",\n"; };
-              if($uval['authorIsEditor'] == 0) { $outBibTex.= 'author = '; };
-              if($uval['authorIsEditor'] == 1) { $outBibTex.= 'editor = '; };
+              if($audg>0) { $outBibTex.= '"'.",\n"; };
+              if($uval['authorIsEditor'] == 0) { $outBibTex.= 'author = "'; };
+              if($uval['authorIsEditor'] == 1) { $outBibTex.= 'editor = "'; };
               $lAuthorIsEditor = $uval['authorIsEditor'];
               $audg2 = 0;
             }
-            $outBibTex.= (($audg2>0)?' AND ':'').'"'.$uval['authorVorname'].' '.$uval['authorNachname'].'"';
+            $outBibTex.= (($audg2>0)?' and ':'').'{'.$uval['authorNachname'].'}, {'.$uval['authorVorname'].'}';
             $audg++; $audg2++;
           }
-          $outBibTex.= ",\n";
+          $outBibTex.= '"'.",\n";
         } else {
           $outBibTex.= $key.' = ';
           if(is_array($val)) {
@@ -154,7 +154,11 @@ class user_funktionen_class {
               $audg++;
             }
           } else {
-            $outBibTex.= ((is_numeric($val))?'':'"').$val.((is_numeric($val))?'':'"');
+            if($key=='urldate') {
+              $outBibTex.= '"'.date("Y.m.d",$val).'"';
+            } else {
+              $outBibTex.= ((is_numeric($val))?'':'"').$val.((is_numeric($val))?'':'"');
+            }
           }
           $outBibTex.= ",\n";
         }
@@ -172,6 +176,18 @@ class user_funktionen_class {
     $TSFE->set_no_cache();
     return htmlentities(html_entity_decode($this->cObj->data[0]),ENT_XML1);
   }
+}
 
+function multi_implode($array, $glue) {
+  $ret = '';
+  foreach ($array as $item) {
+    if (is_array($item)) {
+      $ret .= multi_implode($item, $glue) . $glue;
+    } else {
+      $ret .= $item . $glue;
+    }
+  }
+  $ret = substr($ret, 0, 0-strlen($glue));
+  return $ret;
 }
 ?>

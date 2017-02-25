@@ -364,3 +364,27 @@ page.10 {
   )
 }
 [global]
+
+// BibTex-Datei
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 39]
+lib.bibTexFile < lib.isOne
+page >
+page = PAGE
+page.config.disableAllHeaderCode = 1
+page.config.additionalHeaders = Content-Type: application/x-bibtex;charset=utf-8 | Content-Disposition:attachment; filename="bibTex.bib"
+page.10 = COA_INT
+page.10 {
+  20 = CONTENT
+  20 {
+    table = tt_content
+    select {
+      pidInList = 28,30,35,31,32,33
+      where = deleted=0 AND hidden=0
+      andWhere.data = GP:artikel
+      andWhere.wrap = uid=|
+      andWhere.intval = 1
+      max = 1
+    }
+  }
+}
+[global]

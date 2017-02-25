@@ -771,7 +771,9 @@ tr.no-border, tr.no-border>td {
 .publicationen-liste .detaillnk {
   margin-left: 1.1em;
 }
-
+.bibtexbtn {
+  margin-left: 1.3em;
+}
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";
