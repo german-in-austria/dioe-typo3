@@ -35,6 +35,8 @@ lib.publikationGeplant = <div id="p0"><h2 class="text-center">geplant</h2></div>
 lib.rssTitle = Deutsch in Österreich
 lib.rssDescription = Der FWF Spezialforschungsbereich (SFB) „Deutsch in Österreich. Variation – Kontakt – Perzeption” (F 60) beschäftigt sich mit der Vielfalt und dem Wandel der deutschen Sprache in Österreich. Die drei thematischen Säulen des Projekts sind Variation, Kontakt und Perzeption. Das heißt: Der SFB behandelt den Gebrauch und die subjektive Wahrnehmung von deutscher Sprache in Österreich und zeigt Einflüsse durch Kontaktsprachen auf.
 lib.rssLang = de-de
+lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+lib.homeButtonSub = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 // Englisch
 [globalVar = GP:L = 1]
 config {
@@ -58,8 +60,11 @@ lib.zurueck.value = Back
 lib.rssTitle = German in Austria
 lib.rssDescription = The FWF Special Research Area (SFB) “German in Austria. Variation – Contact –Perception” (F60) is a project that deals with the variety and change of the German language in Austria. The three thematic pillars of the project are Variation, Contact and Perception. This means that the SFB explores how the German language in Austria is used and perceived as well as how it has been influenced by other languages.
 lib.rssLang = en-GB
+lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+lib.homeButtonSub = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 [global]
 
+page.10.10.wrap < lib.homeButtonSub
 // Startseite
 [globalVar = TSFE:id = 1]
 page.10 {
@@ -71,7 +76,7 @@ page.10 {
   <img class="logo" src="fileadmin/img/dioe-logo-gray.png" data-0="transform:translateY(0%); opacity: 1" data-390="transform:translateY(220%); opacity:.7">
 </header>
 )
-  10.wrap = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+  10.wrap < lib.homeButtonHome
   20 {
     20 < lib.artikel
     20.10.select.where = FIND_IN_SET('21',selected_categories)
