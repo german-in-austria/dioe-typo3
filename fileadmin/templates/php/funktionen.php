@@ -71,11 +71,17 @@ class user_funktionen_class {
     $aAuthoren = $aField['authorSektion'];
     $lNurAuthoren = array(); $lNurEditoren = array();
     foreach ($aAuthoren as $val) { if($val['authorIsEditor']==1) { $lNurEditoren[] = $val; } else { $lNurAuthoren[] = $val; };};
-    if(!empty($lNurEditoren) && !empty($lNurAuthoren)) { $aAuthoren = array_merge($lNurAuthoren,$lNurEditoren); };
+    if(count($lNurEditoren)) { end($lNurEditoren); $lNurEditoren[key($lNurEditoren)]['isLast'] = 1; }
+    if(!empty($lNurEditoren) && !empty($lNurAuthoren)) {
+       $aAuthoren = array_merge($lNurAuthoren,$lNurEditoren);
+     } else {
+       if(!empty($lNurEditoren)) { $aAuthoren = $lNurEditoren; };
+       if(!empty($lNurAuthoren)) { $aAuthoren = $lNurAuthoren; };
+     }
     $outAuthoren = ''; $adg=0;
     foreach ($aAuthoren as $val) {
       if(!($val['authorIsEditor']==0 && $aNurEditoren) && !($val['authorIsEditor']==1 && $aNurAuthoren)) {
-        $outAuthoren.= (($adg>0)?' / ':'').$val['authorNachname'].', '.$val['authorVorname'].(($val['authorIsEditor'])?' (Hg.)':'');
+        $outAuthoren.= (($adg>0)?' / ':'').$val['authorNachname'].', '.$val['authorVorname'].(($val['authorIsEditor']&&$val['isLast'])?' (Hg.)':'');
         $adg++;
       }
     }
