@@ -23,7 +23,7 @@
 					</f:for>
 					<f:if condition="{field.uebersichtText}">
 						<f:then><f:format.html>{field.uebersichtText}</f:format.html></f:then>
-						<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE">{field.detailseiteText}</f:format.crop></f:format.html></f:else>
+						<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE"><f:cObject typoscriptObjectPath="lib.RemoveTextSpecial" data="{field.detailseiteText}" /></f:format.crop></f:format.html></f:else>
 					</f:if>
 					<ul class="termin-liste termin-einzeln"><f:render partial="Termin" arguments="{field: field, contentObject: contentObject}" section="Liste" /></ul>
 					<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_beitrag_anzeigen')}</f:link.page>

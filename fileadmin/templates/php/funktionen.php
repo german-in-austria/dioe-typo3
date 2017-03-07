@@ -182,6 +182,30 @@ class user_funktionen_class {
     $TSFE->set_no_cache();
     return htmlentities(html_entity_decode($this->cObj->data[0]),ENT_XML1);
   }
+
+  /*
+  /   user_remove_text_special:
+  /   Spezieller Filter für Texte
+  */
+  function user_remove_text_special($content,$conf)    {
+    global $TSFE;
+    $TSFE->set_no_cache();
+    $outText = $this->cObj->data[0];
+    $outText = preg_replace('/###img:.*?###/i', '', $outText);
+    return $outText;
+  }
+
+  /*
+  /   user_text_special:
+  /   Spezieller Filter für Texte
+  */
+  function user_text_special($content,$conf)    {
+    global $TSFE;
+    $TSFE->set_no_cache();
+    $outText = $this->cObj->data[0];
+    $outText = preg_replace('/###img:(.*?)###/i', '<span data-img="$1">&nbsp;</span>', $outText);
+    return $outText;
+  }
 }
 
 function multi_implode($array, $glue) {

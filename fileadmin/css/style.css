@@ -774,6 +774,18 @@ tr.no-border, tr.no-border>td {
 .bibtexbtn {
   margin-left: 1.3em;
 }
+.imgData {
+  display:none !important;
+}
+
+.bodytext:before, .bodytext:after {
+  content: " ";
+  display: table;
+}
+.bodytext:after {
+  clear: both;
+}
+
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";
