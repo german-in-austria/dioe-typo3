@@ -44,12 +44,12 @@
           <label index="kategorien_publikationen">Publications</label>
           <label index="kategorien_vortrag">Presentation</label>
           <label index="kategorien_gastvortrag">Guest lecture</label>
+          <label index="kategorien_panel">Panel</label>
           <label index="kategorien_konferenz">Conference</label>
           <label index="kategorien_workshop">Workshop</label>
           <label index="kategorien_arbeitstreffen">Meeting</label>
           <label index="kategorien_podiumsdiskussion">Panel discussion</label>
           <label index="kategorien_ausstellung">Exhibition</label>
-          <label index="kategorien_gastvortrag">Guest lecture</label>
           <label index="kategorien_veranstaltung">Event</label>
           <label index="kategorien_lehre">Teaching</label>
 
@@ -109,12 +109,12 @@
           <label index="kategorien_publikationen">Publikationen</label>
           <label index="kategorien_vortrag">Vortrag</label>
           <label index="kategorien_gastvortrag">Gastvortrag</label>
+          <label index="kategorien_panel">Panel</label>
           <label index="kategorien_konferenz">Konferenz</label>
           <label index="kategorien_workshop">Workshop</label>
           <label index="kategorien_arbeitstreffen">Arbeitstreffen</label>
           <label index="kategorien_podiumsdiskussion">Podiumsdiskussion</label>
           <label index="kategorien_ausstellung">Ausstellung</label>
-          <label index="kategorien_gastvortrag">Gastvortrag</label>
           <label index="kategorien_veranstaltung">Veranstaltung</label>
           <label index="kategorien_lehre">Lehre</label>
 
