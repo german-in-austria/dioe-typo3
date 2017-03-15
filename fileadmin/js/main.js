@@ -79,4 +79,6 @@
     setTimeout(function(){ $('#top-link-block').affix('checkPosition'); }, 500);
   };
 
+  // Podlove
+  $('#podcastAudio').podlovewebplayer();
 });})(jQuery);
