@@ -260,5 +260,37 @@ lib.RFC822 {
     6.value = Sat
   }
   20 = TEXT
-  20.strftime = , %d %b %Y %H:%M:%S %z
+  20.strftime = , %d
+  30 = CASE
+  30 {
+    key.cObject = TEXT
+    key.cObject.strftime = %m
+    01 = TEXT
+    01.value = Jan
+    01.noTrimWrap = | | |
+    02 < .01
+    02.value = Feb
+    03 < .01
+    03.value = Mar
+    04 < .01
+    04.value = Apr
+    05 < .01
+    05.value = May
+    06 < .01
+    06.value = Jun
+    07 < .01
+    07.value = Jul
+    08 < .01
+    08.value = Aug
+    09 < .01
+    09.value = Sep
+    10 < .01
+    10.value = Oct
+    11 < .01
+    11.value = Nov
+    12 < .01
+    12.value = Dec
+  }
+  40 = TEXT
+  40.strftime = %Y %H:%M:%S %z
 }

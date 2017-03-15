@@ -35,6 +35,8 @@ lib.publikationGeplant = <div id="p0"><h2 class="text-center">geplant</h2></div>
 lib.rssTitle = Deutsch in Österreich
 lib.rssDescription = Der FWF Spezialforschungsbereich (SFB) „Deutsch in Österreich. Variation – Kontakt – Perzeption” (F 60) beschäftigt sich mit der Vielfalt und dem Wandel der deutschen Sprache in Österreich. Die drei thematischen Säulen des Projekts sind Variation, Kontakt und Perzeption. Das heißt: Der SFB behandelt den Gebrauch und die subjektive Wahrnehmung von deutscher Sprache in Österreich und zeigt Einflüsse durch Kontaktsprachen auf.
 lib.rssLang = de-de
+lib.podcastTitle = Podcast DIOE (mp3)
+lib.podcastDescription = Podcast des Spezialforschungsbereich Deutsch in Österreich
 lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 lib.homeButtonSub = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 // Englisch
@@ -59,6 +61,8 @@ lib.publikationGeplant = <div id="p0"><h2 class="text-center">planned</h2></div>
 lib.zurueck.value = Back
 lib.rssTitle = German in Austria
 lib.rssDescription = The FWF Special Research Area (SFB) “German in Austria. Variation – Contact –Perception” (F60) is a project that deals with the variety and change of the German language in Austria. The three thematic pillars of the project are Variation, Contact and Perception. This means that the SFB explores how the German language in Austria is used and perceived as well as how it has been influenced by other languages.
+lib.podcastTitle = Podcast DIOE (mp3)
+lib.podcastDescription = Podcast des Spezialforschungsbereich Deutsch in Österreich
 lib.rssLang = en-GB
 lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 lib.homeButtonSub = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
@@ -346,6 +350,8 @@ page.10 {
   18 {
     10.key.cObject.data = date:U
     20.data = date:U
+    30.key.cObject.data = date:U
+    40.data = date:U
     wrap (
     <pubDate>|</pubDate>
     <image>
@@ -359,6 +365,80 @@ page.10 {
   19 < lib.newline
   20 < lib.artikel
   20.10.select.where >
+  20.10.select.max = 20
+  20.wrap >
+  20.20 >
+  30 = TEXT
+  30.value (
+  </channel>
+</rss>
+  )
+}
+[global]
+
+// Podcast Feed
+[globalVar = GP:podcast = 1]
+config.disableCharsetHeader = 1
+config.additionalHeaders = Content-Type: application/rss+xml;charset=utf-8
+lib.podcastFeed < lib.isOne
+page >
+page = PAGE
+page.config.disableAllHeaderCode = 1
+page.10 = COA_INT
+page.10 {
+  5 = TEXT
+  5.value < lib.podcastTitle
+  5.wrap (
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:fh="http://purl.org/syndication/history/1.0" >
+  <channel>
+    <title>|</title>
+    <link>http://www.dioe.at/</link>
+  )
+  6 < lib.newline
+  10 = TEXT
+  10.value < lib.podcastDescription
+  10.wrap = <description>|</description>
+  11 < lib.newline
+  14 = TEXT
+  14.value < lib.rssLang
+  14.wrap (
+    <language>|</language>
+    <copyright>DiÖ</copyright>
+  )
+  15 < lib.newline
+  18 < lib.RFC822
+  18 {
+    10.key.cObject.data = date:U
+    20.data = date:U
+    30.key.cObject.data = date:U
+    40.data = date:U
+    wrap (
+    <lastBuildDate>|</lastBuildDate>
+    <image>
+      <url>http://dioe.at/fileadmin/img/podcast-dioe_original.png</url>
+      <title>Podcast DIOE (mp3)</title>
+      <link>http://www.dioe.at/</link>
+    </image>
+    <atom:link rel="self" type="application/rss+xml" title="Podcast DIOE (mp3)" href="http://www.dioe.at/podcast.xml" />
+    <atom:link rel="first" href="http://www.dioe.at/podcast.xml" />
+    <itunes:author>Martin Gasteiner</itunes:author>
+    <itunes:summary>Der FWF Spezialforschungsbereich (SFB) „Deutsch in Österreich. Variation – Kontakt – Perzeption” (F 60) beschäftigt sich mit der Vielfalt und dem Wandel der deutschen Sprache in Österreich. Die drei thematischen Säulen des Projekts sind Variation, Kontakt und Perzeption. Das heißt: Der SFB behandelt den Gebrauch und die subjektive Wahrnehmung von deutscher Sprache in Österreich und zeigt Einflüsse durch Kontaktsprachen auf. Unser Ziel ist es, die Forschungsansätze und -ergebnisse einem möglichst breiten Publikum einfach und frei zugänglich zu machen. Dieser Podcast stellt die AkteurInnen des Forschungsbereichs vor und versucht einen Einblick in die Struktur und Fragestellungen des Projekts zu geben.</itunes:summary>
+    <itunes:category text="Society &amp; Culture"></itunes:category><itunes:category text="Technology"></itunes:category><itunes:category text="Education"><itunes:category text="Higher Education"></itunes:category></itunes:category>
+    <itunes:owner>
+  		<itunes:name>Martin Gasteiner</itunes:name>
+  		<itunes:email>martin.gasteiner@univie.ac.at</itunes:email>
+  	</itunes:owner>
+  	<itunes:image href="http://dioe.at/fileadmin/img/podcast-dioe_original.png" />
+  	<itunes:subtitle>Podcast des Spezialforschungsbereich Deutsch in Österreich</itunes:subtitle>
+  	<itunes:block>no</itunes:block>
+  	<itunes:explicit>no</itunes:explicit>
+    )
+  }
+  19 < lib.newline
+  20 < lib.artikel
+  20.10.select.where >
+  20.10.select.where = FIND_IN_SET('3',selected_categories)
   20.10.select.max = 20
   20.wrap >
   20.20 >
