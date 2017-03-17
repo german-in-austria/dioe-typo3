@@ -543,9 +543,11 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   text-align: justify;
 }
 .list-view .mitarbeiter {
+  margin-left: -15px;
+  padding-left: 15px;
   margin-bottom: 4em;
-  padding-top:0.25em;
-  border-left:4px solid #fff;
+  padding-top: 0.25em;
+  border-left: 4px solid #fff;
 }
 .list-view .mitarbeiter:hover {
   border-color:#ddd;
@@ -556,6 +558,18 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 }
 .list-view .mitarbeiter-name>.zusaetze>a {
   margin-right:0.5em;
+}
+.icon-view .mitarbeiter {
+  width: 31%;
+  float: left;
+  text-align: center;
+  margin: 20px 1%;
+}
+.list-view .m-icon-view {
+  display:none;
+}
+.icon-view .m-list-view {
+  display:none;
 }
 
 .av-objekt {
@@ -668,10 +682,12 @@ footer .socials{
   text-transform: uppercase;
   letter-spacing: .1em;
   line-height: 42px;
-}
-.socials {
   float: right;
   margin-right: 70px;
+}
+.content .socials {
+  text-align: center;
+  margin-top: 20px;
 }
 .socials img {
   display: inline-block;
@@ -792,6 +808,20 @@ tr.no-border, tr.no-border>td {
 }
 .bodytext:after {
   clear: both;
+}
+
+
+@media (max-width: 767px) {
+.icon-view .mitarbeiter {
+  width: 48%;
+  margin: 20px 1%;
+}
+}
+@media (max-width: 450px) {
+.icon-view .mitarbeiter {
+  width: 100%;
+  margin: 20px 0%;
+}
 }
 
 @media print {
