@@ -41,6 +41,8 @@ lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: 
 lib.homeButtonSub = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 // Englisch
 [globalVar = GP:L = 1]
+page.10.stdWrap.replacement.10 >
+page.10.stdWrap.replacement.20 >
 config {
   language = en
   locale_all = en_GB.utf8
