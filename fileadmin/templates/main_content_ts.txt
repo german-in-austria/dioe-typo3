@@ -151,4 +151,8 @@ page.10 {
   35 = TEXT
   35.value = Zum Seitenanfang
   35.wrap = <div id="top-link-block" class="hidden"><div class="container hidden-print"><a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;" title="|"><span class="glyphicon glyphicon-chevron-up"></span></a></div></div>
+  stdWrap.replacement.10 {
+    search = ”
+    replace = “
+  }
 }
