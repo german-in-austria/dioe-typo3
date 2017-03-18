@@ -810,7 +810,38 @@ tr.no-border, tr.no-border>td {
   clear: both;
 }
 
-
+.cookie-policy{
+  text-align: center;
+  color: #fff;
+  background: darkorange;
+  position: fixed;
+  line-height: 40px;
+  height: 40px;
+  bottom: 0;
+  right: 0;
+  font-size: 0.7em;
+  left: 0;
+  transform: translateY(50px);
+  transition: .5s;
+  opacity: 0;
+}
+.cookie-policy.active{
+  opacity: 1;
+  transform: translateY(0px);
+}
+.cookie-policy a{
+  color: white;
+}
+.cookie-policy .close{
+  cursor: pointer;
+  font-weight: 300;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  background: rgba(0, 0, 0, 0.2);
+}
 @media (max-width: 767px) {
 .icon-view .mitarbeiter {
   width: 48%;

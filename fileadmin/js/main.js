@@ -1,4 +1,24 @@
 (function($){jQuery(document).ready(function($){
+
+  // Helpers
+  Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+  }
+
+  function getCookie(c_name) {
+    var i, x, y, ARRcookies = document.cookie.split(";");
+    for (i = 0; i < ARRcookies.length; i++) {
+      x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+      y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+      x = x.replace(/^\s+|\s+$/g, "");
+      if (x == c_name) {
+        return unescape(y);
+      }
+    }
+  }
+
   // Wörter/Sätze
   var lang = [];
   lang['wirdgeladen'] = 'Wird geladen ...';
@@ -81,4 +101,23 @@
 
   // Podlove
   $('#podcastAudio').podlovewebplayer();
+
+  // Cookie Notice
+
+  var cookie_notice_html = "<div class=\"cookie-policy container\">\
+		Diese Seite verwendet Cookies. <a target=\"_blank\" style=\"opacity: .7;\" href=\"https://www.iubenda.com/privacy-policy/7849478\">Mehr Informationen</a>\
+		<a class=\"close\" onclick=\"document.querySelector('.cookie-policy').classList.remove('active')\">OK\
+		</a>\
+	</div>"
+  document.body.innerHtml += cookie_notice_html
+
+  setTimeout(function() {
+    if (getCookie('cookiepolicy') == 'true') {} else {
+      var now = new Date()
+      document.querySelector('.cookie-policy').classList.add('active')
+      document.cookie = 'cookiepolicy=true; expires=' + now.addDays(200) + '; path=/';
+    }
+  }, 3000)
+
+
 });})(jQuery);
