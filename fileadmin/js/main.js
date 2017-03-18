@@ -105,7 +105,7 @@
   // Cookie Notice
 
   var cookie_notice_html = "<div class=\"cookie-policy container\">\
-		Diese Seite verwendet Cookies. <a target=\"_blank\" style=\"opacity: .7;\" href=\"https://www.iubenda.com/privacy-policy/7849478\">Mehr Informationen</a>\
+		Diese Seite verwendet Cookies. <a target=\"_blank\" style=\"opacity: .7;\" href=\"https://www.iubenda.com/privacy-policy/8076061\">Mehr Informationen</a>\
 		<a class=\"close\" onclick=\"document.querySelector('.cookie-policy').classList.remove('active')\">OK\
 		</a>\
 	</div>"
