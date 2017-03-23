@@ -17,7 +17,7 @@ config.pageRendererTemplateFile = fileadmin/templates/tslib_page_frontend.html
 config {
   prefixLocalAnchors = all
   simulateStaticDocuments = 0
-  baseURL = http://dioe.at/
+  baseURL = https://dioe.at/
   tx_realurl_enable = 1
 }
 
@@ -334,7 +334,7 @@ page.10 {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>|</title>
-    <link>http://www.dioe.at/</link>
+    <link>https://www.dioe.at/</link>
   )
   6 < lib.newline
   10 = TEXT
@@ -357,11 +357,11 @@ page.10 {
     wrap (
     <pubDate>|</pubDate>
     <image>
-      <url>http://dioe.at/fileadmin/tile.png</url>
+      <url>https://dioe.at/fileadmin/tile.png</url>
       <title>Deutsch in Österreich</title>
-      <link>http://www.dioe.at/</link>
+      <link>https://www.dioe.at/</link>
     </image>
-    <atom:link href="http://www.dioe.at/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.dioe.at/rss.xml" rel="self" type="application/rss+xml" />
     )
   }
   19 < lib.newline
@@ -395,7 +395,7 @@ page.10 {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:fh="http://purl.org/syndication/history/1.0" >
   <channel>
     <title>|</title>
-    <link>http://www.dioe.at/</link>
+    <link>https://www.dioe.at/</link>
   )
   6 < lib.newline
   10 = TEXT
@@ -418,12 +418,12 @@ page.10 {
     wrap (
     <lastBuildDate>|</lastBuildDate>
     <image>
-      <url>http://dioe.at/fileadmin/img/podcast-dioe_original.png</url>
+      <url>https://dioe.at/fileadmin/img/podcast-dioe_original.png</url>
       <title>Podcast DIOE (mp3)</title>
-      <link>http://www.dioe.at/</link>
+      <link>https://www.dioe.at/</link>
     </image>
-    <atom:link rel="self" type="application/rss+xml" title="Podcast DIOE (mp3)" href="http://www.dioe.at/podcast.xml" />
-    <atom:link rel="first" href="http://www.dioe.at/podcast.xml" />
+    <atom:link rel="self" type="application/rss+xml" title="Podcast DIOE (mp3)" href="https://www.dioe.at/podcast.xml" />
+    <atom:link rel="first" href="https://www.dioe.at/podcast.xml" />
     <itunes:author>Martin Gasteiner</itunes:author>
     <itunes:summary>Der FWF Spezialforschungsbereich (SFB) „Deutsch in Österreich. Variation – Kontakt – Perzeption” (F 60) beschäftigt sich mit der Vielfalt und dem Wandel der deutschen Sprache in Österreich. Die drei thematischen Säulen des Projekts sind Variation, Kontakt und Perzeption. Das heißt: Der SFB behandelt den Gebrauch und die subjektive Wahrnehmung von deutscher Sprache in Österreich und zeigt Einflüsse durch Kontaktsprachen auf. Unser Ziel ist es, die Forschungsansätze und -ergebnisse einem möglichst breiten Publikum einfach und frei zugänglich zu machen. Dieser Podcast stellt die AkteurInnen des Forschungsbereichs vor und versucht einen Einblick in die Struktur und Fragestellungen des Projekts zu geben.</itunes:summary>
     <itunes:category text="Society &amp; Culture"></itunes:category><itunes:category text="Technology"></itunes:category><itunes:category text="Education"><itunes:category text="Higher Education"></itunes:category></itunes:category>
@@ -431,7 +431,7 @@ page.10 {
   		<itunes:name>Martin Gasteiner</itunes:name>
   		<itunes:email>martin.gasteiner@univie.ac.at</itunes:email>
   	</itunes:owner>
-  	<itunes:image href="http://dioe.at/fileadmin/img/podcast-dioe_original.png" />
+  	<itunes:image href="https://dioe.at/fileadmin/img/podcast-dioe_original.png" />
   	<itunes:subtitle>Podcast des Spezialforschungsbereich Deutsch in Österreich</itunes:subtitle>
   	<itunes:block>no</itunes:block>
   	<itunes:explicit>no</itunes:explicit>
