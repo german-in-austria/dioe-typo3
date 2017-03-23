@@ -39,7 +39,7 @@
               <f:if condition="{field.institut}"><f:if condition="{field.institutUrl}"><f:then><f:if condition="{field.institutUrl}!='http://'"><f:then><a href="{field.institutUrl}" target="_BLANK" title="Institution">{field.institut}</a></f:then><f:else>{field.institut}</f:else></f:if></f:then><f:else>{field.institut}</f:else></f:if><br></f:if>
             </p>
             <f:if condition="{field.funktionAllgemein}"><p>{field.funktionAllgemein}</p></f:if>
-            <p><b>Projekt<f:if condition="{f:count(subject: field.teilprojekte)} > 1">e</f:if>:</b><br>
+            <p><b><f:if condition="{f:count(subject: field.teilprojekte)} > 1"><f:then>{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:mitarbeiter_projekte')}</f:then><f:else>{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:mitarbeiter_projekt')}</f:else></f:if>:</b><br>
             	<f:for each="{field.teilprojekte}" as="teilprojekt">
             		{teilprojekt.tpTeilprojekt}<f:if condition="{teilprojekt.tpFunktion}"> - {teilprojekt.tpFunktion}</f:if><br>
             	</f:for>
