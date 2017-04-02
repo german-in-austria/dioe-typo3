@@ -28,6 +28,16 @@
 							<div class="clearfix"></div>
 							<ul class="publicationen-liste publicationen-einzeln"><f:render partial="BibTex" arguments="{field: field, contentObject: contentObject}" section="Liste" /></ul>
 							<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageDetails')}">
+								<f:then>
+									<f:if condition="{field.sektionDateienDateien}">
+										<br>
+										<div class="dateien">
+											<f:for each="{field.sektionDateienDateien}" as="datei" iteration="i">
+												<f:render partial="Datei" arguments="{datei: datei}"/>
+											</f:for>
+										</div>
+									</f:if>
+								</f:then>
 								<f:else>
 									<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_beitrag_anzeigen')}</f:link.page>
 									<div class="visible-print-block">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_artikel_url')}: {f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE',absolute:'TRUE')}</div>
