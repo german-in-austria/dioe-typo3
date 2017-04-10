@@ -571,6 +571,18 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 .icon-view .m-list-view {
   display:none;
 }
+.icon-view .mitarbeiter-container .mitarbeiter:nth-child(3n+1) {
+  clear: left;
+}
+
+.ma-titel {
+  color: #777;
+}
+.m-icon-view .ma-titel {
+  display: block;
+  font-size: 16px;
+  line-height: 1.0;
+}
 
 .av-objekt {
   background: #333;
@@ -810,6 +822,28 @@ tr.no-border, tr.no-border>td {
   clear: both;
 }
 
+.img.img-circle {
+  overflow: visible;
+}
+.img.img-circle>img {
+  border-radius: 50%;
+}
+.img.img-circle.border-gray {
+  border: none;
+}
+.img.img-circle.border-gray>img {
+  border: 1px solid #ddd;
+}
+.img.img-circle>span.img-add.lizenz {
+  position: relative;
+  display: inline-block;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  border-radius: 5px;
+  top: -5px;
+}
+
 .cookie-policy{
   text-align: center;
   color: #fff;
@@ -846,6 +880,12 @@ tr.no-border, tr.no-border>td {
 .icon-view .mitarbeiter {
   width: 48%;
   margin: 20px 1%;
+}
+.icon-view .mitarbeiter-container .mitarbeiter:nth-child(3n+1) {
+  clear: none;
+}
+.icon-view .mitarbeiter-container .mitarbeiter:nth-child(2n+1) {
+  clear: left;
 }
 }
 @media (max-width: 450px) {
