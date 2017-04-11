@@ -29,6 +29,11 @@ lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.c
 <INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/main_content_ts.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/libs_ts.txt">
 
+// Debugging
+[globalVar = TSFE : beUserLogin == 12]
+page.bodyTagCObject.wrap = <body id="hp|" class="lang-de debugging">
+[global]
+
 // Sprachen
 // Deutsch
 lib.publikationGeplant = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="publicationen-liste">|</ul>
@@ -68,6 +73,11 @@ lib.podcastDescription = Podcast des Spezialforschungsbereich Deutsch in Österr
 lib.rssLang = en-GB
 lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 lib.homeButtonSub = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+[global]
+
+// Debugging Englisch
+[globalVar = GP:L = 1] && [globalVar = TSFE : beUserLogin == 12]
+page.bodyTagCObject.wrap = <body id="hp|" class="lang-en debugging">
 [global]
 
 page.10.10.wrap < lib.homeButtonSub
