@@ -30,12 +30,15 @@
   };
 
   // Mobiles Menü
-  if (!("ontouchstart" in document)) {
-    var s = skrollr.init({
-        smoothScrolling: false,
-        forceHeight: true
-    });
+  if($('body#hp1').length>0) {
+    if (!("ontouchstart" in document)) {
+      var s = skrollr.init({
+          smoothScrolling: false,
+          forceHeight: true
+      });
+    }
   }
+
   var mobileToggle = 0;
   $('body').on('click touchend', '.trigger-mobile-menu', function (e) {
     e.preventDefault();
@@ -132,7 +135,7 @@
         $('.mitarbeiter-liste>article.mitarbeiter').removeClass('hidden')
       };
     });
-    
+
   };
 
   // Cookie Notice
