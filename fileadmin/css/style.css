@@ -844,6 +844,14 @@ tr.no-border, tr.no-border>td {
   top: -5px;
 }
 
+.debug-show-block {
+  display:none;
+}
+body.debugging .debug-show-block {
+  display:block;
+}
+
+
 .cookie-policy{
   text-align: center;
   color: #fff;
@@ -851,7 +859,8 @@ tr.no-border, tr.no-border>td {
   position: fixed;
   line-height: 40px;
   height: 40px;
-  bottom: 0;
+  top: 89px;
+  z-index: 9999;
   right: 0;
   font-size: 0.7em;
   left: 0;
@@ -873,7 +882,8 @@ tr.no-border, tr.no-border>td {
   position: absolute;
   right: 0;
   top: 0;
-  width: 40px;
+  width: 70px;
+  padding: 9px;
   background: rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 767px) {
