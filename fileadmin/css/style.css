@@ -844,13 +844,15 @@ tr.no-border, tr.no-border>td {
   top: -5px;
 }
 
-.debug-show-block {
-  display:none;
+.debug-show-block,.debug-show-iblock {
+  display:none !important;
 }
 body.debugging .debug-show-block {
-  display:block;
+  display:block !important;
 }
-
+body.debugging .debug-show-iblock {
+  display:inline-block !important;
+}
 
 .cookie-policy{
   text-align: center;

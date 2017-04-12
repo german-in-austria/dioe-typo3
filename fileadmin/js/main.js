@@ -102,6 +102,39 @@
   // Podlove
   $('#podcastAudio').podlovewebplayer();
 
+  // Filter/Sortierung: Team
+  if($('#filter-team #ft-projekte').length > 0) {
+    var lastuebid = '';
+    $('.mitarbeiter-liste>*').each(function(){
+      if($(this).is('article')) {
+        $(this).data('sort-ueb',lastuebid)
+      } else {
+        lastuebid = $(this).prop('id')
+      };
+    });
+    $(document).on('change', '#filter-team #ft-projekte', function(event) {
+      var asel = $(this).val()
+      if(asel) {
+        asel = JSON.parse(asel)
+        $('.mitarbeiter-liste>article.mitarbeiter').each(function(){
+          if($(this).data('sort-projekte')) {
+            var aproj = JSON.parse('['+$(this).data('sort-projekte')+']')
+            var mfound = 0
+            jQuery.each(asel, function(i,val){ if(aproj.indexOf(val)>-1) { mfound = 1; }; });
+            if(mfound) {
+              $(this).removeClass('hidden')
+            } else {
+              $(this).addClass('hidden')
+            };
+          };
+        });
+      } else {
+        $('.mitarbeiter-liste>article.mitarbeiter').removeClass('hidden')
+      };
+    });
+    
+  };
+
   // Cookie Notice
   setTimeout(function() {
     if (getCookie('cookiepolicy') == 'true') {} else {

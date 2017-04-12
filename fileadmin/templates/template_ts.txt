@@ -44,6 +44,48 @@ lib.podcastTitle = Podcast DIOE (mp3)
 lib.podcastDescription = Podcast des Spezialforschungsbereich Deutsch in Österreich
 lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 lib.homeButtonSub = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+lib.filterTeam (
+  <div id="filter-team">
+    <div class="form-inline">
+      <div class="form-group"><p class="form-control-static">Filter:</p></div>
+      <div class="form-group">
+        <label class="sr-only" for="ft-projekte">Projekt</label>
+        <select id="ft-projekte" class="form-control">
+          <option value="">Alle Projekte</option>
+          <option value="[24]">Cluster A</option>
+          <option value="[24]">- PP01</option>
+          <option value="[26,27,28]">Cluster B</option>
+          <option value="[26]">- PP02</option>
+          <option value="[27]">- PP03</option>
+          <option value="[28]">- PP04</option>
+          <option value="[30,31]">Cluster C</option>
+          <option value="[30]">- PP05</option>
+          <option value="[31]">- PP06</option>
+          <option value="[33,34]">Cluster D</option>
+          <option value="[33]">- PP08</option>
+          <option value="[34]">- PP10</option>
+          <option value="[36]">Cluster E</option>
+          <option value="[36]">- PP11</option>
+        </select>
+      </div>
+      <div class="form-group debug-show-iblock">
+        <label class="sr-only" for="ft-funktion">Funktion</label>
+        <select id="ft-funktion" class="form-control" style="width:125px;">
+          <option value="">Funktion</option>
+        </select>
+      </div>
+      <div class="form-group debug-show-iblock"><p class="form-control-static">Sortierung:</p></div>
+      <div class="form-group debug-show-iblock">
+        <label class="sr-only" for="ft-sort">Sortierung</label>
+        <select id="ft-sort" class="form-control">
+          <option value="">Standard</option>
+          <option value="">Teilprojekt</option>
+          <option value="">alphabetisch</option>
+        </select>
+      </div>
+    </div>
+  </div>
+)
 // Englisch
 [globalVar = GP:L = 1]
 page.10.stdWrap.replacement.10 >
@@ -236,6 +278,8 @@ page.10.20 {
 // Mitarbeiter
 [globalVar = TSFE:id = 12]
 page.10.20 {
+  15 = TEXT
+  15.value < lib.filterTeam
   20 < .10
   20.select.where = colPos = 1
   20.wrap = <div class="mitarbeiter-liste list-view clearfix">|</div>
