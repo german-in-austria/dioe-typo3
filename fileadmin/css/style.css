@@ -862,7 +862,7 @@ body.debugging .debug-show-iblock {
   line-height: 40px;
   height: 40px;
   top: 89px;
-  z-index: 9999;
+  z-index: 980;
   right: 0;
   font-size: 0.7em;
   left: 0;
