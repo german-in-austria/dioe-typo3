@@ -110,10 +110,30 @@
     var lastuebid = '';
     $('.mitarbeiter-liste>*').each(function(){
       if($(this).is('article')) {
-        $(this).data('sort-ueb',lastuebid)
+        $(this).attr('data-sort-ueb',lastuebid)
       } else {
         lastuebid = $(this).prop('id')
       };
+    });
+    $(document).on('change', '#filter-team #ft-sort', function(event) {
+      var asel = $(this).val()
+      if(asel==1) { /* Teilprojekt */
+        console.log('Sortierung: Teilprojekt')
+        $('.mitarbeiter-liste').removeClass('ft-sort-alpha').addClass('ft-sort-teilproj')
+      } else if(asel==2) { /* Alphabetisch */
+        $('.mitarbeiter-liste').removeClass('ft-sort-teilproj').addClass('ft-sort-alpha')
+        $('.mitarbeiter-liste>div').addClass('ft-sort-hidden')
+        var sortedmitarbeiter = $('.mitarbeiter-liste>article.mitarbeiter').sort(function(a, b) { return String.prototype.localeCompare.call($(a).data('sort-name').toLowerCase(), $(b).data('sort-name').toLowerCase()); });
+        $('.mitarbeiter-liste').append(sortedmitarbeiter)
+      } else { /* Funktion */
+        $('.mitarbeiter-liste').removeClass('ft-sort-alpha ft-sort-teilproj')
+        $('.mitarbeiter-liste>div').removeClass('ft-sort-hidden')
+        var sortedmitarbeiter = $('.mitarbeiter-liste>article.mitarbeiter').sort(function(a, b) { return $(a).data('sort-sorting') - $(b).data('sort-sorting'); });
+        $('.mitarbeiter-liste').append(sortedmitarbeiter)
+        $('.mitarbeiter-liste>div').each(function(){
+          $('.mitarbeiter-liste>article.mitarbeiter[data-sort-ueb="'+$(this).prop('id')+'"]').first().before($(this))
+        });
+      }
     });
     $(document).on('change', '#filter-team #ft-projekte', function(event) {
       var asel = $(this).val()
@@ -125,14 +145,14 @@
             var mfound = 0
             jQuery.each(asel, function(i,val){ if(aproj.indexOf(val)>-1) { mfound = 1; }; });
             if(mfound) {
-              $(this).removeClass('hidden')
+              $(this).removeClass('ft-pro-hidden')
             } else {
-              $(this).addClass('hidden')
+              $(this).addClass('ft-pro-hidden')
             };
           };
         });
       } else {
-        $('.mitarbeiter-liste>article.mitarbeiter').removeClass('hidden')
+        $('.mitarbeiter-liste>article.mitarbeiter').removeClass('ft-pro-hidden')
       };
     });
 

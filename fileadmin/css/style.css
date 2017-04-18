@@ -854,6 +854,13 @@ body.debugging .debug-show-iblock {
   display:inline-block !important;
 }
 
+.ft-pro-hidden, .ft-sort-hidden {
+  display:none !important;
+}
+.mitarbeiter-liste.ft-sort-alpha {
+  padding-top: 63px;
+}
+
 .cookie-policy{
   text-align: center;
   color: #fff;

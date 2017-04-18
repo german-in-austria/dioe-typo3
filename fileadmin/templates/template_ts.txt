@@ -74,18 +74,19 @@ lib.filterTeam (
           <option value="">Funktion</option>
         </select>
       </div>
-      <div class="form-group debug-show-iblock"><p class="form-control-static">Sortierung:</p></div>
-      <div class="form-group debug-show-iblock">
+      <div class="form-group"><p class="form-control-static">Sortierung:</p></div>
+      <div class="form-group">
         <label class="sr-only" for="ft-sort">Sortierung</label>
         <select id="ft-sort" class="form-control">
           <option value="">Standard</option>
-          <option value="">Teilprojekt</option>
-          <option value="">alphabetisch</option>
+          <option value="2">alphabetisch</option>
         </select>
       </div>
     </div>
   </div>
 )
+//           <option value="1">Teilprojekt</option>
+
 // Englisch
 [globalVar = GP:L = 1]
 page.10.stdWrap.replacement.10 >
