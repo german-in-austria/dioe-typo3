@@ -854,7 +854,7 @@ body.debugging .debug-show-iblock {
   display:inline-block !important;
 }
 
-.ft-pro-hidden, .ft-sort-hidden {
+.ft-pro-hidden, .ft-sort-hidden, .fa-tc-hidden, .fa-art-hidden {
   display:none !important;
 }
 .mitarbeiter-liste.ft-sort-alpha {

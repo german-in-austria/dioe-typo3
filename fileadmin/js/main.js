@@ -82,18 +82,22 @@
   });
 
   // Nachladen
-  $(window).scroll(function(event) {
+  function articleNachladen() {
     if($('.article-laden.laden').length==1 && $('.article-laden.laden').offset().top < $(window).scrollTop() + $(window).outerHeight()) {
       $('.article-laden').html(lang['wirdgeladen']).removeClass('laden').addClass('lade');
       console.log('Lade Inhalte ab Eintrag: '+$('.article-laden').data("loadbegin"))
       $.post( "", { getlist: "1", begin: $('.article-laden').data("loadbegin") }).done(function( data ) {
         $('.article-laden.lade').replaceWith(data);
+        $('#filter-artikel #fa-taskcluster, #filter-artikel #fa-art, #filter-artikel #fa-sort').change()
         setTimeout(function(){ $('#top-link-block').affix('checkPosition'); }, 500);
       }).fail(function( data ) {
         console.log(data);
         $('.article-laden.lade').replaceWith('<div>'+lang['ladefehler']+'</div>');
       });
     };
+  };
+  $(window).scroll(function(event) {
+    articleNachladen()
   }).scroll();
 
   // "Nach oben"-Knopf
@@ -104,6 +108,43 @@
 
   // Podlove
   $('#podcastAudio').podlovewebplayer();
+
+  // Filter/Sortierung: Artiel
+  if($('#filter-artikel #fa-taskcluster').length > 0) {
+    function filterByClass(sClass,hClass,zClass) {
+      $(zClass).removeClass(hClass).not(sClass).addClass(hClass)
+      articleNachladen()
+    }
+    $(document).on('change', '#filter-artikel #fa-taskcluster', function(event) {
+      var asel = $(this).val()
+      if(asel) {
+        filterByClass('.'+asel,'fa-tc-hidden','.article-list>article')
+      } else {
+        $('.article-list>article').removeClass('fa-tc-hidden')
+      };
+    });
+    $(document).on('change', '#filter-artikel #fa-art', function(event) {
+      var asel = $(this).val()
+      if(asel) {
+        filterByClass('.'+asel,'fa-art-hidden','.article-list>article')
+      } else {
+        $('.article-list>article').removeClass('fa-art-hidden')
+      };
+    });
+    $(document).on('change', '#filter-artikel #fa-sort', function(event) {
+      var asel = $(this).val()
+      if(asel==1) {
+        var sortedartikel = $('.article-list>article').sort(function(a, b) { return $(a).data('sort-date') - $(b).data('sort-date'); });
+        var sortedartikelload = $('.article-list>.article-laden')
+        $('.article-list').html(sortedartikel).prepend(sortedartikelload)
+        articleNachladen()
+      } else {
+        var sortedartikel = $('.article-list>article').sort(function(a, b) { return $(b).data('sort-date') - $(a).data('sort-date'); });
+        var sortedartikelload = $('.article-list>.article-laden')
+        $('.article-list').html(sortedartikel).append(sortedartikelload)
+      };
+    });
+  };
 
   // Filter/Sortierung: Team
   if($('#filter-team #ft-projekte').length > 0) {
