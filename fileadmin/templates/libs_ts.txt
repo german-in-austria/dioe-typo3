@@ -196,6 +196,7 @@ lib.termine {
     table = tt_content
     select {
       pidInList = 31
+      orderBy = terminzeit asc, sorting
       andWhere = terminzeit > UNIX_TIMESTAMP(NOW())
     }
     stdWrap.required = 1
