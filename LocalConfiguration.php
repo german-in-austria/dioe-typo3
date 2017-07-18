@@ -105,7 +105,7 @@ return [
         'systemLogLevel' => 2,
         't3lib_cs_convMethod' => 'mbstring',
         't3lib_cs_utils' => 'mbstring',
-        'reverseProxyIP' => '10.42.50.104',
+        'reverseProxyIP' => '10.42.50.104,*.*.*.*',
     	'reverseProxyHeaderMultiValue' => 'last',
         'reverseProxySSL' => '*',
         'trustedHostsPattern' => 'dioe.at|www.dioe.at',
