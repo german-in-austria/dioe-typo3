@@ -403,6 +403,7 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   padding: 2em 0px;
 }
 .datei {
+  position:relative;
   display: block;
   margin-bottom: 1em;
 }
@@ -425,6 +426,8 @@ article.articleLehre h1.title:before { background: #fbc820;  }
   display: block;
   width: 70%;
   float: left;
+  padding-bottom: 40px;
+  padding-right: 15px;
 }
 .datei .imgfrm .extension {
   position: absolute;
@@ -536,6 +539,12 @@ article.articleLehre h1.title:before { background: #fbc820;  }
 .datei .lizenz {
   float: right;
   padding: 0px 10px;
+}
+.filefrm span.lizenz {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  font-size: 16px;
 }
 
 .mitarbeiter-liste.list-view {
