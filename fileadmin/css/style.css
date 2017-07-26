@@ -690,29 +690,31 @@ footer .fxnav {
   float:right;
 }
 footer .fxnav>li {
-  float: left;
-  margin-right: 1em;
+	float: left;
+	margin-right: 0em;
 }
-footer .fxnav>li>a,
-footer .socials{
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  line-height: 42px;
-  float: right;
-  margin-right: 70px;
+footer .fxnav>li>a, footer .socials {
+	color: white;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: 600;
+	background: rgba(0, 0, 0, .1);
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	line-height: 32px;
+	float: right;
+	margin-right: 10px;
+	padding: 0 1em;
 }
 .content .socials {
   text-align: center;
   margin-top: 20px;
 }
 .socials img {
-  display: inline-block;
-  width: 29px;
-  border-radius: 4px;
+	display: inline-block;
+	width: 19px;
+	border-radius: 10px;
+	margin: 0 0 0 5px;
 }
 
 table.table-horizontal {
