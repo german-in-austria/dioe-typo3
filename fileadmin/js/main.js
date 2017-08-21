@@ -164,11 +164,13 @@
       } else if(asel==2) { /* Alphabetisch */
         $('.mitarbeiter-liste').removeClass('ft-sort-teilproj').addClass('ft-sort-alpha')
         $('.mitarbeiter-liste>div').addClass('ft-sort-hidden')
+				$('.outro-text').hide()
         var sortedmitarbeiter = $('.mitarbeiter-liste>article.mitarbeiter').sort(function(a, b) { return String.prototype.localeCompare.call($(a).data('sort-name').toLowerCase(), $(b).data('sort-name').toLowerCase()); });
         $('.mitarbeiter-liste').append(sortedmitarbeiter)
       } else { /* Funktion */
         $('.mitarbeiter-liste').removeClass('ft-sort-alpha ft-sort-teilproj')
         $('.mitarbeiter-liste>div').removeClass('ft-sort-hidden')
+				$('.outro-text').show()
         var sortedmitarbeiter = $('.mitarbeiter-liste>article.mitarbeiter').sort(function(a, b) { return $(a).data('sort-sorting') - $(b).data('sort-sorting'); });
         $('.mitarbeiter-liste').append(sortedmitarbeiter)
         $('.mitarbeiter-liste>div').each(function(){
