@@ -182,6 +182,7 @@
       var asel = $(this).val()
       if(asel) {
         asel = JSON.parse(asel)
+				$('.outro-text').hide()
         $('.mitarbeiter-liste>article.mitarbeiter').each(function(){
           if($(this).data('sort-projekte')) {
             var aproj = JSON.parse('['+$(this).data('sort-projekte')+']')
@@ -196,6 +197,7 @@
         });
       } else {
         $('.mitarbeiter-liste>article.mitarbeiter').removeClass('ft-pro-hidden')
+				$('.outro-text').show()
       };
     });
 
