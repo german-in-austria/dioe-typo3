@@ -30,7 +30,7 @@
   };
 
   // Mobiles Menü
-  if($('body#hp1').length>0) {
+  if($('body#hp1,body#hp60').length>0) {
     if (!("ontouchstart" in document)) {
       var s = skrollr.init({
           smoothScrolling: false,

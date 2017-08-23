@@ -160,7 +160,7 @@ nav input.search-field:focus::-moz-placeholder {
 nav input.search-field:focus:-ms-input-placeholder {
   color: #333;
 }
-#mp53 {
+#mp53, #mp61 {
   display:none;
 }
 h1,

@@ -1,0 +1,42 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/template_ts.txt">
+
+#RealUrl
+config {
+  baseURL = https://iam.dioe.at/
+}
+
+config.headerComment (
+)
+
+page.10.10.20.10.special.value = 60
+page.10.30.10.select.pidInList = 76
+
+page.10.10.wrap < lib.homeButtonSub
+// Startseite
+[globalVar = TSFE:id = 60]
+page.includeJSFooter {
+  file1 = https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js
+}
+page.10 {
+  5 = TEXT
+  5.value (
+<header class="main hidden-print">
+  <img class="hero mountains active" data-0="transform: translateY(0%)" data-390="transform: translateY(70%)" src="fileadmin/img/mountains.png" />
+  <img class="hero city" data-0="transform: translateY(0%)" data-390="transform: translateY(70%)" src="fileadmin/img/city.png" />
+  <img class="logo" src="fileadmin/img/dioe-logo-gray.png" data-0="transform:translateY(0%); opacity: 1" data-390="transform:translateY(220%); opacity:.7">
+</header>
+)
+  10.wrap < lib.homeButtonHome
+  20 {
+    20 < lib.artikel
+    20.10.select.where = FIND_IN_SET('21',selected_categories)
+    20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
+    20.20.select.max = 5
+    20.wrap >
+    20.wrap = <div class="article-list">|</div>
+    99 < .10
+    99.select.where = colPos = 99
+    99.wrap = <article class="outro-text">|</article>
+  }
+}
+[global]
