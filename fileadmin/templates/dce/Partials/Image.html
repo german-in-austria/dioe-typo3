@@ -1,5 +1,6 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
 <f:spaceless>
+	<f:if condition="{lightbox}"><a href="{f:uri.image(src:'{src}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-title="{lbTitle}" data-footer="{lbDescription}"></f:if>
   <f:if condition="{hideSpan}"><f:else><span class="img {class}"></f:else></f:if>
   <f:if condition="{bildVerh}">
     <f:then>
@@ -50,5 +51,6 @@
       </f:if>
     </f:else>
   </f:if>
-<f:if condition="{hideSpan}"><f:else></span></f:else></f:if>
+	<f:if condition="{hideSpan}"><f:else></span></f:else></f:if>
+	<f:if condition="{lightbox}"></a></f:if>
 </f:spaceless>

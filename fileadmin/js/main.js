@@ -65,21 +65,32 @@
   });
 
   // Bilder in Text setzen
-  // <span data-img="1,left,33%">&nbsp;</span>
+  // <span data-img="1,left,33%,lb">&nbsp;</span>
   $('span[data-img]').each(function(){
     var aimgarray = String($(this).data('img')).split(',');
     var aimgnr = aimgarray[0];
     var aimgalign = 'left';
     var aimgwidth = '100%';
+		var aimglb = false;
     for (var i = 1; i < aimgarray.length; i++) {
       if(aimgarray[i]=='left'||aimgarray[i]=='right') {
         aimgalign = aimgarray[i];
       } else if(aimgarray[i].indexOf('%') > -1) {
         aimgwidth = aimgarray[i];
-      };
+      } else if(aimgarray[i]=='lb') {
+				aimglb = true;
+			};
     };
-    $(this).replaceWith('<span class="img img-responsive img-rounded pull-'+aimgalign+((aimgwidth=='100%')?'':((aimgalign=='left')?' mir2e mib1e':' mil2e mib1e'))+'" style="width:'+aimgwidth+';"><img src="'+$('.imgData[data-img-dg="'+aimgnr+'"]').data('img-url')+'" alt="" class="w100">'+$('.imgData[data-img-dg="'+aimgnr+'"]').siblings('.img-add')[0].outerHTML+'</span>');
+		var aimgrw = '<span class="img img-responsive img-rounded pull-'+aimgalign+((aimgwidth=='100%')?'':((aimgalign=='left')?' mir2e mib1e':' mil2e mib1e'))+'" style="width:'+aimgwidth+';"><img src="'+$('.imgData[data-img-dg="'+aimgnr+'"]').data('img-url')+'" alt="" class="w100">'+$('.imgData[data-img-dg="'+aimgnr+'"]').siblings('.img-add')[0].outerHTML+'</span>';
+		if(aimglb==true) {
+			aimgrw = '<a href="#" data-imgalbox="'+aimgnr+'">'+aimgrw+'</a>';
+		};
+    $(this).replaceWith(aimgrw);
   });
+	$(document).on('click', 'a[data-imgalbox]', function (e) {
+		e.preventDefault();
+		$('.imgData[data-img-dg="'+$(this).data('imgalbox')+'"]').parent().click();
+	});
 
   // Nachladen
   function articleNachladen() {
