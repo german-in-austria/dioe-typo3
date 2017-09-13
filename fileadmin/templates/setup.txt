@@ -68,6 +68,10 @@ RTE {
 		showTagFreeClasses = 0
 		enableWordClean = 1
 		useCSS = 0
+		proc.entryHTMLparser_db.removeTags := removeFromList(u)
+		removeTags := removeFromList(u)
+		showButtons := addToList(underline)
+		hideButtons := removeFromList(underline)
 	}
 }
 
