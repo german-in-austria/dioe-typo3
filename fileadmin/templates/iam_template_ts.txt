@@ -33,9 +33,7 @@ page.10 {
   5 = TEXT
   5.value (
 <header class="main hidden-print">
-  <img class="hero mountains active" data-0="transform: translateY(0%)" data-390="transform: translateY(70%)" src="fileadmin/img/mountains.png" />
-  <img class="hero city" data-0="transform: translateY(0%)" data-390="transform: translateY(70%)" src="fileadmin/img/city.png" />
-  <img class="logo" src="fileadmin/img/dioe-logo-gray.png" data-0="transform:translateY(0%); opacity: 1" data-390="transform:translateY(220%); opacity:.7">
+  <img class="hero people active" data-0="transform: translateY(0%)" data-390="transform: translateY(70%)" src="fileadmin/img/i-am-dioe-footer-small.png" />
 </header>
 )
   10.wrap < lib.homeButtonHome
