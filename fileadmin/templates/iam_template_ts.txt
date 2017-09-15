@@ -12,6 +12,18 @@ page.10.10.20.10.special.value = 60
 page.10.30.10.select.pidInList = 76
 
 page.10.10.wrap < lib.homeButtonSub
+
+// Sprachen
+// Deutsch
+lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+lib.homeButtonSub = <ul class="nav nav-pills hidden-print"><li><span><a href="/" title="Startseite"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+
+// Englisch
+[globalVar = GP:L = 1]
+lib.homeButtonHome = <ul data-0="top: !auto; position:absolute;" data-top="top: !0; position:fixed;" class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img data-0="transform:scale(0.3); opacity:0" data-200="transform:scale(0.3); opacity:0" data-390="transform:scale(1); opacity:1;" class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+lib.homeButtonSub = <ul class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
+[global]
+
 // Startseite
 [globalVar = TSFE:id = 60]
 page.includeJSFooter {
