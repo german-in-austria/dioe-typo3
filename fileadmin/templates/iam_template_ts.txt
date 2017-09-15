@@ -8,6 +8,10 @@ config {
 config.headerComment (
 )
 
+page.includeCSS {
+  file10 = fileadmin/css/iam-style.css
+}
+
 page.10.10.20.10.special.value = 60
 page.10.30.10.select.pidInList = 76
 
