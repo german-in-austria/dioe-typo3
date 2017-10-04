@@ -36,7 +36,7 @@ page.bodyTagCObject.wrap = <body id="hp|" class="lang-de debugging">
 
 // Sprachen
 // Deutsch
-lib.publikationGeplant = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="publicationen-liste">|</ul>
+lib.publikationGeplant = <div id="p0"><h2 class="text-center">bevorstehend</h2></div><ul class="publicationen-liste">|</ul>
 lib.rssTitle = Deutsch in Österreich
 lib.rssDescription = Der FWF Spezialforschungsbereich (SFB) „Deutsch in Österreich. Variation – Kontakt – Perzeption” (F 60) beschäftigt sich mit der Vielfalt und dem Wandel der deutschen Sprache in Österreich. Die drei thematischen Säulen des Projekts sind Variation, Kontakt und Perzeption. Das heißt: Der SFB behandelt den Gebrauch und die subjektive Wahrnehmung von deutscher Sprache in Österreich und zeigt Einflüsse durch Kontaktsprachen auf.
 lib.rssLang = de-de
@@ -155,7 +155,7 @@ page.10 {
 lib.artikel.wrap.cObject.20.value = activate JavaScript to load more articles
 lib.artikelNachladen.10.20.30.value = activate JavaScript to load more articles
 lib.termine.10.stdWrap.wrap = <div id="p0"><h2 class="text-center">planned</h2></div><ul class="termin-liste">|</ul>
-lib.publikationGeplant = <div id="p0"><h2 class="text-center">planned</h2></div><ul class="publicationen-liste">|</ul>
+lib.publikationGeplant = <div id="p0"><h2 class="text-center">forthcoming</h2></div><ul class="publicationen-liste">|</ul>
 lib.zurueck.value = Back
 lib.rssTitle = German in Austria
 lib.rssDescription = The FWF Special Research Area (SFB) “German in Austria. Variation – Contact –Perception” (F60) is a project that deals with the variety and change of the German language in Austria. The three thematic pillars of the project are Variation, Contact and Perception. This means that the SFB explores how the German language in Austria is used and perceived as well as how it has been influenced by other languages.

@@ -25,7 +25,7 @@
           <label index="bibtex_in_planung">(in planning)</label>
           <label index="bibtex_in_druck">(in print)</label>
           <label index="bibtex_eingereicht">(submitted)</label>
-					<label index="bibtex_in_bearbeitung">(in progress)</label>
+					<label index="bibtex_in_bearbeitung">(in preparation)</label>
           <label index="bibtex_band">volume</label>
 
           <label index="audiovideo_keine_datei_vorhanden">no data available</label>
@@ -94,7 +94,7 @@
           <label index="bibtex_in_planung">(in Planung)</label>
           <label index="bibtex_in_druck">(in Druck)</label>
           <label index="bibtex_eingereicht">(eingereicht)</label>
-					<label index="bibtex_in_bearbeitung">(in Bearbeitung)</label>
+					<label index="bibtex_in_bearbeitung">(in Vorbereitung)</label>
           <label index="bibtex_band">Band</label>
 
           <label index="audiovideo_keine_datei_vorhanden">Keine Datei vorhanden!</label>
