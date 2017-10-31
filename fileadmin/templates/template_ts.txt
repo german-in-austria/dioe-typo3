@@ -303,6 +303,36 @@ page.10.20.select.andWhere < lib.sfbAndWhere
 page.10.10.25.typolink.additionalParams := appendString(&artikel={GP:artikel})
 page.10.10.25.typolink.additionalParams.insertData = 1
 lib.pageDetails < lib.isOne
+lib.openGraph = TEXT
+lib.openGraph.value = 0
+lib.openGraph.override.data = register:openGraph
+page.headerData.1015 = COA_INT
+page.headerData.1015 {
+	1 = LOAD_REGISTER
+	1.openGraph = 1
+	5 = TEXT
+	5 {
+		trim = 1
+		htmlSpecialChars = 1
+		cObject = USER
+		cObject.userFunc = B13\SeoBasics\Service\UrlService->getCanonicalUrl
+		wrap = <meta property="og:url" content="|" />
+	}
+	6 = TEXT
+	6.value = <meta property="og:type" content="article" />
+	10 = CONTENT
+	10 {
+		table = tt_content
+		select {
+			pidInList = 28,30,35,31,32,33
+			where = deleted=0 AND hidden=0
+			andWhere.data = GP:artikel
+			andWhere.wrap = uid=|
+			andWhere.intval = 1
+			max = 1
+		}
+	}
+}
 page.10.20 {
   20 = COA_INT
   20 {
