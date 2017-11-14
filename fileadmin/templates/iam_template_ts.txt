@@ -71,3 +71,24 @@ page >
 page < lib.artikelNachladen
 page.10.20.select.andWhere < lib.blogAndWhere
 [global]
+
+// Farbiger Hintergrund
+tt_content.stdWrap.innerWrap.cObject {
+	101 =< tt_content.stdWrap.innerWrap.cObject.default
+	101.20.10.value = csc-frame csc-frame-individual
+	101.5 = TEXT
+	101.5.value = fxbg1
+	101.5.wrap = </div></div><div class="|"><div class="content container narrow"><article class="intro-text cutout">
+	101.99 = TEXT
+	101.99.value = </div></div></div><div class="content container narrow"><article class="intro-text">
+	102 < .101
+	102.5.value = fxbg2
+	103 < .101
+	103.5.value = fxbg3
+	104 < .101
+	104.5.value = fxbg4
+	105 < .101
+	105.5.value = fxbg5
+	106 < .101
+	106.5.value = fxbg6
+}

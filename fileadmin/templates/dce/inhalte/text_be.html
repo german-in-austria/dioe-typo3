@@ -6,5 +6,6 @@
 </f:section>
 <f:section name="bodytext">
 	<f:if condition="{field.text}"><p><f:format.nl2br><f:format.stripTags>{field.text}</f:format.stripTags></f:format.nl2br></p></f:if>
-	<f:if condition="{field.abstandoben}"><f:then><f:if condition="{field.abstandunten}"><f:then><p>Abstand oben: {field.abstandoben}px - Abstand unten:{field.abstandunten}px</f:then><f:else>Abstand oben: {field.abstandoben}px</f:else></f:if></f:then><f:else><f:if condition="{field.abstandunten}">Abstand unten: {field.abstandunten}px</f:if></f:else></f:if>
+	<f:if condition="{field.abstandoben}"><f:then><f:if condition="{field.abstandunten}"><f:then><p>Abstand oben: {field.abstandoben}px - Abstand unten:{field.abstandunten}px</p></f:then><f:else><p>Abstand oben: {field.abstandoben}px</p></f:else></f:if></f:then><f:else><f:if condition="{field.abstandunten}"><p>Abstand unten: {field.abstandunten}px</p></f:if></f:else></f:if>
+	<f:if condition="{field.hintergrund}"><f:then><p>Hintergrund: {field.hintergrund}</p></f:then></f:if>
 </f:section>

@@ -1,6 +1,7 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
 <f:layout name="None" />
 <f:section name="main">
+	<f:if condition="{field.hintergrund}"></div></div><div class="fxbg{field.hintergrund}"><div class="content container narrow"><article class="intro-text cutout"></f:if>
 	<div<f:if condition="{field.abstandoben}"><f:then><f:if condition="{field.abstandunten}"><f:then> style="padding-top:{field.abstandoben}px; padding-bottom:{field.abstandunten}px;"</f:then><f:else> style="padding-top:{field.abstandoben}px;"</f:else></f:if></f:then><f:else><f:if condition="{field.abstandunten}"> style="padding-bottom:{field.abstandunten}px;"</f:if></f:else></f:if>>
 	<f:if condition="{field.anzeigeart} == 5"><f:for each="{dce:fal(field:'bilder', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}">
 		<f:render partial="Image" arguments="{src: fileReference.uid, treatIdAsReference: 1, maxWidth: '840', lightbox: field.lightbox, lbTitle: fileReference.title, lbDescription: fileReference.description, class: 'img-responsive img-rounded w100', fileUid: fileReference.originalFile.properties.uid}" />
@@ -54,4 +55,5 @@
 		</f:if>
 	</f:if>
 	</div>
+	<f:if condition="{field.hintergrund}"></div></div></div><div class="content container narrow"><article class="intro-text cutout"></f:if>
 </f:section>

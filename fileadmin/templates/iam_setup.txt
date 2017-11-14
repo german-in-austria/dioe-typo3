@@ -1,0 +1,9 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/setup.txt">
+TCEFORM.tt_content {
+	section_frame.addItems.101 = Farbiger Hintergrund (Gelb)
+	section_frame.addItems.102 = Farbiger Hintergrund (Rosa)
+	section_frame.addItems.103 = Farbiger Hintergrund (Pink)
+	section_frame.addItems.104 = Farbiger Hintergrund (Blau)
+	section_frame.addItems.105 = Farbiger Hintergrund (Grün)
+	section_frame.addItems.106 = Farbiger Hintergrund (Grau)
+}
