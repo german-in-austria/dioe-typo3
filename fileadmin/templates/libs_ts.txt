@@ -112,11 +112,14 @@ lib.seitentitel {
   10.data =  page:subtitle // page:title
 }
 
-lib.mitarbeiter < page.10.20.10
+lib.mitarbeiter = CONTENT
 lib.mitarbeiter {
-  select.pidInList = 12
-  select.where = colPos = 1
-  select.orderBy = sorting asc
+	table = tt_content
+	select {
+		pidInList = 12
+	  where = (colPos = 1 AND hidden = 0 AND deleted = 0)
+	  orderBy = sorting asc
+	}
   renderObj = < tt_content
   renderObj.stdWrap.noTrimWrap = ||###SPLITTER### |
   stdWrap.split {

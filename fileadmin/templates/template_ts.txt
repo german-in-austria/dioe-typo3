@@ -222,7 +222,7 @@ page.10.20.select.where >
 lib.sfbAndWhere = FIND_IN_SET('16',selected_categories)
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = FIND_IN_SET('24',selected_categories)
+page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('24',selected_categories))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere < lib.sfbAndWhere
 page.10.20.20.20.select.andWhere < lib.sfbAndWhere
@@ -238,7 +238,7 @@ page.10.20.select.andWhere < lib.sfbAndWhere
 lib.sfbAndWhere = FIND_IN_SET('17',selected_categories)
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = FIND_IN_SET('26',selected_categories) OR FIND_IN_SET('27',selected_categories) OR FIND_IN_SET('28',selected_categories)
+page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('26',selected_categories) OR FIND_IN_SET('27',selected_categories) OR FIND_IN_SET('28',selected_categories))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere < lib.sfbAndWhere
 page.10.20.20.20.select.andWhere < lib.sfbAndWhere
@@ -254,7 +254,7 @@ page.10.20.select.andWhere < lib.sfbAndWhere
 lib.sfbAndWhere = FIND_IN_SET('18',selected_categories)
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = FIND_IN_SET('30',selected_categories) OR FIND_IN_SET('31',selected_categories)
+page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('30',selected_categories) OR FIND_IN_SET('31',selected_categories))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere < lib.sfbAndWhere
 page.10.20.20.20.select.andWhere < lib.sfbAndWhere
@@ -270,7 +270,7 @@ page.10.20.select.andWhere < lib.sfbAndWhere
 lib.sfbAndWhere = FIND_IN_SET('19',selected_categories)
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = FIND_IN_SET('33',selected_categories) OR FIND_IN_SET('34',selected_categories)
+page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('33',selected_categories) OR FIND_IN_SET('34',selected_categories))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.andWhere < lib.sfbAndWhere
 page.10.20.20.20.select.andWhere < lib.sfbAndWhere
