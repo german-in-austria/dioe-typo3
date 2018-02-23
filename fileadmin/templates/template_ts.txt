@@ -189,8 +189,8 @@ page.10 {
   10.wrap < lib.homeButtonHome
   20 {
     20 < lib.artikel
-    20.10.select.where = FIND_IN_SET('21',selected_categories)
-    20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
+    20.10.select.where = FIND_IN_SET('21',selected_categories) AND date > ( UNIX_TIMESTAMP() - (30*86400))
+    20.20.select.where = NOT (FIND_IN_SET('21',selected_categories) AND date > ( UNIX_TIMESTAMP() - (30*86400)))
 		20.20.select.andWhere = NOT (CType = 'dce_dceuid11' AND bibtex_year < 10)
     20.20.select.max = 5
     20.wrap >
