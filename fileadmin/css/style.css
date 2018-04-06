@@ -928,6 +928,9 @@ body.debugging .debug-show-iblock {
   padding: 9px;
   background: rgba(0, 0, 0, 0.2);
 }
+.accordion .accordioncollapse {
+    color: #000;
+}
 @media (max-width: 767px) {
 .icon-view .mitarbeiter {
   width: 48%;

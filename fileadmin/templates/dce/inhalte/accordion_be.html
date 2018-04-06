@@ -1,0 +1,17 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+<f:layout name="BackendTemplate" />
+
+<f:section name="header">
+	<strong><f:if condition="{field.text}">Text</f:if><f:if condition="{field.text}"><f:if condition="{field.bilder}"> & </f:if></f:if><f:if condition="{field.bilder}">Bild<f:if condition="{field.bilder} > 1">er</f:if></f:if></strong><f:if condition="{field.bilder}"> ({field.bilder})</f:if><br>
+</f:section>
+<f:section name="bodytext">
+	<f:if condition="{field.text}"><p><f:format.nl2br><f:format.stripTags>{field.text}</f:format.stripTags></f:format.nl2br></p></f:if>
+	<f:if condition="{field.accordions}"><ul>
+		<f:for each="{field.accordions}" as="accordion">
+			<li><u><f:format.stripTags>{accordion.accordiontitel}</f:format.stripTags></u><br>
+			<f:format.stripTags>{accordion.accordiontext}</f:format.stripTags></li>
+		</f:for>
+	</ul></f:if>
+	<f:if condition="{field.abstandoben}"><f:then><f:if condition="{field.abstandunten}"><f:then><p>Abstand oben: {field.abstandoben}px - Abstand unten:{field.abstandunten}px</p></f:then><f:else><p>Abstand oben: {field.abstandoben}px</p></f:else></f:if></f:then><f:else><f:if condition="{field.abstandunten}"><p>Abstand unten: {field.abstandunten}px</p></f:if></f:else></f:if>
+	<f:if condition="{field.hintergrund}"><f:then><p>Hintergrund: {field.hintergrund}</p></f:then></f:if>
+</f:section>

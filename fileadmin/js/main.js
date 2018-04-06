@@ -223,5 +223,8 @@
     }
   }, 3000)
 
+	$('.accordion.singleselect').on('show.bs.collapse','.collapse', function() {
+		$('.accordion.singleselect').find('.collapse.in').collapse('hide');
+	});
 
 });})(jQuery);
