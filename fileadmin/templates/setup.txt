@@ -1,3 +1,7 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_grid/page_ts.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_panel/page_ts.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/misc/page_ts.txt">
+
 TCEMAIN.table.pages.disablePrependAtCopy = 1
 TCEMAIN.table.tt_content.disablePrependAtCopy = 1
 

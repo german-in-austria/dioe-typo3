@@ -23,3 +23,25 @@ tx_gridelements.setup.hcb_misc_div {
 		}
 	}
 }
+
+tx_gridelements.setup.hcb_misc_modal {
+  	title = Modal
+	description = Ein Element um ein Modal darstellen zu können.
+	flexformDS = FILE:fileadmin/templates/gridelements/misc/modal.xml
+
+	config {
+		colCount = 1
+		rowCount = 1
+
+		rows {
+			1 {
+				columns {
+					1 {
+						name = Modal Body
+						colPos = 0
+					}
+				}
+			}
+		}
+	}
+}

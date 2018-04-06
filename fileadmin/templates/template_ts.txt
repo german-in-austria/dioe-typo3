@@ -1,3 +1,7 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_grid/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/bootstrap3_panel/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/gridelements/misc/setup.txt">
+
 config {
   language = de
   locale_all = de_DE.utf8

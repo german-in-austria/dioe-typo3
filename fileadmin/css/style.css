@@ -929,8 +929,12 @@ body.debugging .debug-show-iblock {
   background: rgba(0, 0, 0, 0.2);
 }
 .accordion .accordioncollapse {
-    color: #000;
+	color: #000;
 }
+.powermail_form_1>h3, .powermail_fieldset_1>legend {
+	display: none;
+}
+
 @media (max-width: 767px) {
 .icon-view .mitarbeiter {
   width: 48%;
