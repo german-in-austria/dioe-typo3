@@ -934,6 +934,10 @@ body.debugging .debug-show-iblock {
 .powermail_form_1>h3, .powermail_fieldset_1>legend {
 	display: none;
 }
+.fdmmodal>.bsmodalbtn {
+  margin: 0 auto;
+  display: block;
+}
 
 @media (max-width: 767px) {
 .icon-view .mitarbeiter {
