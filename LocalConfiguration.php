@@ -108,6 +108,6 @@ return [
         'reverseProxyIP' => '10.42.50.104,*.*.*.*',
     	'reverseProxyHeaderMultiValue' => 'last',
         'reverseProxySSL' => '*',
-        'trustedHostsPattern' => 'dioe.at|www.dioe.at|iam.dioe.at',
+        'trustedHostsPattern' => 'dioe.at|www.dioe.at|iam.dioe.at|standard2018.dioe.at',
     ],
 ];
