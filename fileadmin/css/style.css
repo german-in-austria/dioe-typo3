@@ -352,6 +352,25 @@ article.articleAusstellung h1.title:before { background: #f15f7d;  }
 article.articleLehre h5, article.articleLehre .publishing-date {  color: #fbc820; }
 article.articleLehre h1.title:before { background: #fbc820;  }
 
+article.article-41 { border: 5px solid #000; padding: 5px 20px 20px 20px; margin: 30px 0px; }
+article.article-41 h5, article.article-41 .publishing-date {  color: #000; }
+article.article-41 .publishing-date {	margin-top: -4px;	}
+article.article-41 h5 {
+    color: #000;
+    border-bottom: 5px solid #000;
+    padding: 2px 6px 6px 6px;
+    margin-top: 0px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+article.article-41 h1.title:before { content: none; background: #000;  }
+article.article-41 h5, article.article-41 .publishing-date {  color: #000; }
+article.article-41 h1.title:before { background: #000;  }
+article.article-42 h5, article.article-41 .publishing-date {  display: none; }
+article.article-42 .publishing-date:after { display: none; }
+article.article-43 > a.btn.btn-default.hidden-print { display: none; }
+
+
 .panel.citation .panel-body {
   font-size: 0.7em;
 }
