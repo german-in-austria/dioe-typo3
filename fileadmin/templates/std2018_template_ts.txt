@@ -28,6 +28,8 @@ page.10.10.wrap < lib.homeButtonSub
 # lib.homeButtonSub = <ul class="nav nav-pills hidden-print"><li><span><a href="/en/" title="Home"><img class="logo" src="fileadmin/img/dioe-logo-gray.png" alt=""></a></span></li>|
 # [global]
 
+page.10.10.25 >
+
 // Startseite
 [globalVar = TSFE:id = 87]
 page.includeJSFooter {
