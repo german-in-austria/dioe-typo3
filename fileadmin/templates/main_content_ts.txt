@@ -10,7 +10,7 @@ page.headerData.1010.insertData = 1
 
 page.includeCSS {
   file1 = https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&amp;subset=latin-ext
-  file2 = https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+  file2 = fileadmin/css/bootstrap.min.css
   file3 = fileadmin/css/normalize.css
   file4 = fileadmin/css/main.css
   file5 = fileadmin/css/ekko-lightbox.min.css
