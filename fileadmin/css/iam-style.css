@@ -1,6 +1,25 @@
-/*footer {
-  background: url(../img/i-am-dioe-footer-small.png);
-	background-size: cover;
-	background-position: bottom center;
-	background-repeat: no-repeat;
-}*/
+.powermail_form_1 .powermail_fieldwrap_type_text>div, .powermail_form_1 .powermail_fieldwrap_type_html>div, .powermail_form_1 .powermail_fieldwrap_einwilligung>div {
+	margin: 0px;
+	width: 100%;
+	font-size: 18px;
+	line-height: 1.4;
+}
+.powermail_form_1 .powermail_fieldwrap_einwilligung>div>div>label {
+	padding-left: 30px;
+}
+.powermail_form_1 .powermail_fieldwrap_einwilligung>label {
+	display: none;
+}
+input#powermail_field_einwilligung_1 {
+	margin-top: 9px;
+	width: 16px;
+	height: 16px;
+	margin-left: -30px;
+}
+.powermail_fieldwrap_type_submit>div {
+	margin: 0px;
+	width: 100%;
+}
+.powermail_fieldwrap_type_submit>div>input {
+	width:100%;
+}
