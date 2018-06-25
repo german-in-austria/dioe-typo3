@@ -66,3 +66,19 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']=array (
     ),
   ),
 );
+// default Konfiguration übernehmen
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['dioe.at'] =
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['www.dioe.at'] = $TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['_DEFAULT'];
+// Rootpage ID anpassen
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['dioe.at'] ['pagePath'] ['rootpage_id'] =
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['www.dioe.at'] ['pagePath'] ['rootpage_id'] = '1';
+
+// default Konfiguration übernehmen
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['iam.dioe.at'] =  $TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['_DEFAULT'];
+// Rootpage ID anpassen
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['iam.dioe.at'] ['pagePath'] ['rootpage_id'] = '60';
+
+// default Konfiguration übernehmen
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['standard2018.dioe.at'] =  $TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['_DEFAULT'];
+// Rootpage ID anpassen
+$TYPO3_CONF_VARS['EXTCONF'] ['realurl'] ['standard2018.dioe.at'] ['pagePath'] ['rootpage_id'] = '87';
