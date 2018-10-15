@@ -349,6 +349,8 @@ article.articlePodiumsdiskussion h5, article.articlePodiumsdiskussion .publishin
 article.articlePodiumsdiskussion h1.title:before { background: #3757a7;  }
 article.articleAusstellung h5, article.articleAusstellung .publishing-date {  color: #f15f7d; }
 article.articleAusstellung h1.title:before { background: #f15f7d;  }
+article.articleAktionZumMitforschen h5, article.articleAktionZumMitforschen .publishing-date {  color: #f15f7d; }
+article.articleAktionZumMitforschen h1.title:before { background: #f15f7d;  }
 article.articleLehre h5, article.articleLehre .publishing-date {  color: #fbc820; }
 article.articleLehre h1.title:before { background: #fbc820;  }
 

@@ -41,7 +41,7 @@ kategorien_workshop -> Workshop
 kategorien_arbeitstreffen -> Arbeitstreffen
 kategorien_podiumsdiskussion -> Podiumsdiskussion
 kategorien_ausstellung -> Ausstellung
-kategorien_gastvortrag -> Gastvortrag
+kategorien_aktion_zum_mitforschen -> Aktion zum Mitforschen
 kategorien_veranstaltung -> Veranstaltung
 kategorien_lehre -> Lehre
 

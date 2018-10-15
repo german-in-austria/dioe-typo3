@@ -54,6 +54,7 @@
           <label index="kategorien_arbeitstreffen">Meeting</label>
           <label index="kategorien_podiumsdiskussion">Panel discussion</label>
           <label index="kategorien_ausstellung">Exhibition</label>
+					<label index="kategorien_aktion_zum_mitforschen">Hands-on Acitivity</label>
           <label index="kategorien_veranstaltung">Event</label>
           <label index="kategorien_lehre">Teaching</label>
 
@@ -123,6 +124,7 @@
           <label index="kategorien_arbeitstreffen">Arbeitstreffen</label>
           <label index="kategorien_podiumsdiskussion">Podiumsdiskussion</label>
           <label index="kategorien_ausstellung">Ausstellung</label>
+					<label index="kategorien_aktion_zum_mitforschen">Aktion zum Mitforschen</label>
           <label index="kategorien_veranstaltung">Veranstaltung</label>
           <label index="kategorien_lehre">Lehre</label>
 

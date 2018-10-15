@@ -123,6 +123,7 @@ lib.filterArtikel (
           <option value="articlePanel">Panel</option>
           <option value="articlePodiumsdiskussion">Podiumsdiskussion</option>
           <option value="articleAusstellung">Ausstellung</option>
+					<option value="articleAktionZumMitforschen">Aktion zum Mitforschen</option>
           <option value="articleLehre">Lehre</option>
         </select>
       </div>
