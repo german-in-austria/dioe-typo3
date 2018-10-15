@@ -52,5 +52,6 @@
     </f:else>
   </f:if>
 	<f:if condition="{hideSpan}"><f:else></span></f:else></f:if>
-	<f:if condition="{lightbox}"></a></f:if>
+	<f:if condition="{lightbox}"><f:then></a></f:then><f:else><f:if condition="{lbDescription}"><div class="imgdescription">{lbDescription}</div></f:if></f:else></f:if>
+
 </f:spaceless>

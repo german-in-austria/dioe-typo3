@@ -559,6 +559,12 @@ article.article-43 > a.btn.btn-default.hidden-print { display: none; }
   font-size: 9px;
   border-radius: 0px;
 }
+.imgdescription {
+	text-align: center;
+	font-size: 80%;
+	line-height: 1.6;
+	margin-top: 16px;
+}
 
 .datei .lizenz {
   float: right;
