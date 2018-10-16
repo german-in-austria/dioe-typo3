@@ -565,6 +565,9 @@ article.article-43 > a.btn.btn-default.hidden-print { display: none; }
 	line-height: 1.6;
 	margin-top: 16px;
 }
+.fit-content {
+	width: fit-content;
+}
 
 .datei .lizenz {
   float: right;
