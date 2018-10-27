@@ -1,4 +1,5 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <!doctype html>
 <html>
   <head>
@@ -17,11 +18,13 @@
   <body>
     <f:if condition="{field.podcastDatei}">
       <f:for each="{field.podcastDatei}" as="datei" iteration="i">
-        <f:if condition="{dce:fileInfo(fileUid:'{datei.uid}', attribute:'extension')} == 'mp3'">
-          <audio>
-              <source src="{f:uri.typolink(parameter:'file:{datei.uid}')}" type="audio/mpeg"/>
-          </audio>
-        </f:if>
+				<f:alias map="{aFileInfo: '{v:resource.file(identifier: datei.uid, treatIdAsUid: 1)}'}">
+	        <f:if condition="aFileInfo.extension} == 'mp3'">
+	          <audio>
+	              <source src="{f:uri.typolink(parameter:'file:{datei.uid}')}" type="audio/mpeg"/>
+	          </audio>
+	        </f:if>
+				</f:alias>
       </f:for>
     </f:if>
     <script src="fileadmin/podlove/js/podlove-web-player.js"></script>
@@ -41,17 +44,19 @@
         /*activeTab:"downloads",*/
         <f:if condition="{field.podcastDatei}">
           <f:for each="{field.podcastDatei}" as="datei" iteration="i">
-            <f:if condition="{dce:fileInfo(fileUid:'{datei.uid}', attribute:'extension')} == 'mp3'">
-              downloads: [
-                {
-                  assetTitle: 'MP3 Audio (mp3)',
-                  size: <dce:fileInfo fileUid="{datei.uid}" attribute="size" />,
-                  downloadUrl: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
-                  directAccess: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
-                  url: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />'
-                }
-              ]
-            </f:if>
+						<f:alias map="{aFileInfo: '{v:resource.file(identifier: datei.uid, treatIdAsUid: 1)}'}">
+	            <f:if condition="{aFileInfo.extension} == 'mp3'">
+	              downloads: [
+	                {
+	                  assetTitle: 'MP3 Audio (mp3)',
+	                  size: {aFileInfo.size},
+	                  downloadUrl: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
+	                  directAccess: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
+	                  url: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />'
+	                }
+	              ]
+	            </f:if>
+						</f:alias>
           </f:for>
         </f:if>
       });

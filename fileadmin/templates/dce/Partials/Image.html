@@ -1,4 +1,5 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <f:spaceless>
 	<f:if condition="{lightbox}"><a href="{f:uri.image(src:'{src}',treatIdAsReference:'1',maxWidth:'1024',maxHeight:'800')}" data-toggle="lightbox" data-title="{lbTitle}" data-footer="{lbDescription}"></f:if>
   <f:if condition="{hideSpan}"><f:else><span class="img {class}"></f:else></f:if>
@@ -26,28 +27,30 @@
     </f:then>
     <f:else>
       <f:if condition="{fileUid}">
-        <f:if condition="{dce:fileInfo(fileUid:'{fileUid}', attribute:'copyright')}">
-          <f:then>
-          <f:if condition="{lizenzImgNolinkKlein}">
-            <f:then>
-              {dce:fileInfo(fileUid:'{fileUid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}
-            </f:then>
-            <f:else>
-              {dce:fileInfo(fileUid:'{fileUid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}
-            </f:else>
-          </f:if>
-          </f:then>
-          <f:else>
-            <f:if condition="{lizenzImgNolinkKlein}">
-              <f:then>
-                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:img_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}
-              </f:then>
-              <f:else>
-                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:img_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}
-              </f:else>
-            </f:if>
-          </f:else>
-        </f:if>
+				<f:alias map="{aFileInfo: '{v:resource.file(identifier: fileUid, treatIdAsUid: 1)}'}">
+	        <f:if condition="{aFileInfo.copyright}">
+	          <f:then>
+	          <f:if condition="{lizenzImgNolinkKlein}">
+	            <f:then>
+	              {aFileInfo.copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}
+	            </f:then>
+	            <f:else>
+	              {aFileInfo.copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}
+	            </f:else>
+	          </f:if>
+	          </f:then>
+	          <f:else>
+	            <f:if condition="{lizenzImgNolinkKlein}">
+	              <f:then>
+	                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:img_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImgNolinkKlein')}
+	              </f:then>
+	              <f:else>
+	                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:img_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzImg')}
+	              </f:else>
+	            </f:if>
+	          </f:else>
+	        </f:if>
+				</f:alias>
       </f:if>
     </f:else>
   </f:if>

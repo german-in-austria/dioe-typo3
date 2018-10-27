@@ -1,4 +1,5 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <div class="col-md-{avData.spalten} mib1e">
   <div class="av-titel">{avData.datei.titel}</div>
   <f:if condition="{avData.seitenverhaeltniss}"><div class="embed-responsive embed-responsive-{avData.seitenverhaeltniss}"></f:if>
@@ -11,19 +12,21 @@
       <f:else>
           <f:if condition="{avData.datei.datei}">
             <f:then>
-              <f:if condition="{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'extension')} == 'mp4'">
-                <f:then>
-                  <video controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-mp4">
-                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei.0.uid}')}" type="video/mp4">
-                  </video>
-                </f:then>
-                <f:else>
-                  <audio controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-audio">
-                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei.0.uid}')}" type="audio/{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'extension')}">
-                  </audio>
-                </f:else>
-              </f:if>
-            </f:then>
+							<f:alias map="{aFileInfo: '{v:resource.file(identifier: avData.datei.datei.0.uid, treatIdAsUid: 1)}'}">
+	              <f:if condition="{aFileInfo.extension'} == 'mp4'">
+	                <f:then>
+	                  <video controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-mp4">
+	                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei.0.uid}')}" type="video/mp4">
+	                  </video>
+	                </f:then>
+	                <f:else>
+	                  <audio controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-audio">
+	                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei.0.uid}')}" type="audio/{aFileInfo.extension}">
+	                  </audio>
+	                </f:else>
+	              </f:if>
+							</f:alias>
+						</f:then>
             <f:else>
               <div class="{f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: '')}av-objekt">
                 {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:audiovideo_keine_datei_vorhanden')}
@@ -41,14 +44,16 @@
       <f:else>
         <f:if condition="{avData.datei.datei}">
           <f:then>
-            <f:if condition="{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'copyright')}">
-              <f:then>
-                {dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
-              </f:then>
-              <f:else>
-                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:media_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
-              </f:else>
-            </f:if>
+						<f:alias map="{aFileInfo: '{v:resource.file(identifier: avData.datei.datei.0.uid, treatIdAsUid: 1)}'}">
+	            <f:if condition="{aFileInfo.copyright}">
+	              <f:then>
+	                {aFileInfo.copyright -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
+	              </f:then>
+	              <f:else>
+	                {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:media_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}
+	              </f:else>
+	            </f:if>
+						</f:alias>
           </f:then>
           <f:else>
             {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:media_copyright') -> f:cObject(typoscriptObjectPath:'lib.lizenzKlein')}

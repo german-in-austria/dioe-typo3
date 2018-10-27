@@ -1,4 +1,5 @@
 {namespace dce=ArminVieweg\Dce\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <f:layout name="None" />
 
 <f:section name="main">
@@ -29,14 +30,16 @@
 
 						<f:if condition="{field.podcastDatei}">
 							<f:for each="{field.podcastDatei}" as="datei" iteration="i">
-								<f:if condition="{dce:fileInfo(fileUid:'{datei.uid}', attribute:'extension')} == 'mp3'">
-									<br>
-									<div>
-										<audio controls id="podcastAudio" data-podlove-web-player-source="{f:uri.page(pageUid:'39', additionalParams: {artikel: '{contentObject.uid}', podlove: 1}, noCacheHash:'TRUE')}">
-												<source src="{f:uri.typolink(parameter:'file:{datei.uid}')}" type="audio/mpeg"/>
-										</audio>
-									</div>
-								</f:if>
+								<f:alias map="{aFileInfo: '{v:resource.file(identifier: datei.uid, treatIdAsUid: 1)}'}">
+									<f:if condition="{aFileInfo.extension} == 'mp3'">
+										<br>
+										<div>
+											<audio controls id="podcastAudio" data-podlove-web-player-source="{f:uri.page(pageUid:'39', additionalParams: {artikel: '{contentObject.uid}', podlove: 1}, noCacheHash:'TRUE')}">
+													<source src="{f:uri.typolink(parameter:'file:{datei.uid}')}" type="audio/mpeg"/>
+											</audio>
+										</div>
+									</f:if>
+								</f:alias>
 							</f:for>
 						</f:if>
 
