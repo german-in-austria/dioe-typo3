@@ -21,7 +21,7 @@ config.pageRendererTemplateFile = fileadmin/templates/tslib_page_frontend.html
 config {
   prefixLocalAnchors = all
   simulateStaticDocuments = 0
-  baseURL = https://dioe.at/
+  baseURL = https://typo3test.dioe.at/
   tx_realurl_enable = 1
 }
 

@@ -4,7 +4,7 @@
 <f:section name="main">
   <ul class="fxnav">
 	<f:for each="{field.sektionLinks}" as="link">
-		<li><dce:typolink parameter="{link.link}">{link.titel}</dce:typolink></li>
+		<li><f:link.typolink parameter="{link.link}">{link.titel}</f:link.typolink></li>
 	</f:for>
   </ul>
 </f:section>

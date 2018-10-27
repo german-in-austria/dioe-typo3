@@ -14,12 +14,12 @@
               <f:if condition="{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'extension')} == 'mp4'">
                 <f:then>
                   <video controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-mp4">
-                    <source src="{dce:typolinkUrl(parameter:'file:{avData.datei.datei.0.uid}')}" type="video/mp4">
+                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei.0.uid}')}" type="video/mp4">
                   </video>
                 </f:then>
                 <f:else>
                   <audio controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-audio">
-                    <source src="{dce:typolinkUrl(parameter:'file:{avData.datei.datei.0.uid}')}" type="audio/{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'extension')}">
+                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei.0.uid}')}" type="audio/{dce:fileInfo(fileUid:'{avData.datei.datei.0.uid}', attribute:'extension')}">
                   </audio>
                 </f:else>
               </f:if>

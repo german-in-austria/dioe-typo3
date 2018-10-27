@@ -19,7 +19,7 @@
       <f:for each="{field.podcastDatei}" as="datei" iteration="i">
         <f:if condition="{dce:fileInfo(fileUid:'{datei.uid}', attribute:'extension')} == 'mp3'">
           <audio>
-              <source src="{dce:typolinkUrl(parameter:'file:{datei.uid}')}" type="audio/mpeg"/>
+              <source src="{f:uri.typolink(parameter:'file:{datei.uid}')}" type="audio/mpeg"/>
           </audio>
         </f:if>
       </f:for>
@@ -46,9 +46,9 @@
                 {
                   assetTitle: 'MP3 Audio (mp3)',
                   size: <dce:fileInfo fileUid="{datei.uid}" attribute="size" />,
-                  downloadUrl: 'https://www.dioe.at/<dce:typolinkUrl parameter="file:{datei.uid}" />',
-                  directAccess: 'https://www.dioe.at/<dce:typolinkUrl parameter="file:{datei.uid}" />',
-                  url: 'https://www.dioe.at/<dce:typolinkUrl parameter="file:{datei.uid}" />'
+                  downloadUrl: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
+                  directAccess: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
+                  url: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />'
                 }
               ]
             </f:if>
