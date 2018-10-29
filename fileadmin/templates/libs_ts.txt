@@ -2,49 +2,43 @@
 lib.htmlEntityDecodeRssEncode = COA
 lib.htmlEntityDecodeRssEncode {
   10 = USER
-  10 {
-    includeLibs = fileadmin/templates/php/funktionen.php
-    userFunc = user_funktionen_class->user_php_html_entity_decode_rss_encode
-  }
+	10 {
+		userFunc = Dioevendor\Dioefunctions\Functions->user_php_html_entity_decode_rss_encode
+	}
 }
 lib.PublikationAuthoren = COA
 lib.PublikationAuthoren {
   10 = USER
   10 {
-    includeLibs = fileadmin/templates/php/funktionen.php
-    userFunc = user_funktionen_class->user_publikation_authoren
+    userFunc = Dioevendor\Dioefunctions\Functions->user_publikation_authoren
   }
 }
 lib.PublikationBibTex = COA
 lib.PublikationBibTex {
   10 = USER
   10 {
-    includeLibs = fileadmin/templates/php/funktionen.php
-    userFunc = user_funktionen_class->user_publikation_bibtex
+    userFunc = Dioevendor\Dioefunctions\Functions->user_publikation_bibtex
   }
 }
 lib.TextSpecial = COA
 lib.TextSpecial {
   10 = USER
   10 {
-    includeLibs = fileadmin/templates/php/funktionen.php
-    userFunc = user_funktionen_class->user_text_special
+    userFunc = Dioevendor\Dioefunctions\Functions->user_text_special
   }
 }
 lib.RemoveTextSpecial = COA
 lib.RemoveTextSpecial {
   10 = USER
   10 {
-    includeLibs = fileadmin/templates/php/funktionen.php
-    userFunc = user_funktionen_class->user_remove_text_special
+    userFunc = Dioevendor\Dioefunctions\Functions->user_remove_text_special
   }
 }
 lib.lizenz = COA
 lib.lizenz {
   10 = USER
   10 {
-    includeLibs = fileadmin/templates/php/funktionen.php
-    userFunc = user_funktionen_class->user_lizenz
+    userFunc = Dioevendor\Dioefunctions\Functions->user_lizenz
   }
 }
 lib.lizenzKlein < lib.lizenz

@@ -1,6 +1,7 @@
 <?php
+namespace Dioevendor\Dioefunctions;
 
-class user_funktionen_class {
+class Functions {
   var $cObj;    // reference to the calling object.
 
   /*
@@ -15,16 +16,16 @@ class user_funktionen_class {
   /   - sa > Ja, solange andere unter denselben Bedingungen weitergeben
   /   > cc-by-lizenzKommerziell-lizenzBearbeiten;Name
   */
-  function user_lizenz($content,$conf)    {
+  public function user_lizenz($content,$conf)    {
     global $TSFE;
     $TSFE->set_no_cache();
     $alizenz = trim($this->cObj->data[0]);
     if(strlen($alizenz)<1) { return ''; }
     if(substr($alizenz,0,5)=='cc-by') {
       $alizenzout = 'by';
-      list($alizenzby, $alizenzname) = split(';',$alizenz,2);
+      list($alizenzby, $alizenzname) = explode(';',$alizenz,2);
       if(strlen(substr($alizenzby,6))>0) {
-        $alizenzArray = split('-', substr($alizenzby,6));
+        $alizenzArray = explode('-', substr($alizenzby,6));
         $alerr = 0; $alizenzoutArray = array();
         foreach ($alizenzArray as $val) {
           switch ($val) {
@@ -57,7 +58,7 @@ class user_funktionen_class {
   /   user_publikation_authoren:
   /   Gibt die Authoren und Editoren in richtiger Reihenfolge aus
   */
-  function user_publikation_authoren($content,$conf)    {
+  public function user_publikation_authoren($content,$conf)    {
     global $TSFE;
     $TSFE->set_no_cache();
     if(isset($this->cObj->data['field'])) {
@@ -92,7 +93,7 @@ class user_funktionen_class {
   /   user_publikation_authoren_bibtex:
   /   Ausgabe der Publikation als bibtex
   */
-  function user_publikation_bibtex($content,$conf)    {
+  public function user_publikation_bibtex($content,$conf)    {
     global $TSFE;
     $TSFE->set_no_cache();
     $aField = $this->cObj->data;
@@ -177,7 +178,7 @@ class user_funktionen_class {
   /*
   /   user_php_html_entity_decode:
   */
-  function user_php_html_entity_decode_rss_encode($content,$conf)    {
+  public function user_php_html_entity_decode_rss_encode($content,$conf)    {
     global $TSFE;
     $TSFE->set_no_cache();
     return htmlentities(html_entity_decode($this->cObj->data[0]),ENT_XML1);
@@ -187,7 +188,7 @@ class user_funktionen_class {
   /   user_remove_text_special:
   /   Spezieller Filter für Texte
   */
-  function user_remove_text_special($content,$conf)    {
+  public function user_remove_text_special($content,$conf)    {
     global $TSFE;
     $TSFE->set_no_cache();
     $outText = $this->cObj->data[0];
@@ -199,7 +200,7 @@ class user_funktionen_class {
   /   user_text_special:
   /   Spezieller Filter für Texte
   */
-  function user_text_special($content,$conf)    {
+  public function user_text_special($content,$conf)    {
     global $TSFE;
     $TSFE->set_no_cache();
     $outText = $this->cObj->data[0];
@@ -220,4 +221,3 @@ function multi_implode($array, $glue) {
   $ret = substr($ret, 0, 0-strlen($glue));
   return $ret;
 }
-?>
