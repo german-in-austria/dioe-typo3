@@ -19,7 +19,7 @@
     <f:if condition="{field.podcastDatei}">
       <f:for each="{field.podcastDatei}" as="datei" iteration="i">
 				<f:alias map="{aFileInfo: '{v:resource.file(identifier: datei.uid, treatIdAsUid: 1)}'}">
-	        <f:if condition="aFileInfo.extension} == 'mp3'">
+	        <f:if condition="{aFileInfo.extension} == 'mp3'">
 	          <audio>
 	              <source src="{f:uri.typolink(parameter:'file:{datei.uid}')}" type="audio/mpeg"/>
 	          </audio>
@@ -47,13 +47,13 @@
 						<f:alias map="{aFileInfo: '{v:resource.file(identifier: datei.uid, treatIdAsUid: 1)}'}">
 	            <f:if condition="{aFileInfo.extension} == 'mp3'">
 	              downloads: [
-	                {
+	                {<f:format.raw>
 	                  assetTitle: 'MP3 Audio (mp3)',
 	                  size: {aFileInfo.size},
 	                  downloadUrl: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
 	                  directAccess: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />',
 	                  url: 'https://www.dioe.at/<f:uri.typolink parameter="file:{datei.uid}" />'
-	                }
+	                </f:format.raw>}
 	              ]
 	            </f:if>
 						</f:alias>
