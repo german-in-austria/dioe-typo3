@@ -44,15 +44,17 @@ page.10 {
   10.wrap < lib.homeButtonHome
   20 {
     20 < lib.artikel
-    20.10.select.where = FIND_IN_SET('21',selected_categories)
-    20.10.select.andWhere = (FIND_IN_SET('2',selected_categories) OR FIND_IN_SET('6',selected_categories))
-    20.20.select.where = NOT FIND_IN_SET('21',selected_categories)
-    20.20.select.andWhere = (FIND_IN_SET('2',selected_categories) OR FIND_IN_SET('6',selected_categories))
+    20.10.select.where.cObject.10.value = FIND_IN_SET('21',selected_categories)
+		20.10.select.where.cObject.20 = TEXT
+    20.10.select.where.cObject.20.value = AND (FIND_IN_SET('2',selected_categories) OR FIND_IN_SET('6',selected_categories))
+    20.20.select.where.cObject.10.value = NOT FIND_IN_SET('21',selected_categories)
+		20.20.select.where.cObject.20 = TEXT
+    20.20.select.where.cObject.20.value = AND (FIND_IN_SET('2',selected_categories) OR FIND_IN_SET('6',selected_categories))
     20.20.select.max = 5
     20.wrap >
     20.wrap = <div class="article-list">|</div>
     99 < .10
-    99.select.where = colPos = 99
+    99.select.where.cObject.10.value = colPos = 99
     99.wrap = <article class="outro-text">|</article>
   }
 }
@@ -60,16 +62,19 @@ page.10 {
 
 // Blog
 [globalVar = TSFE:id = 64]
-lib.blogAndWhere = FIND_IN_SET('2',selected_categories)
+lib.blogAndWhere = AND FIND_IN_SET('2',selected_categories)
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.20 < lib.artikel
-page.10.20.20.10.select.andWhere < lib.blogAndWhere
-page.10.20.20.20.select.andWhere < lib.blogAndWhere
+page.10.20.20.10.select.where.cObject.20 = TEXT
+page.10.20.20.10.select.where.cObject.20.value < lib.blogAndWhere
+page.10.20.20.20.select.where.cObject.20 = TEXT
+page.10.20.20.20.select.where.cObject.20.value < lib.blogAndWhere
 [global]
 [globalVar = TSFE:id = 64] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
-page.10.20.select.andWhere < lib.blogAndWhere
+page.10.20.select.where.cObject.20 = TEXT
+page.10.20.select.where.cObject.20.value < lib.blogAndWhere
 [global]
 
 // Farbiger Hintergrund

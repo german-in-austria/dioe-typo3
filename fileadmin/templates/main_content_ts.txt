@@ -126,7 +126,12 @@ page.10 {
     10 {
       table = tt_content
       select {
-        where = colPos = 0
+				where.cObject = COA
+				where.cObject {
+					10 = TEXT
+					10.value = colPos = 0
+					10.noTrimWrap = || |
+				}
       }
       wrap = <article class="intro-text"><br>|</article>
     }
@@ -140,7 +145,12 @@ page.10 {
     10 {
       table = tt_content
       select {
-        where = colPos = 0
+				where.cObject = COA
+				where.cObject {
+					10 = TEXT
+					10.value = colPos = 0
+					10.noTrimWrap = || |
+				}
         pidInList = 27
       }
     }

@@ -111,7 +111,12 @@ lib.mitarbeiter {
 	table = tt_content
 	select {
 		pidInList = 12
-	  where = (colPos = 1 AND hidden = 0 AND deleted = 0)
+		where.cObject = COA
+		where.cObject {
+			10 = TEXT
+			10.value = (colPos = 1 AND hidden = 0 AND deleted = 0)
+			10.noTrimWrap = || |
+		}
 	  orderBy = sorting asc
 	}
   renderObj = < tt_content
@@ -145,11 +150,16 @@ lib.artikel {
     select {
       pidInList = 28,30,35,31,32,33
       orderBy = date desc
-      where = FIND_IN_SET('22',selected_categories)
+			where.cObject = COA
+			where.cObject {
+				10 = TEXT
+				10.value = FIND_IN_SET('22',selected_categories)
+				10.noTrimWrap = || |
+			}
     }
   }
   20 < .10
-  20.select.where = NOT FIND_IN_SET('22',selected_categories)
+  20.select.where.cObject.10.value = NOT FIND_IN_SET('22',selected_categories)
   20.select.max = 10
   wrap.cObject = COA
   wrap.cObject {
@@ -194,7 +204,11 @@ lib.termine {
     select {
       pidInList = 31
       orderBy = terminzeit asc, sorting
-      andWhere = terminzeit > UNIX_TIMESTAMP(NOW())
+			where.cObject = COA
+			where.cObject {
+				20 = TEXT
+				20.value = terminzeit > UNIX_TIMESTAMP(NOW())
+			}
     }
     stdWrap.required = 1
     stdWrap.wrap = <div id="p0"><h2 class="text-center">geplant</h2></div><ul class="termin-liste">|</ul>
@@ -205,14 +219,18 @@ lib.termine {
     select {
       pidInList = 31
       orderBy = terminzeit desc, sorting
-      groupBy = FROM_UNIXTIME(terminzeit, '%Y')
-      andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
+			selectFields = *, FROM_UNIXTIME(terminzeit, '%Y') AS terminjahr
+			groupBy = terminjahr
+			where.cObject = COA
+			where.cObject {
+				20 = TEXT
+				20.value = AND NOT terminzeit > UNIX_TIMESTAMP(NOW())
+			}
     }
     renderObj = COA
     renderObj {
       5 = TEXT
-      5.field = terminzeit
-      5.strftime = %Y
+      5.field = terminjahr
       5.wrap = <div id="p|">
       6 < .5
       6.wrap = <h2 class="text-center">|</h2></div>
@@ -224,10 +242,15 @@ lib.termine {
           table = tt_content
           select {
             pidInList = 31
-            where = FROM_UNIXTIME(terminzeit, '%Y')=FROM_UNIXTIME({field:terminzeit}, '%Y')
-            where.insertData = 1
+						where.cObject = COA
+						where.cObject {
+							10 = TEXT
+							10.field = terminjahr
+							10.noTrimWrap = |FROM_UNIXTIME(terminzeit, '%Y')=| |
+							20 = TEXT
+							20.value = AND NOT terminzeit > UNIX_TIMESTAMP(NOW())
+						}
             orderBy = terminzeit desc, sorting
-            andWhere = NOT terminzeit > UNIX_TIMESTAMP(NOW())
           }
         }
         wrap = <ul class="termin-liste">|</ul>

@@ -194,14 +194,15 @@ page.10 {
   10.wrap < lib.homeButtonHome
   20 {
     20 < lib.artikel
-    20.10.select.where = FIND_IN_SET('21',selected_categories) AND date > ( UNIX_TIMESTAMP() - (30*86400))
-    20.20.select.where = NOT (FIND_IN_SET('21',selected_categories) AND date > ( UNIX_TIMESTAMP() - (30*86400)))
-		20.20.select.andWhere = NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+    20.10.select.where.cObject.10.value = FIND_IN_SET('21',selected_categories) AND date > ( UNIX_TIMESTAMP() - (30*86400))
+    20.20.select.where.cObject.10.value = NOT (FIND_IN_SET('21',selected_categories) AND date > ( UNIX_TIMESTAMP() - (30*86400)))
+		20.20.select.where.cObject.20 = TEXT
+		20.20.select.where.cObject.20 = NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
     20.20.select.max = 5
     20.wrap >
     20.wrap = <div class="article-list">|</div>
     99 < .10
-    99.select.where = colPos = 99
+    99.select.where.cObject.10.value = colPos = 99
     99.wrap = <article class="outro-text">|</article>
   }
 }
@@ -213,96 +214,116 @@ lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 = TEXT
 page.10.20.15.value < lib.filterArtikel
 page.10.20.20 < lib.artikel
-page.10.20.20.10.select.where >
-page.10.20.20.10.select.andWhere = NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.20.10.select.where.cObject.10.value >
+page.10.20.20.10.select.where.cObject.20 = TEXT
+page.10.20.20.10.select.where.cObject.20.value = AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20.10.select.max = 10
 page.10.20.20.20 >
 [global]
 [globalVar = TSFE:id = 6] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
-page.10.20.select.where >
-page.10.20.select.andWhere = NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.select.where.cObject.10.value >
+page.10.20.select.where.cObject.20 = TEXT
+page.10.20.select.where.cObject.20.value = AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 [global]
 
 // Task-Cluster A
 [globalVar = TSFE:id = 14]
-lib.sfbAndWhere = FIND_IN_SET('16',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+lib.sfbAndWhere = AND FIND_IN_SET('16',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('24',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20 = TEXT
+page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('24',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
-page.10.20.20.10.select.andWhere < lib.sfbAndWhere
-page.10.20.20.20.select.andWhere < lib.sfbAndWhere
+page.10.20.20.10.select.where.cObject.20 = TEXT
+page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
+page.10.20.20.20.select.where.cObject.20 = TEXT
+page.10.20.20.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 [globalVar = TSFE:id = 14] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
-page.10.20.select.andWhere < lib.sfbAndWhere
+page.10.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 
 // Task-Cluster B
 [globalVar = TSFE:id = 15]
-lib.sfbAndWhere = FIND_IN_SET('17',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+lib.sfbAndWhere = AND FIND_IN_SET('17',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('26',selected_categories) OR FIND_IN_SET('27',selected_categories) OR FIND_IN_SET('28',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20 = TEXT
+page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('26',selected_categories) OR FIND_IN_SET('27',selected_categories) OR FIND_IN_SET('28',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
-page.10.20.20.10.select.andWhere < lib.sfbAndWhere
-page.10.20.20.20.select.andWhere < lib.sfbAndWhere
+page.10.20.20.10.select.where.cObject.20 = TEXT
+page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
+page.10.20.20.20.select.where.cObject.20 = TEXT
+page.10.20.20.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 [globalVar = TSFE:id = 15] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
-page.10.20.select.andWhere < lib.sfbAndWhere
+page.10.20.select.where.cObject.20 = TEXT
+page.10.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 
 // Task-Cluster C
 [globalVar = TSFE:id = 16]
-lib.sfbAndWhere = FIND_IN_SET('18',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+lib.sfbAndWhere = AND FIND_IN_SET('18',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('30',selected_categories) OR FIND_IN_SET('31',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20 = TEXT
+page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('30',selected_categories) OR FIND_IN_SET('31',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
-page.10.20.20.10.select.andWhere < lib.sfbAndWhere
-page.10.20.20.20.select.andWhere < lib.sfbAndWhere
+page.10.20.20.10.select.where.cObject.20 = TEXT
+page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
+page.10.20.20.20.select.where.cObject.20 = TEXT
+page.10.20.20.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 [globalVar = TSFE:id = 16] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
-page.10.20.select.andWhere < lib.sfbAndWhere
+page.10.20.select.where.cObject.20 = TEXT
+page.10.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 
 // Task-Cluster D
 [globalVar = TSFE:id = 17]
-lib.sfbAndWhere = FIND_IN_SET('19',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+lib.sfbAndWhere = AND FIND_IN_SET('19',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = (l18n_parent = 0) AND (FIND_IN_SET('33',selected_categories) OR FIND_IN_SET('34',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20 = TEXT
+page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('33',selected_categories) OR FIND_IN_SET('34',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
-page.10.20.20.10.select.andWhere < lib.sfbAndWhere
-page.10.20.20.20.select.andWhere < lib.sfbAndWhere
+page.10.20.20.10.select.where.cObject.20 = TEXT
+page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
+page.10.20.20.20.select.where.cObject.20 = TEXT
+page.10.20.20.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 [globalVar = TSFE:id = 17] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
-page.10.20.select.andWhere < lib.sfbAndWhere
+page.10.20.select.where.cObject.20 = TEXT
+page.10.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 
 // Task-Cluster E
 [globalVar = TSFE:id = 18]
-lib.sfbAndWhere = FIND_IN_SET('20',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+lib.sfbAndWhere = AND FIND_IN_SET('20',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.andWhere = FIND_IN_SET('36',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20.value = FIND_IN_SET('36',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
-page.10.20.20.10.select.andWhere < lib.sfbAndWhere
-page.10.20.20.20.select.andWhere < lib.sfbAndWhere
+page.10.20.20.10.select.where.cObject.20 = TEXT
+page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
+page.10.20.20.20.select.where.cObject.20 = TEXT
+page.10.20.20.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 [globalVar = TSFE:id = 18] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
-page.10.20.select.andWhere < lib.sfbAndWhere
+page.10.20.select.where.cObject.20 = TEXT
+page.10.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 
 // Artikel - Details
@@ -333,10 +354,16 @@ page.headerData.1015 {
 		table = tt_content
 		select {
 			pidInList = 28,30,35,31,32,33
-			where = deleted=0 AND hidden=0
-			andWhere.data = GP:artikel
-			andWhere.wrap = uid=|
-			andWhere.intval = 1
+			where.cObject = COA
+			where.cObject {
+				10 = TEXT
+				10.value = deleted=0 AND hidden=0
+				10.noTrimWrap = || |
+				20 = TEXT
+				20.data = GP:artikel
+				20.intval = 1
+				20.wrap = AND uid=|
+			}
 			max = 1
 		}
 	}
@@ -349,10 +376,16 @@ page.10.20 {
       table = tt_content
       select {
         pidInList = 28,30,35,31,32,33
-        where = deleted=0 AND hidden=0
-        andWhere.data = GP:artikel
-        andWhere.wrap = uid=|
-        andWhere.intval = 1
+				where.cObject = COA
+				where.cObject {
+					10 = TEXT
+					10.value = deleted=0 AND hidden=0
+					10.noTrimWrap = || |
+					20 = TEXT
+					20.data = GP:artikel
+					20.intval = 1
+					20.wrap = AND uid=|
+				}
         max = 1
       }
     }
@@ -373,10 +406,10 @@ page.10.20 {
   15 = TEXT
   15.value < lib.filterTeam
   20 < .10
-  20.select.where = colPos = 1
+  20.select.where.cObject.10.value = colPos = 1
   20.wrap = <div class="mitarbeiter-liste list-view clearfix">|</div>
   99 < .10
-  99.select.where = colPos = 99
+  99.select.where.cObject.10.value = colPos = 99
   99.wrap = <article class="outro-text">|</article>
 }
 [global]
@@ -392,7 +425,11 @@ page.10.20 {
       table = tt_content
       select {
         pidInList = 35
-        andWhere = bibtex_year < 10
+				where.cObject = COA
+				where.cObject {
+					10 = TEXT
+        	10.value = bibtex_year < 10
+				}
       }
       stdWrap.required = 1
       stdWrap.wrap < lib.publikationGeplant
@@ -404,7 +441,11 @@ page.10.20 {
         pidInList = 35
         orderBy = bibtex_year desc, sorting
         groupBy = bibtex_year
-        andWhere = NOT bibtex_year < 10
+				where.cObject = COA
+				where.cObject {
+					10 = TEXT
+        	10.value = NOT bibtex_year < 10
+				}
       }
       renderObj = COA
       renderObj {
@@ -419,10 +460,15 @@ page.10.20 {
             table = tt_content
             select {
               pidInList = 35
-              where = bibtex_year={field:bibtex_year}
-              where.insertData = 1
+							where.cObject = COA
+							where.cObject {
+								10 = TEXT
+			        	10.field = bibtex_year
+								10.noTrimWrap = |bibtex_year=| |
+								20 = TEXT
+								20.value = AND NOT bibtex_art = 6
+							}
               orderBy = sorting
-              andWhere = NOT bibtex_art = 6
             }
           }
           wrap = <ul class="publicationen-liste">|</ul>
@@ -512,7 +558,7 @@ page.10 {
   }
   19 < lib.newline
   20 < lib.artikel
-  20.10.select.where >
+  20.10.select.where.cObject.10.value >
   20.10.select.max = 20
   20.wrap >
   20.20 >
@@ -585,8 +631,8 @@ page.10 {
   }
   19 < lib.newline
   20 < lib.artikel
-  20.10.select.where >
-  20.10.select.where = FIND_IN_SET('3',selected_categories)
+  20.10.select.where.cObject.10.value >
+  20.10.select.where.cObject.10.value = FIND_IN_SET('3',selected_categories)
   20.10.select.max = 20
   20.wrap >
   20.20 >
@@ -612,10 +658,16 @@ page.10 {
     table = tt_content
     select {
       pidInList = 28,30,35,31,32,33
-      where = deleted=0 AND hidden=0
-      andWhere.data = GP:artikel
-      andWhere.wrap = uid=|
-      andWhere.intval = 1
+			where.cObject = COA
+			where.cObject {
+				10 = TEXT
+				10.value = deleted=0 AND hidden=0
+				10.noTrimWrap = || |
+				20 = TEXT
+				20.data = GP:artikel
+				20.intval = 1
+				20.wrap = AND uid=|
+			}
       max = 1
     }
   }
@@ -635,10 +687,16 @@ page.10 {
     table = tt_content
     select {
       pidInList = 28,30,35,31,32,33
-      where = deleted=0 AND hidden=0
-      andWhere.data = GP:artikel
-      andWhere.wrap = uid=|
-      andWhere.intval = 1
+			where.cObject = COA
+			where.cObject {
+				10 = TEXT
+				10.value = deleted=0 AND hidden=0
+				10.noTrimWrap = || |
+				20 = TEXT
+				20.data = GP:artikel
+				20.intval = 1
+				20.wrap = AND uid=|
+			}
       max = 1
     }
   }
