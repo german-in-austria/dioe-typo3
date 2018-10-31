@@ -234,7 +234,7 @@ lib.sfbAndWhere = AND FIND_IN_SET('16',selected_categories) AND NOT (CType = 'dc
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
 page.10.20.15.select.where.cObject.20 = TEXT
-page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('24',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20.value = AND (l18n_parent = 0) AND (FIND_IN_SET('24',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.where.cObject.20 = TEXT
 page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
@@ -244,6 +244,7 @@ page.10.20.20.20.select.where.cObject.20.value < lib.sfbAndWhere
 [globalVar = TSFE:id = 14] && [globalVar = GP:getlist = 1]
 page >
 page < lib.artikelNachladen
+page.10.20.select.where.cObject.20 = TEXT
 page.10.20.select.where.cObject.20.value < lib.sfbAndWhere
 [global]
 
@@ -253,7 +254,7 @@ lib.sfbAndWhere = AND FIND_IN_SET('17',selected_categories) AND NOT (CType = 'dc
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
 page.10.20.15.select.where.cObject.20 = TEXT
-page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('26',selected_categories) OR FIND_IN_SET('27',selected_categories) OR FIND_IN_SET('28',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20.value = AND (l18n_parent = 0) AND (FIND_IN_SET('26',selected_categories) OR FIND_IN_SET('27',selected_categories) OR FIND_IN_SET('28',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.where.cObject.20 = TEXT
 page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
@@ -273,7 +274,7 @@ lib.sfbAndWhere = AND FIND_IN_SET('18',selected_categories) AND NOT (CType = 'dc
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
 page.10.20.15.select.where.cObject.20 = TEXT
-page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('30',selected_categories) OR FIND_IN_SET('31',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20.value = AND (l18n_parent = 0) AND (FIND_IN_SET('30',selected_categories) OR FIND_IN_SET('31',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.where.cObject.20 = TEXT
 page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
@@ -293,7 +294,7 @@ lib.sfbAndWhere = AND FIND_IN_SET('19',selected_categories) AND NOT (CType = 'dc
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
 page.10.20.15.select.where.cObject.20 = TEXT
-page.10.20.15.select.where.cObject.20.value = (l18n_parent = 0) AND (FIND_IN_SET('33',selected_categories) OR FIND_IN_SET('34',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20.value = AND (l18n_parent = 0) AND (FIND_IN_SET('33',selected_categories) OR FIND_IN_SET('34',selected_categories)) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.where.cObject.20 = TEXT
 page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
@@ -312,7 +313,8 @@ page.10.20.select.where.cObject.20.value < lib.sfbAndWhere
 lib.sfbAndWhere = AND FIND_IN_SET('20',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 lib.mitarbeiterNurNamen < lib.isOne
 page.10.20.15 < lib.mitarbeiter
-page.10.20.15.select.where.cObject.20.value = FIND_IN_SET('36',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
+page.10.20.15.select.where.cObject.20 = TEXT
+page.10.20.15.select.where.cObject.20.value = AND FIND_IN_SET('36',selected_categories) AND NOT (CType = 'dce_dceuid11' AND bibtex_year < 10) AND NOT (CType = 'dce_dceuid13' AND terminzeit > ( UNIX_TIMESTAMP() + (14*86400)))
 page.10.20.20 < lib.artikel
 page.10.20.20.10.select.where.cObject.20 = TEXT
 page.10.20.20.10.select.where.cObject.20.value < lib.sfbAndWhere
