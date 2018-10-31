@@ -514,7 +514,10 @@ page.10.20 {
 // RSS Feed
 [globalVar = GP:rss = 1]
 config.disableCharsetHeader = 1
-config.additionalHeaders = Content-Type: application/rss+xml;charset=utf-8
+config.additionalHeaders {
+	10.header = Content-Type: application/rss+xml
+	20.header = charset=utf-8
+}
 lib.rssFeed < lib.isOne
 page >
 page = PAGE
@@ -575,7 +578,11 @@ page.10 {
 // Podcast Feed
 [globalVar = GP:podcast = 1]
 config.disableCharsetHeader = 1
-config.additionalHeaders = Content-Type: application/rss+xml;charset=utf-8
+config.additionalHeaders {
+	10.header = Content-Type: application/rss+xml
+	20.header = charset=utf-8
+}
+
 lib.podcastFeed < lib.isOne
 page >
 page = PAGE
@@ -652,7 +659,13 @@ lib.bibTexFile < lib.isOne
 page >
 page = PAGE
 page.config.disableAllHeaderCode = 1
-page.config.additionalHeaders = Content-Type: application/x-bibtex;charset=utf-8 | Content-Disposition:attachment; filename="bibTex.bib"
+# page.config.additionalHeaders = Content-Type: application/x-bibtex;charset=utf-8 | Content-Disposition:attachment; filename="bibTex.bib"
+config.additionalHeaders {
+	10.header = Content-Type: application/x-bibtex
+	20.header = charset=utf-8
+	30.header = filename="bibTex.bib"
+}
+
 page.10 = COA_INT
 page.10 {
   20 = CONTENT
