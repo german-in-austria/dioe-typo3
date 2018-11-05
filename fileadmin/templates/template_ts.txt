@@ -21,7 +21,7 @@ config.pageRendererTemplateFile = fileadmin/templates/tslib_page_frontend.html
 config {
   prefixLocalAnchors = all
   simulateStaticDocuments = 0
-  baseURL = https://typo3test.dioe.at/
+  baseURL = https://dioe.at/
   tx_realurl_enable = 1
 }
 
@@ -515,8 +515,7 @@ page.10.20 {
 [globalVar = GP:rss = 1]
 config.disableCharsetHeader = 1
 config.additionalHeaders {
-	10.header = Content-Type: application/rss+xml
-	20.header = charset=utf-8
+	10.header = Content-Type: application/rss+xml; charset=utf-8;
 }
 lib.rssFeed < lib.isOne
 page >
@@ -579,8 +578,7 @@ page.10 {
 [globalVar = GP:podcast = 1]
 config.disableCharsetHeader = 1
 config.additionalHeaders {
-	10.header = Content-Type: application/rss+xml
-	20.header = charset=utf-8
+	10.header = Content-Type: application/rss+xml; charset=utf-8;
 }
 
 lib.podcastFeed < lib.isOne
@@ -640,7 +638,7 @@ page.10 {
   }
   19 < lib.newline
   20 < lib.artikel
-  20.10.select.where.cObject.10.value >
+	20.10.select.where.cObject.10 = TEXT
   20.10.select.where.cObject.10.value = FIND_IN_SET('3',selected_categories)
   20.10.select.max = 20
   20.wrap >

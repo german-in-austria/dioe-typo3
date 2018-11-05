@@ -26,7 +26,7 @@
 						<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE"><f:cObject typoscriptObjectPath="lib.RemoveTextSpecial" data="{field.detailseiteText}" /></f:format.crop></f:format.html></f:else>
 					</f:if>
 					<ul class="termin-liste termin-einzeln"><f:render partial="Termin" arguments="{field: field, contentObject: contentObject}" section="Liste" /></ul>
-					<f:link.page pageUid="39" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_beitrag_anzeigen')}</f:link.page>
+					<f:link.page pageUid="39" absolute="1" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_beitrag_anzeigen')}</f:link.page>
 					<div class="visible-print-block">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_artikel_url')}: {f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE',absolute:'TRUE')}</div>
 				</article>
 			</f:else>
