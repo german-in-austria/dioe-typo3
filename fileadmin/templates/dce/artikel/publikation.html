@@ -46,8 +46,8 @@
 												</f:if>
 											</f:then>
 											<f:else>
-												<f:link.page pageUid="39" absolute="1" additionalParams="{artikel: '{contentObject.uid}'}" noCacheHash="TRUE" class="btn btn-default hidden-print">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_beitrag_anzeigen')}</f:link.page>
-												<div class="visible-print-block">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_artikel_url')}: {f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE',absolute:'TRUE')}</div>
+												<a href="https://dioe.at/{f:uri.page(pageUid:'39',additionalParams:{artikel:'{contentObject.uid}'},noCacheHash:'TRUE')}" class="btn btn-default hidden-print">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_beitrag_anzeigen')}</a>
+												<div class="visible-print-block">{f:translate(key: 'LLL:fileadmin/templates/locallang.xml:allgemein_artikel_url')}: https://dioe.at/{f:uri.page(pageUid:'39',additionalParams:{artikel: '{contentObject.uid}'},noCacheHash:'TRUE')}</div>
 											</f:else>
 										</f:if>
 									</article>
