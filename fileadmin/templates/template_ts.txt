@@ -176,6 +176,9 @@ lib.homeButtonSub = <ul class="nav nav-pills hidden-print"><li><span><a href="/e
 page.bodyTagCObject.wrap = <body id="hp|" class="lang-en debugging">
 [global]
 
+// Header bei DCE-Elementen nicht anzeigen
+lib.contentElement.10.if < tt_content.stdWrap.innerWrap.cObject.default.stdWrap.if
+
 page.10.10.wrap < lib.homeButtonSub
 // Startseite
 [globalVar = TSFE:id = 1]
