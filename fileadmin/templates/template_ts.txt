@@ -420,7 +420,7 @@ page.10.20 {
 [global]
 
 // Publikationen
-[globalVar = TSFE:id = 19]
+[globalVar = TSFE:id = 19] && [globalVar = GP:bibTex != 1]
 lib.pagePublikationsListe < lib.isOne
 page.10.20 {
   20 = COA_INT
@@ -662,9 +662,8 @@ page = PAGE
 page.config.disableAllHeaderCode = 1
 # page.config.additionalHeaders = Content-Type: application/x-bibtex;charset=utf-8 | Content-Disposition:attachment; filename="bibTex.bib"
 config.additionalHeaders {
-	10.header = Content-Type: application/x-bibtex
-	20.header = charset=utf-8
-	30.header = filename="bibTex.bib"
+	10.header = Content-Type: application/x-bibtex; charset=utf-8;
+	20.header = filename="bibTex.bib"
 }
 
 page.10 = COA_INT
@@ -689,6 +688,45 @@ page.10 {
   }
 }
 [global]
+
+// BibTex-Liste
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 19]
+lib.bibTexFile < lib.isOne
+page >
+page = PAGE
+page.config.disableAllHeaderCode = 1
+# page.config.additionalHeaders = Content-Type: application/x-bibtex;charset=utf-8 | Content-Disposition:attachment; filename="bibTex.bib"
+config.additionalHeaders {
+	10.header = Content-Type: application/x-bibtex; charset=utf-8;
+	20.header = filename="bibTexListe.bib"
+}
+
+page.10 = COA_INT
+page.10 {
+  20 = CONTENT
+  20 {
+    table = tt_content
+    select {
+      pidInList = 35
+			where.cObject = COA
+			where.cObject {
+				10 = TEXT
+				10.value = deleted=0 AND hidden=0
+				10.noTrimWrap = || |
+			}
+			orderBy = sorting
+    }
+		renderObj = COA
+		renderObj {
+			10 < tt_content
+			20 = TEXT
+			20.char = 10
+			21 < .20
+		}
+  }
+}
+[global]
+
 
 // PodLove
 [globalVar = GP:podlove = 1] && [globalVar = TSFE:id = 39]
