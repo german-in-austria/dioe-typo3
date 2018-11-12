@@ -162,7 +162,7 @@ class Functions {
             }
           } else {
             if($key=='urldate') {
-              $outBibTex.= '"'.date("Y.m.d",$val).'"';
+              $outBibTex.= '"'.date("Y.m.d", $val).'"';
 						} elseif($key=='year') {
 							$yearArray = [];
 							$yearArray[0] = '"in planning"';
@@ -178,6 +178,7 @@ class Functions {
         }
       }
     };
+		$outBibTex.= "addendum = {date: ".date("Y.m.d", $this->cObj->data['datum'])."},\n";
     $outBibTex = substr($outBibTex,0,-2)."\n}";
     return $outBibTex;
   }
