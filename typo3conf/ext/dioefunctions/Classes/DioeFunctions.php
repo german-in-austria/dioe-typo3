@@ -151,20 +151,27 @@ class Functions {
                 $outBibTex.= '{ ';
                 $auudg = 0;
                 foreach ($uval as $uukey => $uuval) {
-                  $outBibTex.= (($auudg>0)?', ':'').$uukey.' = '.((is_numeric($uuval))?'':'"').$uuval.((is_numeric($uuval))?'':'"');
+                  $outBibTex.= (($auudg>0)?', ':'').$uukey.' = '.((is_numeric($uuval))?'':'{').$uuval.((is_numeric($uuval))?'':'}');
                   $auudg++;
                 }
                 $outBibTex.= ' }';
               } else {
-                $outBibTex.= ((is_numeric($uval))?'':'"').$uval.((is_numeric($uval))?'':'"');
+                $outBibTex.= ((is_numeric($uval))?'':'{').$uval.((is_numeric($uval))?'':'}');
               }
               $audg++;
             }
           } else {
             if($key=='urldate') {
               $outBibTex.= '"'.date("Y.m.d",$val).'"';
+						} elseif($key=='year') {
+							$yearArray = [];
+							$yearArray[0] = '"in planning"';
+							$yearArray[1] = '"in print"';
+							$yearArray[2] = '"submitted"';
+							$yearArray[3] = '"in preparation"';
+							$outBibTex.= (($yearArray[intval($val)]) ? $yearArray[intval($val)] : $val);
             } else {
-              $outBibTex.= ((is_numeric($val))?'':'"').$val.((is_numeric($val))?'':'"');
+              $outBibTex.= ((is_numeric($val))?'':'{').$val.((is_numeric($val))?'':'}');
             }
           }
           $outBibTex.= ",\n";
