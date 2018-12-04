@@ -922,6 +922,21 @@ body.debugging .debug-show-iblock {
 .fxbg6 {
 	background: #eee;
 }
+.fxbgiam1 { background: #efeeee; }
+.fxbgiam2 { background: #bcbcbb; }
+.fxbgiam3 { background: #feede8; }
+.fxbgiam4 { background: #f6bbd5; }
+.fxbgiam5 { background: #f18c9a; }
+.fxbgiam6 { background: #fef7c0; }
+.fxbgiam7 { background: #ffe58d; }
+.fxbgiam8 { background: #f9b55a; }
+.fxbgiam9 { background: #d4e29b; }
+.fxbgiam10 { background: #7fc498; }
+.fxbgiam11 { background: #1ca896; }
+.fxbgiam12 { background: #c7e7f8; }
+.fxbgiam13 { background: #8ed1ef; }
+.fxbgiam14 { background: #3e8bc9; }
+
 
 .cookie-policy{
   text-align: center;

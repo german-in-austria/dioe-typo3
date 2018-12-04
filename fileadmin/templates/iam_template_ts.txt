@@ -96,4 +96,32 @@ tt_content.stdWrap.innerWrap.cObject {
 	105.5.value = fxbg5
 	106 < .101
 	106.5.value = fxbg6
+	201 < .101
+	201.5.value = fxbgiam1
+	202 < .101
+	202.5.value = fxbgiam2
+	203 < .101
+	203.5.value = fxbgiam3
+	204 < .101
+	204.5.value = fxbgiam4
+	205 < .101
+	205.5.value = fxbgiam5
+	206 < .101
+	206.5.value = fxbgiam6
+	207 < .101
+	207.5.value = fxbgiam7
+	208 < .101
+	208.5.value = fxbgiam8
+	209 < .101
+	209.5.value = fxbgiam9
+	210 < .101
+	210.5.value = fxbgiam10
+	211 < .101
+	211.5.value = fxbgiam11
+	212 < .101
+	212.5.value = fxbgiam12
+	213 < .101
+	213.5.value = fxbgiam13
+	214 < .101
+	214.5.value = fxbgiam14
 }
