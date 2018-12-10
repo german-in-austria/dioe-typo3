@@ -3,7 +3,7 @@
 
 <f:section name="main">
 	<div id="u{contentObject.uid}">
-		<h{field.hsize} class="text-center">
+		<h{field.hsize} id="c{contentObject.uid}" class="text-center">
 			<f:format.raw>{field.ueberschrift}</f:format.raw>
 			<f:if condition="{field.ueberschriftextra}"><span><f:format.raw>{field.ueberschriftextra}</f:format.raw></span></f:if>
 		</h{field.hsize}>
