@@ -81,7 +81,7 @@
 				aimglb = true;
 			};
     };
-		var aimgrw = '<span class="img img-responsive img-rounded pull-'+aimgalign+((aimgwidth=='100%')?'':((aimgalign=='left')?' mir2e mib1e':' mil2e mib1e'))+'" style="width:'+aimgwidth+';"><img src="'+$('.imgData[data-img-dg="'+aimgnr+'"]').data('img-url')+'" alt="" class="w100">'+$('.imgData[data-img-dg="'+aimgnr+'"]').siblings('.img-add')[0].outerHTML+'</span>';
+		var aimgrw = '<span class="img img-responsive img-rounded '+((aimgwidth=='100%')?' mib1e':'pull-'+aimgalign+((aimgalign=='left')?' mir2e mib1e':' mil2e mib1e'))+'" style="width:'+aimgwidth+';"><img src="'+$('.imgData[data-img-dg="'+aimgnr+'"]').data('img-url')+'" alt="" class="w100">'+$('.imgData[data-img-dg="'+aimgnr+'"]').siblings('.img-add')[0].outerHTML+'</span>';
 		if(aimglb==true) {
 			aimgrw = '<a href="#" data-imgalbox="'+aimgnr+'">'+aimgrw+'</a>';
 		};
