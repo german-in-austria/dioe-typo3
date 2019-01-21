@@ -48,7 +48,7 @@ page.10 {
     </div>
   )
 
-  10 = COA
+  10 = COA_INT
   10 {
     wrap < lib.homeButtonSub
     20 = COA
