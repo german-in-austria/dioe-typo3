@@ -191,7 +191,7 @@ class Functions {
 		global $TSFE;
 		$TSFE->set_no_cache();
 		$aField = $this->cObj->data;
-		$aArtenFelder = array('terminZeit','terminBisZeit','uebersichtUeberschrift','kategorie','terminSektionPersonen','terminEvent','terminUhrzeit','terminTermintext','terminAdress','terminNote','terminSektionOrganiser','terminSektionOrganisation','terminSektionParticipants','terminUrl','terminDoi','terminKeywords');
+		$aArtenFelder = array('terminZeit','terminBisZeit','uebersichtUeberschrift','kategorien','kategorie','terminSektionPersonen','terminEvent','terminUhrzeit','terminTermintext','terminAdress','terminNote','terminSektionOrganiser','terminSektionOrganisation','terminSektionParticipants','terminUrl','terminDoi','terminKeywords');
 		$ignoreFields = array();
 		if(isset($aArtenFelder)) {
 			foreach ($aField as $key => $val) {
@@ -243,6 +243,110 @@ class Functions {
 					} else {
 						if($key=='terminZeit' || $key=='terminBisZeit') {
 							$outBibTex.= '"'.date("Y.m.d - H:i", $val).'"';
+						} else {
+							$outBibTex.= ((is_numeric($val))?'':'{').$val.((is_numeric($val))?'':'}');
+						}
+					}
+					$outBibTex.= ",\n";
+				}
+			}
+		};
+		$outBibTex.= "addendum = {date: ".date("Y.m.d", $this->cObj->data['datum'])."},\n";
+		$outBibTex = substr($outBibTex,0,-2)."\n}";
+		return $outBibTex;
+	}
+
+	/*
+	/   user_beitraege_bibtex:
+	/   Ausgabe der Publikation als bibtex
+	*/
+	public function user_beitraege_bibtex($content,$conf)    {
+		global $TSFE;
+		$TSFE->set_no_cache();
+		$aField = $this->cObj->data;
+		$aArtenFelder = array('uebersichtUeberschrift','kategorien', 'uebersichtText', 'detailseiteUeberschrift', 'detailseiteText');
+		$ignoreFields = array();
+		if(isset($aArtenFelder)) {
+			foreach ($aField as $key => $val) {
+				if(!in_array($key,$aArtenFelder)) {
+					unset($aField[$key]);
+				}
+			}
+		} else {
+			foreach ($ignoreFields as $val) { unset($aField[$val]); };
+		}
+		$outBibTex = '@beitrag{'.hash("md5",multi_implode($aField,',')).",\n";
+		foreach ($aField as $key => $val) {
+			if(!empty($val)) {
+				if($key=='terminSektionPersonen' || $key=='terminSektionOrganiser' || $key=='terminSektionParticipants') {
+					$audg = 0;
+					$outBibTex.= $key.' = ';
+					foreach ($val as $ukey => $uval) {
+						$outBibTex.= (($audg>0)?' and ':'').'"{'.$uval['nachname'].'}, {'.$uval['vorname'].'}"';
+						$audg++;
+					}
+					$outBibTex.= ",\n";
+				} else {
+					$outBibTex.= $key.' = ';
+					if(is_array($val)) {
+						$audg = 0;
+						foreach ($val as $ukey => $uval) {
+							$outBibTex.= (($audg>0)?' AND ':'');
+							if(is_array($uval)) {
+								$outBibTex.= '{ ';
+								$auudg = 0;
+								foreach ($uval as $uukey => $uuval) {
+									$outBibTex.= (($auudg>0)?', ':'').$uukey.' = '.((is_numeric($uuval))?'':'{').$uuval.((is_numeric($uuval))?'':'}');
+									$auudg++;
+								}
+								$outBibTex.= ' }';
+							} else {
+								$outBibTex.= ''((is_numeric($uval))?'':'{').$uval.((is_numeric($uval))?'':'}');
+							}
+							$audg++;
+						}
+					} else {
+						if($key=='terminZeit' || $key=='terminBisZeit') {
+							$outBibTex.= '"'.date("Y.m.d - H:i", $val).'"';
+						} elseif($key=='kategorien') {
+							$aKat = explode(',', $val);
+							$outBibTex.= '{';
+							$akdg = 0;
+							foreach ($aKat as $akkey => $akval) {
+								$aKatName = $akval;
+								$pKat = array(
+									13 => 'Beiträge',
+									15 => 'Task-Cluster',
+									16 => 'TCA',
+									17 => 'TCB',
+									18 => 'TCC',
+									19 => 'TCD',
+									20 => 'TCE',
+									37 => 'SFB',
+									2 => 'Blog',
+									3 => 'Podcast',
+									4 => 'Nachricht',
+									5 => 'Bericht',
+									6 => 'Memo',
+									7 => 'Konferenz',
+									8 => 'Workshop',
+									9 => 'Arbeitstreffen',
+									10 => 'Podiumsdiskussion',
+									11 => 'Ausstellung',
+									44 => 'AktionZumMitforschen',
+									38 => 'Gastvortrag',
+									39 => 'Panel',
+									12 => 'Veranstaltung',
+									21 => 'StartPinned',
+									22 => 'KategoriePinned'
+								);
+								if ($pKat[$aKatName]) {
+									$aKatName = $pKat[$aKatName];
+								}
+								$outBibTex.= (($akdg>0)?' and ':'').'"'.$aKatName.'"';
+								$akdg++;
+							}
+							$outBibTex.= '}';
 						} else {
 							$outBibTex.= ((is_numeric($val))?'':'{').$val.((is_numeric($val))?'':'}');
 						}

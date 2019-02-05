@@ -693,7 +693,7 @@ page.10 {
 [global]
 
 // BibTex-Liste
-[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id > 18] && [globalVar = TSFE:id < 23]
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id > 18 , TSFE:id = 6] && [globalVar = TSFE:id < 23 , TSFE:id = 6]
 lib.bibTexFile < lib.isOne
 page >
 page = PAGE
@@ -740,6 +740,9 @@ page.10.20.select.pidInList = 31
 [global]
 [globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 22]
 page.10.20.select.pidInList = 33
+[global]
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 6]
+page.10.20.select.pidInList = 30
 [global]
 
 
