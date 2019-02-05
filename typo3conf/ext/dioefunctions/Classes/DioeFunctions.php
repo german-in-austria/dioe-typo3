@@ -90,7 +90,7 @@ class Functions {
   }
 
   /*
-  /   user_publikation_authoren_bibtex:
+  /   user_publikation_bibtex:
   /   Ausgabe der Publikation als bibtex
   */
   public function user_publikation_bibtex($content,$conf)    {
@@ -183,8 +183,81 @@ class Functions {
     return $outBibTex;
   }
 
+	/*
+	/   user_veranstaltungen_bibtex:
+	/   Ausgabe der Publikation als bibtex
+	*/
+	public function user_veranstaltungen_bibtex($content,$conf)    {
+		global $TSFE;
+		$TSFE->set_no_cache();
+		$aField = $this->cObj->data;
+		$aArtenFelder = array('terminZeit','terminBisZeit','uebersichtUeberschrift','kategorie','terminSektionPersonen','terminEvent','terminUhrzeit','terminTermintext','terminAdress','terminNote','terminSektionOrganiser','terminSektionOrganisation','terminSektionParticipants','terminUrl','terminDoi','terminKeywords');
+		$ignoreFields = array();
+		if(isset($aArtenFelder)) {
+			foreach ($aField as $key => $val) {
+				if(!in_array($key,$aArtenFelder)) {
+					unset($aField[$key]);
+				}
+			}
+		} else {
+			foreach ($ignoreFields as $val) { unset($aField[$val]); };
+		}
+		$aArt = $TSFE->id;
+		if ($TSFE->id == 22) {
+			$aArt = 'lehre';
+		} elseif ($TSFE->id == 20) {
+			$aArt = 'veranstaltung';
+		} elseif ($TSFE->id == 21) {
+			$aArt = 'vortrag';
+		}
+		$outBibTex = '@'.$aArt.'{'.hash("md5",multi_implode($aField,',')).",\n";
+		foreach ($aField as $key => $val) {
+			if(!empty($val)) {
+				if($key=='terminSektionPersonen' || $key=='terminSektionOrganiser' || $key=='terminSektionParticipants') {
+					$audg = 0;
+					$outBibTex.= $key.' = ';
+					foreach ($val as $ukey => $uval) {
+						$outBibTex.= (($audg>0)?' and ':'').'"{'.$uval['nachname'].'}, {'.$uval['vorname'].'}"';
+						$audg++;
+					}
+					$outBibTex.= ",\n";
+				} else {
+					$outBibTex.= $key.' = ';
+					if(is_array($val)) {
+						$audg = 0;
+						foreach ($val as $ukey => $uval) {
+							$outBibTex.= (($audg>0)?' AND ':'');
+							if(is_array($uval)) {
+								$outBibTex.= '{ ';
+								$auudg = 0;
+								foreach ($uval as $uukey => $uuval) {
+									$outBibTex.= (($auudg>0)?', ':'').$uukey.' = '.((is_numeric($uuval))?'':'{').$uuval.((is_numeric($uuval))?'':'}');
+									$auudg++;
+								}
+								$outBibTex.= ' }';
+							} else {
+								$outBibTex.= ((is_numeric($uval))?'':'{').$uval.((is_numeric($uval))?'':'}');
+							}
+							$audg++;
+						}
+					} else {
+						if($key=='terminZeit' || $key=='terminBisZeit') {
+							$outBibTex.= '"'.date("Y.m.d - H:i", $val).'"';
+						} else {
+							$outBibTex.= ((is_numeric($val))?'':'{').$val.((is_numeric($val))?'':'}');
+						}
+					}
+					$outBibTex.= ",\n";
+				}
+			}
+		};
+		$outBibTex.= "addendum = {date: ".date("Y.m.d", $this->cObj->data['datum'])."},\n";
+		$outBibTex = substr($outBibTex,0,-2)."\n}";
+		return $outBibTex;
+	}
+
   /*
-  /   user_php_html_entity_decode:
+  /   user_php_html_entity_decode_rss_encode:
   */
   public function user_php_html_entity_decode_rss_encode($content,$conf)    {
     global $TSFE;

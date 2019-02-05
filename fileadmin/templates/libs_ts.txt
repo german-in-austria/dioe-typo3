@@ -20,6 +20,13 @@ lib.PublikationBibTex {
     userFunc = Dioevendor\Dioefunctions\Functions->user_publikation_bibtex
   }
 }
+lib.VeranstaltungenBibTex = COA
+lib.VeranstaltungenBibTex {
+  10 = USER
+  10 {
+    userFunc = Dioevendor\Dioefunctions\Functions->user_veranstaltungen_bibtex
+  }
+}
 lib.TextSpecial = COA
 lib.TextSpecial {
   10 = USER

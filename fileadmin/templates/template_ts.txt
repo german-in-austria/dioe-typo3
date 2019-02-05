@@ -500,6 +500,9 @@ page.10.20 {
 lib.pageTerminListe  < lib.isOne
 page.10.20 {
   20 < lib.termine
+	20.10.select.pidInList = 31
+  20.20.select.pidInList = 31
+  20.20.renderObj.10.20.select.pidInList = 31
 }
 [global]
 
@@ -690,7 +693,7 @@ page.10 {
 [global]
 
 // BibTex-Liste
-[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 19]
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id > 18] && [globalVar = TSFE:id < 23]
 lib.bibTexFile < lib.isOne
 page >
 page = PAGE
@@ -725,6 +728,18 @@ page.10 {
 		}
   }
 }
+[global]
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 19]
+page.10.20.select.pidInList = 35
+[global]
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 20]
+page.10.20.select.pidInList = 32
+[global]
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 21]
+page.10.20.select.pidInList = 31
+[global]
+[globalVar = GP:bibTex = 1] && [globalVar = TSFE:id = 22]
+page.10.20.select.pidInList = 33
 [global]
 
 
