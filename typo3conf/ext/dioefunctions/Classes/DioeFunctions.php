@@ -185,7 +185,7 @@ class Functions {
 
 	/*
 	/   user_veranstaltungen_bibtex:
-	/   Ausgabe der Publikation als bibtex
+	/   Ausgabe der Veranstaltungen, Vorträgen und Lehren als bibtex
 	*/
 	public function user_veranstaltungen_bibtex($content,$conf)    {
 		global $TSFE;
@@ -210,7 +210,7 @@ class Functions {
 		} elseif ($TSFE->id == 21) {
 			$aArt = 'vortrag';
 		}
-		$outBibTex = '@'.$aArt.'{'.hash("md5",multi_implode($aField,',')).",\n";
+		$outBibTex = '@misc{'.$aArt.'_'.hash("md5",multi_implode($aField,',')).",\n";
 		foreach ($aField as $key => $val) {
 			if(!empty($val)) {
 				if($key=='terminSektionPersonen' || $key=='terminSektionOrganiser' || $key=='terminSektionParticipants') {
@@ -258,7 +258,7 @@ class Functions {
 
 	/*
 	/   user_beitraege_bibtex:
-	/   Ausgabe der Publikation als bibtex
+	/   Ausgabe der Beiträge als bibtex
 	*/
 	public function user_beitraege_bibtex($content,$conf)    {
 		global $TSFE;
@@ -275,7 +275,7 @@ class Functions {
 		} else {
 			foreach ($ignoreFields as $val) { unset($aField[$val]); };
 		}
-		$outBibTex = '@beitrag{'.hash("md5",multi_implode($aField,',')).",\n";
+		$outBibTex = '@misc{beitrag_'.hash("md5",multi_implode($aField,',')).",\n";
 		foreach ($aField as $key => $val) {
 			if(!empty($val)) {
 				if($key=='terminSektionPersonen' || $key=='terminSektionOrganiser' || $key=='terminSektionParticipants') {
