@@ -10,7 +10,7 @@
 .powermail_form_1 .powermail_fieldwrap_einwilligung>label {
 	display: none;
 }
-input#powermail_field_einwilligung_1 {
+input#powermail_field_einwilligung_1, input#powermail_field_marker_1 {
 	margin-top: 9px;
 	width: 16px;
 	height: 16px;
@@ -22,4 +22,49 @@ input#powermail_field_einwilligung_1 {
 }
 .powermail_fieldwrap_type_submit>div>input {
 	width:100%;
+}
+
+
+.csa-klasse-modal, .csa-einzel-modal {
+	position: relative;
+  padding-bottom: 40px;
+	font-size: 18px;
+	line-height: 1.4;
+}
+.csa-einzel-modal:before {
+  content: '';
+  background: #d4e29b;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: calc(100vw - 9px);
+  margin-left: -50vw;
+  z-index: -1;
+  height: 100%;
+}
+.csa-klasse-modal>.bsmodalbtn, .csa-einzel-modal>.bsmodalbtn {
+  margin: 0 auto;
+  display: block;
+}
+.powermail_form_4 > h3, .powermail_fieldset_4 > legend, .powermail_form_3 > h3, .powermail_fieldset_3 > legend {
+	display: none;
+}
+.powermail_fieldwrap_ichmoechteaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmenjaneinvielleicht > *,
+.powermail_fieldwrap_ichmoechteaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmenjaneinvielleicht > div > div,
+.powermail_fieldwrap_ichmoechtemitmeinerklasseaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmen > *,
+.powermail_fieldwrap_ichmoechtemitmeinerklasseaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmen > div > div {
+	width: auto;
+	text-align: left!important;
+	display: contents;
+}
+.powermail_fieldwrap_ichmoechteaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmenjaneinvielleicht > div > div > label,
+.powermail_fieldwrap_ichmoechtemitmeinerklasseaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmen > div > div > label {
+  margin-left: 25px;
+}
+.powermail_fieldwrap_ichmoechteaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmenjaneinvielleicht > div > div > label > input,
+.powermail_fieldwrap_ichmoechtemitmeinerklasseaneinergefuehrteniamdioe_schnitzeljagdwiengrazsalzburgteilnehmen > div > div > label > input {
+	width: 16px;
+	height: 16px;
+	margin-left: -25px!important;
+	margin-top: 5px;
 }
