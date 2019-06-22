@@ -9,7 +9,7 @@ page.headerData.1010.value (
 page.headerData.1010.insertData = 1
 
 page.includeCSS {
-  file1 = https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&amp;subset=latin-ext
+  # file1 = https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&amp;subset=latin-ext
   file2 = fileadmin/css/bootstrap.min.css
   file3 = fileadmin/css/normalize.css
   file4 = fileadmin/css/main.css
