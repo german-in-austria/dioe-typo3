@@ -1058,6 +1058,60 @@ body.debugging .debug-show-iblock {
   display: block;
 }
 
+.info-acc {
+  list-style: none;
+  padding-left: 0;
+	background-color: #eee;
+}
+.info-acc > li > div {
+	padding: 5px 12px;
+}
+.info-acc .acc-con {
+  background: rgba(255, 255, 255, 0.5);
+}
+.info-acc .acc-tab > a {
+	display: block;
+}
+.info-acc .acc-tab > a:after {
+	content: "\e114";
+	position: relative;
+	float: right;
+	top: 4px;
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: transform 0.25s;
+	transform: rotate(360deg);
+}
+.info-acc .acc-tab > a.collapsed:after {
+	transform: rotate(180deg);
+}
+
+.info-acc-fxbg1 { background-color: #fffabe; }
+.info-acc-fxbg2 { background-color: #feeee8; }
+.info-acc-fxbg3 { background-color: #f7bad5; }
+.info-acc-fxbg4 { background-color: #c7eafa; }
+.info-acc-fxbg5 { background-color: #d5e59a; }
+.info-acc-fxbg6 { background-color: #eee; }
+.info-acc-fxbgiam1 { background-color: #efeeee; }
+.info-acc-fxbgiam2 { background-color: #bcbcbb; }
+.info-acc-fxbgiam3 { background-color: #feede8; }
+.info-acc-fxbgiam4 { background-color: #f6bbd5; }
+.info-acc-fxbgiam5 { background-color: #f18c9a; }
+.info-acc-fxbgiam6 { background-color: #fef7c0; }
+.info-acc-fxbgiam7 { background-color: #ffe58d; }
+.info-acc-fxbgiam8 { background-color: #f9b55a; }
+.info-acc-fxbgiam9 { background-color: #d4e29b; }
+.info-acc-fxbgiam10 { background-color: #7fc498; }
+.info-acc-fxbgiam11 { background-color: #1ca896; }
+.info-acc-fxbgiam12 { background-color: #c7e7f8; }
+.info-acc-fxbgiam13 { background-color: #8ed1ef; }
+.info-acc-fxbgiam14 { background-color: #3e8bc9; }
+
 @media (max-width: 767px) {
 .icon-view .mitarbeiter {
   width: 48%;

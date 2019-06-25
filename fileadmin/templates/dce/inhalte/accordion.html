@@ -25,10 +25,10 @@
 			<div class="col-xs-12 col-sm-7">
 	</f:if>
 	<f:if condition="{field.text}"><f:format.html>{field.text}</f:format.html></f:if>
-	<f:if condition="{field.accordions}"><ul role="tablist" class="accordion<f:if condition="{field.singleselect}"> singleselect</f:if>" aria-multiselectable="true">
+	<f:if condition="{field.accordions}"><ul role="tablist" class="accordion<f:if condition="{field.singleselect}"> singleselect</f:if><f:if condition="{field.class}"> {field.class}</f:if>" aria-multiselectable="true">
 		<f:for each="{field.accordions}" as="accordion" iteration="iterator">
-			<li><div role="tab" id="acctitel-{iterator.index}"><a role="button" data-toggle="collapse" href="#collapse-{iterator.index}" class="accordioncollapse" aria-expanded="false" aria-controls="collapse-{iterator.index}"><b><f:format.stripTags>{accordion.accordiontitel}</f:format.stripTags></b></a></div>
-			<div id="collapse-{iterator.index}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acctitel-{iterator.index}"><f:format.html>{accordion.accordiontext}</f:format.html></div></li>
+			<li><div role="tab" class="acc-tab" id="acctitel-{iterator.index}"><a role="button" data-toggle="collapse" href="#collapse-{iterator.index}" class="accordioncollapse collapsed" aria-expanded="false" aria-controls="collapse-{iterator.index}"><b><f:format.stripTags>{accordion.accordiontitel}</f:format.stripTags></b></a></div>
+			<div id="collapse-{iterator.index}" class="panel-collapse collapse acc-con" role="tabpanel" aria-labelledby="acctitel-{iterator.index}"><f:format.html>{accordion.accordiontext}</f:format.html></div></li>
 		</f:for>
 	</ul></f:if>
 	<f:if condition="{field.anzeigeart} == 2"></div></div></f:if>
