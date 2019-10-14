@@ -35,7 +35,7 @@
             <f:if condition="{field.terminZeit} < {field.terminBisZeit}">
               <f:then>
                 <f:if condition="{f:format.date(date: field.terminZeit, format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit, format: 'd.m.Y')}">
-                  <f:then>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" />–<f:format.date date="{field.terminBisZeit}" format="H:i" /> {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:termin_uhr')}{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:then>
+                  <f:then>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" /><f:if condition="{field.terminBisZeit}">–<f:format.date date="{field.terminBisZeit}" format="H:i" /></f:if> {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:termin_uhr')}{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:then>
                   <f:else>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y - H:i" /> {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:termin_uhr')} {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:termin_bis')} <f:format.date date="{field.terminBisZeit}" format="d.m.Y - H:i" /> {f:translate(key: 'LLL:fileadmin/templates/locallang.xml:termin_uhr')}{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:else>
                 </f:if>
               </f:then>
@@ -45,7 +45,7 @@
           <f:else>
             <f:if condition="{f:format.date(date: field.terminZeit, format: 'd.m.Y')} == {f:format.date(date: field.terminBisZeit, format: 'd.m.Y')}">
               <f:then>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y" />{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:then>
-              <f:else>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y" />–<f:format.date date="{field.terminBisZeit}" format="d.m.Y" />{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:else>
+              <f:else>{f:if(condition: '{field.terminSektionPersonen}', then: '(', else: '')}<f:format.date date="{field.terminZeit}" format="d.m.Y" /><f:if condition="{field.terminBisZeit}">–<f:format.date date="{field.terminBisZeit}" format="d.m.Y" /></f:if>{f:if(condition: '{field.terminSektionPersonen}', then: ')', else: '')}: </f:else>
             </f:if>
           </f:else>
         </f:if>
