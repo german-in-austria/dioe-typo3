@@ -6,8 +6,8 @@
 		<f:then>
 			<meta property="og:title" content="{field.uebersichtUeberschrift}" />
 			<f:if condition="{field.uebersichtText}">
-				<f:then><meta property="og:description" content="{field.uebersichtText -> f:format.stripTags() -> f:format.crop(maxCharacters:'290',respectHtml:'1',respectWordBoundaries:'1')}"></f:then>
-				<f:else><f:if condition="{field.detailseiteText}"><meta property="og:description" content="{field.detailseiteText -> f:format.stripTags() -> f:format.crop(maxCharacters:'290',respectHtml:'1',respectWordBoundaries:'1')}"></f:if></f:else>
+				<f:then><meta property="og:description" content="{field.uebersichtText -> f:cObject(typoscriptObjectPath: 'lib.RemoveTextSpecial') -> f:format.stripTags() -> f:format.crop(maxCharacters:'290',respectHtml:'1',respectWordBoundaries:'1')}"></f:then>
+				<f:else><f:if condition="{field.detailseiteText}"><meta property="og:description" content="{field.detailseiteText -> f:cObject(typoscriptObjectPath: 'lib.RemoveTextSpecial') -> f:format.stripTags() -> f:format.crop(maxCharacters:'290',respectHtml:'1',respectWordBoundaries:'1')}"></f:if></f:else>
 			</f:if>
 			<f:for each="{dce:fal(field:'uebersichtBild', contentObject:contentObject)}" as="fileReference" iteration="iterator"><meta property="og:image" content="https://dioe.at/{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',width:'600c',height:'315c')}" /></f:for>
 			<f:for each="{dce:fal(field:'detailseiteBild', contentObject:contentObject)}" as="fileReference" iteration="iterator"><meta property="og:image" content="https://dioe.at/{f:uri.image(src:'{fileReference.uid}',treatIdAsReference:'1',width:'600c',height:'315c')}" /></f:for>
