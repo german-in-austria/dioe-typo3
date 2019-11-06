@@ -638,7 +638,7 @@ page.10 {
     wrap (
     <lastBuildDate>|</lastBuildDate>
     <image>
-      <url>https://dioe.at/fileadmin/img/podcast-dioe_original.png</url>
+      <url>https://dioe.at/fileadmin/img/podcast-dioe_big.png</url>
       <title>Podcast DIOE (mp3)</title>
       <link>https://www.dioe.at/</link>
     </image>
@@ -651,7 +651,7 @@ page.10 {
   		<itunes:name>Martin Gasteiner</itunes:name>
   		<itunes:email>martin.gasteiner@univie.ac.at</itunes:email>
   	</itunes:owner>
-  	<itunes:image href="https://dioe.at/fileadmin/img/podcast-dioe_original.png" />
+  	<itunes:image href="https://dioe.at/fileadmin/img/podcast-dioe_big.png" />
   	<itunes:subtitle>Podcast des Spezialforschungsbereich Deutsch in Österreich</itunes:subtitle>
   	<itunes:block>no</itunes:block>
   	<itunes:explicit>no</itunes:explicit>
