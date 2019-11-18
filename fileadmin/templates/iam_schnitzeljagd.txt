@@ -1,0 +1,9 @@
+[globalString = GP:pw = /.+/]
+page.10.20 = COA_INT
+page.10.20.10.select.where.cObject.10.value = colPos = 0
+page.10.20.10.select.where.cObject.10.value.override = colPos = 1
+page.10.20.10.select.where.cObject.10.value.override.if {
+	value.data = page:subtitle
+	equals.data = GP:pw
+}
+[global]
