@@ -644,12 +644,12 @@ page.10 {
     </image>
     <atom:link rel="self" type="application/rss+xml" title="Podcast DIOE (mp3)" href="https://www.dioe.at/podcast.xml" />
     <atom:link rel="first" href="https://www.dioe.at/podcast.xml" />
-    <itunes:author>Martin Gasteiner</itunes:author>
+    <itunes:author>SFB Deutsch in Österreich</itunes:author>
     <itunes:summary>Der FWF Spezialforschungsbereich (SFB) „Deutsch in Österreich. Variation – Kontakt – Perzeption” (F 60) beschäftigt sich mit der Vielfalt und dem Wandel der deutschen Sprache in Österreich. Die drei thematischen Säulen des Projekts sind Variation, Kontakt und Perzeption. Das heißt: Der SFB behandelt den Gebrauch und die subjektive Wahrnehmung von deutscher Sprache in Österreich und zeigt Einflüsse durch Kontaktsprachen auf. Unser Ziel ist es, die Forschungsansätze und -ergebnisse einem möglichst breiten Publikum einfach und frei zugänglich zu machen. Dieser Podcast stellt die AkteurInnen des Forschungsbereichs vor und versucht einen Einblick in die Struktur und Fragestellungen des Projekts zu geben.</itunes:summary>
     <itunes:category text="Society &amp; Culture"></itunes:category><itunes:category text="Technology"></itunes:category><itunes:category text="Education"><itunes:category text="Higher Education"></itunes:category></itunes:category>
     <itunes:owner>
-  		<itunes:name>Martin Gasteiner</itunes:name>
-  		<itunes:email>martin.gasteiner@univie.ac.at</itunes:email>
+  		<itunes:name>SFB Deutsch in Österreich</itunes:name>
+  		<itunes:email>podcast@dioe.at</itunes:email>
   	</itunes:owner>
   	<itunes:image href="https://dioe.at/fileadmin/img/podcast-dioe_big.png" />
   	<itunes:subtitle>Podcast des Spezialforschungsbereich Deutsch in Österreich</itunes:subtitle>
