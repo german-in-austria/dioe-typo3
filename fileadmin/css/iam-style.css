@@ -24,6 +24,9 @@ input#powermail_field_einwilligung_1, input#powermail_field_marker_1 {
 	width:100%;
 }
 
+.small, small {
+  line-height: 1.4;
+}
 
 .csa-klasse-modal, .csa-einzel-modal {
 	position: relative;
