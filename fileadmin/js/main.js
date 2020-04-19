@@ -81,19 +81,21 @@
 				aimglb = true;
 			};
     };
-		var aimgrw = '<span class="img img-responsive img-rounded ' + ((aimgwidth=='100%') ? ' mib1e' : 'pull-' + aimgalign + ((aimgalign=='left') ? ' mir2e mib1e' : ' mil2e mib1e')) + '" style="width:'+aimgwidth+';"><img src="'+$('.imgData[data-img-dg="'+aimgnr+'"]').data('img-url')+'" alt="" class="w100">'+$('.imgData[data-img-dg="'+aimgnr+'"]').siblings('.img-add')[0].outerHTML+'</span>';
-		if(aimglb==true) {
-			aimgrw = '<a href="#" data-imgalbox="'+aimgnr+'">'+aimgrw+'</a>';
-		};
+		var aimgrw = '<span class="img img-responsive img-rounded ' + ((aimgwidth == '100%') ? ' mib1e' : 'pull-' + aimgalign + ((aimgalign == 'left') ? ' mir2e mib1e' : ' mil2e mib1e')) + '" style="width:' + aimgwidth + ';">';
+		aimgrw += '<span class="img w-100"><img src="'+$('.imgData[data-img-dg="' + aimgnr + '"]').data('img-url') + '" alt="" class="w100">' + $('.imgData[data-img-dg="' + aimgnr + '"]').siblings('.img-add')[0].outerHTML + '</span>';
 		var aimgFooter = $('.imgData[data-img-dg="' + aimgnr + '"]').parent().data('footer');
 		if (aimgFooter && aimgFooter.length > 0) {
 			aimgrw += '<div class="imgdescription">' + aimgFooter + '</div>';
 		}
+		aimgrw += '</span>';
+		if(aimglb == true) {
+			aimgrw = '<a href="#" data-imgalbox="' + aimgnr + '">' + aimgrw + '</a>';
+		};
     $(this).replaceWith(aimgrw);
   });
 	$(document).on('click', 'a[data-imgalbox]', function (e) {
 		e.preventDefault();
-		$('.imgData[data-img-dg="'+$(this).data('imgalbox')+'"]').parent().click();
+		$('.imgData[data-img-dg="' + $(this).data('imgalbox') + '"]').parent().click();
 	});
 
   // Nachladen
