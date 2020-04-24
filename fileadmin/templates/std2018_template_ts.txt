@@ -33,7 +33,7 @@ page.10.10.25 >
 // Startseite
 [globalVar = TSFE:id = 87]
 page.includeJSFooter {
-  file1 = https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js
+  file1 = fileadmin/js/skrollr.min.js
 }
 page.10 {
   5 = TEXT
