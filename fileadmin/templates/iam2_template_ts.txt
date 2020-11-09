@@ -8,8 +8,16 @@ config {
 config.headerComment (
 )
 
+config.pageRendererTemplateFile = fileadmin/templates/iam2_tslib_page_frontend.html
+
+page.includeCSS >
 page.includeCSS {
-  file10 = fileadmin/css/iam-style.css
+	file2 = fileadmin/css/bootstrap4.min.css
+  file10 = fileadmin/css/iam2-style.css
+}
+
+page.includeJS >
+page.includeJS {
 }
 
 page.10.10.20.10.special.value = 182
@@ -37,7 +45,6 @@ page.10 {
   5 = TEXT
   5.value (
 <header class="main hidden-print">
-  <img class="hero people active" data-0="transform: translateY(0%)" data-390="transform: translateY(70%)" src="fileadmin/img/i-am-dioe-footer-small.png" style="opacity: 1 !important" />
   <img class="logo" src="fileadmin/img/dioe-logo-gray.png" data-0="transform:translateY(0%); opacity: 1" data-390="transform:translateY(220%); opacity:.7">
 </header>
 )
