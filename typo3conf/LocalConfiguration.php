@@ -27,8 +27,10 @@ return [
             'compatibility7' => 'a:0:{}',
             'css_styled_content' => 'a:1:{s:32:"loadContentElementWizardTsConfig";s:1:"1";}',
             'dce' => 'a:5:{s:29:"disableAutoClearFrontendCache";s:1:"0";s:17:"disableCodemirror";s:1:"0";s:17:"enableUpdateCheck";s:1:"0";s:21:"disableAutoClearCache";s:1:"0";s:16:"filebasedDcePath";s:0:"";}',
+            'dioefunctions' => 'a:0:{}',
             'filemetadata' => 'a:0:{}',
             'gridelements' => 'a:3:{s:20:"additionalStylesheet";s:0:"";s:19:"nestingInListModule";s:1:"0";s:26:"overlayShortcutTranslation";s:1:"0";}',
+            'hcb_iamdioe_meme' => 'a:0:{}',
             'powermail' => 'a:8:{s:12:"disableIpLog";s:1:"0";s:27:"disableMarketingInformation";s:1:"0";s:20:"disableBackendModule";s:1:"0";s:24:"disablePluginInformation";s:1:"0";s:35:"disablePluginInformationMailPreview";s:1:"0";s:13:"enableCaching";s:1:"0";s:15:"l10n_mode_merge";s:1:"0";s:29:"replaceIrreWithElementBrowser";s:1:"0";}',
             'realurl' => 'a:6:{s:10:"configFile";s:44:"fileadmin/templates/realurl/realurl_conf.php";s:14:"enableAutoConf";s:1:"1";s:14:"autoConfFormat";s:1:"1";s:17:"segTitleFieldList";s:0:"";s:12:"enableDevLog";s:1:"0";s:10:"moduleIcon";s:1:"0";}',
             'recycler' => 'a:0:{}',
@@ -61,6 +63,9 @@ return [
         'processor_enabled' => 1,
         'processor_path' => '/usr/bin/',
         'processor_path_lzw' => '/usr/bin/',
+    ],
+    'HTTP' => [
+        'verify' => '1',
     ],
     'INSTALL' => [],
     'MAIL' => [
@@ -99,6 +104,6 @@ return [
         'sitename' => 'Deutsch in Österreich',
         'sqlDebug' => 0,
         'systemLogLevel' => 2,
-        'trustedHostsPattern' => 'dioe.at|www.dioe.at|iam.dioe.at|standard2018.dioe.at|typo3test.dioe.at',
+        'trustedHostsPattern' => 'dioe.at|www.dioe.at|iam.dioe.at|iam-test.dioe.at|standard2018.dioe.at|typo3test.dioe.at|quiz.dioe.at',
     ],
 ];
