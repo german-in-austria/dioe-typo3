@@ -1,0 +1,24 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/templates/setup.txt">
+TCEFORM.tt_content {
+	section_frame.addItems.101 = Farbiger Hintergrund (Gelb)
+	section_frame.addItems.102 = Farbiger Hintergrund (Rosa)
+	section_frame.addItems.103 = Farbiger Hintergrund (Pink)
+	section_frame.addItems.104 = Farbiger Hintergrund (Blau)
+	section_frame.addItems.105 = Farbiger Hintergrund (Grün)
+	section_frame.addItems.106 = Farbiger Hintergrund (Grau)
+
+	section_frame.addItems.201 = iam - Grau 1 - Aktionen zum Mitmachen
+	section_frame.addItems.202 = iam - Grau 2 - Aktionen zum Mitmachen
+	section_frame.addItems.203 = iam - Rosa 1 - Forschungsfrage Schritt für Schritt
+	section_frame.addItems.204 = iam - Rosa 2 - Forschungsfrage Schritt für Schritt
+	section_frame.addItems.205 = iam - Rosa 3 - Forschungsfrage Schritt für Schritt
+	section_frame.addItems.206 = iam - Gelb 1 - Über IamDiÖ
+	section_frame.addItems.207 = iam - Gelb 2 - Über IamDiÖ
+	section_frame.addItems.208 = iam - Gelb 3 - Über IamDiÖ
+	section_frame.addItems.209 = iam - Grün 1 - Mitforschen
+	section_frame.addItems.210 = iam - Grün 2 - Mitforschen
+	section_frame.addItems.211 = iam - Grün 3 - Mitforschen
+	section_frame.addItems.212 = iam - Blau 1 - Frage des Monats
+	section_frame.addItems.213 = iam - Blau 2 - Frage des Monats
+	section_frame.addItems.214 = iam - Blau 3 - Frage des Monats
+}
