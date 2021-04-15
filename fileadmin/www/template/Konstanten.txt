@@ -1,0 +1,13 @@
+# cat=Grundeinstellungen//; type=int+; label=ID der Startseite
+optionen.homeID = 1
+# cat=Grundeinstellungen//; type=int+; label=ID der Seite im Menü für die Startseite
+optionen.navHomeID = 2
+# cat=Grundeinstellungen//; type=int+; label=ID der Seite mit den Footerinhalten
+optionen.footerID = 0
+# cat=Grundeinstellungen//; type=int+; label=ID der Kategorie für Hauptmenü
+optionen.topNavCatID = 1
+# cat=Grundeinstellungen//; type=int+; label=ID der Kategorie für Footermenü
+optionen.footNavCatID = 2
+
+
+styles.templates.layoutRootPath = fileadmin/www/template/fluid_styled_content/Layouts

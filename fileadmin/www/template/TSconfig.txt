@@ -1,0 +1,63 @@
+TCEMAIN.table.pages.disablePrependAtCopy = 1
+TCEMAIN.table.tt_content.disablePrependAtCopy = 1
+
+TCEMAIN.table.pages.disableHideAtCopy = 1
+TCEMAIN.table.tt_content.disableHideAtCopy = 1
+
+RTE.config.tt_content.bodytext.proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap
+
+TCEFORM.tt_content.header_layout {
+	altLabels {
+		0 = h2 - Standard
+		1 = h1
+		2 = h2
+		3 = h3
+		4 = h4
+		5 = h5
+	}
+}
+
+mod.web_layout.BackendLayouts {
+  0 {
+    title = 1 Inhalt
+    config {
+      backend_layout {
+        colCount = 1
+        rowCount = 1
+        rows {
+          1 {
+            columns {
+              1 {
+                name = Inhalt
+                colPos = 0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+	1 {
+		title = 2 Inhalte
+		config {
+			backend_layout {
+				colCount = 2
+				rowCount = 1
+				rows {
+					1 {
+						columns {
+							1 {
+								name = Inhalt (0)
+								colPos = 0
+							}
+							2 {
+								name = Inhalt (1)
+								colPos = 1
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

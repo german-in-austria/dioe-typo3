@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="EXT:dioearticlesystem/Resources/Private/Language/locallang_csh" date="2021-03-09T10:22:07Z" product-name="dioearticlesystem">
+		<header/>
+		<body>
+			<trans-unit id="a_type.description" resname="a_type.description">
+				<source>Art des Artikels</source>
+			</trans-unit>
+			<trans-unit id="a_home.description" resname="a_home.description">
+				<source>Ursprung des Artikels</source>
+			</trans-unit>
+			<trans-unit id="a_date.description" resname="a_date.description">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="prev_title.description" resname="prev_title.description">
+				<source>Überschrift (Muss angegeben werden.)</source>
+			</trans-unit>
+			<trans-unit id="prev_text.description" resname="prev_text.description">
+				<source>Text (Wenn leer wird der Text der Detailseite, in gekürzter Form, verwendet)
+</source>
+			</trans-unit>
+			<trans-unit id="a_task_cluster.description" resname="a_task_cluster.description">
+				<source>Kategorien (Einen Task-Cluster und ggf. eine weitere Kategorie auswählen.)
+</source>
+			</trans-unit>
+			<trans-unit id="start_pin.description" resname="start_pin.description">
+				<source>Auf Startseite Pinnen</source>
+			</trans-unit>
+			<trans-unit id="cat_pin.description" resname="cat_pin.description">
+				<source>In Kategorie Pinnen</source>
+			</trans-unit>
+			<trans-unit id="prev_pic.description" resname="prev_pic.description">
+				<source>Bild</source>
+			</trans-unit>
+			<trans-unit id="prev_pic_cropping_mode.description" resname="prev_pic_cropping_mode.description">
+				<source>Seitenverhältniss des Bildes</source>
+			</trans-unit>
+			<trans-unit id="detail_title.description" resname="detail_title.description">
+				<source>Überschrift (Wenn leer wird Überschrift der Übersicht verwendet)</source>
+			</trans-unit>
+			<trans-unit id="detail_text.description" resname="detail_text.description">
+				<source>Text (Wenn leer wird Text von Übersicht verwendet)</source>
+			</trans-unit>
+			<trans-unit id="detail_pic.description" resname="detail_pic.description">
+				<source>Bilder</source>
+			</trans-unit>
+			<trans-unit id="detail_pic_cropping_mode.description" resname="detail_pic_cropping_mode.description">
+				<source>Seitenverhältniss des Bildes</source>
+			</trans-unit>
+			<trans-unit id="av_files.description" resname="av_files.description">
+				<source>Dateien</source>
+			</trans-unit>
+			<trans-unit id="av_cols.description" resname="av_cols.description">
+				<source>Spalten</source>
+			</trans-unit>
+			<trans-unit id="av_aspect_ratio.description" resname="av_aspect_ratio.description">
+				<source>Seitenverhältniss</source>
+			</trans-unit>
+			<trans-unit id="f_files.description" resname="f_files.description">
+				<source>Dateien</source>
+			</trans-unit>
+			<trans-unit id="z_user.description" resname="z_user.description">
+				<source>Name (BE-User)</source>
+			</trans-unit>
+			<trans-unit id="z_name.description" resname="z_name.description">
+				<source>Name (Überschreibt obere Auswahl!)
+</source>
+			</trans-unit>
+			<trans-unit id="z_title.description" resname="z_title.description">
+				<source>Titel (Sonst Überschrift vom Reiter "Übersicht")</source>
+			</trans-unit>
+			<trans-unit id="z_place.description" resname="z_place.description">
+				<source>Standort</source>
+			</trans-unit>
+			<trans-unit id="z_l_name.description" resname="z_l_name.description">
+				<source>Lizenz: Name</source>
+			</trans-unit>
+			<trans-unit id="z_share.description" resname="z_share.description">
+				<source>Lizenz: Erlauben, dass Bearbeitungen Ihres Werkes geteilt werden? (creativecommons.org)</source>
+			</trans-unit>
+			<trans-unit id="z_com_share.description" resname="z_com_share.description">
+				<source>Lizenz: Kommerzielle Nutzungen Ihres Werkes erlauben? (creativecommons.org)</source>
+			</trans-unit>
+			<trans-unit id="z_l_text.description" resname="z_l_text.description">
+				<source>Lizenz: Freitext (Überschreibt obere Lizenzfelder!)</source>
+			</trans-unit>
+			<trans-unit id="p_file.description" resname="p_file.description">
+				<source>Datei (mp3)</source>
+			</trans-unit>
+			<trans-unit id="p_duration.description" resname="p_duration.description">
+				<source>Dauer (z.B.: "50:30" -> 50 Minuten und 30 Sekunden)</source>
+			</trans-unit>
+			<trans-unit id="pub_type.description" resname="pub_type.description">
+				<source>Art</source>
+			</trans-unit>
+			<trans-unit id="pub_title.description" resname="pub_title.description">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="pub_editors_sec.description" resname="pub_editors_sec.description">
+				<source>Autoren/Herausgeber (author/editor)</source>
+			</trans-unit>
+			<trans-unit id="pub_year.description" resname="pub_year.description">
+				<source>Erscheinungsjahr (year, vierstellig, 0=in Planung, 1=in Druck, 2=eingereicht, 3=in Vorbereitung)</source>
+			</trans-unit>
+			<trans-unit id="pub_month.description" resname="pub_month.description">
+				<source>Monat (month)</source>
+			</trans-unit>
+			<trans-unit id="pub_booktitle.description" resname="pub_booktitle.description">
+				<source>Buchtitel (booktitle)</source>
+			</trans-unit>
+			<trans-unit id="pub_publisher.description" resname="pub_publisher.description">
+				<source>Verlag (publisher)</source>
+			</trans-unit>
+			<trans-unit id="pub_journal.description" resname="pub_journal.description">
+				<source>Zeitschrift (journal)</source>
+			</trans-unit>
+			<trans-unit id="pub_volume.description" resname="pub_volume.description">
+				<source>Band (volume)</source>
+			</trans-unit>
+			<trans-unit id="pub_number.description" resname="pub_number.description">
+				<source>(Reihen-)Nummer (number)</source>
+			</trans-unit>
+			<trans-unit id="pub_series.description" resname="pub_series.description">
+				<source>Reihe (series)</source>
+			</trans-unit>
+			<trans-unit id="pub_school.description" resname="pub_school.description">
+				<source>Universität (school)</source>
+			</trans-unit>
+			<trans-unit id="pub_address.description" resname="pub_address.description">
+				<source>Verlagsort (address)</source>
+			</trans-unit>
+			<trans-unit id="pub_edition.description" resname="pub_edition.description">
+				<source>Auflage (edition)</source>
+			</trans-unit>
+			<trans-unit id="pub_pages.description" resname="pub_pages.description">
+				<source>Seite(n) (von-bis) (pages)</source>
+			</trans-unit>
+			<trans-unit id="pub_keywords.description" resname="pub_keywords.description">
+				<source>Schlüsselwörter (keywords)</source>
+			</trans-unit>
+			<trans-unit id="pub_isbn.description" resname="pub_isbn.description">
+				<source>ISBN (isbn)</source>
+			</trans-unit>
+			<trans-unit id="pub_doi.description" resname="pub_doi.description">
+				<source>Digital Object Identifier (doi)</source>
+			</trans-unit>
+			<trans-unit id="pub_url.description" resname="pub_url.description">
+				<source>URL (url)</source>
+			</trans-unit>
+			<trans-unit id="pub_url_date.description" resname="pub_url_date.description">
+				<source>URL Zugriffsdatum (urldate)</source>
+			</trans-unit>
+			<trans-unit id="pub_note.description" resname="pub_note.description">
+				<source>Notiz (note)</source>
+			</trans-unit>
+			<trans-unit id="mee_titel.description" resname="mee_titel.description">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="mee_persons_sec.description" resname="mee_persons_sec.description">
+				<source>Vortragende</source>
+			</trans-unit>
+			<trans-unit id="mee_organisers_sec.description" resname="mee_organisers_sec.description">
+				<source>Organisatoren</source>
+			</trans-unit>
+			<trans-unit id="mee_participants_sec.description" resname="mee_participants_sec.description">
+				<source>Teilnehmer</source>
+			</trans-unit>
+			<trans-unit id="mee_time.description" resname="mee_time.description">
+				<source>Zeit</source>
+			</trans-unit>
+			<trans-unit id="mee_end_time.description" resname="mee_end_time.description">
+				<source>bis Zeit</source>
+			</trans-unit>
+			<trans-unit id="mee_show_time.description" resname="mee_show_time.description">
+				<source>Uhrzeit anzeigen</source>
+			</trans-unit>
+			<trans-unit id="mee_text.description" resname="mee_text.description">
+				<source>Termintext</source>
+			</trans-unit>
+			<trans-unit id="mee_event.description" resname="mee_event.description">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="mee_adress.description" resname="mee_adress.description">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="mee_url.description" resname="mee_url.description">
+				<source>URL</source>
+			</trans-unit>
+			<trans-unit id="mee_doi.description" resname="mee_doi.description">
+				<source>terminDoi</source>
+			</trans-unit>
+			<trans-unit id="mee_note.description" resname="mee_note.description">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="mee_keywords.description" resname="mee_keywords.description">
+				<source>Schlüsselwörter (keywords)</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

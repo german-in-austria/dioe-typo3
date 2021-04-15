@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="EXT:dioearticlesystem/Resources/Private/Language/locallang_csh" date="2021-03-09T07:42:11Z" product-name="dioearticlesystem">
+		<header/>
+		<body>
+			<trans-unit id="t_name.description" resname="t_name.description">
+				<source>Name des Clusters</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

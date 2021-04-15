@@ -1,0 +1,96 @@
+.nav-frm .navbar {
+	background: #fff;
+  z-index: 1030;
+}
+.nav-frm .navbar-brand {
+	display: block;
+}
+.nav-frm .navbar-brand img {
+	display: block;
+	width: 30px;
+}
+.nav-frm .navbar-light .navbar-nav .nav-link {
+	color: #777;
+  border-radius: 0;
+  border-bottom: 3px solid #f4f4f4;
+	font-weight: 400;
+  padding: 1.25em 0.5em;
+}
+.nav-frm .navbar-light .navbar-nav .nav-link:hover, .nav-frm .navbar-light .navbar-nav .nav-link:focus {
+	color: #333;
+}
+.nav-item.mpl .nav-link {
+	font-weight: inherit!important;
+}
+
+.nav-frm .dropdown-toggle::after {
+  margin-left: .1em;
+  vertical-align: .155em;
+  border-top: .25em solid;
+  border-right: .2em solid transparent;
+  border-left: .2em solid transparent;
+}
+
+.nav-frm .navbar-light .navbar-nav .active > .nav-link, .nav-frm .navbar-light .navbar-nav .current > .nav-link {
+  border-bottom: 3px solid #777;
+}
+
+.nav-frm .navbar-nav .dropdown-menu {
+	border: none;
+	border-radius: 0;
+}
+
+@media (max-width: 991px) {
+	.nav-frm .navbar-collapse {
+	  max-height: 85vh;
+	  max-height: calc(100vh - 60px);
+	  overflow-y: auto;
+	}
+}
+@media (min-width: 992px) {
+	.nav-frm .navbar {
+		padding: 0;
+	}
+	.nav-frm .navbar-brand {
+	  margin-left: -46px;
+	}
+	.nav-frm .navbar-nav > li {
+		-ms-flex: 1 1 auto!important;
+		flex: 1 1 auto!important;
+	}
+	.nav-frm .navbar-nav > li:last-child {
+		-ms-flex: none!important;
+		flex: none!important;
+	}
+	.nav-frm .navbar-nav .dropdown-menu {
+	  margin-top: 0;
+	  background-color: #f4f4f4;
+	}
+	.nav-frm .navbar-nav .dropdown-item {
+	  font-size: 20px;
+	  line-height: 2em;
+	  padding: 3px 40px;
+	  color: #34a2cb;
+		font-weight: 400;
+	}
+	.nav-frm .navbar-nav .dropdown-item {
+	  font-size: 20px;
+	  line-height: 2em;
+	  padding: 3px 40px;
+	  color: #34a2cb;
+		font-weight: 400;
+	}
+	.nav-frm .navbar-nav .dropdown-item:hover, .nav-frm .navbar-nav .dropdown-item:focus {
+		color: #333;
+	}
+	.nav-frm .navbar-nav .dropdown-item.active, .nav-frm .navbar-nav .dropdown-item.current {
+		color: #eee;
+		background-color: #337ab7;
+	}
+}
+
+@media (min-width: 1200px) {
+	.nav-frm .container {
+	  max-width: 870px!important;
+	}
+}

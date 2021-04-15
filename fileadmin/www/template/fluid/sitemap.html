@@ -1,0 +1,9 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div class="sitemap">
+	<ul>
+		<f:for each="{allNav}" as="navItem">
+			<f:render partial="SitemapLi" arguments="{navItem: navItem}"/>
+		</f:for>
+	</ul>
+</div>

@@ -1,0 +1,13 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template is responsible for creating a table of domain objects.
+
+<f:section name="content">
+	<section class="article-list">
+	  <f:for each="{dioeArticles}" as="dioeArticle">
+			<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
+	  </f:for>
+	</section>
+</f:section>
+</html>

@@ -1,0 +1,49 @@
+plugin.tx_dioearticlesystem_view {
+    view {
+        templateRootPaths.0 = EXT:dioearticlesystem/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_dioearticlesystem_view.view.templateRootPath}
+        partialRootPaths.0 = EXT:dioearticlesystem/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_dioearticlesystem_view.view.partialRootPath}
+        layoutRootPaths.0 = EXT:dioearticlesystem/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_dioearticlesystem_view.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_dioearticlesystem_view.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 1
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+		settings.storagePid = {$plugin.tx_dioearticlesystem_view.persistence.storagePid}
+		settings.defaultPId = {$plugin.tx_dioearticlesystem_view.persistence.defaultPId}
+		settings.dioePId = {$plugin.tx_dioearticlesystem_view.persistence.dioePId}
+		settings.iamdioePId = {$plugin.tx_dioearticlesystem_view.persistence.iamdioePId}
+}
+
+plugin.tx_dioearticlesystem._CSS_DEFAULT_STYLE (
+)
+
+# Module configuration
+module.tx_dioearticlesystem_web_dioearticlesystembeae {
+    persistence {
+        storagePid = {$module.tx_dioearticlesystem_beae.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:dioearticlesystem/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_dioearticlesystem_beae.view.templateRootPath}
+        partialRootPaths.0 = EXT:dioearticlesystem/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_dioearticlesystem_beae.view.partialRootPath}
+        layoutRootPaths.0 = EXT:dioearticlesystem/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_dioearticlesystem_beae.view.layoutRootPath}
+    }
+		features {
+			ignoreAllEnableFieldsInBe = 1
+		}
+}

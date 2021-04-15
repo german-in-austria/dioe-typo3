@@ -1,0 +1,15 @@
+## www.dioe.at
+Konstanten:
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/www/template/Konstanten.txt">
+Setup:
+<INCLUDE_TYPOSCRIPT: source="DIR: fileadmin/www/template/typoscript" extensions="typoscript">
+Seiten-TSconfig:
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/www/template/TSconfig.txt">
+
+## Allgemein
+Erweiterungen:
+- vhs
+- dce
+Kategorien:
+- Im Menü
+- In der Footernavigation

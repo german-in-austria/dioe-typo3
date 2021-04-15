@@ -1,0 +1,35 @@
+plugin.tx_dioearticlesystem_view {
+    view {
+        # cat=plugin.tx_dioearticlesystem_view/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:dioearticlesystem/Resources/Private/Templates/
+        # cat=plugin.tx_dioearticlesystem_view/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:dioearticlesystem/Resources/Private/Partials/
+        # cat=plugin.tx_dioearticlesystem_view/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:dioearticlesystem/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_dioearticlesystem_view//a; type=string; label=Default storage PID
+        storagePid =
+				# cat=plugin.tx_dioearticlesystem_view//a; type=int+; label=Standard ID der Detailseite
+				defaultPId = 5
+				# cat=plugin.tx_dioearticlesystem_view//a; type=int+; label=ID der Detailseite von Diö
+				dioePId = 5
+				# cat=plugin.tx_dioearticlesystem_view//a; type=int+; label=ID der Detailseite von IamDiö
+				iamdioePId = 6
+    }
+}
+
+module.tx_dioearticlesystem_beae {
+    view {
+        # cat=module.tx_dioearticlesystem_beae/file; type=string; label=Path to template root (BE)
+        templateRootPath = EXT:dioearticlesystem/Resources/Private/Backend/Templates/
+        # cat=module.tx_dioearticlesystem_beae/file; type=string; label=Path to template partials (BE)
+        partialRootPath = EXT:dioearticlesystem/Resources/Private/Backend/Partials/
+        # cat=module.tx_dioearticlesystem_beae/file; type=string; label=Path to template layouts (BE)
+        layoutRootPath = EXT:dioearticlesystem/Resources/Private/Backend/Layouts/
+    }
+    persistence {
+        # cat=module.tx_dioearticlesystem_beae//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

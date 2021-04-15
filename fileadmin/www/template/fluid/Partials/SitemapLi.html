@@ -1,0 +1,16 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<li>
+	<a href="{navItem.link}" {f:if(condition:'{navItem.target}',then:' target="{navItem.target}"')}{f:if(condition:'{navItem.data.abstract}',then:' title="{navItem.data.abstract}"')}>{navItem.title}</a><br>
+	<f:if condition="{navItem.data.description}">
+		<div>
+			{navItem.data.description}
+		</div>
+	</f:if>
+	<f:if condition="{navItem.children}">
+		<ul>
+			<f:for each="{navItem.children}" as="navChildItem" iteration="iterator">
+				<f:render partial="SitemapLi" arguments="{navItem: navChildItem}"/>
+			</f:for>
+		</ul>
+	</f:if>
+</li>

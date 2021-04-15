@@ -1,0 +1,21 @@
+page.headerData.66 = TEXT
+page.headerData.66.value = <meta name="robots" content="noindex, nofollow">
+
+config.contentObjectExceptionHandler = 0
+
+config {
+  language = de
+  doctype = html5
+  xmlprologue = none
+  xhtml_cleaning = all
+  htmlTag_setParams = lang="de" dir="ltr"
+  disablePrefixComment = true
+  prefixLocalAnchors = all
+  simulateStaticDocuments = 0
+  spamProtectEmailAddresses = ascii
+  // concatenateCss = 1
+  // compressCss = 1
+  // concatenateJs = 1
+  // compressJs = 1
+	headerComment = Konzept und Webentwicklung von www.hcb.de (Hans Christian Breuer)
+}

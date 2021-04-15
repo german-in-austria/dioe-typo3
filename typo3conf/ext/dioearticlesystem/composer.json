@@ -1,0 +1,32 @@
+{
+    "name": "dioe-article-system/dioearticlesystem",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [
+        {
+            "name": "HCB",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^10.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "DioeArticleSystem\\Dioearticlesystem\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DioeArticleSystem\\Dioearticlesystem\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/dioearticlesystem": "self.version"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "dioearticlesystem"
+        }
+    }
+}

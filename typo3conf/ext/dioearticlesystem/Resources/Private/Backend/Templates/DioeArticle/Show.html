@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template is responsible for displaying a single view for a domain object
+
+<f:section name="content">
+    <h1>Single View for DioeArticle</h1>
+
+    <f:flashMessages />
+    <f:render partial="DioeArticle/Properties" arguments="{dioeArticle:dioeArticle}" />
+    <f:link.action action="belist">Back to list</f:link.action><br />
+    <f:link.action action="create">New DioeArticle</f:link.action>
+</f:section>
+</html>

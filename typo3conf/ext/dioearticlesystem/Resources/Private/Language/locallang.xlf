@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="EXT:dioearticlesystem/Resources/Private/Language/locallang" date="2021-03-09T10:22:07Z" product-name="dioearticlesystem">
+		<header/>
+		<body>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle" resname="tx_dioearticlesystem_domain_model_dioearticle">
+				<source>Dioe Article</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_type" resname="tx_dioearticlesystem_domain_model_dioearticle.a_type">
+				<source>A Type</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_home" resname="tx_dioearticlesystem_domain_model_dioearticle.a_home">
+				<source>A Home</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_date" resname="tx_dioearticlesystem_domain_model_dioearticle.a_date">
+				<source>A Date</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.prev_title" resname="tx_dioearticlesystem_domain_model_dioearticle.prev_title">
+				<source>Prev Title</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.prev_text" resname="tx_dioearticlesystem_domain_model_dioearticle.prev_text">
+				<source>Prev Text</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_task_cluster" resname="tx_dioearticlesystem_domain_model_dioearticle.a_task_cluster">
+				<source>A Task Cluster</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.start_pin" resname="tx_dioearticlesystem_domain_model_dioearticle.start_pin">
+				<source>Start Pin</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.cat_pin" resname="tx_dioearticlesystem_domain_model_dioearticle.cat_pin">
+				<source>Cat Pin</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.prev_pic" resname="tx_dioearticlesystem_domain_model_dioearticle.prev_pic">
+				<source>Prev Pic</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.prev_pic_cropping_mode" resname="tx_dioearticlesystem_domain_model_dioearticle.prev_pic_cropping_mode">
+				<source>Prev Pic Cropping Mode</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.detail_title" resname="tx_dioearticlesystem_domain_model_dioearticle.detail_title">
+				<source>Detail Title</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.detail_text" resname="tx_dioearticlesystem_domain_model_dioearticle.detail_text">
+				<source>Detail Text</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.detail_pic" resname="tx_dioearticlesystem_domain_model_dioearticle.detail_pic">
+				<source>Detail Pic</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.detail_pic_cropping_mode" resname="tx_dioearticlesystem_domain_model_dioearticle.detail_pic_cropping_mode">
+				<source>Detail Pic Cropping Mode</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.av_files" resname="tx_dioearticlesystem_domain_model_dioearticle.av_files">
+				<source>Av Files</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.av_cols" resname="tx_dioearticlesystem_domain_model_dioearticle.av_cols">
+				<source>Av Cols</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.av_aspect_ratio" resname="tx_dioearticlesystem_domain_model_dioearticle.av_aspect_ratio">
+				<source>Av Aspect Ratio</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.f_files" resname="tx_dioearticlesystem_domain_model_dioearticle.f_files">
+				<source>F Files</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_user" resname="tx_dioearticlesystem_domain_model_dioearticle.z_user">
+				<source>Z User</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_name" resname="tx_dioearticlesystem_domain_model_dioearticle.z_name">
+				<source>Z Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_title" resname="tx_dioearticlesystem_domain_model_dioearticle.z_title">
+				<source>Z Title</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_place" resname="tx_dioearticlesystem_domain_model_dioearticle.z_place">
+				<source>Z Place</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_l_name" resname="tx_dioearticlesystem_domain_model_dioearticle.z_l_name">
+				<source>Z L Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_share" resname="tx_dioearticlesystem_domain_model_dioearticle.z_share">
+				<source>Z Share</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_com_share" resname="tx_dioearticlesystem_domain_model_dioearticle.z_com_share">
+				<source>Z Com Share</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.z_l_text" resname="tx_dioearticlesystem_domain_model_dioearticle.z_l_text">
+				<source>Z L Text</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.p_file" resname="tx_dioearticlesystem_domain_model_dioearticle.p_file">
+				<source>P File</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.p_duration" resname="tx_dioearticlesystem_domain_model_dioearticle.p_duration">
+				<source>P Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_type" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_type">
+				<source>Pub Type</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_title" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_title">
+				<source>Pub Title</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_editors_sec" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_editors_sec">
+				<source>Pub Editors Sec</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_year" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_year">
+				<source>Pub Year</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_month" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_month">
+				<source>Pub Month</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_booktitle" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_booktitle">
+				<source>Pub Booktitle</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_publisher" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_publisher">
+				<source>Pub Publisher</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_journal" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_journal">
+				<source>Pub Journal</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_volume" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_volume">
+				<source>Pub Volume</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_number" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_number">
+				<source>Pub Number</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_series" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_series">
+				<source>Pub Series</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_school" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_school">
+				<source>Pub School</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_address" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_address">
+				<source>Pub Address</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_edition" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_edition">
+				<source>Pub Edition</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_pages" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_pages">
+				<source>Pub Pages</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_keywords" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_keywords">
+				<source>Pub Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_isbn" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_isbn">
+				<source>Pub Isbn</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_doi" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_doi">
+				<source>Pub Doi</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_url" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_url">
+				<source>Pub Url</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_url_date" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_url_date">
+				<source>Pub Url Date</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_note" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_note">
+				<source>Pub Note</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_titel" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_titel">
+				<source>Mee Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_persons_sec" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_persons_sec">
+				<source>Mee Persons Sec</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_organisers_sec" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_organisers_sec">
+				<source>Mee Organisers Sec</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_participants_sec" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_participants_sec">
+				<source>Mee Participants Sec</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_time" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_time">
+				<source>Mee Time</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_end_time" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_end_time">
+				<source>Mee End Time</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_show_time" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_show_time">
+				<source>Mee Show Time</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_text" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_text">
+				<source>Mee Text</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_event" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_event">
+				<source>Mee Event</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_adress" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_adress">
+				<source>Mee Adress</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_url" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_url">
+				<source>Mee Url</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_doi" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_doi">
+				<source>Mee Doi</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_note" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_note">
+				<source>Mee Note</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_keywords" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_keywords">
+				<source>Mee Keywords</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

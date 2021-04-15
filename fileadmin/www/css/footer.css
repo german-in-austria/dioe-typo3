@@ -1,0 +1,128 @@
+footer {
+	position: relative;
+  padding: 3rem 1rem 1rem 1rem;
+	max-width: 1920px;
+	margin: 0 auto;
+}
+footer .fxnav {
+  list-style: none;
+  padding: 0;
+	margin: 0;
+  text-align: left;
+  display: block;
+}
+footer .fxnav > li {
+	float: left;
+	margin-right: 0;
+}
+footer .fxnav > li > a, footer .socials {
+	color: white;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: 600;
+	background: rgba(0, 0, 0, .1);
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	line-height: 32px;
+	margin-right: 10px;
+	padding: 0 1em;
+}
+
+.socials img {
+	display: inline-block;
+	width: 19px;
+	border-radius: 50%;
+	margin: 0 0 0 5px;
+}
+.socials-ico-frm {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+}
+
+.footer-logos {
+  max-width: 1050px;
+  margin: auto;
+}
+.footer-logos > a {
+  margin-bottom: 1.5rem;
+  max-width: 30%;
+  padding: 0 0.5rem;
+}
+.footer-logos > a > img {
+	max-width: 100%;
+	height: auto;
+}
+
+@media (max-width: 600px) {
+	.footer-logos > a {
+	  max-width: 50%;
+	}
+}
+@media (max-width: 991px) {
+	footer {
+		background-image: url(/fileadmin/bilder/mountains3.png);
+	  background-size: cover;
+	  background-position: 50%;
+	}
+	footer .footer-img {
+		display: none;
+	}
+	footer .fxnav > li {
+		margin-bottom: 0.5rem;
+		width: 100%;
+	  text-align: center;
+	}
+	footer .fxnav > li > a {
+		width: 100%;
+	}
+	footer .fxnav > li:last-child {
+		margin-bottom: 0;
+	}
+	footer .fxnav, footer .socials {
+	  width: 50%;
+	}
+	.socials {
+		text-align: center;
+	}
+	.socials > div {
+		width: 100%;
+	}
+	.socials img {
+		width: 30px;
+	}
+	.footer-logos > a > img {
+		width: auto;
+		height: auto;
+		max-height: 60px;
+	}
+}
+@media (min-width: 992px) {
+	footer {
+	  padding-top: 11vw;
+	}
+	.footer-img {
+	  width: 1920px;
+	  display: block;
+	  position: absolute;
+	  bottom: 0;
+    left: calc(50vw - 960px);
+	  pointer-events: none;
+	  z-index: -2;
+	}
+	.footer-logos > a {
+  	max-width: 19vw;
+	}
+}
+
+@media (min-width: 1200px) {
+	footer .container {
+	  max-width: 1050px;
+	}
+}
+
+@media (min-width: 1920px) {
+	.footer-img {
+		left: 0;
+	}
+}
