@@ -1,0 +1,32 @@
+base: 'https://www2021.dioe.at/'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-de
+    direction: ltr
+    flag: de
+    websiteTitle: ''
+  -
+    title: English
+    enabled: true
+    base: /en/
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    websiteTitle: ''
+    navigationTitle: English
+    hreflang: en-US
+    direction: ltr
+    fallbackType: fallback
+    fallbacks: '0'
+    flag: en-us-gb
+    languageId: 1
+rootPageId: 1
+websiteTitle: ''
