@@ -8,6 +8,3 @@ optionen.footerID = 0
 optionen.topNavCatID = 1
 # cat=Grundeinstellungen//; type=int+; label=ID der Kategorie für Footermenü
 optionen.footNavCatID = 2
-
-
-styles.templates.layoutRootPath = fileadmin/www/template/fluid_styled_content/Layouts

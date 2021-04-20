@@ -5,6 +5,7 @@ namespace Dioevendor\Dioefunctions\ViewHelpers;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3\CMS\Core\Resource\FileReference;
 
 // <dioe:imagecopyrights value="cc-by; DiÖ" />
 class ImagecopyrightsViewHelper extends AbstractViewHelper
@@ -15,7 +16,7 @@ class ImagecopyrightsViewHelper extends AbstractViewHelper
 
 	public function initializeArguments()
 	{
-		$this->registerArgument('value', 'string', 'String with copyright informations.', true);
+		$this->registerArgument('value', 'string', 'String with copyright informations.', false, null);
 		$this->registerArgument('bild', 'bool', 'Is image? (Boolean).', false, null);
 		$this->registerArgument('span', 'bool', 'Is span? (Boolean).', false, null);
 		$this->registerArgument('klein', 'bool', 'Is small? (Boolean).', false, null);
@@ -28,7 +29,7 @@ class ImagecopyrightsViewHelper extends AbstractViewHelper
 		RenderingContextInterface $renderingContext
 	) {
 		// return 'Image Copyrights (' . $arguments['value'] . ', ' . $arguments['bild'] . ', ' . $arguments['span'] . ', ' . $arguments['klein'] . ', ' . $arguments['keinlink'] . ')';
-		$alizenz = trim($arguments['value']);
+		$alizenz = $arguments['value'] ? trim($arguments['value']) : '';
     if(strlen($alizenz) < 1) { return ''; }
     if(substr($alizenz, 0, 5)=='cc-by') {
       $alizenzout = 'by';
