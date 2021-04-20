@@ -12,6 +12,7 @@ page {
   includeCSS {
     file10 = fileadmin/css/bootstrap.min.css
     file10.disableCompression = 1
+		file11 = fileadmin/css/base.css
 		file20 = fileadmin/www/css/fonts.css
 		file21 = fileadmin/www/css/header.css
 		file22 = fileadmin/www/css/navbar.css
