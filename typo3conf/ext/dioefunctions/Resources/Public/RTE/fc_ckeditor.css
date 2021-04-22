@@ -1,0 +1,27 @@
+table caption {
+  caption-side: top;
+}
+table.table-horizontal {
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+table.table-horizontal-center {
+  border: none;
+  margin: 0px auto;
+  text-align: left;
+}
+table.table-horizontal th, table.table-horizontal-center th {
+  border-bottom: 2px solid #ddd!important;
+  line-height: 1.5;
+  padding: 1px 10px 2px 5px!important;
+}
+table.table-horizontal td, table.table-horizontal-center td {
+  border-bottom: 1px solid #ddd!important;
+  /* line-height: 1.5; */
+  /* font-size: 80%; */
+  padding: 1px 10px 2px 5px;!important
+}
+tr.no-border, tr.no-border > td {
+  border-bottom: #d3d3d3 1px dotted!important;
+}

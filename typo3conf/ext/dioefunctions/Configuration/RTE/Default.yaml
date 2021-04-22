@@ -1,0 +1,51 @@
+# Load default processing options
+imports:
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+    # Import the image plugin configuration
+    # - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+
+# Add configuration for the editor
+# For complete documentation see http://docs.ckeditor.com/#!/api/CKEDITOR.config
+editor:
+  config:
+
+    format_tags: "p;h1;h2;h3;h4;h5;pre"
+
+    extraAllowedContent: "p(*);span(*);h1(*);h2(*);h3(*);h4(*);table(*);tr(*);td(*)"
+
+    contentsCss: ["EXT:rte_ckeditor/Resources/Public/Css/contents.css", "EXT:dioefunctions/Resources/Public/RTE/fc_ckeditor.css"]
+
+    stylesSet:
+      # Object
+      - { name: "Horizontale Tabelle", element: ["table"], attributes: { class: "table-horizontal"}}
+      - { name: "Horizontale Tabelle Zentriert", element: ["table"], attributes: { class: "table-horizontal-center"}}
+      - { name: "Kein Rahmen", element: ["tr"], attributes: { class: "no-border"}}
+      # Span
+      - { name: "nobr", element: "span", attributes: { class: "nobr"}}
+
+    toolbarGroups:
+      - { name: styles, groups: [ styles, format ] }
+      - { name: basicstyles, groups: [ basicstyles ] }
+      - { name: paragraph, groups: [ list, indent, blocks, align ] }
+      - { name: links, groups: [ links ] }
+      - { name: clipboard, groups: [ clipboard, cleanup, undo ] }
+      - { name: editing, groups: [ spellchecker ] }
+      - { name: insert, groups: [ insert ] }
+      - { name: tools, groups: [ table, specialchar, insertcharacters ] }
+      - { name: document, groups: [ mode ] }
+
+    justifyClasses:
+      - text-left
+      - text-center
+      - text-right
+      - text-justify
+
+    extraPlugins:
+      - justify
+
+    removeButtons:
+      - Anchor
+      - Underline
+      - Strike

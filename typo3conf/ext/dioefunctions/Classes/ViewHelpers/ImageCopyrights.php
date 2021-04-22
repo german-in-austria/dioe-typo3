@@ -60,8 +60,8 @@ class ImagecopyrightsViewHelper extends AbstractViewHelper
       }
       if($alerr==0) {
         return '<' . (($arguments['bild'] || $arguments['span'])?'span':'div') . ' class="' . (($arguments['bild'])?'img-add ':'') . 'lizenz lizenz-cc' . (($arguments['klein'])?' klein':'') . '">' .
-					(($arguments['keinlink']) ? '' : '<a rel="license" href="http://creativecommons.org/licenses/'.$alizenzout.'/4.0/" alt="cc-' . $alizenzout . '" target="_BLANK">') .
-					'<img alt="Creative Commons Lizenzvertrag" src="https://i.creativecommons.org/l/' . $alizenzout . '/4.0/' . (($arguments['klein']) ? '80x15' : '88x31') . '.png" />' .
+					(($arguments['keinlink']) ? '' : '<a rel="license" href="http://creativecommons.org/licenses/'.$alizenzout.'/4.0/" title="cc-' . $alizenzout . '" target="_BLANK">') .
+					'<img alt="Creative Commons Lizenzvertrag" src="https://i.creativecommons.org/l/' . $alizenzout . '/4.0/' . (($arguments['klein']) ? '80x15' : '88x31') . '.png" alt="cc-' . $alizenzout . '" />' .
 					((strlen($alizenzname) > 0) ? '<span class="ccby"> by ' . $alizenzname . '</span>' : '') .
 					(($arguments['keinlink']) ? '' : '</a>') .
 					'</' . (($arguments['bild'] || $arguments['span']) ? 'span' : 'div') . '>';

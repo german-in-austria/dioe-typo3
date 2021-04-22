@@ -1,1 +1,7 @@
 lib.contentElement.partialRootPaths.832 = EXT:dioefunctions/Resources/Private/Partials/typo3
+
+lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.class {
+		default = contenttable
+    always = 0
+		list = contenttable, table-horizontal, table-horizontal-center
+}

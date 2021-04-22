@@ -4,7 +4,13 @@ TCEMAIN.table.tt_content.disablePrependAtCopy = 1
 TCEMAIN.table.pages.disableHideAtCopy = 1
 TCEMAIN.table.tt_content.disableHideAtCopy = 1
 
-RTE.config.tt_content.bodytext.proc.allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap
+RTE.config.tt_content.bodytext.proc {
+	allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold,table-horizontal,table-horizontal-center,no-border,td-center
+	entryHTMLparser_db.tags.table {
+		fixAttrib.width.unset = 1
+		fixAttrib.height.unset = 1
+	}
+}
 
 TCEFORM.tt_content.header_layout {
 	altLabels {

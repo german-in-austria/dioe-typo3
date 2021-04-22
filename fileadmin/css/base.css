@@ -65,3 +65,37 @@ figure.image .img-add.lizenz-cc.klein .ccby {
   font-size: 9px;
   border-radius: 0px;
 }
+
+table caption {
+  caption-side: top;
+}
+table.table-horizontal {
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+table.table-horizontal-center {
+  border: none;
+  margin: 0px auto;
+  text-align: left;
+}
+table.table-horizontal th, table.table-horizontal-center th {
+  border-bottom: 2px solid #ddd;
+  line-height: 1.5;
+  padding: 1px 10px 2px 5px;
+}
+table.table-horizontal td, table.table-horizontal-center td {
+  border-bottom: 1px solid #ddd;
+  line-height: 1.5;
+  font-size: 80%;
+  padding: 1px 10px 2px 5px;
+}
+tr.no-border, tr.no-border > td {
+  border: none;
+}
+
+@media (max-width: 900px) {
+	table.table-horizontal td, table.table-horizontal-center td {
+		font-size: 85%;
+	}
+}

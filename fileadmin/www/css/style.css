@@ -58,3 +58,9 @@ h3 {
 	  max-width: 870px!important;
 	}
 }
+
+@media (max-width: 900px) {
+	body {
+		font-size: 110%;
+	}
+}
