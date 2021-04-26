@@ -5,6 +5,7 @@ config.contentObjectExceptionHandler = 0
 
 config {
   language = de
+	sys_language_uid = 0
   doctype = html5
   xmlprologue = none
   xhtml_cleaning = all
@@ -19,3 +20,9 @@ config {
   // compressJs = 1
 	headerComment = Konzept und Webentwicklung von www.hcb.de (Hans Christian Breuer)
 }
+
+[globalVar = GP:L = 1]
+	language = en
+	sys_language_uid = 1
+	htmlTag_setParams = lang="en" dir="ltr"
+[end]
