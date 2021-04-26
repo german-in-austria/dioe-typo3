@@ -58,6 +58,12 @@ page {
 lib.inhalt < styles.content.get
 lib.inhalt.select.where = colPos = 0
 
+lib.inhalt1 < styles.content.get
+lib.inhalt1.select.where = colPos = 1
+
+lib.inhalt2 < styles.content.get
+lib.inhalt2.select.where = colPos = 2
+
 lib.footerLeft < styles.content.get
 lib.footerLeft.select.where = colPos = 0
 lib.footerLeft.select.pidInList = {$optionen.footerID}

@@ -66,4 +66,42 @@ mod.web_layout.BackendLayouts {
 			}
 		}
 	}
+	2 {
+		title = Mitarbeiter
+		config {
+			backend_layout {
+				colCount = 1
+				rowCount = 3
+				rows {
+					1 {
+						columns {
+							1 {
+								name = Inhalt oben (0)
+								colPos = 0
+							}
+						}
+					}
+					2 {
+						columns {
+							1 {
+								name = Mitarbeiter (1)
+								colPos = 1
+								allowed {
+                  CType = header,text,dce_dcemitarbeiterinnen
+                }
+							}
+						}
+					}
+					3 {
+						columns {
+							1 {
+								name = Assoziierte Mitglieder und ehemalige MitarbeiterInnen (2)
+								colPos = 2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
