@@ -3,5 +3,5 @@ lib.contentElement.partialRootPaths.832 = EXT:dioefunctions/Resources/Private/Pa
 lib.parseFunc_RTE.externalBlocks.table.stdWrap.HTMLparser.tags.table.fixAttrib.class {
 		default = contenttable
     always = 0
-		list = contenttable, table-horizontal, table-horizontal-center
+		list = contenttable, table-horizontal, table-horizontal-center, w-100
 }

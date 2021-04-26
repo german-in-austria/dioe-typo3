@@ -22,6 +22,7 @@ editor:
       - { name: "Horizontale Tabelle", element: ["table"], attributes: { class: "table-horizontal"}}
       - { name: "Horizontale Tabelle Zentriert", element: ["table"], attributes: { class: "table-horizontal-center"}}
       - { name: "Kein Rahmen", element: ["tr"], attributes: { class: "no-border"}}
+      - { name: "Volle Breite", element: ["table"], attributes: { class: "w-100"}}
       # Span
       - { name: "nobr", element: "span", attributes: { class: "nobr"}}
 
