@@ -19,11 +19,14 @@ b {
 p {
   margin: 0 0 10px;
 }
-h1,
-h2,
-h3 {
+h1, .h1,
+h2, .h2,
+h3, .h3 {
   font-weight: 300;
   position: relative;
+}
+.h2, h2 {
+  font-size: 1.875rem;
 }
 
 .nobr {
