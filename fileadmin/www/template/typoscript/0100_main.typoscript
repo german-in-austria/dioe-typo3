@@ -17,7 +17,8 @@ page {
 		file21 = fileadmin/www/css/header.css
 		file22 = fileadmin/www/css/navbar.css
 		file30 = fileadmin/www/css/footer.css
-    file40 = fileadmin/www/css/style.css
+		file40 = fileadmin/www/css/team.css
+    file90 = fileadmin/www/css/style.css
   }
   includeJSFooter {
     file10 = fileadmin/js/jquery-3.3.1.min.js

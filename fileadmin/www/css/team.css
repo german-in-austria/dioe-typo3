@@ -1,0 +1,10 @@
+article.mitarbeiter:hover {
+  border-color: #ddd;
+}
+article.mitarbeiter {
+  margin-left: -15px;
+  padding-left: 15px;
+  margin-bottom: 4em;
+  padding-top: 0.25em;
+  border-left: 4px solid #fff;
+}
