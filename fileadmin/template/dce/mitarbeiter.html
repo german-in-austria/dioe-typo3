@@ -1,0 +1,80 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+	<f:variable name="teilprojekte" value="{field.teilprojekte -> v:iterator.explode(glue: ',')}" />
+	<f:variable name="teilprojekteFunc" value="{field.teilprojekteFunc -> v:iterator.explode(glue: ',')}" />
+
+  <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.mitarbeiterNurNamen')}">
+    <f:then>
+			<f:link.page pageUid="12" section="c{contentObject.uid}" class="team-mitarbeiter">
+				{field.vorname} {field.name} (xxx)
+			</f:link.page>
+		</f:then>
+    <f:else>
+			<article id="c{contentObject.uid}" class="mitarbeiter" data-sort-name="{field.name}, {field.vorname}" data-sort-projekte="{field.teilprojekte}" data-sort-sorting="{contentObject.sorting}"{f:if(condition: '{field.funktionAllgemein}', then: ' data-sort-funkAllg="{field.funktionAllgemein}"', else: '')}
+			data-sort-projektfunk=<f:format.raw value="'" /><f:for each='{field.teilprojekte -> v:iterator.explode(glue: \',\')}' as='teilprojekt' iteration='ti'>"{teilprojekt}": "{teilprojekteFunc.{ti.index}}"{f:if(condition: ti.isLast, else: ',')}</f:for><f:format.raw value="'" />>
+				<f:comment>
+					<div class="m-icon-view">
+						<figure class="image border border-light rounded-circle">
+							<f:if condition="{field.foto}">
+								<f:then>
+									<f:for each="{dce:fal(field:'foto', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}">
+										<f:image src="{fileReference.uid}" alt="{field.titel} {field.name}, {field.vorname}" treatIdAsReference="1" width="260c-50" height="260c-50"/>
+										<dioe:imagecopyrights value="{f:if(condition: '{fileReference.properties.copyright}', then: '{fileReference.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+									</f:if></f:for>
+								</f:then>
+								<f:else>
+									<f:image src="fileadmin/bilder/team_dummy_neutral.png" alt="" width="260c-50" height="260c-50"/>
+									<dioe:imagecopyrights value="cc0" bild="1" />
+								</f:else>
+							</f:if>
+						</figure>
+						<div class="mitarbeiter-name"><b><span class="ma-titel">{f:if(condition: '{field.titel}', then: '{field.titel}', else: '&nbsp;')}</span> {field.vorname} {field.name}{f:if(condition: '{field.titelNachgestellt}', then: ', {field.titelNachgestellt} ', else: '')}</b><div class="zusaetze"><f:if condition="{field.email}"> <a href="mailto:{field.email}" title="E-Mail"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></f:if><f:if condition="{field.homepage}"><f:if condition="{field.homepage}!='http://'"> <a href="{field.homepage}" target="_BLANK" title="Homepage"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></f:if></f:if></div></div>
+					</div>
+				</f:comment>
+				<div class="row m-list-view">
+					<div class="col-sm-3 col-md-4">
+						<figure class="image border border-light">
+							<f:if condition="{field.foto}">
+								<f:then>
+									<f:for each="{dce:fal(field:'foto', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}">
+										<f:image src="{fileReference.uid}" alt="{field.titel} {field.name}, {field.vorname}" treatIdAsReference="1" width="260c-50" height="260c-50"/>
+										<dioe:imagecopyrights value="{f:if(condition: '{fileReference.properties.copyright}', then: '{fileReference.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+									</f:if></f:for>
+								</f:then>
+								<f:else>
+									<dioe:imagecopyrights value="cc0" bild="1" />
+								</f:else>
+							</f:if>
+						</figure>
+					</div>
+					<div class="col-sm-9 col-md-8">
+						<div class="mitarbeiter-name"><b>{f:if(condition: '{field.titel}', then: '{field.titel} ', else: '')} {field.vorname} {field.name}{f:if(condition: '{field.titelNachgestellt}', then: ', {field.titelNachgestellt} ', else: '')}</b><span class="zusaetze ml-3"><f:if condition="{field.email}"> <a href="mailto:{field.email}" title="E-Mail"><img src="/fileadmin/icons/email.svg" class="icon"></a></f:if><f:if condition="{field.homepage}"><f:if condition="{field.homepage}!='http://'"> <a href="{field.homepage}" target="_BLANK" title="Homepage"><img src="/fileadmin/icons/web.svg" class="icon"></a></f:if></f:if></span></div>
+						<p>
+							<f:if condition="{field.institution}"><f:if condition="{field.institutionUrl}"><f:then><f:if condition="{field.institutionUrl}!='http://'"><f:then><a href="{field.institutionUrl}" target="_BLANK" title="Institution">{field.institution}</a></f:then><f:else>{field.institution}</f:else></f:if></f:then><f:else>{field.institution}</f:else></f:if><f:if condition="{field.institut}"><f:then> - </f:then><f:else><br></f:else></f:if></f:if>
+							<f:if condition="{field.institut}"><f:if condition="{field.institutUrl}"><f:then><f:if condition="{field.institutUrl}!='http://'"><f:then><a href="{field.institutUrl}" target="_BLANK" title="Institution">{field.institut}</a></f:then><f:else>{field.institut}</f:else></f:if></f:then><f:else>{field.institut}</f:else></f:if><br></f:if>
+						</p>
+						<f:if condition="{field.funktionAllgemein}"><p>{field.funktionAllgemein}</p></f:if>
+						<p><b><f:if condition="{f:count(subject: teilprojekte)} > 1"><f:then>{f:translate(key: 'LLL:fileadmin/template/locallang.xml:mitarbeiter_projekte')}</f:then><f:else>{f:translate(key: 'LLL:fileadmin/template/locallang.xml:mitarbeiter_projekt')}</f:else></f:if>:</b><br>
+							<f:for each='{field.teilprojekte -> v:iterator.explode(glue: \',\')}' as='teilprojekt' iteration='ti'>
+								{teilprojekt} {f:if(condition: '{teilprojekteFunc.{ti.index}}', then: '- {teilprojekteFunc.{ti.index}}', else: '')}<br>
+							</f:for>
+							<f:comment>
+								<f:for each="{field.teilprojekte}" as="teilprojekt">
+									{teilprojekt.tpTeilprojekt}<f:if condition="{teilprojekt.tpFunktion}"> - {teilprojekt.tpFunktion}</f:if><br>
+								</f:for>
+							</f:comment>
+						</p>
+					</div>
+					<f:if condition="{field.kurzbeschreibung}">
+					<div class="col-12">
+						<f:format.nl2br>{field.kurzbeschreibung}</f:format.nl2br><br>
+					</div>
+					</f:if>
+				</div>
+			</article>
+    </f:else>
+  </f:if>
+</f:section>

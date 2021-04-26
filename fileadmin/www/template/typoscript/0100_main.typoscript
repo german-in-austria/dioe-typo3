@@ -93,6 +93,8 @@ lib.navCat {
   }
 }
 
+lib.mitarbeiterNurNamen = TEXT
+lib.mitarbeiterNurNamen.value = 0
 
 [page["uid"] == {$optionen.homeID}]
 page.10.dataProcessing.10.alwaysActivePIDlist = {$optionen.navHomeID}

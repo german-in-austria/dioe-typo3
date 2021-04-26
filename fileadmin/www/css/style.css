@@ -53,6 +53,11 @@ h3 {
   margin-top: 0.5em;
 }
 
+.icon {
+	position: relative;
+	top: -3px;
+}
+
 @media (min-width: 1200px) {
 	.container.content {
 	  max-width: 870px!important;
