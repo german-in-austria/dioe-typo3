@@ -3,13 +3,7 @@
 <f:section name="Main">
 	<f:if condition="{data.backend_layout}=='pagets__2'">
 		<f:then>
-			<f:cObject typoscriptObjectPath="lib.inhalt" />
-			<section class="team-list">
-				<f:cObject typoscriptObjectPath="lib.inhalt1" />
-			</section>
-			<section class="additional-team">
-				<f:cObject typoscriptObjectPath="lib.inhalt2" />
-			</section>
+			<f:render partial="TeamView" />
 		</f:then>
 		<f:else>
 			<f:cObject typoscriptObjectPath="lib.inhalt" />

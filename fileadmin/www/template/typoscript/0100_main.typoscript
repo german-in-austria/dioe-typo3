@@ -27,7 +27,8 @@ page {
 		file20.disableCompression = 1
     file30 = fileadmin/js/bootstrap.min.js
     file30.disableCompression = 1
-    file50 = fileadmin/www/js/scripts.js
+		file40 = fileadmin/www/js/team.js
+    file90 = fileadmin/www/js/scripts.js
   }
   10 = FLUIDTEMPLATE
   10 {

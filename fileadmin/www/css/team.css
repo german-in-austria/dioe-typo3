@@ -8,3 +8,10 @@ article.mitarbeiter {
   padding-top: 0.25em;
   border-left: 4px solid #fff;
 }
+section.team-list .ft-sort-hidden, section.team-list .ft-pro-hidden {
+	display: none;
+}
+
+.ft-sort-alpha #filter-team {
+  margin-bottom: 6rem;
+}
