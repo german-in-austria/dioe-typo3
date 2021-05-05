@@ -1,0 +1,23 @@
+
+lib.namebe = COA
+lib.namebe {
+  10 = CONTENT
+  10 {
+    table = be_users
+    select {
+      uidInList.current = 1
+      pidInList = root
+    }
+    renderObj = COA
+    renderObj {
+      10 = TEXT
+      10.field = realName // username
+    }
+  }
+}
+
+lib.seitentitel = COA
+lib.seitentitel {
+  10 = TEXT
+  10.data =  page:subtitle // page:title
+}

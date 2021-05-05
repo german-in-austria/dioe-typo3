@@ -7,8 +7,8 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Core\Resource\FileReference;
 
-// <dioe:imagecopyrights value="cc-by; DiÖ" />
-class ImagecopyrightsViewHelper extends AbstractViewHelper
+// <dioe:copyrights value="cc-by; DiÖ" />
+class CopyrightsViewHelper extends AbstractViewHelper
 {
 	use CompileWithRenderStatic;
 
@@ -21,6 +21,7 @@ class ImagecopyrightsViewHelper extends AbstractViewHelper
 		$this->registerArgument('span', 'bool', 'Is span? (Boolean).', false, null);
 		$this->registerArgument('klein', 'bool', 'Is small? (Boolean).', false, null);
 		$this->registerArgument('keinlink', 'bool', 'Without link? (Boolean).', false, null);
+		$this->registerArgument('class', 'string', 'String with additional classes.', false, null);
 	}
 
 	public static function renderStatic(
@@ -59,7 +60,7 @@ class ImagecopyrightsViewHelper extends AbstractViewHelper
         $alizenzout .= $alizenzoutArray[0] . $alizenzoutArray[1];
       }
       if($alerr==0) {
-        return '<' . (($arguments['bild'] || $arguments['span'])?'span':'div') . ' class="' . (($arguments['bild'])?'img-add ':'') . 'lizenz lizenz-cc' . (($arguments['klein'])?' klein':'') . '">' .
+        return '<' . (($arguments['bild'] || $arguments['span']) ? 'span' : 'div') . ' class="' . (($arguments['bild']) ? 'img-add ' : '') . 'lizenz lizenz-cc' . (($arguments['klein']) ? ' klein' : '') . (($arguments['class']) ? ' ' . $arguments['class'] : '') . '">' .
 					(($arguments['keinlink']) ? '' : '<a rel="license" href="http://creativecommons.org/licenses/'.$alizenzout.'/4.0/" title="cc-' . $alizenzout . '" target="_BLANK">') .
 					'<img alt="Creative Commons Lizenzvertrag" src="https://i.creativecommons.org/l/' . $alizenzout . '/4.0/' . (($arguments['klein']) ? '80x15' : '88x31') . '.png" alt="cc-' . $alizenzout . '" />' .
 					((strlen($alizenzname) > 0) ? '<span class="ccby"> by ' . $alizenzname . '</span>' : '') .
@@ -67,7 +68,8 @@ class ImagecopyrightsViewHelper extends AbstractViewHelper
 					'</' . (($arguments['bild'] || $arguments['span']) ? 'span' : 'div') . '>';
       }
     }
-    return '<' . (($arguments['bild'] || $arguments['span']) ? 'span' : 'div') . ' class="' . (($arguments['bild']) ? 'img-add ' : '') . 'lizenz lizenz-text' . (($arguments['klein']) ? ' klein' : '') . '">' .
+    return '<' . (($arguments['bild'] || $arguments['span']) ? 'span' : 'div') .
+			' class="' . (($arguments['bild']) ? 'img-add ' : '') . 'lizenz lizenz-text' . (($arguments['klein']) ? ' klein' : '') . (($arguments['class']) ? ' ' . $arguments['class'] : '') . '">' .
 			$alizenz . '</' . (($arguments['bild'] || $arguments['span']) ? 'span' : 'div') . '>';
 	}
 }

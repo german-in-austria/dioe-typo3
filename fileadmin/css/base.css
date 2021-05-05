@@ -1,3 +1,9 @@
+.font-sm {
+	font-size: 0.91rem;
+}
+.url {
+  word-break: break-all;
+}
 .ce-left .ce-gallery, .ce-right .ce-gallery {
   max-width: 50%;
 }

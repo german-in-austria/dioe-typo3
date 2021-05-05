@@ -22,12 +22,12 @@
 								<f:then>
 									<f:for each="{dce:fal(field:'foto', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}">
 										<f:image src="{fileReference.uid}" alt="{field.titel} {field.name}, {field.vorname}" treatIdAsReference="1" width="260c-50" height="260c-50"/>
-										<dioe:imagecopyrights value="{f:if(condition: '{fileReference.properties.copyright}', then: '{fileReference.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+										<dioe:copyrights value="{f:if(condition: '{fileReference.properties.copyright}', then: '{fileReference.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
 									</f:if></f:for>
 								</f:then>
 								<f:else>
 									<f:image src="fileadmin/bilder/team_dummy_neutral.png" alt="" width="260c-50" height="260c-50"/>
-									<dioe:imagecopyrights value="cc0" bild="1" />
+									<dioe:copyrights value="cc0" bild="1" />
 								</f:else>
 							</f:if>
 						</figure>
@@ -41,12 +41,12 @@
 								<f:then>
 									<f:for each="{dce:fal(field:'foto', contentObject:contentObject)}" as="fileReference" iteration="iterator"><f:if condition="{iterator.isFirst}">
 										<f:image src="{fileReference.uid}" alt="{field.titel} {field.name}, {field.vorname}" treatIdAsReference="1" width="260c-50" height="260c-50"/>
-										<dioe:imagecopyrights value="{f:if(condition: '{fileReference.properties.copyright}', then: '{fileReference.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+										<dioe:copyrights value="{f:if(condition: '{fileReference.properties.copyright}', then: '{fileReference.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
 									</f:if></f:for>
 								</f:then>
 								<f:else>
 								<f:image src="fileadmin/bilder/team_dummy_neutral.png" alt="" width="260c-50" height="260c-50"/>
-									<dioe:imagecopyrights value="cc0" bild="1" />
+									<dioe:copyrights value="cc0" bild="1" />
 								</f:else>
 							</f:if>
 						</figure>

@@ -1,0 +1,48 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+<f:layout name="None" />
+
+<f:section name="main">
+	<div class="card citation">
+      <div class="card-header">{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zitation')}
+				<f:if condition='{field.lizenzFreitext}'>
+					<f:then><dioe:copyrights value="{field.lizenzFreitext}" class="float-right" /></f:then>
+					<f:else>
+						<f:if condition="{field.lizenzBearbeiten} != 'kl'">
+							<f:alias map="{alizenz: 'cc-by{field.lizenzKommerziell}{field.lizenzBearbeiten};{field.lizenzName}'}">
+								<dioe:copyrights value="{alizenz}" class="float-right" />
+							</f:alias>
+						</f:if>
+					</f:else>
+				</f:if>
+			</div>
+      <div class="card-body font-sm">
+		  <f:if condition='{field.zitationName}'>
+			  <f:then>{field.zitationName}</f:then>
+			  <f:else>
+				  <f:if condition='{field.zitationNameBE} == -1'>
+					  <f:then>DiÖ</f:then>
+					  <f:else>
+						  <f:if condition='{field.zitationNameBE}'>
+							  <f:then>
+								  {field.zitationNameBE -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+							  </f:then>
+							  <f:else>
+								  {contentObject.cruser_id -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+							  </f:else>
+						  </f:if>
+					  </f:else>
+				  </f:if>
+			  </f:else>
+		  </f:if> (<f:format.date format="Y">{f:if(condition: '{contentObject.starttime}', then: '{contentObject.starttime}', else: '{contentObject.tstamp}')}</f:format.date>): <f:if condition='{field.zitationUeberschrift}'><f:then>{field.zitationUeberschrift}.</f:then><f:else>{f:cObject(typoscriptObjectPath:'lib.seitentitel')}.</f:else></f:if>
+			<br class="d-inline d-sm-none">
+			In:
+		  <f:switch expression="{field.zitationStandort}">
+			  <f:defaultCase>{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_standort_default')}</f:defaultCase>
+		  </f:switch>
+		  <br>
+		  URL: <span class="url">{f:uri.page(absolute:'TRUE')}</span><br>
+		  [{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zugriff')}: <f:format.date date="now" format="d.m.Y" />]
+		</div>
+    </div>
+</f:section>
