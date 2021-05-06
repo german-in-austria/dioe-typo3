@@ -1,23 +1,49 @@
 
 lib.namebe = COA
 lib.namebe {
-  10 = CONTENT
-  10 {
-    table = be_users
-    select {
-      uidInList.current = 1
-      pidInList = root
-    }
-    renderObj = COA
-    renderObj {
-      10 = TEXT
-      10.field = realName // username
-    }
-  }
+	10 = CONTENT
+	10 {
+		table = be_users
+		select {
+			uidInList.current = 1
+			pidInList = root
+		}
+		renderObj = COA
+		renderObj {
+			10 = TEXT
+			10.field = realName // username
+		}
+	}
 }
 
 lib.seitentitel = COA
 lib.seitentitel {
-  10 = TEXT
-  10.data =  page:subtitle // page:title
+	10 = TEXT
+	10.data =  page:subtitle // page:title
 }
+
+[dceOnCurrentPage("dce_teamliste")]
+	lib.getTeamListByTeilprojekte = CONTENT
+	lib.getTeamListByTeilprojekte {
+		table = tt_content
+		select {
+			pidInList = 13
+			where.cObject = COA
+			where.cObject {
+				20 = TEXT
+				20.value.cObject = TEXT
+				20.value.cObject {
+					value.current = 1
+					stdWrap.replacement {
+						1.search = ,
+						1.replace = |
+					}
+				}
+				20.wrap = CONCAT(",", `mitarbeiter_teilprojekte`, ",") REGEXP ",(|),"
+			}
+		}
+		renderObj = TEXT
+		renderObj.field = uid
+		renderObj.wrap = |,
+	}
+[END]

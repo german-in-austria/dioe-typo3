@@ -1,2 +1,32 @@
 {field.text}
-{field.teilprojekte}
+<f:format.raw>
+	<v:format.eliminate whitespaceBetweenHtmlTags="1">
+		<f:for each="{field.teilprojekte -> f:cObject(typoscriptObjectPath: 'lib.getTeamListByTeilprojekte') -> v:iterator.explode(glue: ',')}" as="mitarbeiter" iteration="iterator">
+			<f:if condition="{mitarbeiter}">
+				<f:then>
+					<dce:dce uid="{mitarbeiter}">
+						{f:if(condition: '{iterator.isFirst}', then: '', else: '<span>, </span>')}<f:link.page pageUid="13" section="c{mitarbeiter}" class="team-mitarbeiter">
+							<span>{dce.get.vorname}
+							{dce.get.name}
+							(</span>
+							<f:variable name="teilprojekteFunc" value="{dce.get.teilprojekteFunc -> v:iterator.explode(glue: ',')}" />
+							<f:variable name="first" value="1" />
+							<f:for each='{dce.get.teilprojekte -> v:iterator.explode(glue: \',\')}' as='teilprojekt' iteration='ti'>
+								<f:if condition="{first}">
+									<f:then>
+										<v:condition.string.contains haystack="{field.teilprojekte}" needle="{teilprojekt}">
+											<f:then>
+												<span>{teilprojekt}: {f:if(condition: '{teilprojekteFunc.{ti.index}}', then: '{teilprojekteFunc.{ti.index}}', else: '{dce.get.funktionAllgemein}')}</span>
+												<f:variable name="first" value="0" />
+											</f:then>
+										</v:condition.string.contains>
+									</f:then>
+								</f:if>
+							</f:for>
+							<span>)</span></f:link.page>
+					</dce:dce>
+				</f:then>
+			</f:if>
+		</f:for>
+	</v:format.eliminate>
+</f:format.raw>
