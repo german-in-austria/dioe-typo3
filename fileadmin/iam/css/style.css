@@ -1,8 +1,8 @@
 body {
   font-family: 'Lato', 'Open Sans', sans-serif;
   background: rgba(255,255,255,0.9) /* Old browsers */;
-  font-size: 130%;
-  line-height: 163%;
+  font-size: 120%;
+  line-height: 155%;
   font-weight: 300;
 	color: #333;
 }
@@ -49,9 +49,6 @@ h3, .h3 {
 }
 
 @media (min-width: 1200px) {
-	.container.content {
-	  max-width: 870px!important;
-	}
 }
 
 @media (max-width: 900px) {

@@ -7,13 +7,13 @@
 	  <nav class="navbar navbar-expand-lg navbar-light" data-fx="fixed">
 	    <div class="container">
 				<f:link.typolink parameter="{mainPID}" class="navbar-brand" title="DiÖ - SFB Deutsch in Österreich">
-					<img src="fileadmin/bilder/dioe-logo-gray.png" alt="DiÖ - SFB Deutsch in Österreich">
+					<img src="fileadmin/bilder/dioe-logo-gray.png" alt="IamDiÖ" data-fx-sh="35">
 				</f:link.typolink>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnav" aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
+	      <button class="navbar-toggler mt-auto" type="button" data-toggle="collapse" data-target="#topnav" aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	      </button>
 	      <div class="collapse navbar-collapse" id="topnav">
-	        <ul class="navbar-nav w-100 d-lg-flex">
+	        <ul class="navbar-nav ml-auto d-lg-flex">
 	          <f:for each="{allNav}" as="navItem">
 	            <v:condition.iterator.contains needle="{navItem.data.uid}" haystack="{topNavCat}">
 	              <f:then>
@@ -58,19 +58,21 @@
 	</div>
 
 	<footer>
-		<f:render section="FooterLeft"/>
-		<div class="d-flex flex-lg-row-reverse mt-1">
-			<f:render section="FooterRight"/>
-		  <f:alias map="{daten: '{footNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'footNavCat')}</f:alias>
-		  <ul class="fxnav">
-		    <f:for each="{allNav}" as="navItem">
-		      <v:condition.iterator.contains needle="{navItem.data.uid}" haystack="{footNavCat}">
-		        <f:then>
-		          <f:render partial="NavLink" arguments="{navItem: navItem}"/></li>
-		        </f:then>
-		      </v:condition.iterator.contains>
-		    </f:for>
-		  </ul>
+		<div class="container">
+			<f:render section="FooterLeft"/>
+			<div class="d-flex flex-lg-row-reverse mt-1">
+				<f:render section="FooterRight"/>
+			  <f:alias map="{daten: '{footNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'footNavCat')}</f:alias>
+			  <ul class="fxnav">
+			    <f:for each="{allNav}" as="navItem">
+			      <v:condition.iterator.contains needle="{navItem.data.uid}" haystack="{footNavCat}">
+			        <f:then>
+			          <f:render partial="NavLink" arguments="{navItem: navItem}"/></li>
+			        </f:then>
+			      </v:condition.iterator.contains>
+			    </f:for>
+			  </ul>
+			</div>
 		</div>
 	</footer>
 </div>

@@ -1,20 +1,24 @@
 .nav-frm .navbar {
 	background: #fff;
   z-index: 1030;
+  border-bottom: solid 1px #bbb;
 }
 .nav-frm .navbar-brand {
 	display: block;
 }
 .nav-frm .navbar-brand img {
 	display: block;
-	width: 30px;
+	width: auto;
+	height: 130px;
+  margin: 0;
 }
 .nav-frm .navbar-light .navbar-nav .nav-link {
 	color: #777;
   border-radius: 0;
-  border-bottom: 3px solid #f4f4f4;
-	font-weight: 400;
-  padding: 1.25em 0.5em;
+	border-bottom: 2px solid #fff;
+  font-weight: 200;
+  padding: 0.25em 0.5em;
+  text-align: center;
 }
 .nav-frm .navbar-light .navbar-nav .nav-link:hover, .nav-frm .navbar-light .navbar-nav .nav-link:focus {
 	color: #333;
@@ -32,12 +36,16 @@
 }
 
 .nav-frm .navbar-light .navbar-nav .active > .nav-link, .nav-frm .navbar-light .navbar-nav .current > .nav-link {
-  border-bottom: 3px solid #777;
+  border-bottom: 2px solid #777;
 }
 
 .nav-frm .navbar-nav .dropdown-menu {
 	border: none;
 	border-radius: 0;
+}
+
+.nav-frm .navbar {
+  box-shadow: 0 0 15px rgb(0 0 0 / 10%);
 }
 
 @media (max-width: 991px) {
@@ -48,11 +56,17 @@
 	}
 }
 @media (min-width: 992px) {
+	.nav-frm .navbar-brand img {
+	  margin: 0.75rem 0;
+	}
+	.nav-frm .navbar-nav {
+		margin: 0.5rem 0;
+	}
 	.nav-frm .navbar {
 		padding: 0;
 	}
 	.nav-frm .navbar-brand {
-	  margin-left: -46px;
+	  margin-left: -15px;
 	}
 	.nav-frm .navbar-nav > li {
 		-ms-flex: 1 1 auto!important;
@@ -90,7 +104,4 @@
 }
 
 @media (min-width: 1200px) {
-	.nav-frm .container {
-	  max-width: 870px!important;
-	}
 }
