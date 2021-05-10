@@ -13,12 +13,11 @@ page {
     file10 = fileadmin/css/bootstrap.min.css
     file10.disableCompression = 1
 		file11 = fileadmin/css/base.css
-		file20 = fileadmin/www/css/fonts.css
-		file21 = fileadmin/www/css/header.css
-		file22 = fileadmin/www/css/navbar.css
-		file30 = fileadmin/www/css/footer.css
-		file40 = fileadmin/www/css/team.css
-    file90 = fileadmin/www/css/style.css
+		file20 = fileadmin/iam/css/fonts.css
+		file21 = fileadmin/iam/css/header.css
+		file22 = fileadmin/iam/css/navbar.css
+		file30 = fileadmin/iam/css/footer.css
+    file90 = fileadmin/iam/css/style.css
   }
   includeJSFooter {
     file10 = fileadmin/js/jquery-3.3.1.min.js
@@ -27,14 +26,13 @@ page {
 		file20.disableCompression = 1
     file30 = fileadmin/js/bootstrap.min.js
     file30.disableCompression = 1
-		file40 = fileadmin/www/js/team.js
-    file90 = fileadmin/www/js/scripts.js
+    file90 = fileadmin/iam/js/scripts.js
   }
   10 = FLUIDTEMPLATE
   10 {
-    partialRootPath = fileadmin/www/template/fluid/Partials/
-    layoutRootPath = fileadmin/www/template/fluid/Layouts/
-    file = fileadmin/www/template/fluid/main.html
+    partialRootPath = fileadmin/iam/template/fluid/Partials/
+    layoutRootPath = fileadmin/iam/template/fluid/Layouts/
+    file = fileadmin/iam/template/fluid/main.html
     variables {
       topNavCatID = TEXT
       topNavCatID.value = {$optionen.topNavCatID}

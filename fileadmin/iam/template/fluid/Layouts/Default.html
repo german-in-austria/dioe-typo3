@@ -1,0 +1,76 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div class="bfrm">
+	<f:alias map="{daten: '{topNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'topNavCat')}</f:alias>
+	<f:if condition="{mainPID} == {data.uid}"><f:render partial="StartHeader"/></f:if>
+	<div class="nav-frm">
+	  <nav class="navbar navbar-expand-lg navbar-light" data-fx="fixed">
+	    <div class="container">
+				<f:link.typolink parameter="{mainPID}" class="navbar-brand" title="DiÖ - SFB Deutsch in Österreich">
+					<img src="fileadmin/bilder/dioe-logo-gray.png" alt="DiÖ - SFB Deutsch in Österreich">
+				</f:link.typolink>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topnav" aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+	      <div class="collapse navbar-collapse" id="topnav">
+	        <ul class="navbar-nav w-100 d-lg-flex">
+	          <f:for each="{allNav}" as="navItem">
+	            <v:condition.iterator.contains needle="{navItem.data.uid}" haystack="{topNavCat}">
+	              <f:then>
+	                {v:variable.set(value: 0, name: 'isSub')}
+	                <f:if condition="{navItem.children}"><f:for each="{navItem.children}" as="navChildItem"><v:condition.iterator.contains needle="{navChildItem.data.uid}" haystack="{topNavCat}"><f:then>
+	                  {v:variable.set(value: 1, name: 'isSub')}
+	                </f:then></v:condition.iterator.contains></f:for></f:if>
+	                <f:render partial="NavLink" arguments="{navItem: navItem, isSub: isSub}"/>
+	                  <f:if condition="{navItem.children} && {isSub}">
+	                    <div class="dropdown-menu">
+	                      <f:for each="{navItem.children}" as="navChildItem" iteration="iterator">
+	                        <v:condition.iterator.contains needle="{navChildItem.data.uid}" haystack="{topNavCat}">
+	                          <f:then>
+	                            <f:render partial="NavLink" arguments="{navItem: navChildItem, parentItem: navItem, iterator: iterator, noList: 1}"/>
+	                          </f:then>
+	                        </v:condition.iterator.contains>
+	                      </f:for>
+	                    </div>
+	                  </f:if>
+	                </li>
+	              </f:then>
+	            </v:condition.iterator.contains>
+	          </f:for>
+						<li class="nav-item mpl">
+							<f:if condition="{data.sys_language_uid } == 1">
+								<f:then>
+									<f:link.page class="nav-link" lang="de" language="0">de</f:link.page>
+								</f:then>
+								<f:else>
+									<f:link.page class="nav-link" lang="en" language="1">en</f:link.page>
+								</f:else>
+							</f:if>
+						</li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	</div>
+
+	<div class="content container">
+	  <article class="main-article"><f:render section="Main"/></article>
+	</div>
+
+	<footer>
+		<f:render section="FooterLeft"/>
+		<div class="d-flex flex-lg-row-reverse mt-1">
+			<f:render section="FooterRight"/>
+		  <f:alias map="{daten: '{footNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'footNavCat')}</f:alias>
+		  <ul class="fxnav">
+		    <f:for each="{allNav}" as="navItem">
+		      <v:condition.iterator.contains needle="{navItem.data.uid}" haystack="{footNavCat}">
+		        <f:then>
+		          <f:render partial="NavLink" arguments="{navItem: navItem}"/></li>
+		        </f:then>
+		      </v:condition.iterator.contains>
+		    </f:for>
+		  </ul>
+		</div>
+	</footer>
+</div>

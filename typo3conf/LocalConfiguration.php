@@ -27,6 +27,13 @@ return [
             ],
         ],
     ],
+    'EXTCONF' => [
+        'lang' => [
+            'availableLanguages' => [
+                'de',
+            ],
+        ],
+    ],
     'EXTENSIONS' => [
         'backend' => [
             'backendFavicon' => '',
@@ -39,6 +46,18 @@ return [
         'extensionmanager' => [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
+        ],
+        'gridelements' => [
+            'additionalStylesheet' => '',
+            'disableAutomaticUnusedColumnCorrection' => '0',
+            'disableCopyFromPageButton' => '0',
+            'disableDragInWizard' => '0',
+            'fluidBasedPageModule' => '0',
+            'nestingInListModule' => '0',
+            'overlayShortcutTranslation' => '0',
+        ],
+        'vhs' => [
+            'disableAssetHandling' => '0',
         ],
     ],
     'FE' => [

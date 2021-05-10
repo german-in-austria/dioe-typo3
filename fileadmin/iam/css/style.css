@@ -1,0 +1,61 @@
+body {
+  font-family: 'Lato', 'Open Sans', sans-serif;
+  background: rgba(255,255,255,0.9) /* Old browsers */;
+  font-size: 130%;
+  line-height: 163%;
+  font-weight: 300;
+	color: #333;
+}
+.bfrm {
+	overflow: hidden;
+}
+
+a {
+  color: #34a2cb;
+}
+b {
+  font-weight: 400;
+}
+p {
+  margin: 0 0 10px;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-weight: 300;
+  position: relative;
+}
+.h2, h2 {
+  font-size: 1.875rem;
+}
+
+.nobr {
+  white-space: nowrap;
+}
+
+.content {
+  min-height: 80vh;
+	padding-bottom: 4rem;
+}
+
+.main-article {
+  margin-top: 5rem;
+	text-align: justify;
+}
+
+.icon {
+	position: relative;
+	top: -3px;
+}
+
+@media (min-width: 1200px) {
+	.container.content {
+	  max-width: 870px!important;
+	}
+}
+
+@media (max-width: 900px) {
+	body {
+		font-size: 110%;
+	}
+}
