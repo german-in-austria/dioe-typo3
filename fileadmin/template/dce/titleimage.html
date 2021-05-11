@@ -1,0 +1,29 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+
+<f:if condition="{field.hoehe} > 0">
+	<f:then>
+		<div class="fx-parallax {field.klasse}{f:if(condition: '{field.wonav}', then: ' wo-nav')}" data-fx-img-multi="{field.hoehe}">
+      <div class="fx-img"{f:if(condition: '{field.parallax}', then: ' data-fx-parallax="{field.parallax}"')}{f:if(condition: '{field.parallaxnotop}', then: ' data-fx-parallax-no-top="true"')} style="background-image:url({f:uri.image(image: field.bild.0, maxWidth: 1920)});">
+				<f:if condition="{field.bild.0.title} || {field.bild.0.description}">
+					<div class="container position-relative fx-center" data-fx-parallax="14">
+						<f:if condition="{field.bild.0.description}">
+	            <div class="fx-obj">
+	              {field.bild.0.description -> f:format.raw()}
+	            </div>
+						</f:if>
+          </div>
+				</f:if>
+      </div>
+    </div>
+	</f:then>
+	<f:else>
+		<div class="{field.klasse}">
+			<f:image image="{field.bild.0}" maxWidth="1920" class="img-fluid w-100"/>
+			<f:if condition="{field.bild.0.description}">
+				<div class="fx-obj slidein-right">
+					{field.bild.0.description -> f:format.raw()}
+				</div>
+			</f:if>
+		</div>
+	</f:else>
+</f:if>

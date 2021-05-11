@@ -72,6 +72,8 @@ lib.footerRight < styles.content.get
 lib.footerRight.select.where = colPos = 1
 lib.footerRight.select.pidInList = {$optionen.footerID}
 
+lib.titelbild < styles.content.get
+lib.titelbild.select.where = colPos = 99
 
 lib.navCat = HMENU
 lib.navCat {

@@ -66,4 +66,31 @@ mod.web_layout.BackendLayouts {
 			}
 		}
 	}
+	2 {
+		title = 1 Inhalte + 1 Titelbild
+		config {
+			backend_layout {
+				colCount = 1
+				rowCount = 2
+				rows {
+					1 {
+						columns {
+							1 {
+								name = Inhalt (0)
+								colPos = 0
+							}
+						}
+					}
+					2 {
+						columns {
+							1 {
+								name = Titelbild (99)
+								colPos = 99
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

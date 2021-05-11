@@ -22,15 +22,26 @@ p {
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  font-weight: 300;
+	font-weight: 400;
   position: relative;
+  margin-bottom: 1.75rem;
 }
-.h2, h2 {
-  font-size: 1.875rem;
+h1 b, h2 b, h3 b {
+	font-weight: bolder;
 }
 
 .nobr {
   white-space: nowrap;
+}
+
+.tc-light-grey {
+	color: #ddd;
+}
+.ts-med {
+  text-shadow: 0 0 4px rgb(0,0,0,0.66);
+}
+.ts-str {
+  text-shadow: 0 0 6px rgb(0,0,0,0.88);
 }
 
 .content {
@@ -40,12 +51,46 @@ h3, .h3 {
 
 .main-article {
   margin-top: 5rem;
-	text-align: justify;
+}
+
+.frame-layout-3 {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .icon {
 	position: relative;
 	top: -3px;
+}
+
+.fx-parallax {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.fx-obj {
+  position: relative;
+}
+.fx-img {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 400px;
+  height: 100vh;
+  overflow: hidden;
+}
+.fx-img-repeat .fx-img {
+  background-size: 70%!important;
+}
+.fx-img-fixed {
+  background-attachment: fixed;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .fx-img-fixed {
+    background-attachment: local !important;
+  }
 }
 
 @media (min-width: 1200px) {

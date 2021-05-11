@@ -13,7 +13,7 @@
 		let wH = $(window).height();
 		$('.fx-text-ol').parent().css('height', '');
 		$('[data-fx-sh]').css({'height': ''});
-		$('.fx-img').each(function () {
+		$('.fx-img, [data-fx-img-multi]').each(function () {
 			$(this).css('height', '').css('min-height', '');
 			if ($(this).hasClass('fx-img-mh') && $(this).parent().find('.fx-text-ol').length > 0) { $(this).parent().css('height', ''); };
 			let aFxImgH = (wH - (($(this).hasClass('wo-nav')) ? ($('.nav-frm').outerHeight() + $('.nav-frm').position().top || $('nav.navbar').outerHeight()) : 0)) * (($(this).data('fx-img-multi')) ? $(this).data('fx-img-multi') : 1);
@@ -24,11 +24,16 @@
 					$(this).parent().css('height', fxTxtOl.outerHeight());
 				}
 			} else {
-				$(this).css('height', aFxImgH);
+				console.log($(this).parent().hasClass('fx-parallax'), aFxImgH);
+				if ($(this).parent().hasClass('fx-parallax')) {
+					$(this).css('height', $(this).parent().outerHeight() * 1.3);
+				} else {
+					$(this).css('height', aFxImgH);
+				}
 			}
 		});
 		$('.fx-center').each(function () {
-			$(this).css('top', ($(this).parent().outerHeight() - $(this).outerHeight()) / 2);
+			$(this).css('top', (70 + ($(this).parent().parent().outerHeight() - $(this).outerHeight()) / 2));
 		});
 		$('.nav-frm').removeClass('fx-moved-up').css({'margin-top': 0});
 		$('[data-fx]').removeClass('fixed-top fx-fixed').each(function () {
