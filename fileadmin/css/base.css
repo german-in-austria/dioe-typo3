@@ -105,3 +105,58 @@ tr.no-border, tr.no-border > td {
 		font-size: 85%;
 	}
 }
+
+/* DiÖ Nav */
+.dioe-nav {
+  font-family: 'Lato', 'Open Sans', sans-serif;
+	font-size: 16px;
+  line-height: 2.1;
+  background-color: #e2e2e2;
+	position: relative;
+	z-index: 1031;
+}
+
+.dioe-nav > ul {
+	display: -ms-flexbox!important;
+	display: flex!important;
+	margin: 0 auto;
+	max-width: 450px;
+	list-style: none;
+	padding: 0;
+}
+
+.dioe-nav > ul > li {
+	-ms-flex: 1 1 auto!important;
+	flex: 1 1 auto!important;
+}
+
+.dioe-nav > ul > li > a {
+	display: block;
+	position: relative;
+	width: 100%;
+  padding: 5px;
+	font-weight: 400;
+	text-align: center;
+	color: #a7a7a7;
+}
+
+.dioe-nav > ul > li > a:hover, .dioe-nav > ul > li > a:focus {
+	background: #a7a7a7;
+	color: #fff;
+	text-decoration: none;
+}
+
+.dioe-nav > ul > li > a.active::after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 50%;
+	left: calc(50% - 8px);
+	bottom: 0;
+	height: 0;
+	width: 0;
+	background: transparent;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #fff;
+}

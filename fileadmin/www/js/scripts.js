@@ -5,7 +5,7 @@
 		const sF = function () {
 			let doc = document.documentElement;
 			let sTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-			let aHsHeight = $('header.start').outerHeight();
+			let aHsHeight = $('header.start').outerHeight() + $('header.start').position().top;
 			let aFac = sTop < aHsHeight ? 1 / aHsHeight * sTop : 1;
 			$('header.start').css('opacity', 1 - aFac * 0.5);
 			$('.start-city, .start-mountains').css('margin-bottom', -aHsHeight / 2.75 * aFac);
@@ -34,7 +34,31 @@
 		};
 		$(window).scroll(sF);
 	} else {
-		$('.nav-frm').css('height', $('.nav-frm').height());
-		$('.nav-frm > .navbar').addClass('fixed-top');
+		const sF = function () {
+			let doc = document.documentElement;
+			let sTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+			let aNavTop = $('.nav-frm').position().top;
+			if (sTop > aNavTop) {
+				$('.nav-frm > .navbar').addClass('fixed-top');
+			} else {
+				$('.nav-frm > .navbar').removeClass('fixed-top');
+			}
+		};
+		const sD = function () {
+			$('.nav-frm > .navbar').removeClass('fixed-top');
+			$('.nav-frm').css('height', $('.nav-frm').height());
+			sF();
+		};
+		sD();
+		jQuery(document).ready(function ($) {
+			sD();
+		});
+		$(window).on('load', function ($) {
+			sD();
+		});
+		window.onresize = function () {
+			sD();
+		};
+		$(window).scroll(sF);
 	}
 })(jQuery);
