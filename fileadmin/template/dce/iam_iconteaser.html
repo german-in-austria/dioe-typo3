@@ -1,0 +1,28 @@
+<div class="row">
+	<f:for each="{field.eintraege}" as="eintrag">
+		<div class="col-12 col-sm-6 col-md-4">
+			<f:if condition="{field.typ}=='blank'">
+				<div style="border: 1px solid #666; margin: 1rem 0;">
+					Überschrift: {eintrag.header}<br />
+					Text: {eintrag.text}<br />
+					Link: {eintrag.link}<br />
+					Icon:
+					<f:for each="{eintrag.icon}" as="image">
+						<f:image image="{image}" width="50" style="max-width: 50px; max-height: 50px; width: auto; height: auto;" /><br />
+					</f:for>
+				</div>
+			</f:if>
+			<f:if condition="{field.typ}=='frame'">
+				<div style="border: 1px solid #bbb; margin: 1rem 0;">
+					Überschrift: {eintrag.header}<br />
+					Text: {eintrag.text}<br />
+					Link: {eintrag.link}<br />
+					Icon:
+					<f:for each="{eintrag.icon}" as="image">
+						<f:image image="{image}" width="50" style="max-width: 50px; max-height: 50px; width: auto; height: auto;" /><br />
+					</f:for>
+				</div>
+			</f:if>
+		</div>
+	</f:for>
+</div>
