@@ -58,6 +58,7 @@
           <label index="kategorien_veranstaltung">Event</label>
           <label index="kategorien_lehre">Teaching</label>
 
+					<label index="allgemein_erfahre_mehr">Learn more</label>
           <label index="allgemein_beitrag_anzeigen">Show post</label>
           <label index="allgemein_artikel_url">Article URL</label>
 
@@ -128,6 +129,7 @@
           <label index="kategorien_veranstaltung">Veranstaltung</label>
           <label index="kategorien_lehre">Lehre</label>
 
+					<label index="allgemein_erfahre_mehr">Erfahre mehr</label>
           <label index="allgemein_beitrag_anzeigen">Beitrag anzeigen</label>
           <label index="allgemein_artikel_url">Artikel URL</label>
 

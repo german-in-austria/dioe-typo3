@@ -93,6 +93,103 @@ h1 b, h2 b, h3 b {
   }
 }
 
+.iam-iconteaser-blank {
+  height: 100%;
+  text-align: center;
+	padding: 1rem 0.5rem;
+}
+.iam-iconteaser-blank > a {
+	display: block;
+	height: 100%;
+	text-decoration: none!important;
+	color: #333;
+	margin: -1rem -0.5rem;
+  margin-bottom: 0;
+	padding: 1rem 0.5rem;
+  transition: all 0.15s;
+}
+.iam-iconteaser-blank > a:hover, .iam-iconteaser-blank > a:focus {
+  filter: invert(1);
+  background: #999;
+}
+.iam-iconteaser-blank .iam-iconteaser-img {
+	max-width: 100px;
+	max-height: 100px;
+	width: auto;
+	height: auto;
+	margin-bottom: 2rem;
+}
+
+.iam-iconteaser-frame {
+  position: relative;
+  height: 100%;
+  background: #eee;
+  text-align: center;
+  padding: 5rem 2rem 2rem 2rem;
+}
+.iam-iconteaser-frame.w-lnk {
+  padding-bottom: 5rem;
+}
+.iam-iconteaser-frame .iam-iconteaser-lnk {
+  border: 1px solid #000;
+  color: #000;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0.6rem 1.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  position: absolute;
+  background: #eee;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  bottom: 2rem;
+	transition: all 0.15s;
+}
+.iam-iconteaser-frame .iam-iconteaser-lnk:hover, .iam-iconteaser-frame .iam-iconteaser-lnk:focus {
+  color: #fff;
+  background: #333;
+}
+.iam-iconteaser-frame .iam-iconteaser-img-frm {
+  position: absolute;
+  left: calc(50% - 50px);
+  top: -50px;
+  width: 100px;
+  height: 100px;
+  background: #ddd;
+  padding: 20px;
+  border-radius: 100%;
+}
+.iam-iconteaser-frame .iam-iconteaser-img {
+	display: block;
+	max-width: 60px;
+	max-height: 60px;
+	width: auto;
+	height: auto;
+	margin: auto;
+}
+
+.iam-iconteaser-frame ul, .iam-iconteaser-blank ul {
+  text-align: left;
+  list-style: none;
+}
+
+.iam-iconteaser-frame ul > li, .iam-iconteaser-blank ul > li {
+	position: relative;
+}
+.iam-iconteaser-frame ul > li::before, .iam-iconteaser-blank ul > li::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' width='24px' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z' /%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -36px;
+  top: 2px;
+}
 @media (min-width: 1200px) {
 }
 
