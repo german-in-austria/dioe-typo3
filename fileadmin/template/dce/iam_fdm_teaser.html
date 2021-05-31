@@ -5,7 +5,7 @@
 		<v:page.resources.fal table="pages" field="media" uid="{field.artikel}" as="images" slide="-1" >
 			<figure class="image">
 		    <f:for each="{images}" as="image">
-					<f:image src="{image.url}" class="img-fluid" width="950" />
+					<f:image src="{image.url}" class="img-fluid d-block mx-auto" maxWidth="950" maxHeight="500" />
 					<dioe:copyrights value="{f:if(condition: '{image.properties.copyright}', then: '{image.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
 		    </f:for>
 			</figure>
