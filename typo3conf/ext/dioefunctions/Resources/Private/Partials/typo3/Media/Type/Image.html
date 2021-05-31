@@ -1,6 +1,6 @@
 {namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ce="http://typo3.org/ns/TYPO3/CMS/FluidStyledContent/ViewHelpers" data-namespace-typo3-fluid="true">
-<figure class="image">
+<figure class="image fx-wc">
   <f:if condition="{file.link}">
     <f:then>
       <f:link.typolink parameter="{file.link}" title="{file.title}">
@@ -25,6 +25,6 @@
       {file.description -> f:format.nl2br()}
     </figcaption>
   </f:if>
-	<dioe:copyrights value="{file.properties.copyright}" bild="1" />
+	<dioe:copyrights value="{f:if(condition: '{file.properties.copyright}', then: '{file.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
 </figure>
 </html>

@@ -1,0 +1,22 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+<div class="row align-items-center">
+	<div class="col-12 col-md-6 d-none d-md-block">
+		<v:page.resources.fal table="pages" field="media" uid="{field.artikel}" as="images" slide="-1" >
+			<figure class="image">
+		    <f:for each="{images}" as="image">
+					<f:image src="{image.url}" class="img-fluid" width="950" />
+					<dioe:copyrights value="{f:if(condition: '{image.properties.copyright}', then: '{image.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+		    </f:for>
+			</figure>
+		</v:page.resources.fal>
+	</div>
+	<div class="col col-md-6">
+		<div class="mx-auto p-3" style="max-width: 600px;">
+			<h2>{v:page.info(pageUid:'{field.artikel}', field:'title')}</h2>
+			<p>{field.text}</p>
+			<f:link.page pageUid="{field.artikel}">Antwort auf diese Frage</f:link.page><br>
+			<f:link.page pageUid="85">Selbst eine Frage stellen</f:link.page><br>
+		</div>
+	</div>
+</div>
