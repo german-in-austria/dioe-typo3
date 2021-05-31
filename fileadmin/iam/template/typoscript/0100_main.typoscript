@@ -16,6 +16,7 @@ page {
 		file20 = fileadmin/iam/css/fonts.css
 		file21 = fileadmin/iam/css/header.css
 		file22 = fileadmin/iam/css/navbar.css
+		file25 = fileadmin/iam/css/colors.css
 		file30 = fileadmin/iam/css/footer.css
     file90 = fileadmin/iam/css/style.css
   }

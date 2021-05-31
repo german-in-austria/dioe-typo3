@@ -1,0 +1,23 @@
+.article-bg-green1-g, .article-bg-green1 {
+	position: relative;
+}
+.article-bg-green1-g::before, .article-bg-green1::before {
+  content: "";
+  background: #ddd;
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.main-article.article-bg-green1-g::before, .main-article.article-bg-green1::before {
+	top: -5rem;
+}
+.article-bg-green1::before {
+  background: #d4e29b;
+}
+.article-bg-green1-g::before {
+  background: linear-gradient(0deg, #ffffff 0%, #d4e29b 100%);
+}
