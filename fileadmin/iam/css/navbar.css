@@ -5,11 +5,14 @@
 }
 .nav-frm .navbar-brand {
 	display: block;
+  max-width: calc(100% - 90px);
 }
 .nav-frm .navbar-brand img {
-	display: block;
-	width: auto;
-	height: 130px;
+  display: block;
+  max-width: 100%;
+  width: auto;
+  max-height: 130px;
+  height: auto;
   margin: 0;
 }
 .nav-frm .navbar-light .navbar-nav .nav-link {

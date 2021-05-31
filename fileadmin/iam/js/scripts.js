@@ -12,7 +12,7 @@
 	var fxData = function () {
 		let wH = $(window).height();
 		$('.fx-text-ol').parent().css('height', '');
-		$('[data-fx-sh]').css({'height': ''});
+		$('[data-fx-sh]').css({'max-height': ''});
 		$('.fx-img, [data-fx-img-multi]').each(function () {
 			$(this).css('height', '').css('min-height', '');
 			if ($(this).hasClass('fx-img-mh') && $(this).parent().find('.fx-text-ol').length > 0) { $(this).parent().css('height', ''); };
@@ -73,11 +73,11 @@
 					let nFH = aFH - (sTop - aTop);
 					if (nFH < aSH) { nFH = aSH; };
 					if (nFH > aFH) { nFH = aFH; };
-					$(this).height(nFH);
+					$(this).css('max-height', nFH);
 				});
 			} else {
 				$(this).removeClass('fx-pos-over');
-				$('[data-fx-sh]').css({'height': ''});
+				$('[data-fx-sh]').css({'max-height': ''});
 			}
 		});
 		$('[data-fx-parallax]').each(function () {
