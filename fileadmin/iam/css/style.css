@@ -201,19 +201,26 @@ h1 b, h2 b, h3 b {
 	transition: all 0.15s;
 	margin-right: -1px;
 	border-right: 1px solid #ccc;
+	padding-right: 1px;
 }
 #v-pills-tab > a.active {
 	color: #333;
-	background: #ccc;
-	border-right: 1px solid #666;
+	background: #eee;
+	padding-right: 0;
+	border-right: 2px solid #666;
 }
 #v-pills-tab > a:hover, #v-pills-tab > a:focus {
 	color: #444;
+}
+.iam-fdm-o-lnk > figure.image {
+  height: 200px;
+  background: #fff;
 }
 .iam-fdm-o-lnk {
   display: block;
   height: 100%;
   padding: 0.5rem;
+  padding-bottom: 1rem;
   background: #fff;
   border-radius: 0.3rem;
   color: #333;
