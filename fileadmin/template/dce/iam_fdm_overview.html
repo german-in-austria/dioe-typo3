@@ -1,0 +1,42 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+<div class="row">
+	<div class="col-12 col-md-3">
+		<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+			<v:page.menu pageUid="{field.seite}" levels="1">
+				<f:for each="{menu}" as="item" iteration="i">
+		      <a class="nav-link{f:if(condition: '{i.isFirst}', then: ' active', else: '')}" id="v-pills-{item.uid}-tab" data-toggle="pill" href="#v-pills-{item.uid}" role="tab" aria-controls="v-pills-{item.uid}" aria-selected="{f:if(condition: '{i.isFirst}', then: 'true', else: 'false')}">{item.title}</a>
+				</f:for>
+			</v:page.menu>
+    </div>
+	</div>
+	<div class="col-12 col-md-9">
+		<div class="tab-content" id="v-pills-tabContent">
+			<v:page.menu pageUid="{field.seite}" levels="1">
+				<f:for each="{menu}" as="item" iteration="i">
+      		<div class="tab-pane fade{f:if(condition: '{i.isFirst}', then: ' show active', else: '')}" id="v-pills-{item.uid}" role="tabpanel" aria-labelledby="v-pills-{item.uid}-tab">
+						<div class="row">
+							<v:page.menu pageUid="{item.uid}" levels="1">
+								<f:for each="{menu}" as="sitem" iteration="i2">
+									<div class="col-12 col-md-4 mb-5 px-1 px-md-4">
+										<f:link.page pageUid="{sitem.uid}" class="iam-fdm-o-lnk">
+											<v:page.resources.fal table="pages" field="media" uid="{sitem.uid}" as="images" slide="-1" >
+												<figure class="image">
+											    <f:for each="{images}" as="image">
+														<f:image src="{image.url}" class="img-fluid d-block mx-auto" maxWidth="250" maxHeight="200" />
+														<dioe:copyrights value="{f:if(condition: '{image.properties.copyright}', then: '{image.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+											    </f:for>
+												</figure>
+											</v:page.resources.fal>
+											{sitem.title}
+										</f:link.page>
+									</div>
+								</f:for>
+							</v:page.menu>
+						</div>
+					</div>
+				</f:for>
+			</v:page.menu>
+    </div>
+	</div>
+</div>
