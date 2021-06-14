@@ -230,7 +230,7 @@ h1 b, h2 b, h3 b {
 .iam-fdm-o-lnk:hover, .iam-fdm-o-lnk:focus {
 	filter: invert(1);
   background: #999;
-	color: #333;
+	color: #000;
 	text-decoration: none;
 }
 @media (min-width: 1200px) {
