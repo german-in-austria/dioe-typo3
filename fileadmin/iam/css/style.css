@@ -34,6 +34,12 @@ h1 b, h2 b, h3 b {
   white-space: nowrap;
 }
 
+.mw-med {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .tc-light-grey {
 	color: #ddd;
 }
