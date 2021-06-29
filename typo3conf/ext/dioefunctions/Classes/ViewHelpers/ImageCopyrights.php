@@ -31,7 +31,7 @@ class CopyrightsViewHelper extends AbstractViewHelper
 	) {
 		// return 'Image Copyrights (' . $arguments['value'] . ', ' . $arguments['bild'] . ', ' . $arguments['span'] . ', ' . $arguments['klein'] . ', ' . $arguments['keinlink'] . ')';
 		$alizenz = $arguments['value'] ? trim($arguments['value']) : '';
-    if(strlen($alizenz) < 1) { return ''; }
+    if(strlen($alizenz) < 1 || substr($alizenz, 0, 5)=='!nix!') { return ''; }
     if(substr($alizenz, 0, 5)=='cc-by') {
       $alizenzout = 'by';
       list($alizenzby, $alizenzname) = explode(';', $alizenz, 2);
