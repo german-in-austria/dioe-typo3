@@ -25,3 +25,9 @@ table.table-horizontal td, table.table-horizontal-center td {
 tr.no-border, tr.no-border > td {
   border-bottom: #d3d3d3 1px dotted!important;
 }
+.nobr {
+  white-space: nowrap;
+}
+.ml-md-5 {
+	margin-left: 3rem!important;
+}

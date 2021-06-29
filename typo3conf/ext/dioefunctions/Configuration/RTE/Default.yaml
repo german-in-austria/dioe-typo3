@@ -23,8 +23,11 @@ editor:
       - { name: "Horizontale Tabelle Zentriert", element: ["table"], attributes: { class: "table-horizontal-center"}}
       - { name: "Kein Rahmen", element: ["tr"], attributes: { class: "no-border"}}
       - { name: "Volle Breite", element: ["table"], attributes: { class: "w-100"}}
+      # Links
       - { name: "Knopf - Dunkel", element: ["a"], attributes: { class: "btn btn-dark"}}
       - { name: "Knopf - Hell", element: ["a"], attributes: { class: "btn btn-light"}}
+      # Paragraphs
+      - { name: "Einschub", element: ["p"], attributes: { class: "ml-4 ml-md-5"}}
       # Span
       - { name: "nobr", element: "span", attributes: { class: "nobr"}}
 
@@ -47,8 +50,8 @@ editor:
 
     extraPlugins:
       - justify
+      - font
 
     removeButtons:
       - Anchor
-      - Underline
-      - Strike
+      - Font
