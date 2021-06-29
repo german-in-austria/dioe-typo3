@@ -1,0 +1,12 @@
+<f:layout name="BackendTemplate" />
+
+<f:section name="header">
+	<strong>{dce.title}</strong><br>
+</f:section>
+<f:section name="bodytext">
+	<ul style="margin-bottom: 0; margin-top: 5px; padding-left: 2em;">
+		<f:for each="{field.eintraege}" as="eintrag">
+			<li class="dceFieldValue">{eintrag.header}</li>
+		</f:for>
+	</ul>
+</f:section>
