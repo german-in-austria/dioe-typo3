@@ -150,6 +150,6 @@ return [
         'systemMaintainers' => [
             1,
         ],
-        'trustedHostsPattern' => 'www2021.dioe.at|iam2021.dioe.at|dioe.at|www.dioe.at|iam.dioe.at|iam-test.dioe.at|standard2018.dioe.at|typo3test.dioe.at|quiz.dioe.at',
+        'trustedHostsPattern' => 'www2021.dioe.at|iam2021.dioe.at|dioe.at|www.dioe.at|iam.dioe.at|iam-test.dioe.at|standard2018.dioe.at|typo3test.dioe.at|quiz.dioe.at|tools.dioe.at',
     ],
 ];

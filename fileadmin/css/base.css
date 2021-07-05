@@ -188,3 +188,7 @@ tr.no-border, tr.no-border > td {
   border-bottom: 1px solid #ccc !important;
 	background: transparent;
 }
+
+ol ol {
+	list-style: lower-alpha;
+}
