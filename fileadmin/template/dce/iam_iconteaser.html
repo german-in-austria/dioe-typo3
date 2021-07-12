@@ -1,33 +1,35 @@
 <div class="row">
 	<f:for each="{field.eintraege}" as="eintrag">
-		<div class="col-12 col-sm-6 col-md-4 my-5">
-			<f:if condition="{field.typ}=='blank'">
-				<div class="iam-iconteaser-blank">
-					<f:link.typolink parameter="{eintrag.link}">
+		<f:if condition="{eintrag.visible}">
+			<div class="col-12 col-sm-6 col-md-4 my-5">
+				<f:if condition="{field.typ}=='blank'">
+					<div class="iam-iconteaser-blank">
+						<f:link.typolink parameter="{eintrag.link}">
+							<f:if condition="{eintrag.icon}">
+								<f:image image="{eintrag.icon.0}" height="100" class="iam-iconteaser-img" /><br />
+							</f:if>
+							<h3>{eintrag.header}</h3>
+							<f:format.raw>{eintrag.text}</f:format.raw>
+						</f:link.typolink>
+					</div>
+				</f:if>
+				<f:if condition="{field.typ}=='frame'">
+					<div class="iam-iconteaser-frame{f:if(condition: '{eintrag.link}', then: ' w-lnk')}">
 						<f:if condition="{eintrag.icon}">
-							<f:image image="{eintrag.icon.0}" height="100" class="iam-iconteaser-img" /><br />
+							<div class="iam-iconteaser-img-frm">
+								<f:image image="{eintrag.icon.0}" height="100" class="iam-iconteaser-img" />
+							</div>
 						</f:if>
 						<h3>{eintrag.header}</h3>
 						<f:format.raw>{eintrag.text}</f:format.raw>
-					</f:link.typolink>
-				</div>
-			</f:if>
-			<f:if condition="{field.typ}=='frame'">
-				<div class="iam-iconteaser-frame{f:if(condition: '{eintrag.link}', then: ' w-lnk')}">
-					<f:if condition="{eintrag.icon}">
-						<div class="iam-iconteaser-img-frm">
-							<f:image image="{eintrag.icon.0}" height="100" class="iam-iconteaser-img" />
-						</div>
-					</f:if>
-					<h3>{eintrag.header}</h3>
-					<f:format.raw>{eintrag.text}</f:format.raw>
-					<f:if condition="{eintrag.link}">
-						<f:link.typolink parameter="{eintrag.link}" class="iam-iconteaser-lnk">
-							{f:translate(key: 'LLL:fileadmin/template/locallang.xml:allgemein_erfahre_mehr')}
-						</f:link.typolink>
-					</f:if>
-				</div>
-			</f:if>
-		</div>
+						<f:if condition="{eintrag.link}">
+							<f:link.typolink parameter="{eintrag.link}" class="iam-iconteaser-lnk">
+								{f:translate(key: 'LLL:fileadmin/template/locallang.xml:allgemein_erfahre_mehr')}
+							</f:link.typolink>
+						</f:if>
+					</div>
+				</f:if>
+			</div>
+		</f:if>
 	</f:for>
 </div>

@@ -43,7 +43,7 @@
 	              </f:then>
 	            </v:condition.iterator.contains>
 	          </f:for>
-						<li class="nav-item mpl">
+						<!-- <li class="nav-item mpl">
 							<f:if condition="{data.sys_language_uid } == 1">
 								<f:then>
 									<f:link.page class="nav-link" lang="de" language="0">de</f:link.page>
@@ -52,7 +52,7 @@
 									<f:link.page class="nav-link" lang="en" language="1">en</f:link.page>
 								</f:else>
 							</f:if>
-						</li>
+						</li> -->
 	        </ul>
 	      </div>
 	    </div>
@@ -67,12 +67,18 @@
 	</div>
 
 	<footer>
-		<div class="container">
-			<f:render section="FooterLeft"/>
-			<div class="d-flex flex-lg-row-reverse mt-1">
-				<f:render section="FooterRight"/>
+		<div class="container text-center text-md-left">
+			<div class="row">
+				<div class="col-12 col-md-3 mb-3 pr-md-5 footer-left">
+					<f:render section="FooterLeft"/>
+				</div>
+				<div class="col-12 col-md-9 mb-3">
+					<f:render section="FooterRight"/>
+				</div>
+			</div>
+			<div class="d-flex">
 			  <f:alias map="{daten: '{footNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'footNavCat')}</f:alias>
-			  <ul class="fxnav">
+			  <ul class="fxnav mx-auto mr-md-0">
 			    <f:for each="{allNav}" as="navItem">
 			      <v:condition.iterator.contains needle="{navItem.data.uid}" haystack="{footNavCat}">
 			        <f:then>

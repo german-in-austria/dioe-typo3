@@ -251,7 +251,7 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $pFile = null;
 
     /**
-     * Daucher (z.B.: "50:30" -> 50 Minuten und 30 Sekunden)
+     * Dauer (z.B.: "50:30" -> 50 Minuten und 30 Sekunden)
      *
      *
      * @var string

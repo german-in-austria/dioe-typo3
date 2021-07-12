@@ -88,7 +88,7 @@
 				<source>Datei (mp3)</source>
 			</trans-unit>
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.p_duration" resname="tx_dioearticlesystem_domain_model_dioearticle.p_duration">
-				<source>Daucher (z.B.: "50:30" -> 50 Minuten und 30 Sekunden)</source>
+				<source>Dauer (z.B.: "50:30" -> 50 Minuten und 30 Sekunden)</source>
 			</trans-unit>
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.pub_type" resname="tx_dioearticlesystem_domain_model_dioearticle.pub_type">
 				<source>Art der Publikation</source>
