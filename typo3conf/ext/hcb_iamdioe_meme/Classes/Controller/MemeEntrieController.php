@@ -1,5 +1,6 @@
 <?php
 namespace HcbIamDioeMeme\HcbIamdioeMeme\Controller;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 /***
  *
@@ -21,7 +22,7 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      * memeEntrieRepository
      *
      * @var \HcbIamDioeMeme\HcbIamdioeMeme\Domain\Repository\MemeEntrieRepository
-     * @inject
+     * @Extbase\Inject
      */
     protected $memeEntrieRepository = null;
 
@@ -46,7 +47,7 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 array_push($memeimagesItems, $fileArray);
             }
         }
-        $this->view->assign('pid', $this->configurationManager->getContentObject()->data['pages']);
+        $this->view->assign('pid', $this->configurationManager->getContentObjectRenderer()->data['pages']);
         $this->view->assign('memeimagesItems', $memeimagesItems);
         $this->view->assign('teilnahmeText', $this->settings['teilnahme']);
         $this->view->assign('teilnahmeTextLen', strlen($this->settings['teilnahme']));
@@ -57,7 +58,7 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
-     * @inject
+     * @Extbase\Inject
      */
     protected $persistenceManager;
 
@@ -108,7 +109,7 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         if ($tempFileName && file_exists($tempFileName)) {
             unlink($tempFileName);
         }
-        
+
         $fileReference = $this->objectManager->get('HcbIamDioeMeme\\HcbIamdioeMeme\\Domain\\Model\\FileReference');
         $fileReference->setFile($file);
         $newMemeEntrie->setBild($fileReference);
@@ -128,7 +129,7 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     public function memelistAction()
     {
         if ($this->settings['preview']) {
-            $memeEntriesRandom = $this->memeEntrieRepository->getRandomPublic($this->configurationManager->getContentObject()->data['pages']);
+            $memeEntriesRandom = $this->memeEntrieRepository->getRandomPublic($this->configurationManager->getContentObjectRenderer()->data['pages']);
             $this->view->assign('memeEntriesRandom', $memeEntriesRandom);
             $this->view->assign('preview', true);
         } else {

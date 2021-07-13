@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') || die('Access denied.');
+defined('TYPO3_MODE') || die();
 
 call_user_func(
     function()
@@ -58,22 +58,22 @@ call_user_func(
        }'
     );
 		$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-		
+
 			$iconRegistry->registerIcon(
 				'hcb_iamdioe_meme-plugin-fememegenerator',
 				\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
 				['source' => 'EXT:hcb_iamdioe_meme/Resources/Public/Icons/user_plugin_fememegenerator.svg']
 			);
-		
+
 			$iconRegistry->registerIcon(
 				'hcb_iamdioe_meme-plugin-fememelist',
 				\TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
 				['source' => 'EXT:hcb_iamdioe_meme/Resources/Public/Icons/user_plugin_fememelist.svg']
 			);
-		
+
     }
 );
 
 // Cache deaktivieren (Developing):
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_reflection']['backend'] = 'TYPO3\\CMS\\Core\\Cache\\Backend\\NullBackend';
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_object']['backend'] = 'TYPO3\\CMS\\Core\\Cache\\Backend\\NullBackend';
+// $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_reflection']['backend'] = 'TYPO3\\CMS\\Core\\Cache\\Backend\\NullBackend';
+// $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_object']['backend'] = 'TYPO3\\CMS\\Core\\Cache\\Backend\\NullBackend';

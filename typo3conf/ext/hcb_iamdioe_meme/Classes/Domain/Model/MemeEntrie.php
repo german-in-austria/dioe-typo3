@@ -1,5 +1,6 @@
 <?php
 namespace HcbIamDioeMeme\HcbIamdioeMeme\Domain\Model;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 /***
  *
@@ -35,7 +36,7 @@ class MemeEntrie extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bild
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
+     * @Extbase\ORM\Cascade("remove")
      */
     protected $bild = null;
 
