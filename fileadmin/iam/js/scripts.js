@@ -24,7 +24,7 @@
 					$(this).parent().css('height', fxTxtOl.outerHeight());
 				}
 			} else {
-				console.log($(this).parent().hasClass('fx-parallax'), aFxImgH);
+				// console.log($(this).parent().hasClass('fx-parallax'), aFxImgH);
 				if ($(this).parent().hasClass('fx-parallax')) {
 					$(this).css('height', $(this).parent().outerHeight() * 1.3);
 				} else {

@@ -1,0 +1,34 @@
+<T3DataStructure>
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:trainings/Resources/Private/Language/locallang_db.xlf:flexform.pluginConfiguration</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.hashtags>
+            <TCEforms>
+              <label>Hashtags (z.B.: "#DeutschinÖsterreich #memecontest")</label>
+              <config>
+                <type>input</type>
+                <size>100</size>
+                <max>100</max>
+                <eval>trim</eval>
+                <default>#DeutschinÖsterreich #memecontest</default>
+              </config>
+            </TCEforms>
+          </settings.hashtags>
+          <settings.preview>
+            <TCEforms>
+              <label>Preview Modus (3 zufällige Bilder)</label>
+              <config>
+                <type>check</type>
+              </config>
+            </TCEforms>
+          </settings.preview>
+        </el>
+      </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>

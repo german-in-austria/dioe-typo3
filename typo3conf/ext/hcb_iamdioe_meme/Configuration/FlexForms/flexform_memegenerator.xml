@@ -1,0 +1,92 @@
+<T3DataStructure>
+  <sheets>
+    <sDEF>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:trainings/Resources/Private/Language/locallang_db.xlf:flexform.pluginConfiguration</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+          <settings.headline>
+            <TCEforms>
+              <label>Headline</label>
+              <config>
+                <type>check</type>
+                <default>1</default>
+              </config>
+            </TCEforms>
+          </settings.headline>
+          <settings.teilnahme>
+            <label>Teilnahme</label>
+            <config>
+              <type>text</type>
+              <rows>5</rows>
+              <cols>30</cols>
+              <eval>trim</eval>
+              <enableRichtext>1</enableRichtext>
+              <richtextConfiguration>default</richtextConfiguration>
+            </config>
+          </settings.teilnahme>
+          <settings.memeimages>
+            <TCEforms>
+              <label>Meme Bilder</label>
+              <config>
+                  <type>inline</type>
+                  <maxitems>99</maxitems>
+                  <foreign_table>sys_file_reference</foreign_table>
+                  <!--<foreign_field>uid_foreign</foreign_field>-->
+                  <foreign_table_field>tablenames</foreign_table_field>
+                  <foreign_label>uid_local</foreign_label>
+                  <foreign_sortby>sorting_foreign</foreign_sortby>
+                  <foreign_selector>uid_local</foreign_selector>
+                  <foreign_selector_fieldTcaOverride type="array">
+                      <config>
+                          <appearance>
+                              <elementBrowserType>file</elementBrowserType>
+                              <elementBrowserAllowed>jpg</elementBrowserAllowed>
+                          </appearance>
+                      </config>
+                  </foreign_selector_fieldTcaOverride>
+                  <foreign_match_fields type="array">
+                      <fieldname>image</fieldname>
+                  </foreign_match_fields>
+                  <appearance type="array">
+                      <newRecordLinkAddTitle>1</newRecordLinkAddTitle>
+                      <headerThumbnail>
+                          <field>uid_local</field>
+                          <height>64</height>
+                          <width>64</width>
+                      </headerThumbnail>
+                  </appearance>
+              </config>
+            </TCEforms>
+          </settings.memeimages>
+          <settings.datenschutz>
+            <label>Datenschutz</label>
+            <config>
+              <type>text</type>
+              <rows>5</rows>
+              <cols>30</cols>
+              <eval>trim,required</eval>
+              <enableRichtext>1</enableRichtext>
+              <richtextConfiguration>default</richtextConfiguration>
+              <default><![CDATA[<p>Ich habe die <a href="/datenschutz/" target="_blank">Datenschutzerklärung</a> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.</p><p>Hinweis: Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <a href="mailto:info@dioe.at">info@dioe.at</a> widerrufen.</p>]]></default>
+            </config>
+          </settings.datenschutz>
+          <settings.danksagung>
+            <label>Danksagung</label>
+            <config>
+              <type>text</type>
+              <rows>5</rows>
+              <cols>30</cols>
+              <eval>trim,required</eval>
+              <enableRichtext>1</enableRichtext>
+              <richtextConfiguration>default</richtextConfiguration>
+              <default><![CDATA[<p>Danke für die Teilnahme!</p>]]></default>
+            </config>
+          </settings.danksagung>
+        </el>
+      </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>

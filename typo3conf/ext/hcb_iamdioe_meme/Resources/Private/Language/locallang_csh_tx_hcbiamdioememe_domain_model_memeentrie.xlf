@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2020-03-24T11:12:26Z" product-name="hcb_iamdioe_meme">
+		<header/>
+		<body>
+			<trans-unit id="datum.description">
+				<source>datum</source>
+			</trans-unit>
+			<trans-unit id="votes.description">
+				<source>votes</source>
+			</trans-unit>
+			<trans-unit id="freigegeben.description">
+				<source>freigegeben</source>
+			</trans-unit>
+			<trans-unit id="bild.description">
+				<source>bild</source>
+			</trans-unit>
+			<trans-unit id="memetag.description">
+				<source>memetag</source>
+			</trans-unit>
+			<trans-unit id="memetexte.description">
+				<source>memetexte</source>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>email</source>
+			</trans-unit>
+			<trans-unit id="alterjahre.description">
+				<source>alterjahre</source>
+			</trans-unit>
+			<trans-unit id="geburtsort.description">
+				<source>geburtsort</source>
+			</trans-unit>
+			<trans-unit id="wohnort.description">
+				<source>wohnort</source>
+			</trans-unit>
+			<trans-unit id="geschlecht.description">
+				<source>geschlecht</source>
+			</trans-unit>
+			<trans-unit id="dialekt.description">
+				<source>dialekt</source>
+			</trans-unit>
+			<trans-unit id="dialektalltag.description">
+				<source>dialektalltag</source>
+			</trans-unit>
+			<trans-unit id="dialektbezeichnung.description">
+				<source>dialektbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="teilnahme.description">
+				<source>teilnahme</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

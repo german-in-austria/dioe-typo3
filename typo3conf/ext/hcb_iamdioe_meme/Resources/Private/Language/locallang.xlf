@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2020-03-24T11:12:26Z" product-name="hcb_iamdioe_meme">
+		<header/>
+		<body>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie">
+				<source>Meme Entrie</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.votes">
+				<source>Votes</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.freigegeben">
+				<source>Freigegeben</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.bild">
+				<source>Bild</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.memetag">
+				<source>Memetag</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.memetexte">
+				<source>Memetexte</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.alterjahre">
+				<source>Alterjahre</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.geburtsort">
+				<source>Geburtsort</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.wohnort">
+				<source>Wohnort</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.geschlecht">
+				<source>Geschlecht</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.dialekt">
+				<source>Dialekt</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.dialektalltag">
+				<source>Dialektalltag</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.dialektbezeichnung">
+				<source>Dialektbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_hcbiamdioememe_domain_model_memeentrie.teilnahme">
+				<source>Teilnahme</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

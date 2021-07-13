@@ -1,0 +1,23 @@
+{
+    "name": "hcbiamdioememe/hcb-iamdioe-meme",
+    "type": "typo3-cms-extension",
+    "description": "iamDioe Meme Generator und Auflistung mit Voting",
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^8.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "HcbIamDioeMeme\\HcbIamdioeMeme\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HcbIamDioeMeme\\HcbIamdioeMeme\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "hcb_iamdioe_meme": "self.version",
+        "typo3-ter/hcb-iamdioe-meme": "self.version"
+    }
+}

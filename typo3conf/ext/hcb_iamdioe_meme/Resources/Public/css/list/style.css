@@ -1,0 +1,16 @@
+a.meme-entry {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  max-width: 270px;
+  margin: 20px auto;
+  word-break: break-all;
+}
+
+.meme-prv-btn, .meme-nxt-btn {
+  border: none;
+}
+
+.meme-modal {
+  word-break: break-all;
+}

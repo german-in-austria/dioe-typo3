@@ -1,0 +1,148 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+
+	<f:section name="content">
+		<v:asset.style path="EXT:hcb_iamdioe_meme/Resources/Public/css/jquery-ui.css" standalone="1" />
+		<v:asset.style path="EXT:hcb_iamdioe_meme/Resources/Public/css/spectrum.min.css" standalone="1" />
+		<v:asset.style path="EXT:hcb_iamdioe_meme/Resources/Public/css/generator/jquery-memegenerator.min.css" standalone="1" />
+		<f:if condition="{headline}"><v:asset.style path="EXT:hcb_iamdioe_meme/Resources/Public/css/generator/font.css" standalone="1" /></f:if>
+		<v:asset.style path="EXT:hcb_iamdioe_meme/Resources/Public/css/generator/style.css" standalone="1" />
+
+		<div class="meme-generator">
+			<f:if condition="{headline}">
+				<f:else>
+					<h4 class="center" style="margin-top:20px;">1. Wähle ein Bild</h4><br>
+				</f:else>
+			</f:if>
+			<div class="image-container">
+				<f:if condition="{headline}">
+					<br>
+					<h1 class="headline">DiÖ-Meme-<br>Generator</h1><br>
+					<h4 class="center" style="margin-top:20px;">1. Wähle ein Bild</h4><br>
+				</f:if>
+				<div class="images">
+					<f:for each="{memeimagesItems}" as="memeimageItem">
+						<div style="background-image: url({f:uri.image(src: '{memeimageItem.uid}', width: 700, treatIdAsReference: 1)})" class="img-inner">
+							<f:image src="{memeimageItem.uid}" width="700" treatIdAsReference="TRUE" />
+						</div>
+					</f:for>
+				</div>
+			</div>
+			<div style="margin-top: 20px;">
+				<h4 class="center" style="margin-top:40px;">2. Text positionieren</h4><br>
+			</div>
+			<div style="margin-top: 20px;">
+				<img width="300" src="{f:uri.image(src: '{memeimagesItems.0.uid}', width: 700, treatIdAsReference: 1)}" id="meme">
+			</div>
+			<div style="margin-top: 20px;">
+				<h4 class="center" style="margin-top:30px;">3. Senden und Download</h4><br>
+				<f:form action="generatorAjax" enctype="multipart/form-data" pageType="78376261" name="newMemeEntrie" object="{newMemeEntrie}" class="memeform personal needs-validation">
+					<f:form.hidden name="action" value="generatorAjax"/>
+					<f:form.hidden property="pid" value="{pid}" name="pid"/>
+					<f:form.hidden property="memetexte" name="memetexte" id="memetexte" value=""/>
+					<f:form.hidden name="image" value="" id="imagefield"/>
+					<div class="row">
+						<div class="col-12 col-md-6">
+							<div class="form-group mb-3">
+								<label for="email">Email*</label>
+								<f:form.textfield property="email" class="form-control" id="email" required="True"/>
+								<small id="emailHelp" class="form-text text-muted">Wir senden keine Werbung und geben ihre E-Mail-Adresse nicht weiter.</small>
+								<div class="invalid-feedback bg-danger">
+									Bitte geben Sie eine gültige E-Mail-Adresse an.
+								</div>
+							</div>
+							<div class="form-group mb-3">
+								<label>Alter</label><br>
+								<label class="radio-inline">
+									<f:form.radio property="alterjahre" name="alterjahre" value="unter 15" />unter 15
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="alterjahre" name="alterjahre" value="15-20" />15-20
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="alterjahre" name="alterjahre" value="20-30" />20-30
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="alterjahre" name="alterjahre" value="30-50" />30-50
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="alterjahre" name="alterjahre" value="über 50" />über 50
+								</label>
+						</div>
+							<div class="form-group mb-3">
+								<label for="geburtsort">Geburtsort</label>
+								<f:form.textfield property="geburtsort" name="geburtsort" class="form-control" id="geburtsort" placeholder="Geburtsort"/>
+							</div>
+							<div class="form-group mb-3">
+								<label for="wohnort">Wohnort</label>
+								<f:form.textfield property="wohnort" name="wohnort" class="form-control" id="wohnort" placeholder="Wohnort"/>
+							</div>
+							<div class="form-group form-check">
+								<input type="checkbox" value="1" name="datenschutz" class="form-check-input" id="datenschutz" required />
+								<label class="form-check-label" for="datenschutz" style="vertical-align:top;font-weight:normal;max-width:calc(100% - 20px);">{datenschutzText -> f:format.html()}</label>
+								<div class="invalid-feedback bg-danger">
+									Bitte Datenschutz akzeptieren.
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="form-group mb-3">
+								<label>Soziales Geschlecht</label><br>
+								<label class="radio-inline">
+									<f:form.radio property="geschlecht" name="geschlecht" value="männlich" />männlich
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="geschlecht" name="geschlecht" value="weiblich" />weiblich
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="geschlecht" name="geschlecht" value="divers" />divers
+								</label>
+							</div>
+							<div class="form-group form-check">
+								<f:form.checkbox property="dialekt" value="1" name="dialekt" class="form-check-input" id="dialekt" />
+								<label class="form-check-label" for="dialekt">Ich spreche Dialekt</label>
+							</div>
+							<div class="form-group mb-3">
+								<label>Ich spreche im Alltag Dialekt</label><br>
+								<label class="radio-inline">
+									<f:form.radio property="dialektalltag" name="dialektalltag" value="ja" />ja
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="dialektalltag" name="dialektalltag" value="nein" />nein
+								</label>
+								<label class="radio-inline">
+									<f:form.radio property="dialektalltag" name="dialektalltag" value="manchmal" />manchmal
+								</label>
+							</div>
+							<div class="form-group mb-3">
+								<label for="dialektbezeichnung">Wie würdest du deinen Dialekt bezeichnen?</label>
+								<f:form.textfield property="dialektbezeichnung" name="dialektbezeichnung" class="form-control" id="dialektbezeichnung"/>
+							</div>
+							<div class="form-group mb-3">
+								<label for="memetag">Hashtag?</label>
+								<f:form.textfield property="memetag" name="memetag" class="form-control" id="memetag"/>
+							</div>
+							<f:if condition="{teilnahmeTextLen}">
+								<div class="form-group form-check">
+									<f:form.checkbox property="teilnahme" value="1" name="teilnahme" class="form-check-input" id="teilnahme" checked="true"/>
+									<label class="form-check-label" for="teilnahme" style="vertical-align:top;font-weight:normal;max-width:calc(100% - 20px);">{teilnahmeText -> f:format.html()}</label>
+								</div>
+							</f:if>
+						</div>
+					</div>
+					<div class="row">
+						<button id="save" class="btn btn-default mb-5">Senden & Download</button>
+					</div>
+				</f:form>
+			</div>
+		</div>
+		<div class="danksagung" style="display:none;">
+			{danksagung -> f:format.html()}
+		</div>
+
+		<v:asset.script path="EXT:hcb_iamdioe_meme/Resources/Public/js/jquery-ui.min.js" standalone="1" />
+		<v:asset.script path="EXT:hcb_iamdioe_meme/Resources/Public/js/spectrum.min.js" standalone="1" />
+		<v:asset.script path="EXT:hcb_iamdioe_meme/Resources/Public/js/generator/jquery-memegenerator.min.js" standalone="1" />
+		<v:asset.script path="EXT:hcb_iamdioe_meme/Resources/Public/js/generator/script.js" standalone="1" />
+	</f:section>
+</html>

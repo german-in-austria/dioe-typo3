@@ -1,0 +1,75 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+
+	<f:section name="content">
+		<v:asset.style path="EXT:hcb_iamdioe_meme/Resources/Public/css/list/style.css" standalone="1" />
+		<f:if condition="{preview}">
+			<f:then>
+				<div class="row memepreview">
+					<f:for each="{memeEntriesRandom}" as="memeEntry">
+						<div class="col-12 col-md-4">
+							<f:image src="{memeEntry.bild.uid}" width="390" class="img-responsive" treatIdAsReference="TRUE" />
+						</div>
+					</f:for>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="row memelist">
+					<f:for each="{memeEntries}" as="memeEntry" iteration="meIteration">
+						<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+							<a href="#" class="meme-entry" data-toggle="modal" data-target="#meme-modal-{memeEntry.uid}">
+								<f:image src="{memeEntry.bild.uid}" width="270" class="img-responsive" treatIdAsReference="TRUE" />
+								<f:if condition="{memeEntry.memetag}"><b>#{memeEntry.memetag}</b><br></f:if>
+								<span class="meme-votes-uid-{memeEntry.uid}">{memeEntry.votes}</span> upvotes
+							</a>
+							<div class="modal fade meme-modal" id="meme-modal-{memeEntry.uid}" tabindex="-1" role="dialog" aria-labelledby="meme-modal-{memeEntry.uid}-label">
+								<div class="modal-dialog modal-lg" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title" id="meme-modal-{memeEntry.uid}-label"><f:if condition="{memeEntry.memetag}"><b>#{memeEntry.memetag}</b><br></f:if></h4>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-12 col-md-6">
+													<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank"><f:image src="{memeEntry.bild.uid}" width="700" class="img-responsive" treatIdAsReference="TRUE" /></a>
+												</div>
+												<div class="col-12 col-md-6">
+													<f:if condition="{memeEntry.memetag}"><h2>#{memeEntry.memetag}</h2></f:if>
+													<f:if condition="{settings.hashtags}"><h3>{settings.hashtags}</h3></f:if>
+													<br>
+													<h4><span class="meme-votes-uid-{memeEntry.uid}">{memeEntry.votes}</span> upvotes</h4>
+													<div data-memehashtag="{f:if(condition: memeEntry.memetag, then: '#{memeEntry.memetag}')}" data-memehashtags="{f:if(condition: settings.hashtags, then: '{settings.hashtags}')}" data-memeuid="{memeEntry.uid}" class="meme-buttons">
+														<button type="button" class="btn btn-success meme-upvote">upvote <span class="glyphicon glyphicon-thumbs-up" style="margin-left:6px;" aria-hidden="true"></span></button><br>
+														<br>
+														<h4>share</h4>
+														<a href="https://www.facebook.com/sharer/sharer.php?u={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/facebook.svg" /></a>
+														<a href="https://twitter.com/intent/tweet?url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&text={f:if(condition: memeEntry.memetag, then: '%23{memeEntry.memetag -> f:format.urlencode()}')}{f:if(condition: settings.hashtags, then: '+{settings.hashtags -> f:format.urlencode()}')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/twitter.svg" /></a>
+														<a href="https://pinterest.com/pin/create/button/?url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&media=&description={f:if(condition: memeEntry.memetag, then: '#{memeEntry.memetag}')}{f:if(condition: settings.hashtags, then: ' {settings.hashtags}')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/pinterest.svg" /></a>
+														<!-- <a href="https://www.linkedin.com/shareArticle?mini=true&url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&title=&summary={f:if(condition: memeEntry.memetag, then: '#{memeEntry.memetag}')}{f:if(condition: settings.hashtags, then: ' {settings.hashtags}')}&source=" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/linkedin.svg" /></a> -->
+														<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/download.svg" /></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<f:if condition="{meIteration.isFirst}"><f:else><button type="button" class="btn btn-default meme-prv-btn"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button></f:else></f:if>
+											<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+											<f:if condition="{meIteration.isLast}"><f:else><button type="button" class="btn btn-default meme-nxt-btn"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button></f:else></f:if>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</f:for>
+				</div>
+				<f:form action="memelistAjax" enctype="multipart/form-data" pageType="78376262" name="upvoteMemeEntrie" class="memelistform">
+					<f:form.hidden name="action" value="memelistAjax" />
+					<f:form.hidden name="upvote" value="0" class="meme-form-upvote" />
+					<f:form.hidden name="uid" value="0" name="uid" class="meme-form-uid" />
+				</f:form>
+			</f:else>
+		</f:if>
+		<f:if condition="{preview}"><f:else><v:asset.script path="EXT:hcb_iamdioe_meme/Resources/Public/js/list/script.js" standalone="1" /></f:else></f:if>
+	</f:section>
+</html>
