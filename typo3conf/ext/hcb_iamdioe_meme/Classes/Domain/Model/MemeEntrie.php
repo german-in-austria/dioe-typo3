@@ -146,16 +146,6 @@ class MemeEntrie extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the pid
-     *
-     * @return int pid
-     */
-    public function getPid()
-    {
-        return $this->pid;
-    }
-
-    /**
      * Returns the datum
      *
      * @return \DateTime datum

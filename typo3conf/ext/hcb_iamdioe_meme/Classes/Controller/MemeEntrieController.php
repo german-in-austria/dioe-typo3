@@ -47,8 +47,22 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 array_push($memeimagesItems, $fileArray);
             }
         }
-        $this->view->assign('pid', $this->configurationManager->getContentObjectRenderer()->data['pages']);
-        $this->view->assign('memeimagesItems', $memeimagesItems);
+        $filesProcessor = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\DataProcessing\FilesProcessor::class);
+        $memeimagesItems = $filesProcessor->process(
+          $this->configurationManager->getContentObject(),
+          [],
+          [
+            'references.' => [
+            'fieldName' => 'memeimages',
+            'table' => 'tt_content',
+          ],
+            'as' => 'memeimages',
+          ],
+          []
+        );
+        // $this->view->assign('pid', $this->configurationManager->getContentObjectRenderer()->data['pages']);
+      	$this->view->assign('pid', $this->configurationManager->getContentObject()->data['pages']);
+        $this->view->assign('memeimagesItems', $memeimagesItems['memeimages']);
         $this->view->assign('teilnahmeText', $this->settings['teilnahme']);
         $this->view->assign('teilnahmeTextLen', strlen($this->settings['teilnahme']));
         $this->view->assign('datenschutzText', $this->settings['datenschutz']);
@@ -129,7 +143,8 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     public function memelistAction()
     {
         if ($this->settings['preview']) {
-            $memeEntriesRandom = $this->memeEntrieRepository->getRandomPublic($this->configurationManager->getContentObjectRenderer()->data['pages']);
+            $memeEntriesRandom = $this->memeEntrieRepository->getRandomPublic($this->configurationManager->getContentObject()->data['pages']);
+            // $memeEntriesRandom = $this->memeEntrieRepository->getRandomPublic($this->configurationManager->getContentObjectRenderer()->data['pages']);
             $this->view->assign('memeEntriesRandom', $memeEntriesRandom);
             $this->view->assign('preview', true);
         } else {

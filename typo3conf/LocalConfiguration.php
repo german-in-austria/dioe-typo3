@@ -133,7 +133,7 @@ return [
             ],
         ],
         'devIPmask' => '',
-        'displayErrors' => 0,
+        'displayErrors' => 1,
         'encryptionKey' => '1556348364a5026ed3ef9bde96fbeddf6d5cba556cdd2bf9d65fefd47581c851ecb10d5cfda20ab224a2f31f2e0da081',
         'exceptionalErrors' => 4096,
         'features' => [
