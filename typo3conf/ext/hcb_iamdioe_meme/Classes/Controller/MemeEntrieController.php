@@ -124,7 +124,8 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             unlink($tempFileName);
         }
 
-        $fileReference = $this->objectManager->get('HcbIamDioeMeme\\HcbIamdioeMeme\\Domain\\Model\\FileReference');
+        $fileReference = $this->objectManager->get(\HcbIamDioeMeme\HcbIamdioeMeme\Domain\Model\FileReference::class);
+        // $fileReference = $this->objectManager->get('HcbIamDioeMeme\\HcbIamdioeMeme\\Domain\\Model\\FileReference');
         $fileReference->setFile($file);
         $newMemeEntrie->setBild($fileReference);
 

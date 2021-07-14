@@ -62,7 +62,7 @@ config.tx_extbase {
             }
         }
         objects {
-            TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Vendor\Ext\Domain\Model\FileReference
+            TYPO3\CMS\Extbase\Domain\Model\FileReference.className = HcbIamDioeMeme\HcbIamdioeMeme\Domain\Model\FileReference
         }
         updateReferenceIndex = 1
     }
