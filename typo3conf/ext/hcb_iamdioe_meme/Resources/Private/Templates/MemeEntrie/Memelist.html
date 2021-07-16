@@ -8,7 +8,7 @@
 				<div class="row memepreview">
 					<f:for each="{memeEntriesRandom}" as="memeEntry">
 						<div class="col-12 col-md-4">
-							<f:image src="{memeEntry.bild.uid}" width="390" class="img-responsive" treatIdAsReference="TRUE" />
+							<f:image src="{memeEntry.bild.uid}" width="390" class="img-fluid" treatIdAsReference="TRUE" />
 						</div>
 					</f:for>
 				</div>
@@ -18,7 +18,7 @@
 					<f:for each="{memeEntries}" as="memeEntry" iteration="meIteration">
 						<div class="col-12 col-sm-6 col-md-4 col-lg-3">
 							<a href="#" class="meme-entry" data-toggle="modal" data-target="#meme-modal-{memeEntry.uid}">
-								<f:image src="{memeEntry.bild.uid}" width="270" class="img-responsive" treatIdAsReference="TRUE" />
+								<f:image src="{memeEntry.bild.uid}" width="270" class="img-fluid" treatIdAsReference="TRUE" />
 								<f:if condition="{memeEntry.memetag}"><b>#{memeEntry.memetag}</b><br></f:if>
 								<span class="meme-votes-uid-{memeEntry.uid}">{memeEntry.votes}</span> upvotes
 							</a>
@@ -32,7 +32,7 @@
 										<div class="modal-body">
 											<div class="row">
 												<div class="col-12 col-md-6">
-													<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank"><f:image src="{memeEntry.bild.uid}" width="700" class="img-responsive" treatIdAsReference="TRUE" /></a>
+													<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank"><f:image src="{memeEntry.bild.uid}" width="700" class="img-fluid" treatIdAsReference="TRUE" /></a>
 												</div>
 												<div class="col-12 col-md-6">
 													<f:if condition="{memeEntry.memetag}"><h2>#{memeEntry.memetag}</h2></f:if>
