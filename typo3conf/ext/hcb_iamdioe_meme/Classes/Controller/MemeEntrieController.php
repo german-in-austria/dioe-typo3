@@ -61,7 +61,7 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
           []
         );
         // $this->view->assign('pid', $this->configurationManager->getContentObjectRenderer()->data['pages']);
-      	$this->view->assign('pid', $this->configurationManager->getContentObject()->data['pages']);
+        $this->view->assign('pid', $this->configurationManager->getContentObject()->data['pages']);
         $this->view->assign('memeimagesItems', $memeimagesItems['memeimages']);
         $this->view->assign('teilnahmeText', $this->settings['teilnahme']);
         $this->view->assign('teilnahmeTextLen', strlen($this->settings['teilnahme']));
@@ -124,13 +124,19 @@ class MemeEntrieController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             unlink($tempFileName);
         }
 
-        $fileReference = $this->objectManager->get(\HcbIamDioeMeme\HcbIamdioeMeme\Domain\Model\FileReference::class);
-        // $fileReference = $this->objectManager->get('HcbIamDioeMeme\\HcbIamdioeMeme\\Domain\\Model\\FileReference');
-        $fileReference->setFile($file);
-        $newMemeEntrie->setBild($fileReference);
+        $falReference = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance()->createFileReferenceObject(
+          array(
+            'uid_local' => $file->getUid(),
+            'uid_foreign' => uniqid('NEW_'),
+            'uid' => uniqid('NEW_'),
+          )
+        );
+        //
+        $reference = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Domain\Model\FileReference::class);
+        $reference->setOriginalResource($falReference);
+        $newMemeEntrie->setBild($reference);
 
         $this->memeEntrieRepository->add($newMemeEntrie);
-        $this->persistenceManager->persistAll();
 
         $this->view->assign('newMemeEntrie', $newMemeEntrie);
     }
