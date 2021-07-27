@@ -63,6 +63,13 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $aDate = null;
 
+		/**
+     * tags
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags>
+     */
+    protected $tags = null;
+
     /**
      * Überschrift (Muss angegeben werden.)
      *
@@ -534,6 +541,7 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->detailPic = $this->detailPic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->avFiles = $this->avFiles ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->fFiles = $this->fFiles ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+				$this->tags = $this->tags ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
 		/**
@@ -571,6 +579,49 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setADate(\DateTime $aDate)
     {
         $this->aDate = $aDate;
+    }
+
+		/**
+     * Adds a ArtikelTags
+     *
+     * @param \DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags $tags
+     * @return void
+     */
+    public function addTags(\DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags $tags)
+    {
+        $this->tags->attach($tags);
+    }
+
+    /**
+     * Removes a ArtikelTags
+     *
+     * @param \DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags $tagsToRemove The ArtikelTags to be removed
+     * @return void
+     */
+    public function removeTags(\DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags $tagsToRemove)
+    {
+        $this->tags->detach($tagsToRemove);
+    }
+
+    /**
+     * Returns the tags
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags> $tags
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Sets the tags
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags> $tags
+     * @return void
+     */
+    public function setTags(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $tags)
+    {
+        $this->tags = $tags;
     }
 
     /**

@@ -3,6 +3,7 @@ CREATE TABLE tx_dioearticlesystem_domain_model_dioearticle (
 	a_type int(11) DEFAULT '0' NOT NULL,
 	a_home int(11) DEFAULT '0' NOT NULL,
 	a_date int(11) DEFAULT '0' NOT NULL,
+	tags int(11) unsigned DEFAULT '0' NOT NULL,
 	prev_title varchar(255) DEFAULT '' NOT NULL,
 	prev_text text,
 	a_task_cluster varchar(255) DEFAULT '' NOT NULL,
@@ -65,4 +66,23 @@ CREATE TABLE tx_dioearticlesystem_domain_model_dioearticle (
 	mee_note varchar(255) DEFAULT '' NOT NULL,
 	mee_keywords int(11) DEFAULT '0' NOT NULL
 
+);
+
+CREATE TABLE tx_dioearticlesystem_domain_model_artikeltags (
+
+	name varchar(255) DEFAULT '' NOT NULL,
+	beschreibung text,
+	color varchar(255) DEFAULT '' NOT NULL
+
+);
+
+CREATE TABLE tx_dioearticlesystem_dioearticle_artikeltags_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	PRIMARY KEY (uid_local,uid_foreign),
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
 );

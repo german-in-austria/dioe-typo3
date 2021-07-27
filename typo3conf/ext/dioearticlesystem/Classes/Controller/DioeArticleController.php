@@ -5,6 +5,7 @@ namespace DioeArticleSystem\Dioearticlesystem\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 /**
  * This file is part of the "Diö Artikelsystem" Extension for TYPO3 CMS.
@@ -30,6 +31,12 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
         $this->dioeArticleRepository = $dioeArticleRepository;
     }
+
+		/**
+		 * @Extbase\Inject
+		 * @var \DioeArticleSystem\Dioearticlesystem\Domain\Repository\ArtikelTagsRepository
+		 */
+		public $artikelTagsRepository;
 
     /**
      * action list
@@ -70,10 +77,16 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 				if ((gettype($args['satype']) == 'string' || gettype($args['satype']) == 'integer') && (int)$args['satype'] >= 0) {
 					$saType = (int)$args['satype'];
 				}
+				$saTag = -1;
+				if ((gettype($args['satag']) == 'string' || gettype($args['satag']) == 'integer') && (int)$args['satag'] >= 0) {
+					$saTag = (int)$args['satag'];
+				}
 				$saCluster = $args['sacluster'];
 				$saLang = $args['salang'] ?? 0;
-				$dioeArticles = $this->dioeArticleRepository->filtered(true, $saType, $saHome, $saCluster, $saLang);
+				$dioeArticles = $this->dioeArticleRepository->filtered(true, $saType, $saTag, $saHome, $saCluster, $saLang);
         $this->view->assign('dioeArticles', $dioeArticles);
+				$artikelTags = $this->artikelTagsRepository->findAll();
+        $this->view->assign('artikelTags', $artikelTags);
     }
 
     /**

@@ -195,6 +195,21 @@
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.mee_keywords" resname="tx_dioearticlesystem_domain_model_dioearticle.mee_keywords">
 				<source>Mee Keywords</source>
 			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.tags" resname="tx_dioearticlesystem_domain_model_dioearticle.tags">
+				<source>Tags</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_artikeltags" resname="tx_dioearticlesystem_domain_model_artikeltags">
+				<source>Artikel Tags</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_artikeltags.name" resname="tx_dioearticlesystem_domain_model_artikeltags.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_artikeltags.beschreibung" resname="tx_dioearticlesystem_domain_model_artikeltags.beschreibung">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_artikeltags.color" resname="tx_dioearticlesystem_domain_model_artikeltags.color">
+				<source>Color</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

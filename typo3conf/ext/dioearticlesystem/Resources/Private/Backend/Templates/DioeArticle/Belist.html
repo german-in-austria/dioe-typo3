@@ -10,6 +10,7 @@
 	<f:form action="belist">
 		<f:form.select name="sahome" value="{args.sahome}" options="{-1:'Alle Ursprünge', 0:'DiÖ', 1:'IamDiÖ'}" />
 		<f:form.select name="satype" value="{args.satype}" options="{-1:'Alle Arten', 0:'Beiträge', 1:'Publikationen', 2:'Vorträge', 3:'Veranstaltungen', 4:'Lehren'}" />
+		<f:form.select name="satag" value="{args.satag}" options="{artikelTags}" optionValueField="uid" optionLabelField="name" prependOptionValue="-1" prependOptionLabel="Alle Tags" />
 		<f:form.select name="sacluster" value="{args.sacluster}" options="{-1:'Alle Cluster', 'a':'TCA', 'b':'TCB', 'c':'TCC', 'd':'TCD', 'e':'TCE', 'sfb':'SFB'}" />
 		<f:form.select name="salang" value="{args.salang}" options="{0:'Deutsch', 1:'Englisch', -1:'Alle Sprachen'}" />
 		<button>Filtern</button>
@@ -29,8 +30,9 @@
 			<th></th>
 			<th>Ursprung</th>
 			<th>Typ</th>
-			<th>Datum</th>
+			<th>Tags</th>
 			<th>Cluster</th>
+			<th>Datum</th>
 			<th>Titel</th>
 			<th>Pin</th>
 			<th title="Sprache">S</th>
@@ -43,7 +45,11 @@
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.prevPic -> f:count()} / {dioeArticle.prevPicCroppingMode}</a></td>
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aHome.txt}</a></td>
         <td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aType.txt}</a></td>
-        <td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aDate -> f:format.date()}</a></td>
+				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">
+					<f:for each="{dioeArticle.tags}" as="tag" iteration="ti">
+						{tag.name}{f:if(condition: '{ti.isLast}', else: ', ')}
+					</f:for>
+				</a></td>
         <td>
 					<a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">
 						<f:if condition="{dioeArticle.aTaskCluster.val}">
@@ -52,6 +58,7 @@
 						</f:if>
 					</a>
 				</td>
+				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aDate -> f:format.date()}</a></td>
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}</a></td>
         <td>
 					<span style="{f:if(condition: '{dioeArticle.startPin}', else: 'opacity:0.3;')}" title="Auf Startseite Pinnen"><core:icon identifier="actions-caret-bar-top"/></span>

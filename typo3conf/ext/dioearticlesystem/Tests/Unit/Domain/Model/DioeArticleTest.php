@@ -1747,4 +1747,67 @@ class DioeArticleTest extends UnitTestCase
             $this->subject
         );
     }
+
+    /**
+     * @test
+     */
+    public function getTagsReturnsInitialValueForArtikelTags()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getTags()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setTagsForObjectStorageContainingArtikelTagsSetsTags()
+    {
+        $tags = new \DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags();
+        $objectStorageHoldingExactlyOneTags = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneTags->attach($tags);
+        $this->subject->setTags($objectStorageHoldingExactlyOneTags);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneTags,
+            'tags',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addTagsToObjectStorageHoldingTags()
+    {
+        $tags = new \DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags();
+        $tagsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $tagsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($tags));
+        $this->inject($this->subject, 'tags', $tagsObjectStorageMock);
+
+        $this->subject->addTags($tags);
+    }
+
+    /**
+     * @test
+     */
+    public function removeTagsFromObjectStorageHoldingTags()
+    {
+        $tags = new \DioeArticleSystem\Dioearticlesystem\Domain\Model\ArtikelTags();
+        $tagsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $tagsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($tags));
+        $this->inject($this->subject, 'tags', $tagsObjectStorageMock);
+
+        $this->subject->removeTags($tags);
+    }
 }

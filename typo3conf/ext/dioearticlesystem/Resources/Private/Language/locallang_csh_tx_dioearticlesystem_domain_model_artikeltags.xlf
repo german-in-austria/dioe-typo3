@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:dioearticlesystem/Resources/Private/Language/locallang_csh" date="2021-07-27T09:39:19Z" product-name="dioearticlesystem">
+		<header/>
+		<body>
+			<trans-unit id="name.description" resname="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description" resname="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="color.description" resname="color.description">
+				<source>color</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

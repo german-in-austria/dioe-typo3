@@ -36,7 +36,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return QueryResultInterface|array
 		 * @api
 		 */
-		public function filtered($be = false, $aType = -1, $aHome = -1, $aCluster = -1, $aLang = 0) {
+		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0) {
 	    $query = $this->createQuery();
 			$constraints = [];
 			if ($be) {
@@ -46,6 +46,9 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			}
 	    if ($aType >= 0) {
         $constraints[] = $query->equals('a_type', $aType);
+	    }
+			if ($aTag >= 0) {
+        $constraints[] = $query->equals('tags.uid', $aTag);
 	    }
 			if ($aHome >= 0) {
         $constraints[] = $query->equals('a_home', $aHome);

@@ -29,4 +29,7 @@ call_user_func(static function() {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_dioearticlesystem_domain_model_dioearticle', 'EXT:dioearticlesystem/Resources/Private/Language/locallang_csh_tx_dioearticlesystem_domain_model_dioearticle.xlf');
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_dioearticlesystem_domain_model_dioearticle');
 
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_dioearticlesystem_domain_model_artikeltags', 'EXT:dioearticlesystem/Resources/Private/Language/locallang_csh_tx_dioearticlesystem_domain_model_artikeltags.xlf');
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_dioearticlesystem_domain_model_artikeltags');
+
 });
