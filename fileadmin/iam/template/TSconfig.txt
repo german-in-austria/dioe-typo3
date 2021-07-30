@@ -5,7 +5,7 @@ TCEMAIN.table.pages.disableHideAtCopy = 1
 TCEMAIN.table.tt_content.disableHideAtCopy = 1
 
 RTE.config.tt_content.bodytext.proc {
-	allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold,table-horizontal,table-horizontal-center,no-border,td-center,w-100
+	allowedClasses = cred,cgreen,cblue,text-left,text-center,text-right,text-justify,text-nowrap,bold,table-horizontal,table-horizontal-center,no-border,td-center,w-100,ml-4,ml-md-5,btn btn-dark,btn btn-ligh,nobr
 	entryHTMLparser_db.tags.table {
 		fixAttrib.width.unset = 1
 		fixAttrib.height.unset = 1
