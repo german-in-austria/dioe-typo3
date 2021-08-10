@@ -192,3 +192,11 @@ tr.no-border, tr.no-border > td {
 ol ol {
 	list-style: lower-alpha;
 }
+
+:target:before {
+	content:"";
+	display:block;
+	height:110px;
+	margin:-110px 0 0;
+	z-index: -10;
+}

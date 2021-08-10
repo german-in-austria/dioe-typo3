@@ -10,7 +10,7 @@
 			</div>
 			<div id="collapse{contentObject.uid}c{iterator.index}" class="collapse" aria-labelledby="heading{contentObject.uid}c{iterator.index}" data-parent="#accordion{contentObject.uid}">
 				<div class="card-body pt-2">
-					{inhalt.text -> f:format.raw()}
+					{inhalt.text -> f:format.html()}
 				</div>
 			</div>
 		</div>

@@ -9,7 +9,7 @@
 								<f:image image="{eintrag.icon.0}" height="100" class="iam-iconteaser-img" /><br />
 							</f:if>
 							<h3>{eintrag.header}</h3>
-							<f:format.raw>{eintrag.text}</f:format.raw>
+							<f:format.html>{eintrag.text}</f:format.html>
 						</f:link.typolink>
 					</div>
 				</f:if>
@@ -21,7 +21,7 @@
 							</div>
 						</f:if>
 						<h3>{eintrag.header}</h3>
-						<f:format.raw>{eintrag.text}</f:format.raw>
+						<f:format.html>{eintrag.text}</f:format.html>
 						<f:if condition="{eintrag.link}">
 							<f:link.typolink parameter="{eintrag.link}" class="iam-iconteaser-lnk">
 								{f:translate(key: 'LLL:fileadmin/template/locallang.xml:allgemein_erfahre_mehr')}
