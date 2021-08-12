@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
+    "statistic": "nodemon --exec babel-node statistic.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

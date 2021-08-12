@@ -1,0 +1,597 @@
+{
+  "Einträge": 817,
+  "Felder": {
+    "pid": {
+      "type": "string",
+      "count": 817,
+      "values": 5
+    },
+    "uid": {
+      "type": "string",
+      "count": 817,
+      "values": 817
+    },
+    "ourl": {
+      "type": "string",
+      "count": 817,
+      "values": 817
+    },
+    "datum": {
+      "type": "string",
+      "count": 817,
+      "values": 579
+    },
+    "uebersichtUeberschrift": {
+      "type": "string",
+      "count": 817,
+      "values": 808
+    },
+    "kategorien": {
+      "type": "string",
+      "count": 817,
+      "values": 139
+    },
+    "uebersichtBild": {
+      "type": "string",
+      "count": 776,
+      "values": 2
+    },
+    "uebersichtBildVerh": {
+      "type": "string",
+      "count": 817,
+      "values": 2
+    },
+    "terminSektionOrganiser": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "count": 34,
+      "values": 1,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 85,
+          "values": 0,
+          "children": {
+            "nachname": {
+              "type": "string",
+              "count": 85,
+              "values": 48
+            },
+            "vorname": {
+              "type": "string",
+              "count": 85,
+              "values": 44
+            }
+          }
+        }
+      }
+    },
+    "terminTitel": {
+      "type": "string",
+      "count": 516,
+      "values": 499
+    },
+    "terminZeit": {
+      "type": "string",
+      "count": 516,
+      "values": 406
+    },
+    "terminUhrzeit": {
+      "type": "string",
+      "count": 516,
+      "values": 2
+    },
+    "terminUrl": {
+      "type": "string",
+      "count": 293,
+      "values": 174
+    },
+    "terminKeywords": {
+      "type": "string",
+      "count": 516,
+      "values": 1
+    },
+    "detailseiteBild": {
+      "type": "string",
+      "count": 611,
+      "values": 12
+    },
+    "detailseiteBildVerh": {
+      "type": "string",
+      "count": 652,
+      "values": 2
+    },
+    "audioVideoSpalten": {
+      "type": "string",
+      "count": 652,
+      "values": 1
+    },
+    "zitationNameBE": {
+      "type": "string",
+      "count": 509,
+      "values": 2
+    },
+    "zitationStandort": {
+      "type": "string",
+      "count": 652,
+      "values": 1
+    },
+    "terminBisZeit": {
+      "type": "string",
+      "count": 477,
+      "values": 348
+    },
+    "terminEvent": {
+      "type": "string",
+      "count": 385,
+      "values": 239
+    },
+    "terminAdress": {
+      "type": "string",
+      "count": 481,
+      "values": 226
+    },
+    "art": {
+      "type": "string",
+      "count": 165,
+      "values": 6
+    },
+    "title": {
+      "type": "string",
+      "count": 165,
+      "values": 163
+    },
+    "authorSektion": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "count": 165,
+      "values": 1,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 427,
+          "values": 0,
+          "children": {
+            "authorNachname": {
+              "type": "string",
+              "count": 427,
+              "values": 209
+            },
+            "authorVorname": {
+              "type": "string",
+              "count": 427,
+              "values": 177
+            },
+            "authorIsEditor": {
+              "type": "string",
+              "count": 381,
+              "values": 2
+            }
+          }
+        }
+      }
+    },
+    "year": {
+      "type": "string",
+      "count": 165,
+      "values": 10
+    },
+    "journal": {
+      "type": "string",
+      "count": 40,
+      "values": 36
+    },
+    "keywords": {
+      "type": "string",
+      "count": 165,
+      "values": 2
+    },
+    "booktitle": {
+      "type": "string",
+      "count": 98,
+      "values": 73
+    },
+    "publisher": {
+      "type": "string",
+      "count": 121,
+      "values": 51
+    },
+    "uebersichtText": {
+      "type": "string",
+      "count": 164,
+      "values": 164
+    },
+    "terminSektionPersonen": {
+      "type": [
+        "string",
+        "object"
+      ],
+      "count": 473,
+      "values": 1,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 216,
+          "values": 0,
+          "children": {
+            "nachname": {
+              "type": "string",
+              "count": 216,
+              "values": 91
+            },
+            "vorname": {
+              "type": "string",
+              "count": 216,
+              "values": 85
+            }
+          }
+        }
+      }
+    },
+    "detailseiteText": {
+      "type": "string",
+      "count": 141,
+      "values": 141
+    },
+    "podcastDauer": {
+      "type": "string",
+      "count": 47,
+      "values": 11
+    },
+    "uebersichtBild fal": {
+      "type": "object",
+      "count": 83,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 83,
+          "values": 0,
+          "children": {
+            "file": {
+              "type": "string",
+              "count": 83,
+              "values": 74
+            }
+          }
+        }
+      }
+    },
+    "detailseiteBild fal": {
+      "type": "object",
+      "count": 83,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 319,
+          "values": 0,
+          "children": {
+            "file": {
+              "type": "string",
+              "count": 319,
+              "values": 303
+            },
+            "comment": {
+              "type": "string",
+              "count": 135,
+              "values": 129
+            },
+            "title": {
+              "type": "string",
+              "count": 116,
+              "values": 106
+            }
+          }
+        }
+      }
+    },
+    "zitationName": {
+      "type": "string",
+      "count": 83,
+      "values": 57
+    },
+    "number": {
+      "type": "string",
+      "count": 45,
+      "values": 29
+    },
+    "pages": {
+      "type": "string",
+      "count": 100,
+      "values": 100
+    },
+    "url": {
+      "type": "string",
+      "count": 52,
+      "values": 48
+    },
+    "note": {
+      "type": "string",
+      "count": 40,
+      "values": 15
+    },
+    "series": {
+      "type": "string",
+      "count": 70,
+      "values": 46
+    },
+    "address": {
+      "type": "string",
+      "count": 102,
+      "values": 32
+    },
+    "terminTermintext": {
+      "type": "string",
+      "count": 85,
+      "values": 73
+    },
+    "sektionDateienDateien fal": {
+      "type": "object",
+      "count": 70,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 84,
+          "values": 0,
+          "children": {
+            "datei": {
+              "type": "string",
+              "count": 84,
+              "values": 79
+            },
+            "titel": {
+              "type": "string",
+              "count": 84,
+              "values": 77
+            },
+            "vorschaubild": {
+              "type": "string",
+              "count": 84,
+              "values": 1
+            }
+          }
+        }
+      }
+    },
+    "sektionDateienDateien": {
+      "type": [
+        "string",
+        "object"
+      ],
+      "count": 70,
+      "values": 1,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 14,
+          "values": 0,
+          "children": {
+            "titel": {
+              "type": "string",
+              "count": 14,
+              "values": 14
+            },
+            "vorschaubild": {
+              "type": "string",
+              "count": 14,
+              "values": 1
+            }
+          }
+        }
+      }
+    },
+    "doi": {
+      "type": "string",
+      "count": 33,
+      "values": 30
+    },
+    "terminSektionOrganisation": {
+      "type": [
+        "string",
+        "object"
+      ],
+      "count": 54,
+      "values": 1,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 13,
+          "values": 0,
+          "children": {
+            "organisation": {
+              "type": "string",
+              "count": 13,
+              "values": 7
+            },
+            "url": {
+              "type": "string",
+              "count": 4,
+              "values": 4
+            }
+          }
+        }
+      }
+    },
+    "terminNote": {
+      "type": "string",
+      "count": 48,
+      "values": 19
+    },
+    "volume": {
+      "type": "string",
+      "count": 19,
+      "values": 15
+    },
+    "urldate": {
+      "type": "string",
+      "count": 5,
+      "values": 5
+    },
+    "zitationUeberschrift": {
+      "type": "string",
+      "count": 6,
+      "values": 6
+    },
+    "sektionAudioVideoDateien fal": {
+      "type": "object",
+      "count": 7,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 15,
+          "values": 0,
+          "children": {
+            "titel": {
+              "type": "string",
+              "count": 15,
+              "values": 15
+            },
+            "youtube": {
+              "type": "string",
+              "count": 13,
+              "values": 13
+            },
+            "copyright": {
+              "type": "string",
+              "count": 2,
+              "values": 2
+            },
+            "datei": {
+              "type": "string",
+              "count": 2,
+              "values": 2
+            }
+          }
+        }
+      }
+    },
+    "sektionAudioVideoDateien": {
+      "type": [
+        "string",
+        "object"
+      ],
+      "count": 7,
+      "values": 1,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 8,
+          "values": 0,
+          "children": {
+            "titel": {
+              "type": "string",
+              "count": 8,
+              "values": 8
+            },
+            "youtube": {
+              "type": "string",
+              "count": 8,
+              "values": 8
+            }
+          }
+        }
+      }
+    },
+    "lizenzKommerziell": {
+      "type": "string",
+      "count": 6,
+      "values": 1
+    },
+    "month": {
+      "type": "string",
+      "count": 5,
+      "values": 5
+    },
+    "podcastDatei fal": {
+      "type": "object",
+      "count": 10,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 10,
+          "values": 0,
+          "children": {
+            "datei": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            }
+          }
+        }
+      }
+    },
+    "podcastDatei": {
+      "type": "string",
+      "count": 10,
+      "values": 1
+    },
+    "isbn": {
+      "type": "string",
+      "count": 49,
+      "values": 36
+    },
+    "school": {
+      "type": "string",
+      "count": 1,
+      "values": 1
+    },
+    "detailseiteUeberschrift": {
+      "type": "string",
+      "count": 17,
+      "values": 17
+    },
+    "terminSektionParticipants": {
+      "type": "object",
+      "count": 1,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 2,
+          "values": 0,
+          "children": {
+            "nachname": {
+              "type": "string",
+              "count": 2,
+              "values": 2
+            },
+            "vorname": {
+              "type": "string",
+              "count": 2,
+              "values": 1
+            }
+          }
+        }
+      }
+    },
+    "edition": {
+      "type": "string",
+      "count": 2,
+      "values": 2
+    },
+    "lizenzBearbeiten": {
+      "type": "string",
+      "count": 5,
+      "values": 2
+    },
+    "lizenzName": {
+      "type": "string",
+      "count": 4,
+      "values": 3
+    },
+    "audioVideoSeitenverhaeltniss": {
+      "type": "string",
+      "count": 1,
+      "values": 1
+    }
+  },
+  "Felder Anzahl": 105
+}

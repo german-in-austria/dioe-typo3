@@ -159,4 +159,55 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
         $this->dioeArticleRepository->remove($dioeArticle);
         $this->redirect('belist');
     }
+
+		/**
+		 * action export
+		 *
+		 * @return string|object|null|void
+		 */
+		public function exportAction()
+		{
+				$this->view->assign('isAdmin', $GLOBALS['BE_USER']->isAdmin());
+				if ($GLOBALS['BE_USER']->isAdmin()) {
+					$sPid = $GLOBALS['_GET']['id'];
+					$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
+					$configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+					$extbaseFrameworkConfiguration = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+					$storagePid = $extbaseFrameworkConfiguration['module.']['tx_dioearticlesystem_web_dioearticlesystembeae.']['persistence.']['storagePid'];
+					if ($storagePid) {
+						$sPid = $storagePid;
+					}
+					$this->view->assign('sPid', $sPid);
+
+					$args = $this->request->getArguments();
+					$this->view->assign('args', $args);
+
+					$jsonFile = file_get_contents(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:dioearticlesystem/Resources/Private/Backend/Export/Json/export.json'));
+					$json = json_decode($jsonFile, true);
+					$uIds = array();
+					foreach ($json as &$value) {
+						$uIds[] = $value['uid'];
+					}
+					$existingDioeArticles = $this->dioeArticleRepository->findHiddenByUids($uIds);
+					if ($existingDioeArticles) {
+						foreach ($existingDioeArticles->toArray() as &$value) {
+							foreach ($json as &$jsonValue) {
+								if ($value['uid'] == $jsonValue['uid']) {
+									$jsonValue['dbEntrie'] = $value;
+								}
+							}
+						}
+					}
+					$this->view->assign('json', $json);
+					$this->view->assign('uIds', $uIds);
+
+					if ((gettype($args['expindex']) == 'string' || gettype($args['expindex']) == 'integer') && (int)$args['expindex'] >= 0) {
+						$expIndex = (int)$args['expindex'];
+						$this->view->assign('expindex', $expIndex);
+						// ToDo: Import !!!!
+					} else {
+						$this->view->assign('expindex', -1);
+					}
+				}
+		}
 }

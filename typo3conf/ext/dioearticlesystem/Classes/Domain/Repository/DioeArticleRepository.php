@@ -78,4 +78,12 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
       return $query->execute()->getFirst();
     }
 
+		public function findHiddenByUids($uids) {
+      $query = $this->createQuery();
+      $query->getQuerySettings()->setRespectSysLanguage(false);
+			$query->getQuerySettings()->setIgnoreEnableFields(true);
+      $query->matching($query->in('uid', $uids));
+      return $query->execute()->getFirst();
+    }
+
 }

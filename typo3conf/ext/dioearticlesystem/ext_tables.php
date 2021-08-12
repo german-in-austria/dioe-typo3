@@ -15,7 +15,7 @@ call_user_func(static function() {
         'beae', // Submodule key
         '', // Position
         [
-            \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => 'belist, show, new, create, edit, update, delete',
+            \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => 'belist, show, new, create, edit, update, delete, export',
         ],
         [
             'access' => 'user,group',
