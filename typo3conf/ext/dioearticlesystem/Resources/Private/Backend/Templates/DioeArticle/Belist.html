@@ -59,7 +59,7 @@
 					</a>
 				</td>
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aDate -> f:format.date()}</a></td>
-				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}</a></td>
+				<td><div title="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis; max-width:500px;"><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}</a></div></td>
         <td>
 					<span style="{f:if(condition: '{dioeArticle.startPin}', else: 'opacity:0.3;')}" title="Auf Startseite Pinnen"><core:icon identifier="actions-caret-bar-top"/></span>
 					<span style="{f:if(condition: '{dioeArticle.catPin}', else: 'opacity:0.3;')}" title="In Cluster Pinnen"><core:icon identifier="actions-caret-up"/></span>

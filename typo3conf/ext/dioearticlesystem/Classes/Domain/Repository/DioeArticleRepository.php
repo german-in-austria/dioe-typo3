@@ -83,7 +83,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
       $query->getQuerySettings()->setRespectSysLanguage(false);
 			$query->getQuerySettings()->setIgnoreEnableFields(true);
       $query->matching($query->in('uid', $uids));
-      return $query->execute()->getFirst();
+      return $query->execute();
     }
 
 }

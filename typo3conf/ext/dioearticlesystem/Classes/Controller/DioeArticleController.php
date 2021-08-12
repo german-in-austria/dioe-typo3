@@ -188,26 +188,62 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 					foreach ($json as &$value) {
 						$uIds[] = $value['uid'];
 					}
+					$missingUids = array();
 					$existingDioeArticles = $this->dioeArticleRepository->findHiddenByUids($uIds);
+					// $this->view->assign('test', $existingDioeArticles);
 					if ($existingDioeArticles) {
 						foreach ($existingDioeArticles->toArray() as &$value) {
 							foreach ($json as &$jsonValue) {
-								if ($value['uid'] == $jsonValue['uid']) {
+								if ($value->getUid() == $jsonValue['uid']) {
 									$jsonValue['dbEntrie'] = $value;
+								} else {
+									$missingUids[] = $value->getUid();
 								}
 							}
 						}
 					}
-					$this->view->assign('json', $json);
 					$this->view->assign('uIds', $uIds);
+					$this->view->assign('missingUids', $missingUids);
 
 					if ((gettype($args['expindex']) == 'string' || gettype($args['expindex']) == 'integer') && (int)$args['expindex'] >= 0) {
 						$expIndex = (int)$args['expindex'];
-						$this->view->assign('expindex', $expIndex);
-						// ToDo: Import !!!!
+						$targetUId = (int)$json[$expIndex]['uid'];
+						$aJson = NULL;
+						foreach ($json as &$jsonValue) {
+							if ($targetUId == $jsonValue['uid']) {
+								$aJson = &$jsonValue;
+							}
+						}
+						if ($targetUId > 0) {
+							$this->view->assign('expindex', $expIndex);
+							$this->view->assign('targetUid', $targetUId);
+							// Import !!!!
+							$connectionPool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class);
+							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+							$queryBuilder
+									->delete('tx_dioearticlesystem_domain_model_dioearticle')
+									->where($queryBuilder->expr()->eq('uid', $targetUId))
+									->execute();
+							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+							$queryBuilder
+							    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
+							    ->values([
+							      'pid' => $sPid,
+							      'crdate' => time(),
+							      'uid' => $targetUId,
+							      'a_date' => $aJson['datum'],
+							      'prev_title' => $aJson['uebersichtUeberschrift'],
+									])
+									->execute();
+							$newDioeArticle = $this->dioeArticleRepository->findHiddenByUid($targetUId);
+							// ToDo: Fal löschen/setzen:
+							$aJson['dbEntrie'] = $newDioeArticle;
+							// $this->view->assign('test', $newDioeArticle);
+						}
 					} else {
 						$this->view->assign('expindex', -1);
 					}
+					$this->view->assign('json', $json);
 				}
 		}
 }

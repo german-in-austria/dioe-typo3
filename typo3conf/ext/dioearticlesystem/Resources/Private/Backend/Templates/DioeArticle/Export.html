@@ -7,10 +7,14 @@
 			<f:comment><f:debug title="args">{args}</f:debug></f:comment>
 			<f:comment><f:debug title="json">{json}</f:debug></f:comment>
 			<f:comment><f:debug title="uIds">{uIds}</f:debug></f:comment>
+			<f:if condition="{test}"><f:debug title="test">{test}</f:debug></f:if>
 			<f:form action="export"><button style="margin-bottom: 1rem;">Reload</button></f:form>
 			<div>
 				<b>PId:</b> {sPid}<br>
 				<b>Einträge:</b> {json -> f:count()}<br>
+				<f:if condition="{targetUid}">
+					<b>Ziel UId:</b> {targetUid}<br>
+				</f:if>
 			</div>
 			<hr>
 			<table  class="table">
@@ -30,11 +34,11 @@
 						<td>{artikel.pid}</td>
 						<td>{artikel.datum -> f:format.date()}</td>
 						<td><div title="{artikel.uebersichtUeberschrift}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis; max-width:500px;">{artikel.uebersichtUeberschrift}</div></td>
-						<td>{f:if(condition: '{artikel.dbEntrie}', then: 'Erledigt.', else: '<b>Fehlt!</b>') -> f:format.raw()}</td>
+						<td>{f:if(condition: '{artikel.dbEntrie}', then: 'Vorhanden.', else: '<b>Fehlt!</b>') -> f:format.raw()}</td>
 						<td>
 							<f:form action="export">
 								<f:form.hidden name="expindex" value="{i.index}" />
-								<button>Import</button>
+								<button>Importieren</button>
 							</f:form>
 						</td>
 					</tr>
