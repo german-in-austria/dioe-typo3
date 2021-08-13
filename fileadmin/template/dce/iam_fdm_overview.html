@@ -23,8 +23,8 @@
 											<v:page.resources.fal table="pages" field="media" uid="{sitem.uid}" as="images" slide="-1" >
 												<figure class="image d-flex">
 											    <f:for each="{images}" as="image">
-														<f:image src="{image.url}" class="img-fluid d-block m-auto" maxWidth="250" maxHeight="200" />
-														<dioe:copyrights value="{f:if(condition: '{image.properties.copyright}', then: '{image.properties.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+														<f:image src="{image.url}" alt="{image.alt}" title="{image.title}" crop="{image.crop}" class="img-fluid d-block m-auto" maxWidth="250" maxHeight="200" />
+														<dioe:copyrights value="{f:if(condition: '{image.copyright}', then: '{image.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
 											    </f:for>
 												</figure>
 											</v:page.resources.fal>
