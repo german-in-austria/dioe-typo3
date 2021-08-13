@@ -69,10 +69,24 @@ function cleanFelderValue (fFelder) {
 
 console.log('Felder:', aFelderCount, Object.keys(aFelder).length)
 
+var aIntLinks = []
 
+const regexp = new RegExp('href=\\\\"(t3:[^"]+)\\\\"','g')
+let match
+while ((match = regexp.exec(aJsonFile)) !== null) {
+  if (match[1]) {
+    let aLnk = match[1].split('#')
+    if (aIntLinks.indexOf(aLnk[0]) < 0) {
+      aIntLinks.push(aLnk[0])
+    }
+  }
+}
+
+console.log('Interne Links:', aIntLinks.length)
 
 fs.writeFileSync(jsonDir + '/statistik.json', JSON.stringify({
   'Einträge': aJson.length,
+  'Interne Links': aIntLinks,
   'Felder': aFelder,
   'Felder Anzahl': aFelderCount,
 }, null, 2))

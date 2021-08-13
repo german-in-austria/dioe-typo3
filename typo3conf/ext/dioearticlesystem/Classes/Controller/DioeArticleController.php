@@ -225,6 +225,13 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 									->where($queryBuilder->expr()->eq('uid', $targetUId))
 									->execute();
 							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+							$pid2type = array(
+								'30' => 0,
+								'35' => 1,
+								'31' => 2,
+								'32' => 3,
+								'33' => 4
+							);
 							$queryBuilder
 							    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
 							    ->values([
@@ -233,6 +240,69 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							      'uid' => $targetUId,
 							      'a_date' => $aJson['datum'],
 							      'prev_title' => $aJson['uebersichtUeberschrift'],
+										'prev_text' => $this->linkCheck($aJson['uebersichtText']),
+										'a_task_cluster' => $this->getCluster($aJson['kategorien']),
+										'a_home' => 0,
+										'a_type' => isset($pid2type[$aJson['pid']]) ? $pid2type[$aJson['pid']] : 0,
+										'start_pin' => str_contains($aJson['kategorien'], '21') ? 1 : 0,
+										'cat_pin' => str_contains($aJson['kategorien'], '22') ? 1 : 0,
+										// prev_pic => $aJson['xxx'],
+										// prev_pic_cropping_mode
+										// detail_title => $aJson['xxx'],
+										// detail_text text,
+										// detail_pic => $aJson['xxx'],
+										// detail_pic_cropping_mode
+										// av_files => $aJson['xxx'],
+										// av_cols => $aJson['xxx'],
+										// av_aspect_ratio
+										// f_files => $aJson['xxx'],
+										// z_user => $aJson['xxx'],
+										// z_name => $aJson['xxx'],
+										// z_title => $aJson['xxx'],
+										// z_place => $aJson['xxx'],
+										// z_l_name => $aJson['xxx'],
+										// z_share => $aJson['xxx'],
+										// z_com_share => $aJson['xxx'],
+										// z_l_text => $aJson['xxx'],
+										// p_file => $aJson['xxx'],
+										// p_duration => $aJson['xxx'],
+										// pub_type => $aJson['xxx'],
+										// pub_title => $aJson['xxx'],
+										// pub_editors_sec text,
+										// pub_year => $aJson['xxx'],
+										// pub_month => $aJson['xxx'],
+										// pub_booktitle => $aJson['xxx'],
+										// pub_publisher => $aJson['xxx'],
+										// pub_journal => $aJson['xxx'],
+										// pub_volume => $aJson['xxx'],
+										// pub_number => $aJson['xxx'],
+										// pub_series => $aJson['xxx'],
+										// pub_school => $aJson['xxx'],
+										// pub_address => $aJson['xxx'],
+										// pub_edition => $aJson['xxx'],
+										// pub_pages => $aJson['xxx'],
+										// pub_keywords => $aJson['xxx'],
+										// pub_isbn => $aJson['xxx'],
+										// pub_doi => $aJson['xxx'],
+										// pub_url => $aJson['xxx'],
+										// pub_url_date => $aJson['xxx'],
+										// pub_note => $aJson['xxx'],
+										// mee_titel => $aJson['xxx'],
+										// mee_persons_sec text,
+										// mee_organisers_sec text,
+										// mee_organisation_sec text,
+										// mee_participants_sec text,
+										// mee_time => $aJson['xxx'],
+										// mee_end_time => $aJson['xxx'],
+										// mee_show_time => $aJson['xxx'],
+										// mee_text => $aJson['xxx'],
+										// mee_event => $aJson['xxx'],
+										// mee_adress => $aJson['xxx'],
+										// mee_url => $aJson['xxx'],
+										// mee_doi => $aJson['xxx'],
+										// mee_note => $aJson['xxx'],
+										// mee_keywords => $aJson['xxx'],
+										// tags => $aJson['xxx'],
 									])
 									->execute();
 							$newDioeArticle = $this->dioeArticleRepository->findHiddenByUid($targetUId);
@@ -246,4 +316,113 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 					$this->view->assign('json', $json);
 				}
 		}
+
+		/**
+		 *	getCluster
+		 */
+		public function getCluster ($txt) {
+			if ($txt) {
+				$cats = explode(",", $txt);
+				$clusters = array();
+				if (in_array("16", $cats)) { $clusters[] = 'a'; };
+				if (in_array("17", $cats)) { $clusters[] = 'b'; };
+				if (in_array("18", $cats)) { $clusters[] = 'c'; };
+				if (in_array("19", $cats)) { $clusters[] = 'd'; };
+				if (in_array("20", $cats)) { $clusters[] = 'e'; };
+				if (in_array("37", $cats)) {
+					return 'a,b,c,d,e';
+				};
+				return implode(",", $clusters);
+			} else {
+				return NULL;
+			}
+		}
+
+		/**
+		 *	linkCheck
+		 */
+		public function linkCheck ($txt) {
+			$search = array(
+				"t3://page?uid=10",
+				"t3://page?uid=1",
+				"t3://page?uid=47",
+				"t3://page?uid=177",
+				"t3://page?uid=45",
+				"t3://page?uid=49",
+				"t3://page?uid=123",
+				"t3://page?uid=60",
+				"t3://page?uid=121",
+				"t3://page?uid=71",
+				"t3://page?uid=125",
+				"t3://page?uid=173",
+				"t3://page?uid=51",
+				"t3://page?uid=16",
+				"t3://page?uid=48",
+				"t3://page?uid=140",
+				"t3://page?uid=81",
+				"t3://page?uid=59",
+				"t3://page?uid=169",
+				"t3://page?uid=46",
+				"t3://page?uid=50",
+				"t3://page?uid=53",
+				"t3://page?uid=11",
+				"t3://page?uid=17",
+				"t3://page?uid=21",
+				"t3://page?uid=19",
+				"t3://page?uid=26",
+				"t3://page?uid=22",
+				"t3://page?uid=6",
+				"t3://page?uid=9",
+				"t3://page?uid=18",
+				"t3://page?uid=61",
+				"t3://page?uid=57",
+				"t3://page?uid=13",
+				"t3://file?uid=454",
+				"t3://page?uid=14",
+				"t3://page?uid=5",
+				"t3://page?uid=12"
+			);
+			$replace = array(
+				"t3://page?uid=8",
+				"t3://page?uid=1",
+				"t3://page?uid=25",
+				"t3://page?uid=74",
+				"t3://page?uid=23",
+				"t3://page?uid=1",
+				"t3://page?uid=85",
+				"t3://page?uid=60",
+				"t3://page?uid=65",
+				"t3://page?uid=60",
+				"t3://page?uid=117",
+				"t3://page?uid=120",
+				"t3://page?uid=34",
+				"t3://page?uid=20",
+				"t3://page?uid=26",
+				"t3://page?uid=31",
+				"t3://page?uid=30",
+				"t3://page?uid=28",
+				"t3://page?uid=107",
+				"t3://page?uid=24",
+				"t3://page?uid=33",
+				"t3://page?uid=1",
+				"t3://page?uid=12",
+				"t3://page?uid=21",
+				"t3://page?uid=37",
+				"t3://page?uid=35",
+				"t3://page?uid=43",
+				"t3://page?uid=38",
+				"t3://page?uid=4",
+				"t3://page?uid=7",
+				"t3://page?uid=22",
+				"t3://page?uid=60",
+				"t3://page?uid=41",
+				"t3://page?uid=14",
+				"t3://file?uid=167",
+				"t3://page?uid=18",
+				"t3://page?uid=3",
+				"t3://page?uid=13"
+			);
+			return str_replace($search, $replace, $txt);
+		}
+
 }
