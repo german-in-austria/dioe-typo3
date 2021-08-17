@@ -242,7 +242,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								'32' => 3,
 								'33' => 4
 							);
-							$nValues = [
+							$nValues = array(
 								'pid' => $sPid,
 								'crdate' => time(),
 								'uid' => $targetUId,
@@ -305,33 +305,70 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								'mee_organisation_sec' => isset($aJson['terminSektionOrganisation']) ? $this->getSectionOrganisationUrl($aJson['terminSektionOrganisation']) : '', // sec (Organisationen)
 								'mee_participants_sec' => isset($aJson['terminSektionParticipants']) ? $this->getSectionNameVornameInstUrl($aJson['terminSektionParticipants'], 'teilnehmer', 'teilnehmers') : '', // sec (Teilnehmer)
 								'pub_editors_sec' => isset($aJson['authorSektion']) ? $this->getSectionAuthor($aJson['authorSektion']) : '', // sec (Autoren/Herausgeber)
-								// tags => $aJson['xxx'], // foreignkey
-								// p_file => $aJson['xxx'], // fals
-								// prev_pic => $aJson['xxx'], // fals
-								// detail_pic => $aJson['xxx'], // fals
-								// av_files => $aJson['xxx'], // sec + fal
-								// f_files => $aJson['xxx'], // sec + fal
-							];
-							// $flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
-							// $flexFormString = $flexFormTools->flexArray2Xml($flexFormArray, true);
+							);
 							$queryBuilder
 							    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
 							    ->values($nValues)
 									->execute();
+							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_dioearticle_artikeltags_mm');
+							$statement = $queryBuilder
+									->delete('tx_dioearticlesystem_dioearticle_artikeltags_mm')
+									->where($queryBuilder->expr()->eq('uid_local', $targetUId))
+									->execute();
+							// $this->view->assign('test', $statement);
+							if (isset($aJson['kategorien'])) {
+								$tagListKIdTId = array(
+									'2' => 6,
+									'3' => 7,
+									'4' => 8,
+									'5' => 9,
+									'6' => 10,
+									'7' => 11,
+									'8' => 12,
+									'9' => 13,
+									'10' => 14,
+									'11' => 15,
+									'13' => 16,
+									'14' => 17,
+									'38' => 18,
+									'39' => 19,
+									'44' => 20,
+									'45' => 21
+								);
+								$cats = explode(",", $aJson['kategorien']);
+								$newTags = array();
+								forEach($cats as $cat) {
+									if ($tagListKIdTId[$cat]) {
+										$newTags[] = $tagListKIdTId[$cat];
+									}
+								}
+								if (count($newTags) > 0) {
+									$dg = 1;
+									forEach($newTags as $newTag) {
+										$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_dioearticle_artikeltags_mm');
+										$qTag = array(
+											'uid_local' => $targetUId,
+											'uid_foreign' => $newTag,
+											'sorting' => $dg,
+											'sorting_foreign' => 0,
+										);
+										$queryBuilder
+										    ->insert('tx_dioearticlesystem_dioearticle_artikeltags_mm')
+										    ->values($qTag)
+												->execute();
+									}
+								}
+							}
 							$newDioeArticle = $this->dioeArticleRepository->findHiddenByUid($targetUId);
 							// ToDo: Fal löschen/setzen:
 
-							// $newDioeArticle->setPrevTitle('Text -> ' . $newDioeArticle->getPrevTitle());
-							// $this->dioeArticleRepository->update($newDioeArticle);
+							// p_file => $aJson['xxx'], // fals
+							// prev_pic => $aJson['xxx'], // fals
+							// detail_pic => $aJson['xxx'], // fals
+							// av_files => $aJson['xxx'], // sec + fal
+							// f_files => $aJson['xxx'], // sec + fal
+
 							$aJson['dbEntrie'] = $newDioeArticle;
-							// $this->view->assign('test', $newDioeArticle);
-							// $testDioeArticle = $this->dioeArticleRepository->findHiddenByUid(2978);
-							// $flexString = $testDioeArticle->getMeePersonsSecRaw();
-							// $flexFormArray = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($flexString);
-							// $flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
-							// $flexFormString = $flexFormTools->flexArray2Xml($flexFormArray, true);
-							// $this->view->assign('test', array($testDioeArticle, $flexString, $flexFormArray['data']['sSection']['lDEF']['vortragende'], $flexFormString));
-							// $this->view->assign('info', print_r($flexFormArray, true));
 						}
 					} else {
 						$this->view->assign('expindex', -1);
@@ -344,6 +381,9 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		 *	getSectionNameVorname
 		 */
 		public function getSectionNameVorname ($array, $p, $s) {
+			if (!is_array($array)) {
+				return '';
+			}
 			$sectionArray = array(
 				'data' => array(
 					'sSection' => array(
@@ -379,6 +419,9 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		 *	getSectionNameVornameInstUrl
 		 */
 		public function getSectionNameVornameInstUrl ($array, $p, $s) {
+			if (!is_array($array)) {
+				return '';
+			}
 			$sectionArray = array(
 				'data' => array(
 					'sSection' => array(
@@ -420,6 +463,9 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		 *	getSectionAuthor
 		 */
 		public function getSectionAuthor ($array) {
+			if (!is_array($array)) {
+				return '';
+			}
 			$sectionArray = array(
 				'data' => array(
 					'sSection' => array(
@@ -458,6 +504,9 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		 *	getSectionOrganisationUrl
 		 */
 		public function getSectionOrganisationUrl ($array) {
+			if (!is_array($array)) {
+				return '';
+			}
 			$sectionArray = array(
 				'data' => array(
 					'sSection' => array(

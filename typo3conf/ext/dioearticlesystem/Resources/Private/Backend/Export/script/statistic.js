@@ -56,9 +56,19 @@ function getFelder(fFelder, e) {
   return fFelder
 }
 
+var aKategorien = []
 aFelder = cleanFelderValue(aFelder)
 function cleanFelderValue (fFelder) {
   Object.keys(fFelder).forEach(f => {
+    if (f === 'kategorien') {
+      fFelder[f].values.forEach(kl => {
+        kl.split(',').forEach(k => {
+          if (aKategorien.indexOf(parseInt(k)) < 0) {
+            aKategorien.push(parseInt(k))
+          }
+        })
+      })
+    }
     fFelder[f].values = fFelder[f].values.length
     if (fFelder[f].children) {
       fFelder[f].children = cleanFelderValue(fFelder[f].children)
@@ -66,8 +76,11 @@ function cleanFelderValue (fFelder) {
   })
   return fFelder
 }
+aKategorien = aKategorien.sort((a, b) => a - b)
 
 console.log('Felder:', aFelderCount, Object.keys(aFelder).length)
+
+console.log('Kategorien:', aKategorien.length)
 
 var aIntLinks = []
 
@@ -89,6 +102,7 @@ fs.writeFileSync(jsonDir + '/statistik.json', JSON.stringify({
   'Interne Links': aIntLinks,
   'Felder': aFelder,
   'Felder Anzahl': aFelderCount,
+  'Kategorien': aKategorien,
 }, null, 2))
 
 console.log('Gespeichert.')
