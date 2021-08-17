@@ -219,6 +219,16 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							$this->view->assign('targetUid', $targetUId);
 							// Import !!!!
 							$connectionPool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class);
+							// $queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+							// $statement = $queryBuilder
+							// 		->select('*')
+							// 		->from('tx_dioearticlesystem_domain_model_dioearticle')
+							// 		->where($queryBuilder->expr()->eq('uid', 2978))
+							// 		->execute();
+							// $testFetch = $statement->fetch();
+							// $flexFromString = $testFetch['mee_persons_sec'];
+							// $flexFormArray = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($flexFormString);
+							// $this->view->assign('test', array($testFetch, $flexFromString, $flexFormArray));
 							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
 							$queryBuilder
 									->delete('tx_dioearticlesystem_domain_model_dioearticle')
@@ -276,7 +286,6 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								'pub_url' => isset($aJson['url']) ? $aJson['url'] : '',
 								'pub_url_date' => isset($aJson['urldate']) ? $aJson['urldate'] : 0,
 								'pub_note' => isset($aJson['note']) ? $aJson['note'] : '',
-								// pub_editors_sec => $aJson['xxx'],
 								'mee_titel' => isset($aJson['terminTitel']) ? $aJson['terminTitel'] : '',
 								'mee_time' => isset($aJson['terminZeit']) ? $aJson['terminZeit'] : 0,
 								'mee_end_time' => isset($aJson['terminBisZeit']) ? $aJson['terminBisZeit'] : 0,
@@ -291,10 +300,11 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								'p_duration' => isset($aJson['podcastDauer']) ? $aJson['podcastDauer'] : 0,
 								'av_cols' => isset($aJson['audioVideoSpalten']) ? $aJson['audioVideoSpalten'] : 6,
 								'av_aspect_ratio' => isset($aJson['audioVideoSeitenverhaeltniss']) ? ($aJson['audioVideoSeitenverhaeltniss'] == '16by9' ? 1 : ($aJson['audioVideoSeitenverhaeltniss'] == '4by3' ? 2 : 0)) : 0,
-								// mee_persons_sec => $aJson['xxx'], // sec
-								// mee_organisers_sec => $aJson['xxx'], // sec
-								// mee_organisation_sec => $aJson['xxx'], // sec
-								// mee_participants_sec => $aJson['xxx'], // sec
+								'mee_persons_sec' => isset($aJson['terminSektionPersonen']) ? $this->getSectionNameVorname($aJson['terminSektionPersonen'], 'vortragende', 'vortragender') : '', // sec (Vortragende)
+								'mee_organisers_sec' => isset($aJson['terminSektionOrganiser']) ? $this->getSectionNameVorname($aJson['terminSektionOrganiser'], 'organisatoren', 'organisator') : '', // sec (Organisatoren)
+								'mee_organisation_sec' => isset($aJson['terminSektionOrganisation']) ? $this->getSectionOrganisationUrl($aJson['terminSektionOrganisation']) : '', // sec (Organisationen)
+								'mee_participants_sec' => isset($aJson['terminSektionParticipants']) ? $this->getSectionNameVornameInstUrl($aJson['terminSektionParticipants'], 'teilnehmer', 'teilnehmers') : '', // sec (Teilnehmer)
+								'pub_editors_sec' => isset($aJson['authorSektion']) ? $this->getSectionAuthor($aJson['authorSektion']) : '', // sec (Autoren/Herausgeber)
 								// tags => $aJson['xxx'], // foreignkey
 								// p_file => $aJson['xxx'], // fals
 								// prev_pic => $aJson['xxx'], // fals
@@ -302,14 +312,26 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								// av_files => $aJson['xxx'], // sec + fal
 								// f_files => $aJson['xxx'], // sec + fal
 							];
+							// $flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
+							// $flexFormString = $flexFormTools->flexArray2Xml($flexFormArray, true);
 							$queryBuilder
 							    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
 							    ->values($nValues)
 									->execute();
 							$newDioeArticle = $this->dioeArticleRepository->findHiddenByUid($targetUId);
 							// ToDo: Fal löschen/setzen:
+
+							// $newDioeArticle->setPrevTitle('Text -> ' . $newDioeArticle->getPrevTitle());
+							// $this->dioeArticleRepository->update($newDioeArticle);
 							$aJson['dbEntrie'] = $newDioeArticle;
 							// $this->view->assign('test', $newDioeArticle);
+							// $testDioeArticle = $this->dioeArticleRepository->findHiddenByUid(2978);
+							// $flexString = $testDioeArticle->getMeePersonsSecRaw();
+							// $flexFormArray = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($flexString);
+							// $flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
+							// $flexFormString = $flexFormTools->flexArray2Xml($flexFormArray, true);
+							// $this->view->assign('test', array($testDioeArticle, $flexString, $flexFormArray['data']['sSection']['lDEF']['vortragende'], $flexFormString));
+							// $this->view->assign('info', print_r($flexFormArray, true));
 						}
 					} else {
 						$this->view->assign('expindex', -1);
@@ -319,20 +341,169 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		}
 
 		/**
+		 *	getSectionNameVorname
+		 */
+		public function getSectionNameVorname ($array, $p, $s) {
+			$sectionArray = array(
+				'data' => array(
+					'sSection' => array(
+						'lDEF' => array(
+							$p => array(
+								'el' => array(
+								)
+							)
+						)
+					)
+				)
+			);
+			foreach ($array as $key => $val) {
+				$sectionArray['data']['sSection']['lDEF'][$p]['el'][substr(md5(uniqid()), 0, 22)] = array(
+					$s => array(
+						'el' => array(
+							'nachname' => array(
+								'vDEF' => isset($val['nachname']) ? $val['nachname'] : ''
+							),
+							'vorname' => array(
+								'vDEF' => isset($val['vorname']) ? $val['vorname'] : ''
+							)
+						)
+					),
+					'_TOGGLE' => 0
+				);
+			}
+			$flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
+			return $flexFormTools->flexArray2Xml($sectionArray, true);
+		}
+
+		/**
+		 *	getSectionNameVornameInstUrl
+		 */
+		public function getSectionNameVornameInstUrl ($array, $p, $s) {
+			$sectionArray = array(
+				'data' => array(
+					'sSection' => array(
+						'lDEF' => array(
+							$p => array(
+								'el' => array(
+								)
+							)
+						)
+					)
+				)
+			);
+			foreach ($array as $key => $val) {
+				$sectionArray['data']['sSection']['lDEF'][$p]['el'][substr(md5(uniqid()), 0, 22)] = array(
+					$s => array(
+						'el' => array(
+							'nachname' => array(
+								'vDEF' => isset($val['nachname']) ? $val['nachname'] : ''
+							),
+							'vorname' => array(
+								'vDEF' => isset($val['vorname']) ? $val['vorname'] : ''
+							),
+							'institution' => array(
+								'vDEF' => isset($val['institution']) ? $val['institution'] : ''
+							),
+							'url' => array(
+								'vDEF' => isset($val['url']) ? $val['url'] : ''
+							),
+						)
+					),
+					'_TOGGLE' => 0
+				);
+			}
+			$flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
+			return $flexFormTools->flexArray2Xml($sectionArray, true);
+		}
+
+		/**
+		 *	getSectionAuthor
+		 */
+		public function getSectionAuthor ($array) {
+			$sectionArray = array(
+				'data' => array(
+					'sSection' => array(
+						'lDEF' => array(
+							'editor' => array(
+								'el' => array(
+								)
+							)
+						)
+					)
+				)
+			);
+			foreach ($array as $key => $val) {
+				$sectionArray['data']['sSection']['lDEF']['editor']['el'][substr(md5(uniqid()), 0, 22)] = array(
+					'editorobj' => array(
+						'el' => array(
+							'authorNachname' => array(
+								'vDEF' => isset($val['authorNachname']) ? $val['authorNachname'] : ''
+							),
+							'authorVorname' => array(
+								'vDEF' => isset($val['authorVorname']) ? $val['authorVorname'] : ''
+							),
+							'authorIsEditor' => array(
+								'vDEF' => isset($val['authorIsEditor']) ? $val['authorIsEditor'] : '0'
+							)
+						)
+					),
+					'_TOGGLE' => 0
+				);
+			}
+			$flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
+			return $flexFormTools->flexArray2Xml($sectionArray, true);
+		}
+
+		/**
+		 *	getSectionOrganisationUrl
+		 */
+		public function getSectionOrganisationUrl ($array) {
+			$sectionArray = array(
+				'data' => array(
+					'sSection' => array(
+						'lDEF' => array(
+							'organisationen' => array(
+								'el' => array(
+								)
+							)
+						)
+					)
+				)
+			);
+			foreach ($array as $key => $val) {
+				$sectionArray['data']['sSection']['lDEF']['organisationen']['el'][substr(md5(uniqid()), 0, 22)] = array(
+					'organisation' => array(
+						'el' => array(
+							'organisation' => array(
+								'vDEF' => isset($val['organisation']) ? $val['organisation'] : ''
+							),
+							'url' => array(
+								'vDEF' => isset($val['url']) ? $val['url'] : ''
+							)
+						)
+					),
+					'_TOGGLE' => 0
+				);
+			}
+			$flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
+			return $flexFormTools->flexArray2Xml($sectionArray, true);
+		}
+
+		/**
 		 *	getCluster
 		 */
 		public function getCluster ($txt) {
 			if ($txt) {
 				$cats = explode(",", $txt);
 				$clusters = array();
+				if (in_array("37", $cats)) {
+					return 'a,b,c,d,e';
+				};
 				if (in_array("16", $cats)) { $clusters[] = 'a'; };
 				if (in_array("17", $cats)) { $clusters[] = 'b'; };
 				if (in_array("18", $cats)) { $clusters[] = 'c'; };
 				if (in_array("19", $cats)) { $clusters[] = 'd'; };
 				if (in_array("20", $cats)) { $clusters[] = 'e'; };
-				if (in_array("37", $cats)) {
-					return 'a,b,c,d,e';
-				};
 				return implode(",", $clusters);
 			} else {
 				return NULL;

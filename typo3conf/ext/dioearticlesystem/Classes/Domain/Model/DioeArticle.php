@@ -1906,6 +1906,16 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 				return XmlProcessor::xmlArray($this->meePersonsSec);
     }
 
+		/**
+     * Returns the meePersonsSec
+     *
+     * @return string $meePersonsSec
+     */
+    public function getMeePersonsSecRaw()
+    {
+				return $this->meePersonsSec;
+    }
+
     /**
      * Sets the meePersonsSec
      *
