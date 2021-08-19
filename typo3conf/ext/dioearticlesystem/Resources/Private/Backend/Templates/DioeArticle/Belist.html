@@ -42,7 +42,7 @@
 		</tr>
 		<f:for each="{dioeArticles}" as="dioeArticle">
       <tr style="{f:if(condition: '{dioeArticle.hidden}', then: 'opacity:0.5;')}">
-				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.prevPic -> f:count()} / {dioeArticle.prevPicCroppingMode}</a></td>
+				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{f:if(condition: '{dioeArticle.prevPic}', then: '1', else: '0')}</a></td>
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aHome.txt}</a></td>
         <td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aType.txt}</a></td>
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">

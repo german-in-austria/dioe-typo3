@@ -18,6 +18,16 @@
 				<f:if condition="{info}">
 					<div style="border:solid 3px #00f">{info}</div>
 				</f:if>
+				<f:if condition="{error}">
+				<div style="border:solid 3px #f00">
+					<ul style="margin-top: 1rem; margin-bottom: 1rem;">
+						<f:for each="{error}" as="err" iteration="i">
+							<li>{err}</li>
+						</f:for>
+					</ul>
+				</div>
+				</f:if>
+
 			</div>
 			<hr>
 			<table  class="table">

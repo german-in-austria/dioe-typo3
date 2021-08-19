@@ -169,6 +169,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		{
 				$this->view->assign('isAdmin', $GLOBALS['BE_USER']->isAdmin());
 				if ($GLOBALS['BE_USER']->isAdmin()) {
+					$errorArray = array();
 					$sPid = $GLOBALS['_GET']['id'];
 					$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
 					$configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
@@ -229,11 +230,30 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							// $flexFromString = $testFetch['mee_persons_sec'];
 							// $flexFormArray = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($flexFormString);
 							// $this->view->assign('test', array($testFetch, $flexFromString, $flexFormArray));
+
+							$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
+							$statement = $queryBuilder
+									->select('*')
+									->from('sys_file_reference')
+									->where($queryBuilder->expr()->eq('tablenames', '"tx_dioearticlesystem_domain_model_dioearticle"'))
+									->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
+									->execute();
+							$testFetch = $statement->fetchAll();
+							$this->view->assign('test', array($testFetch));
+
 							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
 							$queryBuilder
 									->delete('tx_dioearticlesystem_domain_model_dioearticle')
 									->where($queryBuilder->expr()->eq('uid', $targetUId))
 									->execute();
+
+							$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
+							$statement = $queryBuilder
+									->delete('sys_file_reference')
+									->where($queryBuilder->expr()->eq('tablenames', '"tx_dioearticlesystem_domain_model_dioearticle"'))
+									->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
+									->execute();
+
 							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
 							$pid2type = array(
 								'30' => 0,
@@ -242,6 +262,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								'32' => 3,
 								'33' => 4
 							);
+							$falReferences = [];
 							$nValues = array(
 								'pid' => $sPid,
 								'crdate' => time(),
@@ -305,7 +326,14 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								'mee_organisation_sec' => isset($aJson['terminSektionOrganisation']) ? $this->getSectionOrganisationUrl($aJson['terminSektionOrganisation']) : '', // sec (Organisationen)
 								'mee_participants_sec' => isset($aJson['terminSektionParticipants']) ? $this->getSectionNameVornameInstUrl($aJson['terminSektionParticipants'], 'teilnehmer', 'teilnehmers') : '', // sec (Teilnehmer)
 								'pub_editors_sec' => isset($aJson['authorSektion']) ? $this->getSectionAuthor($aJson['authorSektion']) : '', // sec (Autoren/Herausgeber)
+								'prev_pic' => $this->getSetFalImg($aJson['uebersichtBild fal'], 'prev_pic', $targetUId, $falReferences, $errorArray), // fals
+								'detail_pic' => $this->getSetFalImg($aJson['detailseiteBild fal'], 'detail_pic', $targetUId, $falReferences, $errorArray), // fals
+								'p_file' => $this->getSetFalDatei($aJson['podcastDatei fal'], 'p_file', $targetUId, $falReferences, $errorArray), // fals
+								'f_files' => $this->getSetFalDatei($aJson['sektionDateienDateien fal'], 'f_files', $targetUId, $falReferences, $errorArray), // fals
 							);
+
+							// av_files => $aJson['xxx'], // sec + fal
+
 							$queryBuilder
 							    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
 							    ->values($nValues)
@@ -360,21 +388,129 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								}
 							}
 							$newDioeArticle = $this->dioeArticleRepository->findHiddenByUid($targetUId);
-							// ToDo: Fal löschen/setzen:
-
-							// p_file => $aJson['xxx'], // fals
-							// prev_pic => $aJson['xxx'], // fals
-							// detail_pic => $aJson['xxx'], // fals
-							// av_files => $aJson['xxx'], // sec + fal
-							// f_files => $aJson['xxx'], // sec + fal
-
+							forEach($falReferences as &$falReference) {
+								// $falReference['fal']->title = "xxx";
+								$reference = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Domain\Model\FileReference::class);
+				        $reference->setOriginalResource($falReference['fal']);
+								// $this->view->assign('test', array($reference->getUid(), $reference));
+								// if ($falReference['description']) {
+								// 	$this->view->assign('test', array($reference, $falReference));
+								// }
+								if ($falReference['field'] == 'prev_pic') {
+									$newDioeArticle->setPrevPic($reference);
+								} elseif ($falReference['field'] == 'detail_pic') {
+									$newDioeArticle->addDetailPic($reference);
+								} elseif ($falReference['field'] == 'p_file') {
+									$newDioeArticle->setPFile($reference);
+								} elseif ($falReference['field'] == 'f_files') {
+									$newDioeArticle->addFFile($reference);
+								}
+								$falReference['ref'] = $reference;
+								// $this->view->assign('test', array($reference->getUid(), $reference));
+							}
+							$this->dioeArticleRepository->update($newDioeArticle);
+							$persistenceManager = $this->objectManager->get("TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager");
+							$persistenceManager->persistAll();
+							forEach($falReferences as &$falReference) {
+								$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
+								$statement = $queryBuilder
+										->update('sys_file_reference')
+										->where($queryBuilder->expr()->eq('uid_local', $falReference['fileId']))
+										->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
+										->andWhere($queryBuilder->expr()->eq('fieldname', '"' . $falReference['field'] . '"'))
+										->set('title', $falReference['title'])
+										->set('description', $falReference['description'])
+										->execute();
+							}
+							// $this->view->assign('test', $falReferences);
 							$aJson['dbEntrie'] = $newDioeArticle;
 						}
 					} else {
 						$this->view->assign('expindex', -1);
 					}
 					$this->view->assign('json', $json);
+					$this->view->assign('error', $errorArray);
 				}
+		}
+
+		/**
+		 *	getSetFalDatei
+		 */
+		public function getSetFalDatei ($falObj, $fieldName, $targetUId, &$falReferences, &$errorArray) {
+			$resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+			$storage = $resourceFactory->getDefaultStorage();
+			$fileCount = 0;
+			if ($falObj && is_array($falObj) && count($falObj) > 0) {
+				forEach($falObj as $aImg) {
+					$aFile = str_replace('fileadmin/', '', urldecode($aImg['datei']));
+					if ($storage->hasFile($aFile)) {
+						$aFileId = $storage->getFile($aFile)->getUid();
+						if ($aFileId && $aFileId > 0) {
+							// $this->view->assign('test', array($aFile, $aFileId));
+							$falReferences[] = array(
+								'fal' => \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance()->createFileReferenceObject(
+									array(
+										'uid_local' => $aFileId,
+										'uid_foreign' => $targetUId,
+										'uid' => uniqid('NEW_'),
+										'title' => $aImg['titel'],
+									)
+								),
+								'field' => $fieldName,
+								'title' => $aImg['titel'],
+								'fileId' => $aFileId,
+							);
+							$fileCount += 1;
+						} else {
+							$errorArray[] = 'Datei "' . urldecode($aImg['datei']) . '" konnte nicht zugewiesen werden!';
+						}
+					} else {
+						$errorArray[] = 'Datei "' . urldecode($aImg['datei']) . '" existiert nicht!';
+					}
+				}
+			}
+			return $fileCount;
+		}
+
+		/**
+		 *	getSetFalImg
+		 */
+		public function getSetFalImg ($falObj, $fieldName, $targetUId, &$falReferences, &$errorArray) {
+			$resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+			$storage = $resourceFactory->getDefaultStorage();
+			$fileCount = 0;
+			if ($falObj && is_array($falObj) && count($falObj) > 0) {
+				forEach($falObj as $aImg) {
+					$aFile = str_replace('fileadmin/', '', urldecode($aImg['file']));
+					if ($storage->hasFile($aFile)) {
+						$aFileId = $storage->getFile($aFile)->getUid();
+						if ($aFileId && $aFileId > 0) {
+							// $this->view->assign('test', array($aFile, $aFileId, $aImg['title'], $aImg['comment']));
+							$falReferences[] = array(
+								'fal' => \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance()->createFileReferenceObject(
+									array(
+										'uid_local' => $aFileId,
+										'uid_foreign' => $targetUId,
+										'uid' => uniqid('NEW_'),
+										'title' => $aImg['title'],
+										'description' => $aImg['comment'],
+									)
+								),
+								'field' => $fieldName,
+								'title' => $aImg['title'],
+								'description' => $aImg['comment'],
+								'fileId' => $aFileId,
+							);
+							$fileCount += 1;
+						} else {
+							$errorArray[] = 'Datei "' . urldecode($aImg['file']) . '" konnte nicht zugewiesen werden!';
+						}
+					} else {
+						$errorArray[] = 'Datei "' . urldecode($aImg['file']) . '" existiert nicht!';
+					}
+				}
+			}
+			return $fileCount;
 		}
 
 		/**
