@@ -15,6 +15,11 @@
 				<f:if condition="{targetUids}">
 					<b>Import UId:</b> {targetUidsStr}<br>
 				</f:if>
+				<f:form action="export">
+					<f:form.hidden name="expindex" value="{expindex}" />
+					<f:form.hidden name="expcount" value="100" />
+					<button style="margin-top: 10px;">Importiere 100 Elemente ab Element {expindex}</button>
+				</f:form>
 				<f:if condition="{info}">
 					<div style="border:solid 3px #00f">{info}</div>
 				</f:if>

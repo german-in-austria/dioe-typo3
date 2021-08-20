@@ -210,230 +210,235 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 					if ((gettype($args['expindex']) == 'string' || gettype($args['expindex']) == 'integer') && (int)$args['expindex'] >= 0) {
 						$targetUids = array();
 						$expIndexes = array();
-						// Einzelimport:
-						$expIndex = (int)$args['expindex'];
-						$targetUId = (int)$json[$expIndex]['uid'];
-						$aJson = NULL;
-						foreach ($json as &$jsonValue) {
-							if ($targetUId == $jsonValue['uid']) {
-								$aJson = &$jsonValue;
-							}
-						}
-						if ($targetUId > 0) {
-							$targetUids[] = $targetUId;
-							$expIndexes[] = $expIndex;
-							// Import !!!!
-							$connectionPool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class);
-							// $queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
-							// $statement = $queryBuilder
-							// 		->select('*')
-							// 		->from('tx_dioearticlesystem_domain_model_dioearticle')
-							// 		->where($queryBuilder->expr()->eq('uid', 2978))
-							// 		->execute();
-							// $testFetch = $statement->fetch();
-							// $this->view->assign('test', array($testFetch, $testFetch['av_files']));
-							// $this->view->assign('info', $testFetch['av_files']);
-
-							$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
-							$statement = $queryBuilder
-									->select('*')
-									->from('sys_file_reference')
-									->where($queryBuilder->expr()->eq('tablenames', '"tx_dioearticlesystem_domain_model_dioearticle"'))
-									->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
-									->execute();
-							$testFetch = $statement->fetchAll();
-							// $this->view->assign('test', array($testFetch));
-
-							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
-							$queryBuilder
-									->delete('tx_dioearticlesystem_domain_model_dioearticle')
-									->where($queryBuilder->expr()->eq('uid', $targetUId))
-									->execute();
-
-							$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
-							$statement = $queryBuilder
-									->delete('sys_file_reference')
-									->where($queryBuilder->expr()->eq('tablenames', '"tx_dioearticlesystem_domain_model_dioearticle"'))
-									->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
-									->execute();
-
-							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
-							$pid2type = array(
-								'30' => 0,
-								'35' => 1,
-								'31' => 2,
-								'32' => 3,
-								'33' => 4
-							);
-							$falReferences = [];
-							$nValues = array(
-								'pid' => $sPid,
-								'crdate' => time(),
-								'uid' => $targetUId,
-								'a_date' => $aJson['datum'],
-								'prev_title' => isset($aJson['uebersichtUeberschrift']) ? $aJson['uebersichtUeberschrift'] : '',
-								'prev_text' => isset($aJson['uebersichtText']) ? $this->linkCheck($aJson['uebersichtText']) : '',
-								'a_task_cluster' => $this->getCluster($aJson['kategorien']),
-								'a_home' => 0,
-								'a_type' => isset($pid2type[$aJson['pid']]) ? $pid2type[$aJson['pid']] : 0,
-								'start_pin' => str_contains($aJson['kategorien'], '21') ? 1 : 0,
-								'cat_pin' => str_contains($aJson['kategorien'], '22') ? 1 : 0,
-								'prev_pic_cropping_mode' => isset($aJson['uebersichtBildVerh']) ? $aJson['uebersichtBildVerh'] : 0,
-								'detail_title' => isset($aJson['detailseiteUeberschrift']) ? $aJson['detailseiteUeberschrift'] : '',
-								'detail_text' => isset($aJson['detailseiteText']) ? $this->linkCheck($aJson['detailseiteText']) : '',
-								'detail_pic_cropping_mode' => isset($aJson['detailseiteBildVerh']) ? $aJson['detailseiteBildVerh'] : 0,
-								'z_user' => -1,
-								'z_name' => isset($aJson['zitationName']) ? $aJson['zitationName'] : '',
-								'z_title' => isset($aJson['zitationUeberschrift']) ? $aJson['zitationUeberschrift'] : '',
-								'z_place' => isset($aJson['zitationStandort']) ? $aJson['zitationStandort'] : 0,
-								'z_l_name' => isset($aJson['lizenzName']) ? $aJson['lizenzName'] : '',
-								'z_share' => isset($aJson['lizenzBearbeiten']) ? $pid2type[$aJson['lizenzBearbeiten']] : 0,
-								'z_com_share' => isset($aJson['lizenzKommerziell']) ? $pid2type[$aJson['lizenzKommerziell']] : 0,
-								'z_l_text' => isset($aJson['lizenzFreitext']) ? $aJson['lizenzFreitext'] : '',
-								'pub_type' => isset($aJson['art']) ? $aJson['art'] : 0,
-								'pub_title' => isset($aJson['title']) ? $aJson['title'] : '',
-								'pub_year' => isset($aJson['year']) ? $aJson['year'] : 0,
-								'pub_month' => isset($aJson['month']) ? $aJson['month'] : 0,
-								'pub_booktitle' => isset($aJson['booktitle']) ? $aJson['booktitle'] : '',
-								'pub_publisher' => isset($aJson['publisher']) ? $aJson['publisher'] : '',
-								'pub_journal' => isset($aJson['journal']) ? $aJson['journal'] : '',
-								'pub_volume' => isset($aJson['volume']) ? $aJson['volume'] : '',
-								'pub_number' => isset($aJson['number']) ? $aJson['number'] : '',
-								'pub_series' => isset($aJson['series']) ? $aJson['series'] : '',
-								'pub_school' => isset($aJson['school']) ? $aJson['school'] : '',
-								'pub_address' => isset($aJson['address']) ? $aJson['address'] : '',
-								'pub_edition' => isset($aJson['edition']) ? $aJson['edition'] : '',
-								'pub_pages' => isset($aJson['pages']) ? $aJson['pages'] : '',
-								'pub_keywords' => isset($aJson['keywords']) ? $aJson['keywords'] : 0,
-								'pub_isbn' => isset($aJson['isbn']) ? $aJson['isbn'] : '',
-								'pub_doi' => isset($aJson['doi']) ? $aJson['doi'] : '',
-								'pub_url' => isset($aJson['url']) ? $aJson['url'] : '',
-								'pub_url_date' => isset($aJson['urldate']) ? $aJson['urldate'] : 0,
-								'pub_note' => isset($aJson['note']) ? $aJson['note'] : '',
-								'mee_titel' => isset($aJson['terminTitel']) ? $aJson['terminTitel'] : '',
-								'mee_time' => isset($aJson['terminZeit']) ? $aJson['terminZeit'] : 0,
-								'mee_end_time' => isset($aJson['terminBisZeit']) ? $aJson['terminBisZeit'] : 0,
-								'mee_show_time' => isset($aJson['terminUhrzeit']) ? $aJson['terminUhrzeit'] : 0,
-								'mee_text' => isset($aJson['terminTermintext']) ? $aJson['terminTermintext'] : '',
-								'mee_event' => isset($aJson['terminEvent']) ? $aJson['terminEvent'] : '',
-								'mee_adress' => isset($aJson['terminAdress']) ? $aJson['terminAdress'] : '',
-								'mee_url' => isset($aJson['terminUrl']) ? $aJson['terminUrl'] : '',
-								'mee_doi' => isset($aJson['terminDoi']) ? $aJson['terminDoi'] : '',
-								'mee_note' => isset($aJson['terminNote']) ? $aJson['terminNote'] : '',
-								'mee_keywords' => isset($aJson['terminKeywords']) ? $aJson['terminKeywords'] : 0,
-								'p_duration' => isset($aJson['podcastDauer']) ? $aJson['podcastDauer'] : 0,
-								'av_cols' => isset($aJson['audioVideoSpalten']) ? $aJson['audioVideoSpalten'] : 6,
-								'av_aspect_ratio' => isset($aJson['audioVideoSeitenverhaeltniss']) ? ($aJson['audioVideoSeitenverhaeltniss'] == '16by9' ? 1 : ($aJson['audioVideoSeitenverhaeltniss'] == '4by3' ? 2 : 0)) : 0,
-								'mee_persons_sec' => isset($aJson['terminSektionPersonen']) ? $this->getSectionNameVorname($aJson['terminSektionPersonen'], 'vortragende', 'vortragender') : '', // sec (Vortragende)
-								'mee_organisers_sec' => isset($aJson['terminSektionOrganiser']) ? $this->getSectionNameVorname($aJson['terminSektionOrganiser'], 'organisatoren', 'organisator') : '', // sec (Organisatoren)
-								'mee_organisation_sec' => isset($aJson['terminSektionOrganisation']) ? $this->getSectionOrganisationUrl($aJson['terminSektionOrganisation']) : '', // sec (Organisationen)
-								'mee_participants_sec' => isset($aJson['terminSektionParticipants']) ? $this->getSectionNameVornameInstUrl($aJson['terminSektionParticipants'], 'teilnehmer', 'teilnehmers') : '', // sec (Teilnehmer)
-								'pub_editors_sec' => isset($aJson['authorSektion']) ? $this->getSectionAuthor($aJson['authorSektion']) : '', // sec (Autoren/Herausgeber)
-								'prev_pic' => $this->getSetFalImg($aJson['uebersichtBild fal'], 'prev_pic', $targetUId, $falReferences, $errorArray), // fals
-								'detail_pic' => $this->getSetFalImg($aJson['detailseiteBild fal'], 'detail_pic', $targetUId, $falReferences, $errorArray), // fals
-								'p_file' => $this->getSetFalDatei($aJson['podcastDatei fal'], 'p_file', $targetUId, $falReferences, $errorArray), // fals
-								'f_files' => $this->getSetFalDatei($aJson['sektionDateienDateien fal'], 'f_files', $targetUId, $falReferences, $errorArray), // fals
-								'av_files' => $this->getSetSecAvDateien($aJson['sektionAudioVideoDateien fal'], $errorArray), // sec + fal
-							);
-
-							$queryBuilder
-							    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
-							    ->values($nValues)
-									->execute();
-							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_dioearticle_artikeltags_mm');
-							$statement = $queryBuilder
-									->delete('tx_dioearticlesystem_dioearticle_artikeltags_mm')
-									->where($queryBuilder->expr()->eq('uid_local', $targetUId))
-									->execute();
-							// $this->view->assign('test', $statement);
-							if (isset($aJson['kategorien'])) {
-								$tagListKIdTId = array(
-									'2' => 6,
-									'3' => 7,
-									'4' => 8,
-									'5' => 9,
-									'6' => 10,
-									'7' => 11,
-									'8' => 12,
-									'9' => 13,
-									'10' => 14,
-									'11' => 15,
-									'13' => 16,
-									'14' => 17,
-									'38' => 18,
-									'39' => 19,
-									'44' => 20,
-									'45' => 21
-								);
-								$cats = explode(",", $aJson['kategorien']);
-								$newTags = array();
-								forEach($cats as $cat) {
-									if ($tagListKIdTId[$cat]) {
-										$newTags[] = $tagListKIdTId[$cat];
-									}
-								}
-								if (count($newTags) > 0) {
-									$dg = 1;
-									forEach($newTags as $newTag) {
-										$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_dioearticle_artikeltags_mm');
-										$qTag = array(
-											'uid_local' => $targetUId,
-											'uid_foreign' => $newTag,
-											'sorting' => $dg,
-											'sorting_foreign' => 0,
-										);
-										$queryBuilder
-										    ->insert('tx_dioearticlesystem_dioearticle_artikeltags_mm')
-										    ->values($qTag)
-												->execute();
-									}
+						$expcount = isset($args['expcount']) ? (int)$args['expcount'] : 1;
+						for ($i = (int)$args['expindex']; $i <= (int)$args['expindex'] + $expcount - 1; $i++) {
+							// Einzelimport:
+							$expIndex = $i;
+							$targetUId = (int)$json[$expIndex]['uid'];
+							unset($aJson);
+							$aJson = NULL;
+							foreach ($json as &$jsonValue) {
+								if ($targetUId == $jsonValue['uid']) {
+									$aJson = &$jsonValue;
 								}
 							}
-							$newDioeArticle = $this->dioeArticleRepository->findHiddenByUid($targetUId);
-							forEach($falReferences as &$falReference) {
-								// $falReference['fal']->title = "xxx";
-								$reference = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Domain\Model\FileReference::class);
-				        $reference->setOriginalResource($falReference['fal']);
-								// $this->view->assign('test', array($reference->getUid(), $reference));
-								// if ($falReference['description']) {
-								// 	$this->view->assign('test', array($reference, $falReference));
-								// }
-								if ($falReference['field'] == 'prev_pic') {
-									$newDioeArticle->setPrevPic($reference);
-								} elseif ($falReference['field'] == 'detail_pic') {
-									$newDioeArticle->addDetailPic($reference);
-								} elseif ($falReference['field'] == 'p_file') {
-									$newDioeArticle->setPFile($reference);
-								} elseif ($falReference['field'] == 'f_files') {
-									$newDioeArticle->addFFile($reference);
-								}
-								$falReference['ref'] = $reference;
-								// $this->view->assign('test', array($reference->getUid(), $reference));
-							}
-							$this->dioeArticleRepository->update($newDioeArticle);
-							$persistenceManager = $this->objectManager->get("TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager");
-							$persistenceManager->persistAll();
-							forEach($falReferences as &$falReference) {
+							if ($targetUId > 0) {
+								$targetUids[] = $targetUId;
+								$expIndexes[] = $expIndex;
+								// Import !!!!
+								$connectionPool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class);
+								// $queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+								// $statement = $queryBuilder
+								// 		->select('*')
+								// 		->from('tx_dioearticlesystem_domain_model_dioearticle')
+								// 		->where($queryBuilder->expr()->eq('uid', 2978))
+								// 		->execute();
+								// $testFetch = $statement->fetch();
+								// $this->view->assign('test', array($testFetch, $testFetch['av_files']));
+								// $this->view->assign('info', $testFetch['av_files']);
+
 								$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
 								$statement = $queryBuilder
-										->update('sys_file_reference')
-										->where($queryBuilder->expr()->eq('uid_local', $falReference['fileId']))
+										->select('*')
+										->from('sys_file_reference')
+										->where($queryBuilder->expr()->eq('tablenames', '"tx_dioearticlesystem_domain_model_dioearticle"'))
 										->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
-										->andWhere($queryBuilder->expr()->eq('fieldname', '"' . $falReference['field'] . '"'))
-										->set('title', $falReference['title'])
-										->set('description', $falReference['description'])
 										->execute();
+								$testFetch = $statement->fetchAll();
+								// $this->view->assign('test', array($testFetch));
+
+								$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+								$queryBuilder
+										->delete('tx_dioearticlesystem_domain_model_dioearticle')
+										->where($queryBuilder->expr()->eq('uid', $targetUId))
+										->execute();
+
+								$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
+								$statement = $queryBuilder
+										->delete('sys_file_reference')
+										->where($queryBuilder->expr()->eq('tablenames', '"tx_dioearticlesystem_domain_model_dioearticle"'))
+										->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
+										->execute();
+
+								$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+								$pid2type = array(
+									'30' => 0,
+									'35' => 1,
+									'31' => 2,
+									'32' => 3,
+									'33' => 4
+								);
+								$falReferences = [];
+								$nValues = array(
+									'pid' => $sPid,
+									'crdate' => time(),
+									'uid' => $targetUId,
+									'a_date' => $aJson['datum'],
+									'prev_title' => isset($aJson['uebersichtUeberschrift']) ? $aJson['uebersichtUeberschrift'] : '',
+									'prev_text' => isset($aJson['uebersichtText']) ? $this->linkCheck($aJson['uebersichtText']) : '',
+									'a_task_cluster' => $this->getCluster($aJson['kategorien']),
+									'a_home' => 0,
+									'a_type' => isset($pid2type[$aJson['pid']]) ? $pid2type[$aJson['pid']] : 0,
+									'start_pin' => str_contains($aJson['kategorien'], '21') ? 1 : 0,
+									'cat_pin' => str_contains($aJson['kategorien'], '22') ? 1 : 0,
+									'prev_pic_cropping_mode' => isset($aJson['uebersichtBildVerh']) ? $aJson['uebersichtBildVerh'] : 0,
+									'detail_title' => isset($aJson['detailseiteUeberschrift']) ? $aJson['detailseiteUeberschrift'] : '',
+									'detail_text' => isset($aJson['detailseiteText']) ? $this->linkCheck($aJson['detailseiteText']) : '',
+									'detail_pic_cropping_mode' => isset($aJson['detailseiteBildVerh']) ? $aJson['detailseiteBildVerh'] : 0,
+									'z_user' => -1,
+									'z_name' => isset($aJson['zitationName']) ? $aJson['zitationName'] : '',
+									'z_title' => isset($aJson['zitationUeberschrift']) ? $aJson['zitationUeberschrift'] : '',
+									'z_place' => isset($aJson['zitationStandort']) ? $aJson['zitationStandort'] : 0,
+									'z_l_name' => isset($aJson['lizenzName']) ? $aJson['lizenzName'] : '',
+									'z_share' => isset($aJson['lizenzBearbeiten']) ? strval($pid2type[$aJson['lizenzBearbeiten']]) : '',
+									'z_com_share' => isset($aJson['lizenzKommerziell']) ? strval($pid2type[$aJson['lizenzKommerziell']]) : '',
+									'z_l_text' => isset($aJson['lizenzFreitext']) ? $aJson['lizenzFreitext'] : '',
+									'pub_type' => isset($aJson['art']) ? $aJson['art'] : 0,
+									'pub_title' => isset($aJson['title']) ? $aJson['title'] : '',
+									'pub_year' => isset($aJson['year']) ? $aJson['year'] : 0,
+									'pub_month' => isset($aJson['month']) ? $aJson['month'] : '',
+									'pub_booktitle' => isset($aJson['booktitle']) ? $aJson['booktitle'] : '',
+									'pub_publisher' => isset($aJson['publisher']) ? $aJson['publisher'] : '',
+									'pub_journal' => isset($aJson['journal']) ? $aJson['journal'] : '',
+									'pub_volume' => isset($aJson['volume']) ? $aJson['volume'] : '',
+									'pub_number' => isset($aJson['number']) ? $aJson['number'] : '',
+									'pub_series' => isset($aJson['series']) ? $aJson['series'] : '',
+									'pub_school' => isset($aJson['school']) ? $aJson['school'] : '',
+									'pub_address' => isset($aJson['address']) ? $aJson['address'] : '',
+									'pub_edition' => isset($aJson['edition']) ? $aJson['edition'] : '',
+									'pub_pages' => isset($aJson['pages']) ? $aJson['pages'] : '',
+									'pub_keywords' => isset($aJson['keywords']) ? $aJson['keywords'] : 0,
+									'pub_isbn' => isset($aJson['isbn']) ? $aJson['isbn'] : '',
+									'pub_doi' => isset($aJson['doi']) ? $aJson['doi'] : '',
+									'pub_url' => isset($aJson['url']) ? $aJson['url'] : '',
+									'pub_url_date' => isset($aJson['urldate']) ? $aJson['urldate'] : 0,
+									'pub_note' => isset($aJson['note']) ? $aJson['note'] : '',
+									'mee_titel' => isset($aJson['terminTitel']) ? $aJson['terminTitel'] : '',
+									'mee_time' => isset($aJson['terminZeit']) ? $aJson['terminZeit'] : 0,
+									'mee_end_time' => isset($aJson['terminBisZeit']) ? $aJson['terminBisZeit'] : 0,
+									'mee_show_time' => isset($aJson['terminUhrzeit']) ? $aJson['terminUhrzeit'] : 0,
+									'mee_text' => isset($aJson['terminTermintext']) ? $aJson['terminTermintext'] : '',
+									'mee_event' => isset($aJson['terminEvent']) ? $aJson['terminEvent'] : '',
+									'mee_adress' => isset($aJson['terminAdress']) ? $aJson['terminAdress'] : '',
+									'mee_url' => isset($aJson['terminUrl']) ? $aJson['terminUrl'] : '',
+									'mee_doi' => isset($aJson['terminDoi']) ? $aJson['terminDoi'] : '',
+									'mee_note' => isset($aJson['terminNote']) ? $aJson['terminNote'] : '',
+									'mee_keywords' => isset($aJson['terminKeywords']) ? $aJson['terminKeywords'] : 0,
+									'p_duration' => isset($aJson['podcastDauer']) ? $aJson['podcastDauer'] : 0,
+									'av_cols' => isset($aJson['audioVideoSpalten']) ? $aJson['audioVideoSpalten'] : 6,
+									'av_aspect_ratio' => isset($aJson['audioVideoSeitenverhaeltniss']) ? ($aJson['audioVideoSeitenverhaeltniss'] == '16by9' ? 1 : ($aJson['audioVideoSeitenverhaeltniss'] == '4by3' ? 2 : 0)) : 0,
+									'mee_persons_sec' => isset($aJson['terminSektionPersonen']) ? $this->getSectionNameVorname($aJson['terminSektionPersonen'], 'vortragende', 'vortragender') : '', // sec (Vortragende)
+									'mee_organisers_sec' => isset($aJson['terminSektionOrganiser']) ? $this->getSectionNameVorname($aJson['terminSektionOrganiser'], 'organisatoren', 'organisator') : '', // sec (Organisatoren)
+									'mee_organisation_sec' => isset($aJson['terminSektionOrganisation']) ? $this->getSectionOrganisationUrl($aJson['terminSektionOrganisation']) : '', // sec (Organisationen)
+									'mee_participants_sec' => isset($aJson['terminSektionParticipants']) ? $this->getSectionNameVornameInstUrl($aJson['terminSektionParticipants'], 'teilnehmer', 'teilnehmers') : '', // sec (Teilnehmer)
+									'pub_editors_sec' => isset($aJson['authorSektion']) ? $this->getSectionAuthor($aJson['authorSektion']) : '', // sec (Autoren/Herausgeber)
+									'prev_pic' => $this->getSetFalImg($aJson['uebersichtBild fal'], 'prev_pic', $targetUId, $falReferences, $errorArray), // fals
+									'detail_pic' => $this->getSetFalImg($aJson['detailseiteBild fal'], 'detail_pic', $targetUId, $falReferences, $errorArray), // fals
+									'p_file' => $this->getSetFalDatei($aJson['podcastDatei fal'], 'p_file', $targetUId, $falReferences, $errorArray), // fals
+									'f_files' => $this->getSetFalDatei($aJson['sektionDateienDateien fal'], 'f_files', $targetUId, $falReferences, $errorArray), // fals
+									'av_files' => $this->getSetSecAvDateien($aJson['sektionAudioVideoDateien fal'], $errorArray), // sec + fal
+								);
+
+								$queryBuilder
+								    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
+								    ->values($nValues)
+										->execute();
+								$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_dioearticle_artikeltags_mm');
+								$statement = $queryBuilder
+										->delete('tx_dioearticlesystem_dioearticle_artikeltags_mm')
+										->where($queryBuilder->expr()->eq('uid_local', $targetUId))
+										->execute();
+								// $this->view->assign('test', $statement);
+								if (isset($aJson['kategorien'])) {
+									$tagListKIdTId = array(
+										'2' => 6,
+										'3' => 7,
+										'4' => 8,
+										'5' => 9,
+										'6' => 10,
+										'7' => 11,
+										'8' => 12,
+										'9' => 13,
+										'10' => 14,
+										'11' => 15,
+										'13' => 16,
+										'14' => 17,
+										'38' => 18,
+										'39' => 19,
+										'44' => 20,
+										'45' => 21
+									);
+									$cats = explode(",", $aJson['kategorien']);
+									$newTags = array();
+									forEach($cats as $cat) {
+										if ($tagListKIdTId[$cat]) {
+											$newTags[] = $tagListKIdTId[$cat];
+										}
+									}
+									if (count($newTags) > 0) {
+										$dg = 1;
+										forEach($newTags as $newTag) {
+											$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_dioearticle_artikeltags_mm');
+											$qTag = array(
+												'uid_local' => $targetUId,
+												'uid_foreign' => $newTag,
+												'sorting' => $dg,
+												'sorting_foreign' => 0,
+											);
+											$queryBuilder
+											    ->insert('tx_dioearticlesystem_dioearticle_artikeltags_mm')
+											    ->values($qTag)
+													->execute();
+										}
+									}
+								}
+								$newDioeArticle = $this->dioeArticleRepository->findHiddenByUid($targetUId);
+								forEach($falReferences as &$falReference) {
+									// $falReference['fal']->title = "xxx";
+									$reference = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Domain\Model\FileReference::class);
+					        $reference->setOriginalResource($falReference['fal']);
+									// $this->view->assign('test', array($reference->getUid(), $reference));
+									// if ($falReference['description']) {
+									// 	$this->view->assign('test', array($reference, $falReference));
+									// }
+									if ($falReference['field'] == 'prev_pic') {
+										$newDioeArticle->setPrevPic($reference);
+									} elseif ($falReference['field'] == 'detail_pic') {
+										$newDioeArticle->addDetailPic($reference);
+									} elseif ($falReference['field'] == 'p_file') {
+										$newDioeArticle->setPFile($reference);
+									} elseif ($falReference['field'] == 'f_files') {
+										$newDioeArticle->addFFile($reference);
+									}
+									$falReference['ref'] = $reference;
+									// $this->view->assign('test', array($reference->getUid(), $reference));
+								}
+								$this->dioeArticleRepository->update($newDioeArticle);
+								$persistenceManager = $this->objectManager->get("TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager");
+								$persistenceManager->persistAll();
+								forEach($falReferences as &$falReference) {
+									$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
+									$statement = $queryBuilder
+											->update('sys_file_reference')
+											->where($queryBuilder->expr()->eq('uid_local', $falReference['fileId']))
+											->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
+											->andWhere($queryBuilder->expr()->eq('fieldname', '"' . $falReference['field'] . '"'))
+											->set('title', $falReference['title'])
+											->set('description', $falReference['description'])
+											->execute();
+								}
+								// $this->view->assign('test', $falReferences);
+								$aJson['dbEntrie'] = $newDioeArticle;
+								$aJson['imported'] = TRUE;
 							}
-							// $this->view->assign('test', $falReferences);
-							$aJson['dbEntrie'] = $newDioeArticle;
-							$aJson['imported'] = TRUE;
 						}
 						// Einzelimport Ende:
+						$this->view->assign('expindex', end($expIndexes) + 1);
 						$this->view->assign('expindexs', $expIndexes);
 						$this->view->assign('targetUids', $targetUids);
 						$this->view->assign('targetUidsStr', implode(", ", $targetUids));
 					} else {
-						$this->view->assign('expindex', -1);
+						$this->view->assign('expindex', 0);
 					}
 					$this->view->assign('json', $json);
 					$this->view->assign('error', $errorArray);
