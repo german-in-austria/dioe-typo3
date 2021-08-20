@@ -12,8 +12,8 @@
 			<div>
 				<b>PId:</b> {sPid}<br>
 				<b>Einträge:</b> {json -> f:count()}<br>
-				<f:if condition="{targetUid}">
-					<b>Ziel UId:</b> {targetUid}<br>
+				<f:if condition="{targetUids}">
+					<b>Import UId:</b> {targetUidsStr}<br>
 				</f:if>
 				<f:if condition="{info}">
 					<div style="border:solid 3px #00f">{info}</div>
@@ -41,7 +41,7 @@
 					<th>Aktionen</th>
 				</tr>
 				<f:for each="{json}" as="artikel" iteration="i">
-					<tr{f:if(condition: '{expindex} == {i.index}', then: ' style="background-color: #eef;"')}>
+					<tr{f:if(condition: '{artikel.imported}', then: ' style="background-color: #eef;"')}>
 						<td>{i.cycle}</td>
 						<td>{artikel.uid}</td>
 						<td>{artikel.pid}</td>

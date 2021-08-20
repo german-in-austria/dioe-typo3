@@ -539,7 +539,7 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function initializeObject()
     {
         $this->detailPic = $this->detailPic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->avFiles = $this->avFiles ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        // $this->avFiles = $this->avFiles ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->fFiles = $this->fFiles ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 				$this->tags = $this->tags ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
@@ -876,32 +876,10 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->detailPicCroppingMode = $detailPicCroppingMode;
     }
 
-    /**
-     * Adds a FileReference
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $avFile
-     * @return void
-     */
-    public function addAvFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $avFile)
-    {
-        $this->avFiles->attach($avFile);
-    }
-
-    /**
-     * Removes a FileReference
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $avFileToRemove The FileReference to be removed
-     * @return void
-     */
-    public function removeAvFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $avFileToRemove)
-    {
-        $this->avFiles->detach($avFileToRemove);
-    }
-
-    /**
+		/**
      * Returns the avFiles
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $avFiles
+     * @return string $avFiles
      */
     public function getAvFiles()
     {
@@ -911,10 +889,10 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the avFiles
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $avFiles
+     * @param string $avFiles
      * @return void
      */
-    public function setAvFiles(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $avFiles)
+    public function setAvFiles($avFiles)
     {
         $this->avFiles = $avFiles;
     }

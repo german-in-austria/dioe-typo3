@@ -15,7 +15,7 @@ CREATE TABLE tx_dioearticlesystem_domain_model_dioearticle (
 	detail_text text,
 	detail_pic int(11) unsigned DEFAULT '0' NOT NULL,
 	detail_pic_cropping_mode int(11) DEFAULT '0' NOT NULL,
-	av_files int(11) unsigned DEFAULT '0' NOT NULL,
+	av_files text,
 	av_cols int(11) DEFAULT '0' NOT NULL,
 	av_aspect_ratio int(11) DEFAULT '0' NOT NULL,
 	f_files int(11) unsigned DEFAULT '0' NOT NULL,

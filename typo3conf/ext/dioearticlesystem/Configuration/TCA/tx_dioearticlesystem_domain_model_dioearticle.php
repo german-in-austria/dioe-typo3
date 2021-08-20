@@ -416,53 +416,135 @@ return [
         'av_files' => [
             'exclude' => false,
             'label' => 'LLL:EXT:dioearticlesystem/Resources/Private/Language/locallang_db.xlf:tx_dioearticlesystem_domain_model_dioearticle.av_files',
-            'config' =>
-            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'av_files',
-                [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
-                    ],
-                    'foreign_types' => [
-                        '0' => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
-                            'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
-                        ]
-                    ],
-                    'foreign_match_fields' => [
-                        'fieldname' => 'av_files',
-                        'tablenames' => 'tx_dioearticlesystem_domain_model_dioearticle',
-                        'table_local' => 'sys_file',
-                    ],
-                    'maxitems' => 99
-                ]
-            ),
+						'config' => [
+								'type' => 'flex',
+								'ds' => [
+									'default' => '
+	<T3DataStructure>
+			<sheets>
+					<sSection>
+							<ROOT>
+									<TCEforms>
+											<sheetTitle>Dateien</sheetTitle>
+									</TCEforms>
+									<type>array</type>
+									<el>
+											<dateien>
+													<title>Dateien</title>
+													<type>array</type>
+													<section>1</section>
+													<el>
+															<datei>
+																	<type>array</type>
+																	<title>Datei</title>
+																	<el>
+																		<titel>
+																			<TCEforms>
+																				<label>Titel</label>
+																				<config>
+																					<type>input</type>
+																					<size>30</size>
+																					<eval>trim,required</eval>
+																				</config>
+																			</TCEforms>
+																		</titel>
+																		<datei>
+																			<TCEforms>
+																				<label>Datei (mp3, mp4 empfohlen)</label>
+																				<config>
+																					<type>group</type>
+																					<internal_type>db</internal_type>
+																					<appearance>
+																						<elementBrowserType>file</elementBrowserType>
+																						<elementBrowserAllowed>mp3,mp4,ogg,ogv,wav</elementBrowserAllowed>
+																					</appearance>
+																					<allowed>sys_file</allowed>
+																					<size>1</size>
+																					<minitems>0</minitems>
+																					<maxitems>1</maxitems>
+																					<show_thumbs>1</show_thumbs>
+																				</config>
+																			</TCEforms>
+																		</datei>
+																		<youtube>
+																			<TCEforms>
+																				<label>YouTube (Video-ID)</label>
+																				<config>
+																					<type>input</type>
+																					<size>30</size>
+																					<eval>trim</eval>
+																				</config>
+																			</TCEforms>
+																		</youtube>
+																		<copyright>
+																			<TCEforms>
+																				<label>Copyright (Für Youtube)</label>
+																				<config>
+																					<type>input</type>
+																					<size>30</size>
+																					<eval>trim</eval>
+																				</config>
+																			</TCEforms>
+																		</copyright>
+																	</el>
+															</datei>
+													</el>
+											</dateien>
+									</el>
+							</ROOT>
+					</sSection>
+			</sheets>
+	</T3DataStructure>
+									'
+								]
+            ]
+            // 'config' =>
+            // \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            //     'av_files',
+            //     [
+            //         'appearance' => [
+            //             'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference'
+            //         ],
+            //         'foreign_types' => [
+            //             '0' => [
+            //                 'showitem' => '
+            //                 --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+            //                 --palette--;;filePalette'
+            //             ],
+            //             \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+            //                 'showitem' => '
+            //                 --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+            //                 --palette--;;filePalette'
+            //             ],
+            //             \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+            //                 'showitem' => '
+            //                 --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+            //                 --palette--;;filePalette'
+            //             ],
+            //             \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+            //                 'showitem' => '
+            //                 --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+            //                 --palette--;;filePalette'
+            //             ],
+            //             \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+            //                 'showitem' => '
+            //                 --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+            //                 --palette--;;filePalette'
+            //             ],
+            //             \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+            //                 'showitem' => '
+            //                 --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+            //                 --palette--;;filePalette'
+            //             ]
+            //         ],
+            //         'foreign_match_fields' => [
+            //             'fieldname' => 'av_files',
+            //             'tablenames' => 'tx_dioearticlesystem_domain_model_dioearticle',
+            //             'table_local' => 'sys_file',
+            //         ],
+            //         'maxitems' => 99
+            //     ]
+            // ),
 
         ],
         'av_cols' => [

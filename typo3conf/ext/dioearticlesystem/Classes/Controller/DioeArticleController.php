@@ -206,7 +206,11 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 					$this->view->assign('uIds', $uIds);
 					$this->view->assign('missingUids', $missingUids);
 
+					// Import:
 					if ((gettype($args['expindex']) == 'string' || gettype($args['expindex']) == 'integer') && (int)$args['expindex'] >= 0) {
+						$targetUids = array();
+						$expIndexes = array();
+						// Einzelimport:
 						$expIndex = (int)$args['expindex'];
 						$targetUId = (int)$json[$expIndex]['uid'];
 						$aJson = NULL;
@@ -216,8 +220,8 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							}
 						}
 						if ($targetUId > 0) {
-							$this->view->assign('expindex', $expIndex);
-							$this->view->assign('targetUid', $targetUId);
+							$targetUids[] = $targetUId;
+							$expIndexes[] = $expIndex;
 							// Import !!!!
 							$connectionPool = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class);
 							// $queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
@@ -227,9 +231,8 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							// 		->where($queryBuilder->expr()->eq('uid', 2978))
 							// 		->execute();
 							// $testFetch = $statement->fetch();
-							// $flexFromString = $testFetch['mee_persons_sec'];
-							// $flexFormArray = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($flexFormString);
-							// $this->view->assign('test', array($testFetch, $flexFromString, $flexFormArray));
+							// $this->view->assign('test', array($testFetch, $testFetch['av_files']));
+							// $this->view->assign('info', $testFetch['av_files']);
 
 							$queryBuilder = $connectionPool->getQueryBuilderForTable('sys_file_reference');
 							$statement = $queryBuilder
@@ -239,7 +242,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 									->andWhere($queryBuilder->expr()->eq('uid_foreign', $targetUId))
 									->execute();
 							$testFetch = $statement->fetchAll();
-							$this->view->assign('test', array($testFetch));
+							// $this->view->assign('test', array($testFetch));
 
 							$queryBuilder = $connectionPool->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
 							$queryBuilder
@@ -330,9 +333,8 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 								'detail_pic' => $this->getSetFalImg($aJson['detailseiteBild fal'], 'detail_pic', $targetUId, $falReferences, $errorArray), // fals
 								'p_file' => $this->getSetFalDatei($aJson['podcastDatei fal'], 'p_file', $targetUId, $falReferences, $errorArray), // fals
 								'f_files' => $this->getSetFalDatei($aJson['sektionDateienDateien fal'], 'f_files', $targetUId, $falReferences, $errorArray), // fals
+								'av_files' => $this->getSetSecAvDateien($aJson['sektionAudioVideoDateien fal'], $errorArray), // sec + fal
 							);
-
-							// av_files => $aJson['xxx'], // sec + fal
 
 							$queryBuilder
 							    ->insert('tx_dioearticlesystem_domain_model_dioearticle')
@@ -424,13 +426,78 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							}
 							// $this->view->assign('test', $falReferences);
 							$aJson['dbEntrie'] = $newDioeArticle;
+							$aJson['imported'] = TRUE;
 						}
+						// Einzelimport Ende:
+						$this->view->assign('expindexs', $expIndexes);
+						$this->view->assign('targetUids', $targetUids);
+						$this->view->assign('targetUidsStr', implode(", ", $targetUids));
 					} else {
 						$this->view->assign('expindex', -1);
 					}
 					$this->view->assign('json', $json);
 					$this->view->assign('error', $errorArray);
 				}
+		}
+
+		/**
+		 *	getSetSecAvDateien
+		 */
+		public function getSetSecAvDateien ($falObj, &$errorArray) {
+			$resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+			$storage = $resourceFactory->getDefaultStorage();
+			if ($falObj && is_array($falObj) && count($falObj) > 0) {
+				$sectionArray = array(
+					'data' => array(
+						'sSection' => array(
+							'lDEF' => array(
+								'dateien' => array(
+									'el' => array(
+									)
+								)
+							)
+						)
+					)
+				);
+				forEach($falObj as $aDatei) {
+					if ($aDatei['datei']) {
+						$aFile = str_replace('fileadmin/', '', urldecode($aDatei['datei']));
+						$aDateiId = 0;
+						if ($storage->hasFile($aFile)) {
+							$aFileId = $storage->getFile($aFile)->getUid();
+							if ($aFileId && $aFileId > 0) {
+								$aDateiId = $aFileId;
+							} else {
+								$errorArray[] = 'Datei "' . urldecode($aDatei['datei']) . '" konnte nicht zugewiesen werden!';
+							}
+						} else {
+							$errorArray[] = 'Datei "' . urldecode($aDatei['datei']) . '" existiert nicht!';
+						}
+					}
+					$sectionArray['data']['sSection']['lDEF']['dateien']['el'][substr(md5(uniqid()), 0, 22)] = array(
+						'datei' => array(
+							'el' => array(
+								'titel' => array(
+									'vDEF' => isset($aDatei['titel']) ? $aDatei['titel'] : ''
+								),
+								'youtube' => array(
+									'vDEF' => isset($aDatei['youtube']) ? $aDatei['youtube'] : ''
+								),
+								'copyright' => array(
+									'vDEF' => isset($aDatei['copyright']) ? $aDatei['copyright'] : ''
+								),
+								'datei' => array(
+									'vDEF' => isset($aDateiId) ? $aDateiId : 0
+								),
+							)
+						),
+						'_TOGGLE' => 0
+					);
+				}
+				$flexFormTools = new \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools();
+				return $flexFormTools->flexArray2Xml($sectionArray, true);
+			}
+			return '';
 		}
 
 		/**
