@@ -45,8 +45,9 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      */
     public function listAction()
     {
-				$dioeArticles = $this->dioeArticleRepository->filtered();
-        $this->view->assign('dioeArticles', $dioeArticles);
+				// ToDo: Sprache, spin, cpin, aajax !!!
+				$dioeArticles = $this->dioeArticleRepository->filtered(false, intval($this->settings['atype']), $this->settings['atags'], $this->settings['ahome'], $this->settings['ataskcluster'], 0, intval($this->settings['amax']), 0, intval($this->settings['spin']), intval($this->settings['cpin']));
+	      $this->view->assign('dioeArticles', $dioeArticles);
     }
 
 		/**

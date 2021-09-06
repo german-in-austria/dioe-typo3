@@ -4,7 +4,7 @@
 This template is responsible for creating a table of domain objects.
 
 <f:section name="content">
-	<section class="article-list">
+	<section class="article-list{f:if(condition:'{settings.aclass}',then:' {settings.aclass}')}">
 	  <f:for each="{dioeArticles}" as="dioeArticle">
 			<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
 	  </f:for>

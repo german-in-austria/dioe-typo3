@@ -36,7 +36,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return QueryResultInterface|array
 		 * @api
 		 */
-		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0) {
+		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin, $aCPin) {
 	    $query = $this->createQuery();
 			$constraints = [];
 			if ($be) {
@@ -48,16 +48,45 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $constraints[] = $query->equals('a_type', $aType);
 	    }
 			if ($aTag >= 0) {
-        $constraints[] = $query->equals('tags.uid', $aTag);
+				if (gettype($aTag) == 'string') {
+					if (strpos($aTag, ',') > -1) {
+						$aTags = explode(",", $aTag);
+						$tagConstraints = [];
+						foreach ($aTags as &$value) {
+							$tagConstraints = $query->equals('tags.uid', intval($value));
+						}
+						$constraints[] = $query->logicalOr($tagConstraints);
+					} else {
+						$aTag = intval($aTag);
+						if ($aTag > 0) {
+							$constraints[] = $query->equals('tags.uid', $aTag);
+						}
+					}
+				} else {
+					$constraints[] = $query->equals('tags.uid', $aTag);
+				}
 	    }
 			if ($aHome >= 0) {
         $constraints[] = $query->equals('a_home', $aHome);
 	    }
 			if ($aCluster > -1 && $aCluster) {
-				if ($aCluster == 'sfb') {
+				if ($aCluster == 'sfb' || $aCluster == 'a,b,c,d,e') {
 					$constraints[] = $query->equals('aTaskCluster', 'a,b,c,d,e');
 				} else {
-	        $constraints[] = $query->contains('aTaskCluster', $aCluster);
+					if (gettype($aCluster) == 'string') {
+						if (strpos($aCluster, ',') > -1) {
+							$aTasks = explode(",", $aCluster);
+							$taskConstraints = [];
+							foreach ($aTasks as &$value) {
+								$taskConstraints = $query->contains('aTaskCluster', $value);
+							}
+							$constraints[] = $query->logicalOr($taskConstraints);
+						} else {
+							$constraints[] = $query->contains('aTaskCluster', $aCluster);
+						}
+					} else {
+						$constraints[] = $query->contains('aTaskCluster', $aCluster);
+					}
 					$constraints[] = $query->logicalNot($query->equals('aTaskCluster', 'a,b,c,d,e'));
 				}
 	    }
@@ -66,6 +95,12 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			}
 			if ($constraints) {
 				$query->matching($query->logicalAnd($constraints));
+			}
+			if ($aOffset > 0) {
+				$query->setOffset($aOffset);
+			}
+			if ($aLimit > 0) {
+				$query->setLimit($aLimit);
 			}
 	    return $query->execute();
 		}
