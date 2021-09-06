@@ -47,3 +47,23 @@ module.tx_dioearticlesystem_web_dioearticlesystembeae {
 			ignoreAllEnableFieldsInBe = 1
 		}
 }
+
+ajax_das_page = PAGE
+ajax_das_page {
+    typeNum = 7837626199
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders = Content-type:application/html
+        xhtml_cleaning = 0
+        debug = 0
+        no_cache = 1
+        admPanel = 0
+    }
+		20 = RECORDS
+		20 {
+		  tables = tt_content
+		  source.cObject = TEXT
+			source.cObject.data = GP:tx_dioearticlesystem_view|dasuid
+		  dontCheckPid = 1
+		}
+}

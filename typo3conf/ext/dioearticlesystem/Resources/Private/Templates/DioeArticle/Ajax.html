@@ -4,20 +4,16 @@
 This template is responsible for creating a table of domain objects.
 
 <f:section name="content">
-	<f:if condition="{settings.afilter}">
-		<div id="fal{cObj.uid}">
-			Filter
-		</div>
-	</f:if>
-	<section id="al{cObj.uid}" class="article-list{f:if(condition:'{settings.aclass}', then:' {settings.aclass}')}">
+	ajax
+	<div class="das-ajax">
 	  <f:for each="{dioeArticles}" as="dioeArticle">
 			<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
 	  </f:for>
 		<f:if condition="{settings.aajax} && {dioeArticles}">
-			<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + 1}\', dasuid: cObj.uid}')}">
+			<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + dstart}\', dasuid: cObj.uid}')}">
 				Weitere Artikel ...
 			</div>
 		</f:if>
-	</section>
+	</div>
 </f:section>
 </html>

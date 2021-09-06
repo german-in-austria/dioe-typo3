@@ -9,11 +9,11 @@ call_user_func(
             'Dioearticlesystem',
             'View',
             [
-                \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => 'list, show'
+                \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => 'list, ajax, show'
             ],
             // non-cacheable actions
             [
-                \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => ''
+                \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => 'list, ajax'
             ]
         );
 

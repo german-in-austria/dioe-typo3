@@ -14,5 +14,9 @@
 		{dioeArticle.prevPicCroppingMode} -
 		{dioeArticle.detailPic -> f:count()} -
 		{dioeArticle.detailPicCroppingMode} -->
+		Tags:
+		<f:for each="{dioeArticle.tags}" as="tag">
+			{tag.name},
+		</f:for>
 	</f:link.action>
 </article>

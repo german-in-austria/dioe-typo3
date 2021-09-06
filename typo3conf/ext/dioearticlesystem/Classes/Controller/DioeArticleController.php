@@ -45,9 +45,29 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      */
     public function listAction()
     {
-				// ToDo: Sprache, spin, cpin, aajax !!!
-				$dioeArticles = $this->dioeArticleRepository->filtered(false, intval($this->settings['atype']), $this->settings['atags'], $this->settings['ahome'], $this->settings['ataskcluster'], 0, intval($this->settings['amax']), 0, intval($this->settings['spin']), intval($this->settings['cpin']));
+				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
+				$sys_language_uid = $languageAspect->getId();
+				// ToDo: spin, cpin !!!
+				$dioeArticles = $this->dioeArticleRepository->filtered(false, intval($this->settings['atype']), $this->settings['atags'], $this->settings['ahome'], $this->settings['ataskcluster'], $sys_language_uid, intval($this->settings['amax']), 0, intval($this->settings['spin']), intval($this->settings['cpin']));
 	      $this->view->assign('dioeArticles', $dioeArticles);
+				$this->view->assign('cObj', $this->configurationManager->getContentObject()->data);
+    }
+
+		/**
+     * action ajax
+     *
+     * @return string|object|null|void
+     */
+    public function ajaxAction()
+    {
+				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
+				$sys_language_uid = $languageAspect->getId();
+				$dstart = intval($this->request->getArguments()['start']);
+				// ToDo: spin, cpin !!!
+				$dioeArticles = $this->dioeArticleRepository->filtered(false, intval($this->settings['atype']), $this->settings['atags'], $this->settings['ahome'], $this->settings['ataskcluster'], $sys_language_uid, intval($this->settings['amax']), $dstart, intval($this->settings['spin']), intval($this->settings['cpin']));
+	      $this->view->assign('dioeArticles', $dioeArticles);
+				$this->view->assign('cObj', $this->configurationManager->getContentObject()->data);
+				$this->view->assign('dstart', $dstart);
     }
 
 		/**

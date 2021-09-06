@@ -36,7 +36,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return QueryResultInterface|array
 		 * @api
 		 */
-		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin, $aCPin) {
+		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0) {
 	    $query = $this->createQuery();
 			$constraints = [];
 			if ($be) {
@@ -69,8 +69,8 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			if ($aHome >= 0) {
         $constraints[] = $query->equals('a_home', $aHome);
 	    }
-			if ($aCluster > -1 && $aCluster) {
-				if ($aCluster == 'sfb' || $aCluster == 'a,b,c,d,e') {
+			if ($aCluster > -1 && $aCluster && $aCluster !== 'a,b,c,d,e') {
+				if ($aCluster == 'sfb') {
 					$constraints[] = $query->equals('aTaskCluster', 'a,b,c,d,e');
 				} else {
 					if (gettype($aCluster) == 'string') {

@@ -135,6 +135,14 @@
 													</config>
 											</TCEforms>
 									</settings.aajax>
+									<settings.afilter>
+											<TCEforms>
+													<label>Filter</label>
+													<config>
+															<type>check</type>
+													</config>
+											</TCEforms>
+									</settings.afilter>
 									<settings.amax>
 											<TCEforms>
 													<label>Maximale Artikel (Bei Ajax die zuerst geladenen Artikel)</label>
