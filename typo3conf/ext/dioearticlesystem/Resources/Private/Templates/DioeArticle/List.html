@@ -5,8 +5,37 @@ This template is responsible for creating a table of domain objects.
 
 <f:section name="content">
 	<f:if condition="{settings.afilter}">
-		<div id="fal{cObj.uid}">
-			Filter
+		<div id="fal{cObj.uid}" class="mb-4">
+			<f:form action="list" class="article-list-filter">
+				<div class="row">
+					<f:if condition="{selectableCluster} || {selectableTagsTypes}">
+						<div class="d-flex col-12 col-md-7 mb-3">
+							<div class="pr-3">
+								Filter:
+							</div>
+							<f:if condition="{selectableCluster}">
+						    <div class="pr-3">
+									<f:form.select class="form-control" name="sacluster" value="{args.sacluster}" options="{selectableCluster}" />
+						    </div>
+							</f:if>
+							<f:if condition="{selectableTagsTypes}">
+						    <div>
+									<f:form.select class="form-control" name="satype" value="{args.satype}" options="{selectableTagsTypes}" />
+						    </div>
+							</f:if>
+						</div>
+					</f:if>
+					<div class="d-flex col-12 col-md-5 mb-3">
+						<div class="pr-3">
+							Sortierung:
+						</div>
+				    <div class="w-100">
+							<f:form.select class="form-control" name="saorder" value="{args.saorder}" options="{selectableOrder}" />
+				    </div>
+				  </div>
+				</div>
+				<button>Test</button>
+			</f:form>
 		</div>
 	</f:if>
 	<section id="al{cObj.uid}" class="article-list{f:if(condition:'{settings.aclass}', then:' {settings.aclass}')}">
@@ -14,7 +43,7 @@ This template is responsible for creating a table of domain objects.
 			<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
 	  </f:for>
 		<f:if condition="{settings.aajax} && {dioeArticles}">
-			<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + 1}\', dasuid: cObj.uid}')}">
+			<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + 1}\', dasuid: cObj.uid, sacluster: args.sacluster, satype: args.satype, saorder: args.saorder}')}">
 				Weitere Artikel ...
 			</div>
 		</f:if>

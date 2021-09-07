@@ -36,7 +36,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return QueryResultInterface|array
 		 * @api
 		 */
-		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0) {
+		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
 	    $query = $this->createQuery();
 			$constraints = [];
 			if ($be) {
@@ -101,6 +101,9 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			}
 			if ($aLimit > 0) {
 				$query->setLimit($aLimit);
+			}
+			if ($aOrder > 0) {
+				$query->setOrderings(['aDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
 			}
 	    return $query->execute();
 		}

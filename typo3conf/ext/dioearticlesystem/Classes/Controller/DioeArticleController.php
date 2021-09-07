@@ -47,8 +47,94 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
 				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
 				$sys_language_uid = $languageAspect->getId();
+				$artikelTags = $this->artikelTagsRepository->findAll();
+				$aType = intval($this->settings['atype']);
+				$aTag = $this->settings['atags'];
+				$aCluster = $this->settings['ataskcluster'];
+				$aOrder = 0;
+				if ($aCluster == 'a,b,c,d,e') {
+					$aCluster = -1;
+				}
+				// Filter ...
+				if ($this->settings['afilter']) {
+					$selectableTags = [];
+					if ($aTag >= 0) {
+						if (gettype($aTag) == 'string') {
+							if (strpos($aTag, ',') > -1) {
+								$selectableTags = explode(",", $aTag);
+								foreach ($selectableTags as &$value) {
+									$value = intval($value);
+								}
+							} else {
+								if (intval($aTag) > 0) {
+									$selectableTags = [intval($aTag)];
+								}
+							}
+						} else {
+							$selectableTags = [$aTag];
+						}
+					}
+					if (!$selectableTags) {
+						$selectableTags = [];
+						foreach ($artikelTags->toArray() as $tag) {
+							$selectableTags[] = $tag->getUid();
+						}
+					}
+					$selectableTagsTypes = [-1 => 'Alles'];
+					$allTypes = [
+						 'typ0' => 'Beiträge',
+						 'typ1' => 'Publikationen',
+						 'typ2' => 'Vorträge',
+						 'typ3' => 'Veranstaltungen',
+						 'typ4' => 'Lehren'
+					];
+					if ($aType < 0) {
+						$selectableTagsTypes += $allTypes;
+					}
+					foreach ($selectableTags as $stt) {
+						foreach ($artikelTags->toArray() as $tag) {
+							if ($tag->getUid() == $stt) {
+								$selectableTagsTypes['tag' . strval($tag->getUid())] = $tag->getName();
+							}
+						}
+					}
+					$this->view->assign('selectableTagsTypes', $selectableTagsTypes);
+					$selectableCluster = [];
+					$allCluster = [-1 => 'Alle Task-Cluster', 'a' => 'Cluster A', 'b' => 'Cluster B', 'c' => 'Cluster C', 'd' => 'Cluster D', 'e' => 'Cluster E', 'sfb' => 'Gesamt-SFB'];
+					if ($aCluster < 0 || $aCluster == 'sfb') {
+						$selectableCluster += $allCluster;
+					} else {
+						if (gettype($aCluster) == 'string') {
+							if (strpos($aCluster, ',') > -1) {
+								$aTasks = explode(",", $aCluster);
+								$taskConstraints = [];
+								foreach ($aTasks as &$value) {
+									$selectableCluster[$value] = $allCluster[$value];
+								}
+							} else {
+								$selectableCluster[$aCluster] = $allCluster[$aCluster];
+							}
+						}
+					}
+					$this->view->assign('selectableCluster', $selectableCluster);
+					$this->view->assign('selectableOrder', [0 => 'Datum - aufsteigend', 1 => 'Datum - absteigend']);
+					// Apply Filters
+					$args = $this->request->getArguments();
+					$this->view->assign('args', $args);
+					if ($args['sacluster'] > -1 && $args['sacluster']) {
+						$aCluster = $args['sacluster'];
+					}
+					if ($args['satype'] > -1 && $args['satype']) {
+						if (substr($args['satype'], 0, 3) == 'typ') {
+							$aType = intval(substr($args['satype'], 3));
+						} else {
+							$aTag = intval(substr($args['satype'], 3));
+						}
+					}
+					$aOrder = $args['saorder'];
+				}
 				// ToDo: spin, cpin !!!
-				$dioeArticles = $this->dioeArticleRepository->filtered(false, intval($this->settings['atype']), $this->settings['atags'], $this->settings['ahome'], $this->settings['ataskcluster'], $sys_language_uid, intval($this->settings['amax']), 0, intval($this->settings['spin']), intval($this->settings['cpin']));
+				$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $aCluster, $sys_language_uid, intval($this->settings['amax']), 0, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
 	      $this->view->assign('dioeArticles', $dioeArticles);
 				$this->view->assign('cObj', $this->configurationManager->getContentObject()->data);
     }
@@ -62,9 +148,33 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
 				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
 				$sys_language_uid = $languageAspect->getId();
+				$aType = intval($this->settings['atype']);
+				$aTag = $this->settings['atags'];
+				$aCluster = $this->settings['ataskcluster'];
+				$aOrder = 0;
+				if ($aCluster == 'a,b,c,d,e') {
+					$aCluster = -1;
+				}
+				// Filter ...
+				if ($this->settings['afilter']) {
+					// Apply Filters
+					$args = $this->request->getArguments();
+					$this->view->assign('args', $args);
+					if ($args['sacluster'] > -1 && $args['sacluster']) {
+						$aCluster = $args['sacluster'];
+					}
+					if ($args['satype'] > -1 && $args['satype']) {
+						if (substr($args['satype'], 0, 3) == 'typ') {
+							$aType = intval(substr($args['satype'], 3));
+						} else {
+							$aTag = intval(substr($args['satype'], 3));
+						}
+					}
+					$aOrder = $args['saorder'];
+				}
 				$dstart = intval($this->request->getArguments()['start']);
 				// ToDo: spin, cpin !!!
-				$dioeArticles = $this->dioeArticleRepository->filtered(false, intval($this->settings['atype']), $this->settings['atags'], $this->settings['ahome'], $this->settings['ataskcluster'], $sys_language_uid, intval($this->settings['amax']), $dstart, intval($this->settings['spin']), intval($this->settings['cpin']));
+				$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $this->settings['ataskcluster'], $sys_language_uid, intval($this->settings['amax']), $dstart, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
 	      $this->view->assign('dioeArticles', $dioeArticles);
 				$this->view->assign('cObj', $this->configurationManager->getContentObject()->data);
 				$this->view->assign('dstart', $dstart);

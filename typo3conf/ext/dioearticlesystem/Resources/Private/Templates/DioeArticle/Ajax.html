@@ -10,7 +10,7 @@ This template is responsible for creating a table of domain objects.
 			<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
 	  </f:for>
 		<f:if condition="{settings.aajax} && {dioeArticles}">
-			<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + dstart}\', dasuid: cObj.uid}')}">
+			<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + dstart}\', dasuid: cObj.uid, sacluster: args.sacluster, satype: args.satype, saorder: args.saorder}')}">
 				Weitere Artikel ...
 			</div>
 		</f:if>
