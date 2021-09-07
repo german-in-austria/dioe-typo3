@@ -5,8 +5,10 @@ This template is responsible for creating a table of domain objects.
 
 <f:section name="content">
 	<f:if condition="{settings.afilter}">
-		<div id="fal{cObj.uid}" class="mb-4">
-			<f:form action="list" class="article-list-filter">
+		<div id="fal{cObj.uid}" data-target="#al{cObj.uid}" class="mb-4">
+			<f:form action="ajax" class="article-list-filter" pageType="7837626199">
+			<f:form.hidden name="dasuid" value="{cObj.uid}" />
+			<f:form.hidden name="start" value="0" />
 				<div class="row">
 					<f:if condition="{selectableCluster} || {selectableTagsTypes}">
 						<div class="d-flex col-12 col-md-7 mb-3">
@@ -34,7 +36,6 @@ This template is responsible for creating a table of domain objects.
 				    </div>
 				  </div>
 				</div>
-				<button>Test</button>
 			</f:form>
 		</div>
 	</f:if>

@@ -20,7 +20,20 @@
 	jQuery(document).ready(function ($) {
 		if ($('.article-list-next').length > 0) {
 			$(window).scroll(scrollAln);
+			scrollAln();
+			$(document).on('change', 'form.article-list-filter select', function (event) {
+				var form = $(this).parents('form');
+				var fData = {};
+				form.find('input, select').each(function () {
+					fData[$(this).attr('name')] = $(this).val();
+				});
+				// console.log(fData);
+				$.post(form.attr('action'), fData).done(function (data) {
+					// console.log(data);
+					$(form.parent().data('target')).html($(data).find('.das-ajax').children());
+					scrollAln();
+				});
+			});
 		}
-		scrollAln();
 	});
 })(jQuery);

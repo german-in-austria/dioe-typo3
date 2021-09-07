@@ -174,7 +174,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 				}
 				$dstart = intval($this->request->getArguments()['start']);
 				// ToDo: spin, cpin !!!
-				$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $this->settings['ataskcluster'], $sys_language_uid, intval($this->settings['amax']), $dstart, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
+				$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $aCluster, $sys_language_uid, intval($this->settings['amax']), $dstart, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
 	      $this->view->assign('dioeArticles', $dioeArticles);
 				$this->view->assign('cObj', $this->configurationManager->getContentObject()->data);
 				$this->view->assign('dstart', $dstart);
