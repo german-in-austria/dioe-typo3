@@ -46,9 +46,7 @@
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aHome.txt}</a></td>
         <td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">{dioeArticle.aType.txt}</a></td>
 				<td><a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">
-					<f:for each="{dioeArticle.tags}" as="tag" iteration="ti">
-						{tag.name}{f:if(condition: '{ti.isLast}', else: ', ')}
-					</f:for>
+					{dioeArticle.tags.html -> f:format.raw()}
 				</a></td>
         <td>
 					<a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}">

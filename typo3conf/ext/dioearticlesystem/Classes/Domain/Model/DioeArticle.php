@@ -2005,7 +2005,8 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 					'val' => $this->aType,
 					'txt' => ['Beitrag', 'Publikation', 'Vortrag', 'Veranstaltung', 'Lehre'][$this->aType],
 					'txtp' => ['Beiträge', 'Publikationen', 'Vorträge', 'Veranstaltungen', 'Lehren'][$this->aType],
-					'color' => ['#66be5e','#5dc3e9','#3757a7','#f15f7d','#fbc820'][$this->aType]
+					'color' => ['#66be5e','#5dc3e9','#3757a7','#f15f7d','#fbc820'][$this->aType],
+					'view' => ['bei','pub','vorverleh','vorverleh','vorverleh'][$this->aType]
 				];
     }
 

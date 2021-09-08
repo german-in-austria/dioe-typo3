@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+
+<figure class="article-preview-img image border border-light">
+	<f:variable name="prevPic" value="{v:resource.file(identifier:'{dioeArticle.prevPic.originalResource.originalFile.uid}', treatIdAsUid: '1', onlyProperties: '1')}" />
+	<f:image src="{dioeArticle.prevPic.originalResource.originalFile.uid}"
+		alt="{f:if(condition: '{dioeArticle.prevPic.originalResource.title}', then: '{dioeArticle.prevPic.originalResource.title}', else: '{prevPic.alternative}')}"
+		title="{f:if(condition: '{dioeArticle.prevPic.originalResource.title}', then: '{dioeArticle.prevPic.originalResource.title}', else: '{prevPic.title}')}"
+		width="330{f:if(condition: '{dioeArticle.prevPicCroppingMode}', then: 'c')}" height="{f:if(condition: '{dioeArticle.prevPicCroppingMode}', then: '330c')}"
+	/>
+	<dioe:copyrights value="{f:if(condition: '{prevPic.copyright}', then: '{prevPic.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+</figure>

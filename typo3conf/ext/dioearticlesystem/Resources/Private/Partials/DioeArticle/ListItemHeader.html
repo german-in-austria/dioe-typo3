@@ -1,0 +1,11 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+
+<div class="article-preview-header d-md-flex" style="color:{f:if(condition: '{dioeArticle.tags.color}', then: '{dioeArticle.tags.color}', else: '{dioeArticle.aType.color}')};">
+	<h5>{dioeArticle.aHome.txt} – {dioeArticle.aTaskCluster.txtl} – {dioeArticle.aType.txt} {f:if(condition: '{dioeArticle.tags.html}', then: ' – {dioeArticle.tags.html -> f:format.raw()}')}</h5>
+	<div class="publishing-date ml-md-auto">{dioeArticle.aDate -> f:format.date(format: 'd')}. {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.monat_{dioeArticle.aDate -> f:format.date(format: \'m\')}')} {dioeArticle.aDate -> f:format.date(format: 'Y')}</div>
+</div>
+<h1 class="title">
+	<div class="article-preview-line" style="background:{f:if(condition: '{dioeArticle.tags.color}', then: '{dioeArticle.tags.color}', else: '{dioeArticle.aType.color}')};"></div>
+	{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}
+</h1>

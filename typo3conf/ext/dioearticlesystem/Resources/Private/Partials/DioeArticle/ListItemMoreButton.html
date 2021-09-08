@@ -1,0 +1,5 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+
+<f:link.action action="show" pageUid="{f:if(condition: '{settings.zSeite}', then: '{settings.zSeite}', else: '{settings.defaultPId}')}" arguments="{dioeArticle : dioeArticle}" class="btn btn-outline-secondary d-print-none mt-2">Beitrag anzeigen</f:link.action>
+<div class="d-none d-print-block mt-2">Artikel URL: {f:uri.action(absolute: '1', action:'show', pageUid:'{f:if(condition: \'{settings.zSeite}\', then: \'{settings.zSeite}\', else: \'{settings.defaultPId}\')}', arguments:'{dioeArticle : dioeArticle}')}</div>
