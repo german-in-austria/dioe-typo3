@@ -1,3 +1,39 @@
 .article-preview {
   margin-bottom: 3rem;
 }
+.article-preview h5 {
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
+  font-weight: 600;
+	text-align: left;
+}
+.article-preview .publishing-date {
+  position: relative;
+  font-size: 0.8em;
+  font-weight: 400;
+	text-align: left;
+}
+.article-preview h1.title {
+  line-height: 140%;
+  margin-top: 0;
+  font-size: 1.9em;
+  text-align: left;
+}
+.article-preview-line {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+  width: 0.6rem;
+  left: -2rem;
+}
+.article-preview-img {
+  max-width: 40%;
+  display: block;
+  margin-right: 2rem;
+	float: left;
+}
+.article-preview-img > img {
+	display: block;
+	width: 100%;
+	height: auto;
+}

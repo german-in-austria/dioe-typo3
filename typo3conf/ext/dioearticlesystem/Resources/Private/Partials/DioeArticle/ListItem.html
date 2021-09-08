@@ -1,22 +1,55 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
 
-<article class="article-preview" id="a{dioeArticle.uId}">
-	<f:link.action action="show" pageUid="{f:if(condition: '{settings.zSeite}', then: '{settings.zSeite}', else: '{settings.defaultPId}')}" arguments="{dioeArticle : dioeArticle}">
-		{dioeArticle.aHome.txt} -
-		{dioeArticle.aType.txt} -
-		{dioeArticle.aTaskCluster.txtl} -
-		{dioeArticle.aDate -> f:format.date()} -
-		{dioeArticle.prevTitle}, {dioeArticle.detailTitle} -
-		<!-- {dioeArticle.prevText}, {dioeArticle.detailText} - -->
-		{dioeArticle.startPin} -
-		{dioeArticle.catPin} -
-		<!-- {dioeArticle.prevPic.originalResource.name} -
-		{dioeArticle.prevPicCroppingMode} -
-		{dioeArticle.detailPic -> f:count()} -
-		{dioeArticle.detailPicCroppingMode} -->
-		Tags:
-		<f:for each="{dioeArticle.tags}" as="tag">
-			{tag.name},
-		</f:for>
-	</f:link.action>
+<article class="article-preview article-preview-layout-t{dioeArticle.layout} article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
+	<f:switch expression="{dioeArticle.layout}">
+		<f:case value="xxx">
+			xxx
+		</f:case>
+		<f:defaultCase>
+			<div class="article-preview-header d-md-flex" style="color:{f:if(condition: '{dioeArticle.tags.color}', then: '{dioeArticle.tags.color}', else: '{dioeArticle.aType.color}')};">
+				<h5>{dioeArticle.aHome.txt} – {dioeArticle.aTaskCluster.txtl} – {dioeArticle.aType.txt} {f:if(condition: '{dioeArticle.tags.html}', then: ' – {dioeArticle.tags.html -> f:format.raw()}')}</h5>
+				<div class="publishing-date ml-md-auto">{dioeArticle.aDate -> f:format.date(format: 'd')}. {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.monat_{dioeArticle.aDate -> f:format.date(format: \'m\')}')} {dioeArticle.aDate -> f:format.date(format: 'Y')}</div>
+			</div>
+			<h1 class="title">
+				<div class="article-preview-line" style="background:{f:if(condition: '{dioeArticle.tags.color}', then: '{dioeArticle.tags.color}', else: '{dioeArticle.aType.color}')};"></div>
+				{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}
+			</h1>
+			<div class="article-preview-content clearfix mt-3">
+				<f:if condition="{dioeArticle.prevPic.originalResource.name}">
+					<figure class="article-preview-img image border border-light">
+						<f:variable name="prevPic" value="{v:resource.file(identifier:'{dioeArticle.prevPic.originalResource.originalFile.uid}', treatIdAsUid: '1', onlyProperties: '1')}" />
+						<f:image src="{dioeArticle.prevPic.originalResource.originalFile.uid}"
+							alt="{f:if(condition: '{dioeArticle.prevPic.originalResource.title}', then: '{dioeArticle.prevPic.originalResource.title}', else: '{prevPic.alternative}')}"
+						  title="{f:if(condition: '{dioeArticle.prevPic.originalResource.title}', then: '{dioeArticle.prevPic.originalResource.title}', else: '{prevPic.title}')}"
+						  width="330{f:if(condition: '{dioeArticle.prevPicCroppingMode}', then: 'c')}" height="{f:if(condition: '{dioeArticle.prevPicCroppingMode}', then: '330c')}"
+						/>
+						<dioe:copyrights value="{f:if(condition: '{prevPic.copyright}', then: '{prevPic.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
+					</figure>
+				</f:if>
+				<f:if condition="{dioeArticle.prevText}">
+					<f:then><f:format.html>{dioeArticle.prevText}</f:format.html></f:then>
+					<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE"><dioe:removeTextSpezials value="{dioeArticle.detailText}" /></f:format.crop></f:format.html></f:else>
+				</f:if>
+			</div>
+			<f:link.action action="show" pageUid="{f:if(condition: '{settings.zSeite}', then: '{settings.zSeite}', else: '{settings.defaultPId}')}" arguments="{dioeArticle : dioeArticle}" class="btn btn-outline-secondary d-print-none mt-2">Beitrag anzeigen</f:link.action>
+			<div class="d-none d-print-block mt-2">Artikel URL: {f:uri.action(absolute: '1', action:'show', pageUid:'{f:if(condition: \'{settings.zSeite}\', then: \'{settings.zSeite}\', else: \'{settings.defaultPId}\')}', arguments:'{dioeArticle : dioeArticle}')}</div>
+			<!-- {dioeArticle.aHome.txt} -
+			{dioeArticle.aType.txt} -
+			{dioeArticle.aTaskCluster.txtl} -
+			{dioeArticle.aDate -> f:format.date()} -
+			{dioeArticle.prevTitle}, {dioeArticle.detailTitle} -
+			{dioeArticle.prevText}, {dioeArticle.detailText} -
+			{dioeArticle.startPin} -
+			{dioeArticle.catPin} -
+			{dioeArticle.prevPic.originalResource.name} -
+			{dioeArticle.prevPicCroppingMode} -
+			{dioeArticle.detailPic -> f:count()} -
+			{dioeArticle.detailPicCroppingMode}
+			Tags:
+			<f:for each="{dioeArticle.tags.array}" as="tag">
+				{tag.name},
+			</f:for> -->
+		</f:defaultCase>
+	</f:switch>
 </article>

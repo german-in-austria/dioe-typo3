@@ -610,7 +610,33 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getTags()
     {
-        return $this->tags;
+				$ttxt = '';
+				$thtml = '';
+				$dg = 0;
+				$tcolor = '';
+				$tarr = $this->tags->toArray();
+				foreach ($tarr as $tag) {
+					if ($dg > 0) {
+						if ($dg == count($tarr) - 1) {
+							$ttxt .= ' und ';
+							$thtml .= ' und ';
+						} else {
+							$ttxt .= ', ';
+							$thtml .= ', ';
+						}
+					} else {
+						$tcolor = $tag->getColor();
+					}
+					$ttxt .= $tag->getName();
+					$thtml .= '<span' . ($tag->getColor() ? ' style="color:' . $tag->getColor() . ';"' : '') . '>' . $tag->getName() . '</span>';
+					$dg += 1;
+				}
+        return [
+					'array' => $this->tags,
+					'txt' => $ttxt,
+					'html' => $thtml,
+					'color' => $tcolor
+				];
     }
 
     /**
@@ -1975,7 +2001,12 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getAType()
     {
-        return ['val' => $this->aType, 'txt' => ['Beitrag', 'Publikation', 'Vortrag', 'Veranstaltung', 'Lehre'][$this->aType], 'txtp' => ['Beiträge', 'Publikationen', 'Vorträge', 'Veranstaltungen', 'Lehren'][$this->aType]];
+        return [
+					'val' => $this->aType,
+					'txt' => ['Beitrag', 'Publikation', 'Vortrag', 'Veranstaltung', 'Lehre'][$this->aType],
+					'txtp' => ['Beiträge', 'Publikationen', 'Vorträge', 'Veranstaltungen', 'Lehren'][$this->aType],
+					'color' => ['#66be5e','#5dc3e9','#3757a7','#f15f7d','#fbc820'][$this->aType]
+				];
     }
 
 		/**

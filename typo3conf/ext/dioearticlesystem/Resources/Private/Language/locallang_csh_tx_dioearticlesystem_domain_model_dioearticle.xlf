@@ -16,12 +16,10 @@
 				<source>Überschrift (Muss angegeben werden.)</source>
 			</trans-unit>
 			<trans-unit id="prev_text.description" resname="prev_text.description">
-				<source>Text (Wenn leer wird der Text der Detailseite, in gekürzter Form, verwendet)
-</source>
+				<source>Text (Wenn leer wird der Text der Detailseite, in gekürzter Form, verwendet)</source>
 			</trans-unit>
 			<trans-unit id="a_task_cluster.description" resname="a_task_cluster.description">
-				<source>Kategorien (Einen Task-Cluster und ggf. eine weitere Kategorie auswählen.)
-</source>
+				<source>Kategorien (Einen Task-Cluster und ggf. eine weitere Kategorie auswählen.)</source>
 			</trans-unit>
 			<trans-unit id="start_pin.description" resname="start_pin.description">
 				<source>Auf Startseite Pinnen</source>
@@ -63,8 +61,7 @@
 				<source>Name (BE-User)</source>
 			</trans-unit>
 			<trans-unit id="z_name.description" resname="z_name.description">
-				<source>Name (Überschreibt obere Auswahl!)
-</source>
+				<source>Name (Überschreibt obere Auswahl!)</source>
 			</trans-unit>
 			<trans-unit id="z_title.description" resname="z_title.description">
 				<source>Titel (Sonst Überschrift vom Reiter "Übersicht")</source>

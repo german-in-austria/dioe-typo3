@@ -73,3 +73,24 @@ class CopyrightsViewHelper extends AbstractViewHelper
 			$alizenz . '</' . (($arguments['bild'] || $arguments['span']) ? 'span' : 'div') . '>';
 	}
 }
+
+// <dioe:removeTextSpezials />
+class RemoveTextSpezialsViewHelper extends AbstractViewHelper
+{
+	use CompileWithRenderStatic;
+
+	protected $escapeOutput = false;
+
+	public function initializeArguments()
+	{
+		$this->registerArgument('value', 'string', 'String remove Spezials.', false, null);
+	}
+
+	public static function renderStatic(
+		array $arguments,
+		\Closure $renderChildrenClosure,
+		RenderingContextInterface $renderingContext
+	) {
+		return preg_replace('/###img:.*?###/i', '', $arguments['value']);
+	}
+}

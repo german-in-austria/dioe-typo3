@@ -310,9 +310,10 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['Eins zu Eins (Standard)', 0],
-										['Wie Vorlage', 1],
+                    ['Eins zu Eins (Standard)', 1],
+										['Wie Vorlage', 0],
                 ],
+								'default' => 1,
                 'size' => 1,
                 'maxitems' => 1,
                 'eval' => ''
@@ -405,9 +406,10 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-									['Eins zu Eins (Standard)', 0],
-									['Wie Vorlage', 1],
+									['Eins zu Eins (Standard)', 1],
+									['Wie Vorlage', 0],
                 ],
+								'default' => 1,
                 'size' => 1,
                 'maxitems' => 1,
                 'eval' => ''

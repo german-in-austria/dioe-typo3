@@ -3,6 +3,42 @@
 	<file source-language="de" datatype="plaintext" original="EXT:dioearticlesystem/Resources/Private/Language/locallang" date="2021-03-09T10:22:07Z" product-name="dioearticlesystem">
 		<header/>
 		<body>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_01" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_01">
+				<source>Jänner</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_02" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_02">
+				<source>Februar</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_03" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_03">
+				<source>März</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_04" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_04">
+				<source>April</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_05" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_05">
+				<source>Mai</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_06" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_06">
+				<source>Juni</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_07" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_07">
+				<source>Juli</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_08" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_08">
+				<source>August</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_09" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_09">
+				<source>September</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_10" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_10">
+				<source>Oktober</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_11" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_11">
+				<source>November</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_12" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_12">
+				<source>Dezember</source>
+			</trans-unit>
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle" resname="tx_dioearticlesystem_domain_model_dioearticle">
 				<source>Dioe Article</source>
 			</trans-unit>
