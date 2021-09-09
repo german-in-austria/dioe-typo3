@@ -1659,6 +1659,38 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->meeTitel = $meeTitel;
     }
 
+		/**
+     * Returns the meeTimeText
+     *
+     * @return string $meeTimeText
+     */
+    public function getMeeTimeText()
+    {
+			// date('d.m.Y', $x)
+				$vTime = $this->meeTime->getTimestamp();
+				$bTime = $this->meeEndTime ? $this->meeEndTime->getTimestamp() : 0;
+				$vTimeFd = date('d.m.Y', $vTime);
+				$bTimeFd = date('d.m.Y', $bTime);
+				$txt = date($this->meeShowTime ? 'd.m.Y - H:i' : 'd.m.Y', $vTime);
+				if ($this->meeShowTime && $vTimeFd !== $bTimeFd) {
+					$txt .= ' Uhr';
+				}
+				if ($vTime < $bTime && ($this->meeShowTime || $vTimeFd !== $bTimeFd)) {
+					if ($vTimeFd !== $bTimeFd) {
+						$txt .= ' bis ';
+					}
+					$txt .= date($this->meeShowTime ? ($vTimeFd !== $bTimeFd ? 'd.m.Y - H:i' : '-H:i') : 'd.m.Y', $bTime);
+					if ($this->meeShowTime) {
+						$txt .= ' Uhr';
+					}
+				}
+				// $txt .= ' (' . $vTime . ', ' . $bTime . ', ' . $this->meeShowTime . ')';
+				if ($this->meePersonsSec) {
+					$txt = '(' . $txt . ')';
+				}
+        return $txt;
+    }
+
     /**
      * Returns the meeTime
      *
@@ -1907,7 +1939,20 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getMeePersonsSec()
     {
-				return XmlProcessor::xmlArray($this->meePersonsSec);
+				$mpsArray = XmlProcessor::xmlArray($this->meePersonsSec);
+				$mpstxt = '';
+				$dg = 0;
+				foreach ($mpsArray as $person) {
+					if ($dg > 0) {
+						$mpstxt .= ' / ';
+					}
+					$mpstxt .= $person['nachname'] . ', ' . $person['vorname'];
+					$dg += 1;
+				}
+				return [
+					'array' => $mpsArray,
+					'txt' => $mpstxt
+				];
     }
 
 		/**
@@ -1938,7 +1983,20 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getMeeOrganisersSec()
     {
-        return XmlProcessor::xmlArray($this->meeOrganisersSec);
+				$mosArray = XmlProcessor::xmlArray($this->meeOrganisersSec);
+				$mostxt = '';
+				$dg = 0;
+				foreach ($mosArray as $person) {
+					if ($dg > 0) {
+						$mostxt .= ', ';
+					}
+					$mostxt .= $person['vorname'] . ' ' . $person['nachname'];
+					$dg += 1;
+				}
+				return [
+					'array' => $mosArray,
+					'txt' => $mostxt
+				];
     }
 
     /**
@@ -1959,7 +2017,28 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getMeeOrganisationSec()
     {
-        return XmlProcessor::xmlArray($this->meeOrganisationSec);
+				$mosArray = XmlProcessor::xmlArray($this->meeOrganisationSec);
+				$mostxt = '';
+				$moshtml = '';
+				$dg = 0;
+				foreach ($mosArray as $org) {
+					if ($dg > 0) {
+						$mostxt .= ' / ';
+						$moshtml .= ' / ';
+					}
+					$mostxt .= $org['organisation'];
+					if ($org['url']) {
+						$moshtml .= '<a href="' . $org['url'] . '" target="_blank">' . $org['organisation'] . '</a>';
+					} else {
+						$moshtml .= $org['organisation'];
+					}
+					$dg += 1;
+				}
+				return [
+					'array' => $mosArray,
+					'txt' => $mostxt,
+					'html' => $moshtml
+				];
     }
 
     /**
@@ -1980,7 +2059,32 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getMeeParticipantsSec()
     {
-        return XmlProcessor::xmlArray($this->meeParticipantsSec);
+				$mosArray = XmlProcessor::xmlArray($this->meeParticipantsSec);
+				$mostxt = '';
+				$moshtml = '';
+				$dg = 0;
+				foreach ($mosArray as $org) {
+					if ($dg > 0) {
+						$mostxt .= ' / ';
+						$moshtml .= ' / ';
+					}
+					$mostxt .= $org['nachname'] . ', ' . $org['vorname'];
+					$moshtml .= $org['nachname'] . ', ' . $org['vorname'];
+					if ($org['institution']) {
+						$mostxt .= ' (' . $org['institution'] . ')';
+						if ($org['url']) {
+							$moshtml .= ' (<a href="' . $org['url'] . '" target="_blank">' . $org['institution'] . '</a>)';
+						} else {
+							$moshtml .= ' (' . $org['institution'] . ')';
+						}
+					}
+					$dg += 1;
+				}
+				return [
+					'array' => $mosArray,
+					'txt' => $mostxt,
+					'html' => $moshtml
+				];
     }
 
     /**

@@ -200,3 +200,15 @@ ol ol {
 	margin:-110px 0 0;
 	z-index: -10;
 }
+
+@media print {
+  a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
+    content: "";
+  }
+  .img > span.img-add.lizenz {
+    font-size: 14px !important;
+    color: #000 !important;
+    background-color: #fff !important;
+    opacity:1;
+  }
+}

@@ -13,7 +13,10 @@
 					pub - Publikation
 				</f:case>
 				<f:case value="vorverleh"> <f:comment>Vortrag, Veranstaltung, Lehre</f:comment>
-					vorverleh - {dioeArticle.aType.txt}
+					<ul class="termin-liste termin-einzeln">
+						<f:render partial="DioeArticle/ListItemTermin" arguments="{dioeArticle:dioeArticle, settings:settings}" />
+					</ul>
+					<f:render partial="DioeArticle/ListItemMoreButton" arguments="{dioeArticle:dioeArticle, settings:settings}" />
 				</f:case>
 				<f:defaultCase>
 					<div class="article-preview-content clearfix mt-3">

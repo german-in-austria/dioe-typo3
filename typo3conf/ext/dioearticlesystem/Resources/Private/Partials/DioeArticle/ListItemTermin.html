@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+<b>{dioeArticle.meePersonsSec.txt} {dioeArticle.meeTimeText}: {dioeArticle.meeTitel}.</b>
+<f:if condition="{dioeArticle.meeEvent}">
+	<f:then>({dioeArticle.meeEvent}<f:if condition="{dioeArticle.meeAdress}">, {dioeArticle.meeAdress}</f:if>)</f:then>
+	<f:else><f:if condition="{dioeArticle.meeAdress}">({dioeArticle.meeAdress})</f:if></f:else>
+</f:if>
+<f:if condition="{dioeArticle.meeOrganisersSec.array}"> Organisiert von {dioeArticle.meeOrganisersSec.txt}.</f:if>
+<f:if condition="{dioeArticle.meeOrganisationSec.array}"> Beteiligte Institutionen: {dioeArticle.meeOrganisationSec.html -> f:format.raw()}.</f:if>
+<f:if condition="{dioeArticle.meeParticipantsSec.array}"> Teilnehmer: {dioeArticle.meeParticipantsSec.html -> f:format.raw()}.</f:if>
+<f:if condition="{dioeArticle.meeNote}"> {dioeArticle.meeNote}</f:if>
+<f:if condition="{dioeArticle.meeUrl}">[URL: <a href="{dioeArticle.meeUrl}" target="_blank" class="hide-url-printer">{dioeArticle.meeUrl}</a>]</f:if>
+<f:if condition="{dioeArticle.meeDoi}">[DOI: {dioeArticle.meeDoi}]</f:if>
+<f:if condition="{dioeArticle.meeKeywords}">Schlagwörter:  {dioeArticle.meeKeywords}.</f:if>
