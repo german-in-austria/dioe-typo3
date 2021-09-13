@@ -75,7 +75,7 @@
 .publicationen-liste li:last-child {
   border-bottom: 0;
 }
-.publicationen-einzeln a, .termin-einzeln a {
+.publicationen-liste a, .termin-liste a {
   word-break: break-all;
 }
 .publicationen-einzeln .detaillnk, .termin-einzeln .detaillnk {

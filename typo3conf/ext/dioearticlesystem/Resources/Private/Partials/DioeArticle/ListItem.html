@@ -2,7 +2,7 @@
 {namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
 
 <article class="article-preview article-preview-layout-t{dioeArticle.layout} article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
-	<f:switch expression="{dioeArticle.layout}">
+	<f:switch expression="{layout}">
 		<f:case value="xxx">
 			xxx
 		</f:case>

@@ -7,6 +7,30 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
+										<settings.alayout>
+												<TCEforms>
+														<label>LLL:EXT:dioearticlesystem/Resources/Private/Language/locallang_db.xlf:tx_dioearticlesystem_domain_model_dioearticle.a_home</label>
+														<config>
+																<type>select</type>
+																<renderType>selectSingle</renderType>
+																<items>
+																	<numIndex index="0" type="array">
+																			<numIndex index="0">Standard</numIndex>
+																			<numIndex index="1">0</numIndex>
+																	</numIndex>
+																	<numIndex index="1" type="array">
+																			<numIndex index="0">Spezial: Publikationen</numIndex>
+																			<numIndex index="1">pubview</numIndex>
+																	</numIndex>
+																	<numIndex index="2" type="array">
+																			<numIndex index="0">Spezial: Termine</numIndex>
+																			<numIndex index="1">meeview</numIndex>
+																	</numIndex>
+																</items>
+																<default>0</default>
+														</config>
+												</TCEforms>
+										</settings.alayout>
 										<settings.ahome>
 												<TCEforms>
 														<label>LLL:EXT:dioearticlesystem/Resources/Private/Language/locallang_db.xlf:tx_dioearticlesystem_domain_model_dioearticle.a_home</label>

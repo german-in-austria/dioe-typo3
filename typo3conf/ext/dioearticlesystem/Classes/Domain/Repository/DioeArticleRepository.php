@@ -50,6 +50,103 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder)->count();
 		}
 
+		/**
+		 * Returns Count of filtered objects of this repository.
+		 *
+		 * @return array
+		 * @api
+		 */
+		public function pubViewFX($aLang = 0) {
+			$out = [];
+			$queryBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+			$yearsQ = $queryBuilder->select('pub_year')
+			    ->from('tx_dioearticlesystem_domain_model_dioearticle')
+			    ->groupBy('tx_dioearticlesystem_domain_model_dioearticle.pub_year')
+					->where(
+						$queryBuilder->expr()->gt('pub_year', 9),
+						$queryBuilder->expr()->eq('a_type', 1)
+					)
+			    ->orderBy('pub_year', 'desc')
+			    ->execute()->fetchAll();
+			$years = [0];
+			foreach ($yearsQ as $val) {
+				$years[] = $val['pub_year'];
+			}
+			foreach ($years as $year) {
+				$query = $this->createQuery();
+				$constraints = [];
+				$constraints[] = $query->equals('a_type', 1);
+				if ($year > 9) {
+					$constraints[] = $query->equals('pub_year', $year);
+				} else {
+					$constraints[] = $query->lessThan('pub_year', 10);
+				}
+				if ($aLang == 0 || $aLang == 1) {
+					$constraints[] = $query->logicalOr($query->equals('sys_language_uid', $aLang), $query->equals('sys_language_uid',-1));
+				}
+				if ($constraints) {
+					$query->matching($query->logicalAnd($constraints));
+				}
+				$out[] = [
+					'title' => ($year > 9 ? $year : ($aLang == 0 ? 'bevorstehend' : 'forthcoming')),
+					'array' => $query->execute()
+				];
+			}
+			return $out;
+		}
+
+		/**
+		 * Returns Count of filtered objects of this repository.
+		 *
+		 * @return array
+		 * @api
+		 */
+		public function meeViewFX($aLang = 0, $aType = 2) {
+			$out = [];
+			$queryBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
+			$yearsQ = $queryBuilder->addSelectLiteral("Year(FROM_UNIXTIME(mee_time)) as fxyear")
+			    ->from('tx_dioearticlesystem_domain_model_dioearticle')
+			    ->groupBy('fxyear')
+					->where(
+						$queryBuilder->expr()->eq('a_type', $aType),
+						$queryBuilder->expr()->lt('mee_time', 'UNIX_TIMESTAMP(NOW())')
+					)
+			    ->orderBy('fxyear', 'desc')
+			    ->execute()->fetchAll();
+			$years = [0];
+			foreach ($yearsQ as $val) {
+				$years[] = $val['fxyear'];
+			}
+			$nDate = new \DateTime();
+			foreach ($years as $year) {
+				$query = $this->createQuery();
+				$constraints = [];
+				$constraints[] = $query->equals('a_type', $aType);
+				if ($year > 9) {
+					$vDate = new \DateTime(strval($year) . '-01-01 00:00');
+					$bDate = new \DateTime(strval($year + 1) . '-01-01 00:00');
+					if ($bDate > $nDate) {
+						$bDate = $nDate;
+					}
+					$constraints[] = $query->logicalAnd($query->greaterThanOrEqual('mee_time', $vDate), $query->lessThan('mee_time', $bDate));
+				} else {
+					$constraints[] = $query->greaterThan('mee_time', $nDate);
+				}
+				if ($aLang == 0 || $aLang == 1) {
+					$constraints[] = $query->logicalOr($query->equals('sys_language_uid', $aLang), $query->equals('sys_language_uid',-1));
+				}
+				if ($constraints) {
+					$query->matching($query->logicalAnd($constraints));
+				}
+				$query->setOrderings(['mee_time' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
+				$out[] = [
+					'title' => ($year > 9 ? $year : ($aLang == 0 ? 'geplant' : 'planned')),
+					'array' => $query->execute()
+				];
+			}
+			return $out;
+		}
+
 		public function filteredFunc($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
 	    $query = $this->createQuery();
 			$constraints = [];

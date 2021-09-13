@@ -39,19 +39,58 @@ This template is responsible for creating a table of domain objects.
 			</f:form>
 		</div>
 	</f:if>
-	<section id="al{cObj.uid}" class="article-list{f:if(condition:'{settings.aclass}', then:' {settings.aclass}')}">
-		<f:if condition="{dioeArticles}">
-			<f:then>
-				<f:for each="{dioeArticles}" as="dioeArticle">
-					<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
-			  </f:for>
-				<f:if condition="{settings.aajax} && {dioeArticles}">
-					<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + 1}\', dasuid: cObj.uid, sacluster: args.sacluster, satype: args.satype, saorder: args.saorder}')}">
-						Weitere Artikel ...
-					</div>
+	<f:switch expression="{layout}">
+		<f:case value="xxx">
+			xxx
+		</f:case>
+		<f:case value="pubview">
+			<section id="pl{cObj.uid}" class="publication-lists{f:if(condition:'{settings.aclass}', then:' {settings.aclass}')}">
+				<f:for each="{dioeArticlesArray}" as="dioeArticleArray">
+					<f:if condition="{dioeArticleArray.array}">
+						<section class="publication-list">
+							<h2 class="text-center my-4">{dioeArticleArray.title}</h2>
+							<ul class="publicationen-liste">
+								<f:for each="{dioeArticleArray.array}" as="dioeArticle">
+									<f:render partial="DioeArticle/ListItemPublikation" arguments="{dioeArticle:dioeArticle, settings:settings, layout: layout}" />
+								</f:for>
+							</ul>
+						</section>
+					</f:if>
+				</f:for>
+			</section>
+		</f:case>
+		<f:case value="meeview">
+			<section id="ml{cObj.uid}" class="termin-lists{f:if(condition:'{settings.aclass}', then:' {settings.aclass}')}">
+				<f:for each="{dioeArticlesArray}" as="dioeArticleArray">
+					<f:if condition="{dioeArticleArray.array}">
+						<section class="termin-list">
+							<h2 class="text-center my-4">{dioeArticleArray.title}</h2>
+							<ul class="termin-liste">
+								<f:for each="{dioeArticleArray.array}" as="dioeArticle">
+									<f:render partial="DioeArticle/ListItemTermin" arguments="{dioeArticle:dioeArticle, settings:settings, layout: layout}" />
+								</f:for>
+							</ul>
+						</section>
+					</f:if>
+				</f:for>
+			</section>
+		</f:case>
+		<f:defaultCase>
+			<section id="al{cObj.uid}" class="article-list{f:if(condition:'{settings.aclass}', then:' {settings.aclass}')}">
+				<f:if condition="{dioeArticles}">
+					<f:then>
+						<f:for each="{dioeArticles}" as="dioeArticle">
+							<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle, layout:layout}" />
+					  </f:for>
+						<f:if condition="{settings.aajax} && {dioeArticles}">
+							<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + 1}\', dasuid: cObj.uid, sacluster: args.sacluster, satype: args.satype, saorder: args.saorder}')}">
+								Weitere Artikel ...
+							</div>
+						</f:if>
+					</f:then>
 				</f:if>
-			</f:then>
-		</f:if>
-	</section>
+			</section>
+		</f:defaultCase>
+	</f:switch>
 </f:section>
 </html>
