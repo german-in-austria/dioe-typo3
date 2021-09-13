@@ -187,6 +187,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      */
     public function belistAction()
     {
+				$entriesPerPage = 50;
 				$sPid = $GLOBALS['_GET']['id'];
 				$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
 				$configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
@@ -212,10 +213,21 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 				if ((gettype($args['satag']) == 'string' || gettype($args['satag']) == 'integer') && (int)$args['satag'] >= 0) {
 					$saTag = (int)$args['satag'];
 				}
+				$saPage = -1;
+				if ((gettype($args['sapage']) == 'string' || gettype($args['sapage']) == 'integer') && (int)$args['sapage'] >= 0) {
+					$saPage = (int)$args['sapage'] * $entriesPerPage;
+				}
 				$saCluster = $args['sacluster'];
 				$saLang = $args['salang'] ?? 0;
-				$dioeArticles = $this->dioeArticleRepository->filtered(true, $saType, $saTag, $saHome, $saCluster, $saLang);
+				$dioeArticles = $this->dioeArticleRepository->filtered(true, $saType, $saTag, $saHome, $saCluster, $saLang, $entriesPerPage, $saPage);
+				$dioeArticlesCount = $this->dioeArticleRepository->filteredCount(true, $saType, $saTag, $saHome, $saCluster, $saLang);
         $this->view->assign('dioeArticles', $dioeArticles);
+				$this->view->assign('dioeArticlesCount', $dioeArticlesCount);
+				$pageSelect = [];
+				foreach(range(0, ceil($dioeArticlesCount / $entriesPerPage) - 1) as $number) {
+				    $pageSelect[$number] = $number + 1;
+				}
+				$this->view->assign('pageSelect', $pageSelect);
 				$artikelTags = $this->artikelTagsRepository->findAll();
         $this->view->assign('artikelTags', $artikelTags);
     }

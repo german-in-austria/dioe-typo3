@@ -13,7 +13,9 @@
 		<f:form.select name="satag" value="{args.satag}" options="{artikelTags}" optionValueField="uid" optionLabelField="name" prependOptionValue="-1" prependOptionLabel="Alle Tags" />
 		<f:form.select name="sacluster" value="{args.sacluster}" options="{-1:'Alle Cluster', 'a':'TCA', 'b':'TCB', 'c':'TCC', 'd':'TCD', 'e':'TCE', 'sfb':'SFB'}" />
 		<f:form.select name="salang" value="{args.salang}" options="{0:'Deutsch', 1:'Englisch', -1:'Alle Sprachen'}" />
+		Seite: <f:form.select name="sapage" value="{args.sapage}" options="{pageSelect}" />
 		<button>Filtern</button>
+		Artikel: {dioeArticlesCount}
 	</f:form>
 	<br>
 

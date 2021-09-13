@@ -37,6 +37,20 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @api
 		 */
 		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
+	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder)->execute();
+		}
+
+		/**
+		 * Returns Count of filtered objects of this repository.
+		 *
+		 * @return int
+		 * @api
+		 */
+		public function filteredCount($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
+	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder)->count();
+		}
+
+		public function filteredFunc($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
 	    $query = $this->createQuery();
 			$constraints = [];
 			if ($be) {
@@ -105,7 +119,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			if ($aOrder > 0) {
 				$query->setOrderings(['aDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
 			}
-	    return $query->execute();
+	    return $query;
 		}
 
 		public function findHiddenByUid($uid) {
