@@ -60,6 +60,24 @@
 .termin-liste li:last-child {
   border-bottom: 0;
 }
-.publicationen-einzeln, .termin-einzeln a {
+.publicationen-liste li {
+  line-height: 1.25em;
+  text-indent: -1em;
+  list-style-type: none;
+  padding: 2em 2em 2em 3em;
+  position: relative;
+  text-align: justify;
+  border-bottom: 3px solid #f4f4f4;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.publicationen-liste li:last-child {
+  border-bottom: 0;
+}
+.publicationen-einzeln a, .termin-einzeln a {
   word-break: break-all;
+}
+.publicationen-einzeln .detaillnk, .termin-einzeln .detaillnk {
+  display: none;
 }

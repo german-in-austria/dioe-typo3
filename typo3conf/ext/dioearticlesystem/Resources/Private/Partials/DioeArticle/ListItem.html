@@ -9,10 +9,21 @@
 		<f:defaultCase>
 			<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
 			<f:switch expression="{dioeArticle.aType.view}">
-				<f:case value="pub"> <f:comment>Vortrag, Veranstaltung</f:comment>
-					pub - Publikation
+				<f:case value="pub"> <f:comment>Publikation</f:comment>
+					<f:if condition="{dioeArticle.prevText}">
+						<f:then><f:format.html>{dioeArticle.prevText}</f:format.html></f:then>
+						<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE"><dioe:removeTextSpezials value="{dioeArticle.detailText}" /></f:format.crop></f:format.html></f:else>
+					</f:if>
+					<ul class="publicationen-liste publicationen-einzeln">
+						<f:render partial="DioeArticle/ListItemPublikation" arguments="{dioeArticle:dioeArticle, settings:settings}" />
+					</ul>
+					<f:render partial="DioeArticle/ListItemMoreButton" arguments="{dioeArticle:dioeArticle, settings:settings}" />
 				</f:case>
 				<f:case value="vorverleh"> <f:comment>Vortrag, Veranstaltung, Lehre</f:comment>
+					<f:if condition="{dioeArticle.prevText}">
+						<f:then><f:format.html>{dioeArticle.prevText}</f:format.html></f:then>
+						<f:else><f:format.html><f:format.crop maxCharacters="440" respectWordBoundaries="TRUE"><dioe:removeTextSpezials value="{dioeArticle.detailText}" /></f:format.crop></f:format.html></f:else>
+					</f:if>
 					<ul class="termin-liste termin-einzeln">
 						<f:render partial="DioeArticle/ListItemTermin" arguments="{dioeArticle:dioeArticle, settings:settings}" />
 					</ul>

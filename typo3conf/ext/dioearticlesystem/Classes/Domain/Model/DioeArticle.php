@@ -1218,6 +1218,135 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->pDuration = $pDuration;
     }
 
+		/**
+		 * Returns the pubBibTex
+		 *
+		 * @return string $pubBibTex
+		 */
+		public function getPubBibTex()
+		{
+				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
+				$sys_language_uid = $languageAspect->getId();
+				$txt = '';
+				// Authoren und Editoren
+				$pae = $this->getPubEditorsSec();
+				$txt .= htmlspecialchars($pae['txtAuthor']);
+				if ($this->pubType !== 3 && strlen($pae['txtEditor']) > 0) {
+					if (strlen($pae['txtAuthor']) > 0 && strlen($pae['txtEditor']) > 0) {
+						$txt .= ' / ';
+					}
+					$txt .= htmlspecialchars($pae['txtEditor']) . ' (Hg.)';
+				}
+				if (strlen($pae['txtAuthor']) > 0 || strlen($pae['txtEditor']) > 0) {
+					$txt .= ' ';
+				}
+				// Zeitraum
+				if ($this->pubYear > 9) {
+					$txt .= '(' . $this->pubYear . '): ';
+				} else {
+					$langtxt = $sys_language_uid == 0 ? ['in Planung', 'in Druck', 'eingereicht', 'in Vorbereitung']
+					 																	: ['in planning', 'in print', 'submitted', 'in preparation'];
+					$txt .= '(' . (@$langtxt[$this->pubYear] ?: 'unbekannt') . '): ';
+				}
+				$txt .= $this->pubTitle . '. ';
+				if ($this->pubType == 6) {
+					$txt .= '[unveröffentlicht]';
+				} else {
+					if (in_array($this->pubType, [1, 3])) {
+						$txt .= 'In: ';
+					}
+					if ($this->pubType == 1) {
+						$txt .= htmlspecialchars($this->pubJournal) . ' ';
+					}
+					if ($this->pubType == 3) {
+						$txt .= htmlspecialchars($pae['txtEditor']) . ': ';
+						if ($this->pubBooktitle && strlen($this->pubBooktitle) > 0) {
+							$txt .= htmlspecialchars($this->pubBooktitle) . ' ';
+						}
+					}
+					if (in_array($this->pubType, [1, 2, 3]) && $this->pubVolume && strlen($this->pubVolume) > 0) {
+						$txt .= ($sys_language_uid == 0 ? 'Band ' : 'volume ') . htmlspecialchars($this->pubVolume) . '. ';
+					}
+					if (in_array($this->pubType, [2, 3]) && $this->pubEdition && strlen($this->pubEdition) > 0) {
+						$txt .= htmlspecialchars($this->pubEdition) . ' ';
+					}
+					if ($this->pubType == 1 && $this->pubNumber && strlen($this->pubNumber) > 0) {
+						$txt .= htmlspecialchars($this->pubNumber) . ($this->pubPages && strlen($this->pubPages) > 0 ? ', ' : ' ');
+					}
+					if ($this->pubType == 1 && $this->pubPages && strlen($this->pubPages) > 0) {
+						$txt .= htmlspecialchars($this->pubPages) . ' ';
+					}
+					if (in_array($this->pubType, [2, 3]) && $this->pubAddress && strlen($this->pubAddress) > 0) {
+						$txt .= htmlspecialchars($this->pubAddress) . ': ';
+					}
+					if ($this->pubType == 2 && $this->pubPublisher && strlen($this->pubPublisher) > 0) {
+						$txt .= htmlspecialchars($this->pubPublisher) . '. ';
+					}
+					if ($this->pubType == 2 && $this->pubSeries && strlen($this->pubSeries) > 0) {
+						$txt .= htmlspecialchars($this->pubSeries);
+						if ($this->pubNumber && strlen($this->pubNumber) > 0) {
+							$txt .= ' ' . htmlspecialchars($this->pubNumber);
+						}
+						$txt .= '. ';
+					}
+					if ($this->pubType == 3 && $this->pubPublisher && strlen($this->pubPublisher) > 0) {
+						$txt .= htmlspecialchars($this->pubPublisher) . ' ';
+					}
+					if ($this->pubType == 3) {
+						if ($this->pubSeries && strlen($this->pubSeries) > 0) {
+							$txt .= '(' . htmlspecialchars($this->pubSeries);
+							if ($this->pubNumber && strlen($this->pubNumber) > 0) {
+								$txt .= ' ' . htmlspecialchars($this->pubNumber);
+							}
+							$txt .= ')';
+						}
+						if ($this->pubPages && strlen($this->pubPages) > 0) {
+							$txt .= ' ' . htmlspecialchars($this->pubPages);
+						}
+						$txt .= '. ';
+					}
+					if (in_array($this->pubType, [4, 5, 45]) && $this->pubSchool && strlen($this->pubSchool) > 0) {
+						$txt .= '[' . ($this->pubType == 4 ? 'Abschlussarbeit' : 'Dissertation') . ' ' . htmlspecialchars($this->pubSchool) . '.';
+						if ($this->pubAddress && strlen($this->pubAddress) > 0) {
+							$txt .= ' ' . htmlspecialchars($this->pubAddress);
+						}
+						$txt .= '] ';
+					}
+					if ($this->pubType == 7 && $this->pubUrl && strlen($this->pubUrl) > 0) {
+						$txt .= 'URL: <a href="' . $this->pubUrl . '" target="_BLANK" class="hide-url-printer">' . htmlspecialchars($this->pubUrl) . '</a> ';
+						if ($this->pubUrlDate) {
+							$pud = $this->pubUrlDate ? $this->pubUrlDate->getTimestamp() : 0;
+							$txt .= '(' . date('d.m.Y', $pud) . ') ';
+						}
+					}
+					if ($this->pubNote && strlen($this->pubNote) > 0) {
+						$txt .= htmlspecialchars($this->pubNote) . '. ';
+					}
+					if (in_array($this->pubType, [1, 2, 3]) && $this->pubIsbn && strlen($this->pubIsbn) > 0) {
+						$txt .= '[ISBN: ' . htmlspecialchars($this->pubIsbn) . '] ';
+					}
+					if ($this->pubDoi && strlen($this->pubDoi) > 0) {
+						$txt .= '[DOI: ';
+						if (str_starts_with($this->pubDoi, 'http')) {
+							$txt .= '<a href="' . $this->pubDoi . '" target="_BLANK" class="hide-url-printer">' . htmlspecialchars($this->pubDoi) . '</a>';
+						} else {
+							$txt .= htmlspecialchars($this->pubDoi);
+						}
+						$txt .= '] ';
+					}
+					if ($this->pubType !== 7 && $this->pubUrl && strlen($this->pubUrl) > 0) {
+						$txt .= '[URL: <a href="' . $this->pubUrl . '" target="_BLANK" class="hide-url-printer">' . htmlspecialchars($this->pubUrl) . '</a>] ';
+					}
+					if ($this->pubType == 7) {
+						$txt .= '[Online-Publikation]';
+					}
+				}
+				// if ($this->pubKeywords) {
+				// 	$txt .= ' Schlagwörter: ' . $this->pubKeywords . '.';
+				// }
+				return $txt;
+		}
+
     /**
      * Returns the pubType
      *
@@ -1225,7 +1354,10 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getPubType()
     {
-        return $this->pubType;
+				return [
+					'val' => $this->pubType,
+					'txt' => @['unbekannt', 'article', 'book', 'inbook', 'masterthesis', 'phdthesis', 'unpublished', 'online'][$this->pubType] ?: 'unbekannt'
+				];
     }
 
     /**
@@ -1911,14 +2043,46 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->meeKeywords = $meeKeywords;
     }
 
-    /**
+	    /**
      * Returns the pubEditorsSec
      *
      * @return array $pubEditorsSec
      */
     public function getPubEditorsSec()
     {
-        return XmlProcessor::xmlArray($this->pubEditorsSec);
+				$pesArray = XmlProcessor::xmlArray($this->pubEditorsSec);
+				$pestxtAll = '';
+				$pestxtEditor = '';
+				$pestxtAuthor = '';
+				$dg = 0;
+				$dgA = 0;
+				$dgE = 0;
+				foreach ($pesArray as $person) {
+					if ($dg > 0) {
+						$pestxtAll .= ' / ';
+					}
+					$pestxtAll .= $person['authorNachname'] . ', ' . $person['authorVorname'];
+					if ($person['authorIsEditor']) {
+						if ($dgE > 0) {
+							$pestxtEditor .= ' / ';
+						}
+						$pestxtEditor .= $person['authorNachname'] . ', ' . $person['authorVorname'];
+						$dgE += 1;
+					} else {
+						if ($dgA > 0) {
+							$pestxtAuthor .= ' / ';
+						}
+						$pestxtAuthor .= $person['authorNachname'] . ', ' . $person['authorVorname'];
+						$dgA += 1;
+					}
+					$dg += 1;
+				}
+				return [
+					'array' => $pesArray,
+					'txtAll' => $pestxtAll,
+					'txtAuthor' => $pestxtAuthor,
+					'txtEditor' => $pestxtEditor
+				];
     }
 
     /**

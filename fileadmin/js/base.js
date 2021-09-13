@@ -17,23 +17,30 @@
 			});
 		}
 	};
+	const alfilter = function (e, nThis) {
+		var form = nThis ? $(nThis) : $(this).parents('form');
+		var fData = {};
+		form.find('input, select').each(function () {
+			fData[$(this).attr('name')] = $(this).val();
+		});
+		// console.log('filter ...', fData);
+		$.post(form.attr('action'), fData).done(function (data) {
+			$(form.parent().data('target')).html($(data).find('.das-ajax').children());
+			scrollAln();
+		});
+	};
 	jQuery(document).ready(function ($) {
 		if ($('.article-list-next').length > 0) {
 			$(window).scroll(scrollAln);
 			scrollAln();
-			$(document).on('change', 'form.article-list-filter select', function (event) {
-				var form = $(this).parents('form');
-				var fData = {};
-				form.find('input, select').each(function () {
-					fData[$(this).attr('name')] = $(this).val();
+			if ($('form.article-list-filter').length > 0) {
+				$(document).on('change', 'form.article-list-filter select', alfilter);
+				$('form.article-list-filter').each(function () {
+					if ($(this).find('[name="tx_dioearticlesystem_view[sacluster]"]').val() !== '-1' || $(this).find('[name="tx_dioearticlesystem_view[satype]"]').val() !== '-1' || $(this).find('[name="tx_dioearticlesystem_view[saorder]"]').val() !== '0') {
+						alfilter(null, this);
+					}
 				});
-				// console.log(fData);
-				$.post(form.attr('action'), fData).done(function (data) {
-					// console.log(data);
-					$(form.parent().data('target')).html($(data).find('.das-ajax').children());
-					scrollAln();
-				});
-			});
+			}
 		}
 	});
 })(jQuery);
