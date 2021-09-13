@@ -40,13 +40,17 @@ This template is responsible for creating a table of domain objects.
 		</div>
 	</f:if>
 	<section id="al{cObj.uid}" class="article-list{f:if(condition:'{settings.aclass}', then:' {settings.aclass}')}">
-	  <f:for each="{dioeArticles}" as="dioeArticle">
-			<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
-	  </f:for>
-		<f:if condition="{settings.aajax} && {dioeArticles}">
-			<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + 1}\', dasuid: cObj.uid, sacluster: args.sacluster, satype: args.satype, saorder: args.saorder}')}">
-				Weitere Artikel ...
-			</div>
+		<f:if condition="{dioeArticles}">
+			<f:then>
+				<f:for each="{dioeArticles}" as="dioeArticle">
+					<f:render partial="DioeArticle/ListItem" arguments="{dioeArticle:dioeArticle}" />
+			  </f:for>
+				<f:if condition="{settings.aajax} && {dioeArticles}">
+					<div class="article-list-next" data-url="{f:uri.action(action: 'ajax', pageType: '7837626199', arguments: '{start: \'{settings.amax + 1}\', dasuid: cObj.uid, sacluster: args.sacluster, satype: args.satype, saorder: args.saorder}')}">
+						Weitere Artikel ...
+					</div>
+				</f:if>
+			</f:then>
 		</f:if>
 	</section>
 </f:section>

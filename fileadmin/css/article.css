@@ -37,3 +37,29 @@
 	width: 100%;
 	height: auto;
 }
+
+.publicationen-einzeln, .termin-einzeln {
+  display: block;
+  display: -webkit-box;
+  list-style: none;
+  padding: 10px 15px;
+  margin: 20px 0px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.8em;
+  line-height: 1.4;
+}
+.termin-liste li {
+  list-style-type: none;
+  padding: 2em;
+  border-bottom: 3px solid #f4f4f4;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.termin-liste li:last-child {
+  border-bottom: 0;
+}
+.publicationen-einzeln, .termin-einzeln a {
+  word-break: break-all;
+}
