@@ -66,7 +66,7 @@
 				</td>
 				<td><core:icon identifier="{f:if(condition: '{dioeArticle._languageUid}', then: '{f:if(condition: \'{dioeArticle._languageUid}==1\', then: \'flags-en-us-gb\', else: \'flags-multiple\')}', else: 'flags-at')}"/></td>
 				<td>{dioeArticle.detailPic -> f:count()}</td>
-        <td><v:math.sum a="{0: '{dioeArticle.avFiles -> f:count()}', 1: '{dioeArticle.fFiles -> f:count()}', 2: '{dioeArticle.pFile -> f:count()}'}"/></td>
+        <td><v:math.sum a="{0: '{dioeArticle.fFiles -> f:count()}', 1: '{dioeArticle.pFile -> f:count()}'}"/></td>
 				<td>
 					<!-- <f:link.action action="show" arguments="{dioeArticle : dioeArticle}"><core:icon identifier="actions-view-page"/></f:link.action> -->
 					<a href="{be:uri.editRecord(uid:dioeArticle.uid, table:'tx_dioearticlesystem_domain_model_dioearticle', returnUrl:'{returnUrl}')}" title="uid: {dioeArticle.uid}"><core:icon identifier="actions-document-edit"/></a>

@@ -119,11 +119,7 @@
 			<f:translate key="tx_dioearticlesystem_domain_model_dioearticle.av_files" />
 		</td>
 		<td>
-				<f:for each="{dioeArticle.avFiles}" as="file" >
-					<a href="{file.originalResource.publicUrl}">
-						{file.originalResource.name}
-					</a>
-				</f:for>
+				{dioeArticle.avFiles}
 		</td>
 	</tr>
 	<tr>

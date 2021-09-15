@@ -159,8 +159,7 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Dateien
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @var string
      */
     protected $avFiles = null;
 
@@ -539,7 +538,6 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function initializeObject()
     {
         $this->detailPic = $this->detailPic ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        // $this->avFiles = $this->avFiles ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->fFiles = $this->fFiles ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 				$this->tags = $this->tags ?: new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
@@ -614,22 +612,24 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 				$thtml = '';
 				$dg = 0;
 				$tcolor = '';
-				$tarr = $this->tags->toArray();
-				foreach ($tarr as $tag) {
-					if ($dg > 0) {
-						if ($dg == count($tarr) - 1) {
-							$ttxt .= ' und ';
-							$thtml .= ' und ';
+				if ($this->tags) {
+					$tarr = $this->tags->toArray();
+					foreach ($tarr as $tag) {
+						if ($dg > 0) {
+							if ($dg == count($tarr) - 1) {
+								$ttxt .= ' und ';
+								$thtml .= ' und ';
+							} else {
+								$ttxt .= ', ';
+								$thtml .= ', ';
+							}
 						} else {
-							$ttxt .= ', ';
-							$thtml .= ', ';
+							$tcolor = $tag->getColor();
 						}
-					} else {
-						$tcolor = $tag->getColor();
+						$ttxt .= $tag->getName();
+						$thtml .= '<span' . ($tag->getColor() ? ' style="color:' . $tag->getColor() . ';"' : '') . '>' . $tag->getName() . '</span>';
+						$dg += 1;
 					}
-					$ttxt .= $tag->getName();
-					$thtml .= '<span' . ($tag->getColor() ? ' style="color:' . $tag->getColor() . ';"' : '') . '>' . $tag->getName() . '</span>';
-					$dg += 1;
 				}
         return [
 					'array' => $this->tags,

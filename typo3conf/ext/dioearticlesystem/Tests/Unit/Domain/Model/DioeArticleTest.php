@@ -421,69 +421,6 @@ class DioeArticleTest extends UnitTestCase
     /**
      * @test
      */
-    public function getAvFilesReturnsInitialValueForFileReference()
-    {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getAvFiles()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setAvFilesForFileReferenceSetsAvFiles()
-    {
-        $avFile = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $objectStorageHoldingExactlyOneAvFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneAvFiles->attach($avFile);
-        $this->subject->setAvFiles($objectStorageHoldingExactlyOneAvFiles);
-
-        self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneAvFiles,
-            'avFiles',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function addAvFileToObjectStorageHoldingAvFiles()
-    {
-        $avFile = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $avFilesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $avFilesObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($avFile));
-        $this->inject($this->subject, 'avFiles', $avFilesObjectStorageMock);
-
-        $this->subject->addAvFile($avFile);
-    }
-
-    /**
-     * @test
-     */
-    public function removeAvFileFromObjectStorageHoldingAvFiles()
-    {
-        $avFile = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $avFilesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $avFilesObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($avFile));
-        $this->inject($this->subject, 'avFiles', $avFilesObjectStorageMock);
-
-        $this->subject->removeAvFile($avFile);
-    }
-
-    /**
-     * @test
-     */
     public function getAvColsReturnsInitialValueForInt()
     {
         self::assertSame(
