@@ -31,7 +31,7 @@
 			<f:if condition="{dioeArticle.meeUrl}">[URL: <a href="{dioeArticle.meeUrl}" target="_blank" class="hide-url-printer">{dioeArticle.meeUrl}</a>]</f:if>
 			<f:if condition="{dioeArticle.meeDoi}">[DOI: {dioeArticle.meeDoi}]</f:if>
 			<f:if condition="{dioeArticle.meeKeywords}">Schlagwörter:  {dioeArticle.meeKeywords}.</f:if>
-			<span class="detaillnk d-print-none">[ToDo: Link zu Detailseite]</span>
+			<f:render partial="DioeArticle/ListItemMoreButton" arguments="{dioeArticle:dioeArticle, settings:settings, icon: 1}" />
 		</f:else>
 	</f:if>
 </li>

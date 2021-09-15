@@ -2,6 +2,6 @@
 {namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
 <li class="typ-{dioeArticle.pubType.txt}">
 	{dioeArticle.pubBibTex -> f:format.raw()}
-	<span class="detaillnk d-print-none">[ToDo: Link zu Detailseite]</span>
-	<span class="d-print-none">[ToDo: Link zu BibTex]</span>
+	<f:render partial="DioeArticle/ListItemMoreButton" arguments="{dioeArticle:dioeArticle, settings:settings, icon: 1}" />
+	<span class="detaillnk d-print-none">[ToDo: Link zu BibTex]</span>
 </li>
