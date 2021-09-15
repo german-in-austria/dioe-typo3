@@ -67,7 +67,7 @@ This template is responsible for creating a table of domain objects.
 							<h2 class="text-center my-4">{dioeArticleArray.title}</h2>
 							<ul class="termin-liste">
 								<f:for each="{dioeArticleArray.array}" as="dioeArticle">
-									<f:render partial="DioeArticle/ListItemTermin" arguments="{dioeArticle:dioeArticle, settings:settings, layout: layout}" />
+									<f:render partial="DioeArticle/ListItemTermin" arguments="{dioeArticle:dioeArticle, settings:settings, layout: layout, settings: settings}" />
 								</f:for>
 							</ul>
 						</section>

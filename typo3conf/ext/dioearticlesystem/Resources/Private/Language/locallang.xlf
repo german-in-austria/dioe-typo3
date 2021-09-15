@@ -3,6 +3,24 @@
 	<file source-language="de" datatype="plaintext" original="EXT:dioearticlesystem/Resources/Private/Language/locallang" date="2021-03-09T10:22:07Z" product-name="dioearticlesystem">
 		<header/>
 		<body>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.teilnehmer" resname="tx_dioearticlesystem_domain_model_dioearticle.teilnehmer">
+				<source>Teilnehmer</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.beteiligte_institutionen" resname="tx_dioearticlesystem_domain_model_dioearticle.beteiligte_institutionen">
+				<source>Beteiligte Institutionen</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.organisiert_von" resname="tx_dioearticlesystem_domain_model_dioearticle.organisiert_von">
+				<source>Organisiert von</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.ort" resname="tx_dioearticlesystem_domain_model_dioearticle.ort">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.personen" resname="tx_dioearticlesystem_domain_model_dioearticle.personen">
+				<source>Personen</source>
+			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.zeit" resname="tx_dioearticlesystem_domain_model_dioearticle.zeit">
+				<source>Zeit</source>
+			</trans-unit>
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.monat_01" resname="tx_dioearticlesystem_domain_model_dioearticle.monat_01">
 				<source>Jänner</source>
 			</trans-unit>

@@ -1804,6 +1804,8 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 				$vTimeFd = date('d.m.Y', $vTime);
 				$bTimeFd = date('d.m.Y', $bTime);
 				$txt = date($this->meeShowTime ? 'd.m.Y - H:i' : 'd.m.Y', $vTime);
+				$sTxt = $txt;
+				$eTxt = $bTime > 0 ? date($this->meeShowTime ? 'd.m.Y - H:i' : 'd.m.Y', $bTime) : '';
 				if ($this->meeShowTime && $vTimeFd !== $bTimeFd) {
 					$txt .= ' Uhr';
 				}
@@ -1820,7 +1822,11 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 				if ($this->meePersonsSec) {
 					$txt = '(' . $txt . ')';
 				}
-        return $txt;
+        return [
+					'all' => $txt,
+					'start' => $sTxt,
+					'end' => $eTxt
+				];
     }
 
     /**

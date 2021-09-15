@@ -1,17 +1,37 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 {namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
 <li>
-	<b>{dioeArticle.meePersonsSec.txt} {dioeArticle.meeTimeText}: {dioeArticle.meeTitel}.</b>
-	<f:if condition="{dioeArticle.meeEvent}">
-		<f:then>({dioeArticle.meeEvent}<f:if condition="{dioeArticle.meeAdress}">, {dioeArticle.meeAdress}</f:if>)</f:then>
-		<f:else><f:if condition="{dioeArticle.meeAdress}">({dioeArticle.meeAdress})</f:if></f:else>
+	<f:if condition="{settings.atype} == 4">
+		<f:then>
+			<b>{dioeArticle.meeTitel}</b><br>
+			<f:if condition="{dioeArticle.meePersonsSec.txt}">{f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.personen')}: {dioeArticle.meePersonsSec.txt}<br></f:if>
+			<f:if condition="{dioeArticle.meeEvent}">{dioeArticle.meeEvent}<br></f:if>
+			Beginn: {dioeArticle.meeTimeText.start} Uhr<br>
+			<f:if condition="{dioeArticle.meeText}">{f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.zeit')}: {dioeArticle.meeText}<br></f:if>
+			<f:if condition="{dioeArticle.meeAdress}">{f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.ort')}: {dioeArticle.meeAdress}<br></f:if>
+			<f:if condition="{dioeArticle.meeNote}">{dioeArticle.meeNote}<br></f:if>
+			<f:if condition="{dioeArticle.meeOrganisersSec.array}">{f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.organisiert_von')} {dioeArticle.meeOrganisersSec.txt}.<br></f:if>
+			<f:if condition="{field.terminSektionOrganisation}">{f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.beteiligte_institutionen')}: {dioeArticle.meeOrganisationSec.html -> f:format.raw()}.<br></f:if>
+			<f:if condition="{dioeArticle.meeParticipantsSec.array}">{f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.teilnehmer')}: {dioeArticle.meeParticipantsSec.html -> f:format.raw()}.<br></f:if>
+			<f:if condition="{dioeArticle.meeUrl}">[URL: <a href="{dioeArticle.meeUrl}" target="_blank" class="hide-url-printer">{dioeArticle.meeUrl}</a>]<br></f:if>
+			<f:if condition="{dioeArticle.meeDoi}">[DOI: {dioeArticle.meeDoi}]<br></f:if>
+			<f:if condition="{dioeArticle.meeKeywords}">Schlagwörter:  {dioeArticle.meeKeywords}.<br></f:if>
+			<f:render partial="DioeArticle/ListItemMoreButton" arguments="{dioeArticle:dioeArticle, settings:settings, class: 'mt-3', text: 'Details anzeigen'}" />
+		</f:then>
+		<f:else>
+			<b>{dioeArticle.meePersonsSec.txt} {dioeArticle.meeTimeText.all}: {dioeArticle.meeTitel}.</b>
+			<f:if condition="{dioeArticle.meeEvent}">
+				<f:then>({dioeArticle.meeEvent}<f:if condition="{dioeArticle.meeAdress}">, {dioeArticle.meeAdress}</f:if>)</f:then>
+				<f:else><f:if condition="{dioeArticle.meeAdress}">({dioeArticle.meeAdress})</f:if></f:else>
+			</f:if>
+			<f:if condition="{dioeArticle.meeOrganisersSec.array}"> {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.organisiert_von')} {dioeArticle.meeOrganisersSec.txt}.</f:if>
+			<f:if condition="{dioeArticle.meeOrganisationSec.array}"> {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.beteiligte_institutionen')}: {dioeArticle.meeOrganisationSec.html -> f:format.raw()}.</f:if>
+			<f:if condition="{dioeArticle.meeParticipantsSec.array}"> {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.teilnehmer')}: {dioeArticle.meeParticipantsSec.html -> f:format.raw()}.</f:if>
+			<f:if condition="{dioeArticle.meeNote}"> {dioeArticle.meeNote}</f:if>
+			<f:if condition="{dioeArticle.meeUrl}">[URL: <a href="{dioeArticle.meeUrl}" target="_blank" class="hide-url-printer">{dioeArticle.meeUrl}</a>]</f:if>
+			<f:if condition="{dioeArticle.meeDoi}">[DOI: {dioeArticle.meeDoi}]</f:if>
+			<f:if condition="{dioeArticle.meeKeywords}">Schlagwörter:  {dioeArticle.meeKeywords}.</f:if>
+			<span class="detaillnk d-print-none">[ToDo: Link zu Detailseite]</span>
+		</f:else>
 	</f:if>
-	<f:if condition="{dioeArticle.meeOrganisersSec.array}"> Organisiert von {dioeArticle.meeOrganisersSec.txt}.</f:if>
-	<f:if condition="{dioeArticle.meeOrganisationSec.array}"> Beteiligte Institutionen: {dioeArticle.meeOrganisationSec.html -> f:format.raw()}.</f:if>
-	<f:if condition="{dioeArticle.meeParticipantsSec.array}"> Teilnehmer: {dioeArticle.meeParticipantsSec.html -> f:format.raw()}.</f:if>
-	<f:if condition="{dioeArticle.meeNote}"> {dioeArticle.meeNote}</f:if>
-	<f:if condition="{dioeArticle.meeUrl}">[URL: <a href="{dioeArticle.meeUrl}" target="_blank" class="hide-url-printer">{dioeArticle.meeUrl}</a>]</f:if>
-	<f:if condition="{dioeArticle.meeDoi}">[DOI: {dioeArticle.meeDoi}]</f:if>
-	<f:if condition="{dioeArticle.meeKeywords}">Schlagwörter:  {dioeArticle.meeKeywords}.</f:if>
-	<span class="detaillnk d-print-none">[ToDo: Link zu Detailseite]</span>
 </li>
