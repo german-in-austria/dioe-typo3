@@ -1,11 +1,32 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
+
 <f:layout name="Default" />
 
 This template is responsible for displaying a single view for a domain object
 
 <f:section name="content">
-    <h1>Single View for DioeArticle</h1>
+	<f:comment>Header:</f:comment>
+	<v:page.header.meta property="og:title" content="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" />
+	<v:page.header.meta property="og:description" content="{f:if(condition: '{dioeArticle.prevText}', then: '{dioe:removeTextSpezials(value: \'{dioeArticle.prevText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}', else: '{dioe:removeTextSpezials(value: \'{dioeArticle.detailText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}')}" />
+	<f:variable name="prevPic" value="{v:resource.file(identifier:'{dioeArticle.prevPic.originalResource.originalFile.uid}', treatIdAsUid: '1', onlyProperties: '1')}" />
+	<f:for each="{dioeArticle.detailPic}" as="image">
+		<f:if condition="{dioeArticle.prevPic.originalResource.originalFile.uid} !== {image.originalResource.originalFile.uid}">
+			<v:page.header.meta property="og:image" content="{f:uri.image(src: '{image.originalResource.originalFile.uid}', width: '600c' height: '315c', absolute: '1')}" />
+		</f:if>
+	</f:for>
+	<f:if condition="{dioeArticle.prevPic.originalResource.name}">
+		<v:page.header.meta property="og:image" content="{f:uri.image(src: '{dioeArticle.prevPic.originalResource.originalFile.uid}', width: '600c' height: '315c', absolute: '1')}" />
+	</f:if>
+	<f:comment>Artikel:</f:comment>
+	<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
+	<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
+  	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
+	</article>
+	<div class="d-print-none mt-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
 
+	<f:render partial="DioeArticle/Properties" arguments="{dioeArticle:dioeArticle}" />
 
 </f:section>
 </html>

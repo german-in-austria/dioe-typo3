@@ -1,5 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<table class="tx-dioearticlesystem" >
+<table class="tx-dioearticlesystem">
 	<tr>
 		<td>
 			<f:translate key="tx_dioearticlesystem_domain_model_dioearticle.a_home" />
@@ -69,7 +69,12 @@
 			<f:translate key="tx_dioearticlesystem_domain_model_dioearticle.prev_pic" />
 		</td>
 		<td>
-				{dioeArticle.prevPic -> f:count()}
+				<f:variable name="prevPic" value="{v:resource.file(identifier:'{dioeArticle.prevPic.originalResource.originalFile.uid}', treatIdAsUid: '1', onlyProperties: '1')}" />
+				<f:image src="{dioeArticle.prevPic.originalResource.originalFile.uid}"
+					alt="{f:if(condition: '{dioeArticle.prevPic.originalResource.title}', then: '{dioeArticle.prevPic.originalResource.title}', else: '{prevPic.alternative}')}"
+					title="{f:if(condition: '{dioeArticle.prevPic.originalResource.title}', then: '{dioeArticle.prevPic.originalResource.title}', else: '{prevPic.title}')}"
+					width="330{f:if(condition: '{dioeArticle.prevPicCroppingMode}', then: 'c')}" height="{f:if(condition: '{dioeArticle.prevPicCroppingMode}', then: '330c')}"
+				/>
 		</td>
 	</tr>
 	<tr>
@@ -101,7 +106,7 @@
 			<f:translate key="tx_dioearticlesystem_domain_model_dioearticle.detail_pic" />
 		</td>
 		<td>
-				<f:for each="{dioeArticle.detailPic}" as="image" >
+				<f:for each="{dioeArticle.detailPic}" as="image">
 					<f:image src="{image.originalResource.publicUrl}" width="200"/>
 				</f:for>
 		</td>
@@ -143,7 +148,7 @@
 			<f:translate key="tx_dioearticlesystem_domain_model_dioearticle.f_files" />
 		</td>
 		<td>
-				<f:for each="{dioeArticle.fFiles}" as="file" >
+				<f:for each="{dioeArticle.fFiles}" as="file">
 					<a href="{file.originalResource.publicUrl}">
 						{file.originalResource.name}
 					</a>
