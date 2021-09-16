@@ -608,6 +608,16 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getTags()
     {
+				return $this->tags;
+    }
+
+		/**
+		 * Returns the tags
+		 *
+		 * @return array $tags
+		 */
+		public function getTagsTxt()
+		{
 				$ttxt = '';
 				$thtml = '';
 				$dg = 0;
@@ -631,13 +641,13 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 						$dg += 1;
 					}
 				}
-        return [
+				return [
 					'array' => $this->tags,
 					'txt' => $ttxt,
 					'html' => $thtml,
 					'color' => $tcolor
 				];
-    }
+		}
 
     /**
      * Sets the tags
