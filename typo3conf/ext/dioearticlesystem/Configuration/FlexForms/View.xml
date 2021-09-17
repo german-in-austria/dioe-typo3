@@ -26,6 +26,10 @@
 																			<numIndex index="0">Spezial: Termine</numIndex>
 																			<numIndex index="1">meeview</numIndex>
 																	</numIndex>
+																	<numIndex index="3" type="array">
+																			<numIndex index="0">Spezial: Horizontaler Swiper</numIndex>
+																			<numIndex index="1">swipeview</numIndex>
+																	</numIndex>
 																</items>
 																<default>0</default>
 														</config>

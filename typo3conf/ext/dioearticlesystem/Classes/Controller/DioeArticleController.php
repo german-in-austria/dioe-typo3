@@ -249,6 +249,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      */
     public function showAction(\DioeArticleSystem\Dioearticlesystem\Domain\Model\DioeArticle $dioeArticle)
     {
+				$this->view->assign('contentObject', $this->configurationManager->getContentObject()->data);
         $this->view->assign('dioeArticle', $dioeArticle);
     }
 

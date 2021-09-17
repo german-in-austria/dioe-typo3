@@ -177,3 +177,20 @@ figure.image.article-img > span.img-add.lizenz {
   right: 10px;
   font-size: 16px;
 }
+
+.article-preview-layout-tswipeview figure.image {
+  max-width: 100%;
+  width: 100%;
+  float: none;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.article-preview-layout-tswipeview > div {
+  background: #fff;
+  padding: 1.2rem;
+}
+
+.article-preview-layout-tswipeview.article-preview h1.title {
+  font-size: 1.5rem;
+}
