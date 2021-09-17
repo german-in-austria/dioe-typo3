@@ -21,6 +21,7 @@ This template is responsible for displaying a single view for a domain object
 	</f:if>
 	<f:comment>Artikel:</f:comment>
 	<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
+
 	<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
   	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
 		<div class="mt-4">
@@ -42,8 +43,30 @@ This template is responsible for displaying a single view for a domain object
 				</f:case>
 			</f:switch>
 
-			<!-- ToDo: Podcast !!! -->
-
+			<f:if condition="{dioeArticle.pFile}">
+				<f:if condition="{dioeArticle.pFile.originalResource.extension} == 'mp3'">
+					<br>
+					<div>
+						<audio controls id="podcastAudio">
+							<source src="{f:uri.typolink(parameter:'file:{dioeArticle.pFile.originalResource.publicUrl}')}" type="audio/mpeg"/>
+						</audio>
+					</div>
+					<script type="text/javascript">
+						var pElement = document.getElementById('podcastAudio');
+						pElement.outerHTML = '<iframe id="podcastAudioFrm" src="about:blank" classname="podlove-webplayer-frame" style="height: 200px; width: 100%; border: none; overflow: hidden;"></iframe>';
+						var pDoc = document.getElementById('podcastAudioFrm').contentWindow.document;
+						pDoc.open();
+						var pHtml = decodeURIComponent('<f:format.urlencode><f:format.raw><f:render partial="DioeArticle/PodLove" /></f:format.raw></f:format.urlencode>'.replace(/\+/g,  " "));
+						pHtml = pHtml.replace(/###title###/g, decodeURIComponent('<f:format.urlencode>{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}</f:format.urlencode>').replace(/\+/g,  " "));
+						pHtml = pHtml.replace(/###url###/g, decodeURIComponent('<f:format.urlencode>{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}</f:format.urlencode>').replace(/\+/g,  " "));
+						pHtml = pHtml.replace(/###audioSize###/g, decodeURIComponent('<f:format.urlencode>{dioeArticle.pFile.originalResource.originalFile.size}</f:format.urlencode>').replace(/\+/g,  " "));
+						pHtml = pHtml.replace(/###audiourl###/g, decodeURIComponent('<f:format.urlencode>{f:uri.typolink(absolute: 'TRUE', parameter: 'file:{dioeArticle.pFile.originalResource.publicUrl}')}</f:format.urlencode>').replace(/\+/g,  " "));
+						console.log(pHtml);
+						pDoc.write(pHtml);
+						pDoc.close();
+					</script>
+				</f:if>
+			</f:if>
 			<f:if condition="{dioeArticle.detailPic}">
 				<br>
 				<div class="row">

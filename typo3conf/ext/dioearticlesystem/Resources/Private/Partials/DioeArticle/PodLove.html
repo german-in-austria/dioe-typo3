@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <base href="https://dioe.at/">
+    <title>###title###</title>
+    <link href="fileadmin/podlove/css/pwp-light-gray.min.css" rel="stylesheet" media="screen" type="text/css" />
+    <link href="fileadmin/podlove/css/vendor/progress-polyfill.css" rel="stylesheet" media="screen" type="text/css" />
+    <script src="fileadmin/podlove/js/vendor/html5shiv.js"></script>
+    <script src="fileadmin/podlove/js/vendor/jquery.min.js"></script>
+    <script src="fileadmin/podlove/js/vendor/progress-polyfill.min.js"></script>
+    <style>.pwp-info, .togglebar { display: none; } .container { border-radius: 4px;overflow: hidden; } .progressbar { border-left: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5; } .tabs>section { overflow-y: auto; }</style>
+  </head>
+  <body>
+    <audio>
+        <source src="###audiourl###" type="audio/mpeg"/>
+    </audio>
+    <script src="fileadmin/podlove/js/podlove-web-player.js"></script>
+    <script>
+      $('audio').podlovewebplayer({
+        alwaysShowHours: true,
+        alwaysShowControls: true,
+        permalink: '###url###',
+        poster: '/fileadmin/img/podcast-dioe_original.png',
+        title: '###title###',
+        show: {
+          title: 'Podcast DIOE',
+        },
+        chapters: null,
+        languageCode:"de-DE",
+        // activeTab:"downloads",
+        downloads: [
+          {
+            assetTitle: 'MP3 Audio (mp3)',
+            size: ###audioSize###,
+            downloadUrl: '###audiourl###',
+            directAccess: '###audiourl###',
+            url: '###audiourl###'
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
