@@ -104,3 +104,76 @@ a.detaillnk::after {
 figure.image.article-img > span.img-add.lizenz {
 	font-size: 10px;
 }
+
+.dateien {
+  padding: 2em 0px;
+}
+.datei {
+  position:relative;
+  display: block;
+  margin-bottom: 1em;
+}
+.datei:hover {
+  background:#fcfcfc;
+}
+.datei .imgfrm {
+  position: relative;
+  display: block;
+  float: left;
+  width: 25%;
+  min-height: 175px;
+  background: #eee;
+  margin-right: 5%;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+.datei .filefrm {
+  display: block;
+  width: 70%;
+  float: left;
+  padding-bottom: 40px;
+  padding-right: 15px;
+}
+.datei .imgfrm .extension {
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  top: 42%;
+  line-height: 0;
+  font-size: 70px;
+  z-index: 1;
+}
+.datei .imgfrm .imgbg {
+  display:block;
+  position: relative;
+  background:#fff;
+  z-index: 2;
+}
+.datei .imgfrm img {
+  position: relative;
+  z-index: 2;
+}
+.datei .imgfrm .size {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  padding: 2px 13px;
+  color:#fff;
+  background: rgba(24, 24, 24, 0.5);
+  border-radius: 5px 0px 0px 0px;
+  font-size: 18px;
+  line-height: 1.6;
+  z-index: 3;
+}
+.datei .lizenz {
+  float: right;
+  padding: 0px 10px;
+}
+.filefrm span.lizenz {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  font-size: 16px;
+}

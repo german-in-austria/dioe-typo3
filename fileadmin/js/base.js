@@ -60,7 +60,7 @@
 				};
 			};
 			var aimgrw = '<span class="d-inline-block ' + ((aimgwidth == '100%') ? ' mb-3' : 'pull-' + aimgalign + ((aimgalign == 'left') ? ' mr-3 mb-3' : ' ml-3 mb-3')) + '" style="width:' + aimgwidth + ';">';
-			aimgrw += '<figure class="image border border-light w-100"><img src="' + $('.imgData[data-img-dg="' + aimgnr + '"]').data('img-url') + '" alt="" class="w100">' + $('.imgData[data-img-dg="' + aimgnr + '"]').siblings('.img-add')[0].outerHTML + '</figure>';
+			aimgrw += '<figure class="image border border-light w-100"><img src="' + $('.imgData[data-img-dg="' + aimgnr + '"]').data('img-url') + '" alt="" class="w-100">' + $('.imgData[data-img-dg="' + aimgnr + '"]').siblings('.img-add')[0].outerHTML + '</figure>';
 			var aimgFooter = $('.imgData[data-img-dg="' + aimgnr + '"]').parent().data('footer');
 			if (aimgFooter && aimgFooter.length > 0) {
 				aimgrw += '<div class="imgdescription">' + aimgFooter + '</div>';
