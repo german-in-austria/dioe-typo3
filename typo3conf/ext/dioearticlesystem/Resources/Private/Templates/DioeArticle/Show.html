@@ -23,10 +23,91 @@ This template is responsible for displaying a single view for a domain object
 	<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
 	<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
   	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
+		<div class="mt-4">
+			<f:if condition="{dioeArticle.detailText}">
+				<f:then><dioe:textSpezials value="{dioeArticle.detailText}" /></f:then>
+				<f:else><dioe:textSpezials value="{dioeArticle.prevText}" /></f:else>
+			</f:if>
+
+			<!-- ToDo: Podcast !!! -->
+
+			<f:if condition="{dioeArticle.detailPic}">
+				<br>
+				<div class="row">
+					<f:for each="{dioeArticle.detailPic}" as="image" iteration="iterator">
+						<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
+							<a href="{f:uri.image(src: '{image.originalResource.originalFile.uid}', maxWidth: '1024', maxHeight: '800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{image.originalResource.title}" data-footer="{image.originalResource.description}" class="img img-responsive img-rounded mib1e hide-url-printer">
+								<f:render partial="DioeArticle/ShowImage" arguments="{image: image, imageCroppingMode: dioeArticle.detailPicCroppingMode, iterator: iterator}" />
+							</a>
+						</div>
+					</f:for>
+				</div>
+			</f:if>
+
+			<!-- ToDo: AudioVideoDateien -->
+
+			<!-- ToDo: DateienDateien -->
+
+<!--
+			Z User	-1
+			Z Name	Korecky-Kröll, Katharina
+			Z Title
+			Z Place	0
+			Z L Name
+			Z Share	0
+			Z Com Share	0
+			Z L Text
+ -->
+			<br>
+			<div class="card citation mt-5 mb-3">
+	      <div class="card-header">{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zitation')}
+					<f:if condition='{dioeArticle.zLText}'>
+						<f:then><dioe:copyrights value="{dioeArticle.zLText}" class="float-right" /></f:then>
+						<f:else>
+							<f:if condition="{dioeArticle.zShare} != 'kl'">
+								<f:alias map="{alizenz: 'cc-by{dioeArticle.zComShare}{dioeArticle.zShare};{dioeArticle.zLName}'}">
+									<dioe:copyrights value="{alizenz}" class="float-right" />
+								</f:alias>
+							</f:if>
+						</f:else>
+					</f:if>
+				</div>
+	      <div class="card-body font-sm">
+				  <f:if condition='{dioeArticle.zName}'>
+					  <f:then>{dioeArticle.zName}</f:then>
+					  <f:else>
+						  <f:if condition='{dioeArticle.zNameBE} == -1'>
+							  <f:then>DiÖ</f:then>
+							  <f:else>
+								  <f:if condition='{dioeArticle.zNameBE}'>
+									  <f:then>
+										  {dioeArticle.zUser -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+									  </f:then>
+									  <f:else>
+										  {contentObject.cruser_id -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+									  </f:else>
+								  </f:if>
+							  </f:else>
+						  </f:if>
+					  </f:else>
+				  </f:if> (<f:format.date format="Y">{f:if(condition: '{contentObject.starttime}', then: '{contentObject.starttime}', else: '{contentObject.tstamp}')}</f:format.date>): <f:if condition='{dioeArticle.zTitle}'><f:then>{dioeArticle.zTitle}.</f:then><f:else>{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}.</f:else></f:if>
+					<br class="d-inline d-sm-none">
+					In:
+				  <f:switch expression="{dioeArticle.zPlace}">
+					  <f:defaultCase>{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_standort_default')}</f:defaultCase>
+				  </f:switch>
+				  <br>
+				  URL: <span class="url">{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}</span><br>
+				  [{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zugriff')}: <f:format.date date="now" format="d.m.Y" />]
+				</div>
+		  </div>
+
+		</div>
 	</article>
 	<div class="d-print-none mt-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
 
-	<f:render partial="DioeArticle/Properties" arguments="{dioeArticle:dioeArticle}" />
-
+	<f:comment>
+		<f:render partial="DioeArticle/Properties" arguments="{dioeArticle:dioeArticle}" />
+	</f:comment>
 </f:section>
 </html>

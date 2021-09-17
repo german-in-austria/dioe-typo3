@@ -94,3 +94,24 @@ class RemoveTextSpezialsViewHelper extends AbstractViewHelper
 		return preg_replace('/###img:.*?###/i', '', $arguments['value']);
 	}
 }
+
+// <dioe:textSpezials />
+class TextSpezialsViewHelper extends AbstractViewHelper
+{
+	use CompileWithRenderStatic;
+
+	protected $escapeOutput = false;
+
+	public function initializeArguments()
+	{
+		$this->registerArgument('value', 'string', 'String with Spezials.', false, null);
+	}
+
+	public static function renderStatic(
+		array $arguments,
+		\Closure $renderChildrenClosure,
+		RenderingContextInterface $renderingContext
+	) {
+		return preg_replace('/###img:(.*?)###/i', '<span data-img="$1">&nbsp;</span>', $arguments['value']);
+	}
+}
