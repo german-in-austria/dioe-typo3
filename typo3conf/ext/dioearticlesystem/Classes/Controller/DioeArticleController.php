@@ -485,11 +485,11 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 									'mee_organisation_sec' => isset($aJson['terminSektionOrganisation']) ? $this->getSectionOrganisationUrl($aJson['terminSektionOrganisation']) : '', // sec (Organisationen)
 									'mee_participants_sec' => isset($aJson['terminSektionParticipants']) ? $this->getSectionNameVornameInstUrl($aJson['terminSektionParticipants'], 'teilnehmer', 'teilnehmers') : '', // sec (Teilnehmer)
 									'pub_editors_sec' => isset($aJson['authorSektion']) ? $this->getSectionAuthor($aJson['authorSektion']) : '', // sec (Autoren/Herausgeber)
-									'prev_pic' => $this->getSetFalImg($aJson['uebersichtBild fal'], 'prev_pic', $targetUId, $falReferences, $errorArray), // fals
-									'detail_pic' => $this->getSetFalImg($aJson['detailseiteBild fal'], 'detail_pic', $targetUId, $falReferences, $errorArray), // fals
-									'p_file' => $this->getSetFalDatei($aJson['podcastDatei fal'], 'p_file', $targetUId, $falReferences, $errorArray), // fals
-									'f_files' => $this->getSetFalDatei($aJson['sektionDateienDateien fal'], 'f_files', $targetUId, $falReferences, $errorArray), // fals
-									'av_files' => $this->getSetSecAvDateien($aJson['sektionAudioVideoDateien fal'], $errorArray), // sec + fal
+									'prev_pic' => $this->getSetFalImg($aJson['uebersichtBild fal'], 'prev_pic', $targetUId, $falReferences, $errorArray, $targetUId), // fals
+									'detail_pic' => $this->getSetFalImg($aJson['detailseiteBild fal'], 'detail_pic', $targetUId, $falReferences, $errorArray, $targetUId), // fals
+									'p_file' => $this->getSetFalDatei($aJson['podcastDatei fal'], 'p_file', $targetUId, $falReferences, $errorArray, $targetUId), // fals
+									'f_files' => $this->getSetFalDatei($aJson['sektionDateienDateien fal'], 'f_files', $targetUId, $falReferences, $errorArray, $targetUId), // fals
+									'av_files' => $this->getSetSecAvDateien($aJson['sektionAudioVideoDateien fal'], $errorArray, $targetUId), // sec + fal
 								);
 
 								$queryBuilder
@@ -601,7 +601,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		/**
 		 *	getSetSecAvDateien
 		 */
-		public function getSetSecAvDateien ($falObj, &$errorArray) {
+		public function getSetSecAvDateien ($falObj, &$errorArray, $uid) {
 			$resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
 			$storage = $resourceFactory->getDefaultStorage();
 			if ($falObj && is_array($falObj) && count($falObj) > 0) {
@@ -626,10 +626,10 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							if ($aFileId && $aFileId > 0) {
 								$aDateiId = $aFileId;
 							} else {
-								$errorArray[] = 'Datei "' . urldecode($aDatei['datei']) . '" konnte nicht zugewiesen werden!';
+								$errorArray[] = strval($uid) . ' - Datei "' . urldecode($aDatei['datei']) . '" konnte nicht zugewiesen werden!';
 							}
 						} else {
-							$errorArray[] = 'Datei "' . urldecode($aDatei['datei']) . '" existiert nicht!';
+							$errorArray[] = strval($uid) . ' - Datei "' . urldecode($aDatei['datei']) . '" existiert nicht!';
 						}
 					}
 					$sectionArray['data']['sSection']['lDEF']['dateien']['el'][substr(md5(uniqid()), 0, 22)] = array(
@@ -661,7 +661,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		/**
 		 *	getSetFalDatei
 		 */
-		public function getSetFalDatei ($falObj, $fieldName, $targetUId, &$falReferences, &$errorArray) {
+		public function getSetFalDatei ($falObj, $fieldName, $targetUId, &$falReferences, &$errorArray, $uid) {
 			$resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
 			$storage = $resourceFactory->getDefaultStorage();
 			$fileCount = 0;
@@ -687,10 +687,10 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							);
 							$fileCount += 1;
 						} else {
-							$errorArray[] = 'Datei "' . urldecode($aImg['datei']) . '" konnte nicht zugewiesen werden!';
+							$errorArray[] = strval($uid) . ' - Datei "' . urldecode($aImg['datei']) . '" konnte nicht zugewiesen werden!';
 						}
 					} else {
-						$errorArray[] = 'Datei "' . urldecode($aImg['datei']) . '" existiert nicht!';
+						$errorArray[] = strval($uid) . ' - Datei "' . urldecode($aImg['datei']) . '" existiert nicht!';
 					}
 				}
 			}
@@ -700,7 +700,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 		/**
 		 *	getSetFalImg
 		 */
-		public function getSetFalImg ($falObj, $fieldName, $targetUId, &$falReferences, &$errorArray) {
+		public function getSetFalImg ($falObj, $fieldName, $targetUId, &$falReferences, &$errorArray, $uid) {
 			$resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
 			$storage = $resourceFactory->getDefaultStorage();
 			$fileCount = 0;
@@ -728,10 +728,10 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 							);
 							$fileCount += 1;
 						} else {
-							$errorArray[] = 'Datei "' . urldecode($aImg['file']) . '" konnte nicht zugewiesen werden!';
+							$errorArray[] = strval($uid) . ' - Datei "' . urldecode($aImg['file']) . '" konnte nicht zugewiesen werden!';
 						}
 					} else {
-						$errorArray[] = 'Datei "' . urldecode($aImg['file']) . '" existiert nicht!';
+						$errorArray[] = strval($uid) . ' - Datei "' . urldecode($aImg['file']) . '" existiert nicht!';
 					}
 				}
 			}

@@ -1,5 +1,5 @@
-page.headerData.66 = TEXT
-page.headerData.66.value = <meta name="robots" content="noindex, nofollow">
+// page.headerData.66 = TEXT
+// page.headerData.66.value = <meta name="robots" content="noindex, nofollow">
 
 config.contentObjectExceptionHandler = 0
 

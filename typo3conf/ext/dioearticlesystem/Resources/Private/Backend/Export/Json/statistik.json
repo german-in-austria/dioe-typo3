@@ -1,5 +1,5 @@
 {
-  "Einträge": 817,
+  "Einträge": 824,
   "Interne Links": [
     "t3://page?uid=10",
     "t3://page?uid=1",
@@ -43,66 +43,63 @@
   "Felder": {
     "pid": {
       "type": "string",
-      "count": 817,
+      "count": 824,
       "values": 5
     },
     "uid": {
       "type": "string",
-      "count": 817,
-      "values": 817
+      "count": 824,
+      "values": 824
     },
     "ourl": {
       "type": "string",
-      "count": 817,
-      "values": 817
+      "count": 824,
+      "values": 824
     },
     "datum": {
       "type": "string",
-      "count": 817,
-      "values": 579
+      "count": 824,
+      "values": 586
     },
     "uebersichtUeberschrift": {
       "type": "string",
-      "count": 817,
-      "values": 808
+      "count": 824,
+      "values": 815
     },
     "kategorien": {
       "type": "string",
-      "count": 817,
+      "count": 824,
       "values": 139
     },
     "uebersichtBild": {
       "type": "string",
-      "count": 776,
+      "count": 782,
       "values": 2
     },
     "uebersichtBildVerh": {
       "type": "string",
-      "count": 817,
+      "count": 824,
       "values": 2
     },
     "terminSektionOrganiser": {
-      "type": [
-        "object",
-        "string"
-      ],
-      "count": 34,
-      "values": 1,
+      "type": "object",
+      "count": 35,
+      "values": 0,
       "children": {
         "#num#": {
           "type": "object",
-          "count": 85,
+          "count": 125,
           "values": 0,
           "children": {
             "nachname": {
               "type": "string",
-              "count": 85,
-              "values": 48
+              "count": 125,
+              "values": 60
             },
             "vorname": {
               "type": "string",
-              "count": 85,
-              "values": 44
+              "count": 125,
+              "values": 55
             }
           }
         }
@@ -110,192 +107,68 @@
     },
     "terminTitel": {
       "type": "string",
-      "count": 516,
-      "values": 499
+      "count": 519,
+      "values": 502
     },
     "terminZeit": {
       "type": "string",
-      "count": 516,
-      "values": 406
+      "count": 519,
+      "values": 409
     },
     "terminUhrzeit": {
       "type": "string",
-      "count": 516,
+      "count": 519,
       "values": 2
     },
     "terminUrl": {
       "type": "string",
-      "count": 293,
-      "values": 174
+      "count": 294,
+      "values": 175
     },
     "terminKeywords": {
       "type": "string",
-      "count": 516,
+      "count": 519,
       "values": 1
     },
     "detailseiteBild": {
       "type": "string",
-      "count": 611,
+      "count": 616,
       "values": 12
     },
     "detailseiteBildVerh": {
       "type": "string",
-      "count": 652,
+      "count": 658,
       "values": 2
     },
     "audioVideoSpalten": {
       "type": "string",
-      "count": 652,
+      "count": 658,
       "values": 1
     },
     "zitationNameBE": {
       "type": "string",
-      "count": 509,
+      "count": 514,
       "values": 2
     },
     "zitationStandort": {
       "type": "string",
-      "count": 652,
+      "count": 658,
       "values": 1
-    },
-    "terminBisZeit": {
-      "type": "string",
-      "count": 477,
-      "values": 348
-    },
-    "terminEvent": {
-      "type": "string",
-      "count": 385,
-      "values": 239
-    },
-    "terminAdress": {
-      "type": "string",
-      "count": 481,
-      "values": 226
-    },
-    "art": {
-      "type": "string",
-      "count": 165,
-      "values": 6
-    },
-    "title": {
-      "type": "string",
-      "count": 165,
-      "values": 163
-    },
-    "authorSektion": {
-      "type": [
-        "object",
-        "string"
-      ],
-      "count": 165,
-      "values": 1,
-      "children": {
-        "#num#": {
-          "type": "object",
-          "count": 427,
-          "values": 0,
-          "children": {
-            "authorNachname": {
-              "type": "string",
-              "count": 427,
-              "values": 209
-            },
-            "authorVorname": {
-              "type": "string",
-              "count": 427,
-              "values": 177
-            },
-            "authorIsEditor": {
-              "type": "string",
-              "count": 381,
-              "values": 2
-            }
-          }
-        }
-      }
-    },
-    "year": {
-      "type": "string",
-      "count": 165,
-      "values": 10
-    },
-    "journal": {
-      "type": "string",
-      "count": 40,
-      "values": 36
-    },
-    "keywords": {
-      "type": "string",
-      "count": 165,
-      "values": 2
-    },
-    "booktitle": {
-      "type": "string",
-      "count": 98,
-      "values": 73
-    },
-    "publisher": {
-      "type": "string",
-      "count": 121,
-      "values": 51
-    },
-    "uebersichtText": {
-      "type": "string",
-      "count": 164,
-      "values": 164
-    },
-    "terminSektionPersonen": {
-      "type": [
-        "string",
-        "object"
-      ],
-      "count": 473,
-      "values": 1,
-      "children": {
-        "#num#": {
-          "type": "object",
-          "count": 216,
-          "values": 0,
-          "children": {
-            "nachname": {
-              "type": "string",
-              "count": 216,
-              "values": 91
-            },
-            "vorname": {
-              "type": "string",
-              "count": 216,
-              "values": 85
-            }
-          }
-        }
-      }
-    },
-    "detailseiteText": {
-      "type": "string",
-      "count": 141,
-      "values": 141
-    },
-    "podcastDauer": {
-      "type": "string",
-      "count": 47,
-      "values": 11
     },
     "uebersichtBild fal": {
       "type": "object",
-      "count": 83,
+      "count": 84,
       "values": 0,
       "children": {
         "#num#": {
           "type": "object",
-          "count": 83,
+          "count": 84,
           "values": 0,
           "children": {
             "file": {
               "type": "string",
-              "count": 83,
-              "values": 74
+              "count": 84,
+              "values": 75
             }
           }
         }
@@ -303,23 +176,23 @@
     },
     "detailseiteBild fal": {
       "type": "object",
-      "count": 83,
+      "count": 84,
       "values": 0,
       "children": {
         "#num#": {
           "type": "object",
-          "count": 319,
+          "count": 322,
           "values": 0,
           "children": {
             "file": {
               "type": "string",
-              "count": 319,
-              "values": 303
+              "count": 322,
+              "values": 306
             },
             "comment": {
               "type": "string",
-              "count": 135,
-              "values": 129
+              "count": 138,
+              "values": 132
             },
             "title": {
               "type": "string",
@@ -330,35 +203,235 @@
         }
       }
     },
+    "uebersichtText": {
+      "type": "string",
+      "count": 170,
+      "values": 170
+    },
+    "detailseiteText": {
+      "type": "string",
+      "count": 145,
+      "values": 145
+    },
     "zitationName": {
       "type": "string",
-      "count": 83,
-      "values": 57
+      "count": 84,
+      "values": 58
+    },
+    "podcastDauer": {
+      "type": "string",
+      "count": 50,
+      "values": 11
+    },
+    "detailseiteUeberschrift": {
+      "type": "string",
+      "count": 18,
+      "values": 18
+    },
+    "terminSektionPersonen": {
+      "type": "object",
+      "count": 475,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 692,
+          "values": 0,
+          "children": {
+            "nachname": {
+              "type": "string",
+              "count": 692,
+              "values": 116
+            },
+            "vorname": {
+              "type": "string",
+              "count": 692,
+              "values": 115
+            }
+          }
+        }
+      }
+    },
+    "terminSektionOrganisation": {
+      "type": "object",
+      "count": 56,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 71,
+          "values": 0,
+          "children": {
+            "organisation": {
+              "type": "string",
+              "count": 71,
+              "values": 25
+            },
+            "url": {
+              "type": "string",
+              "count": 45,
+              "values": 17
+            }
+          }
+        }
+      }
+    },
+    "terminEvent": {
+      "type": "string",
+      "count": 387,
+      "values": 241
+    },
+    "sektionDateienDateien fal": {
+      "type": "object",
+      "count": 71,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 85,
+          "values": 0,
+          "children": {
+            "datei": {
+              "type": "string",
+              "count": 85,
+              "values": 80
+            },
+            "titel": {
+              "type": "string",
+              "count": 85,
+              "values": 78
+            },
+            "vorschaubild": {
+              "type": "string",
+              "count": 85,
+              "values": 1
+            }
+          }
+        }
+      }
+    },
+    "terminBisZeit": {
+      "type": "string",
+      "count": 478,
+      "values": 349
+    },
+    "sektionDateienDateien": {
+      "type": "object",
+      "count": 71,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 85,
+          "values": 0,
+          "children": {
+            "titel": {
+              "type": "string",
+              "count": 85,
+              "values": 78
+            },
+            "vorschaubild": {
+              "type": "string",
+              "count": 85,
+              "values": 1
+            }
+          }
+        }
+      }
+    },
+    "art": {
+      "type": "string",
+      "count": 166,
+      "values": 6
+    },
+    "title": {
+      "type": "string",
+      "count": 166,
+      "values": 164
+    },
+    "authorSektion": {
+      "type": "object",
+      "count": 166,
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 599,
+          "values": 0,
+          "children": {
+            "authorNachname": {
+              "type": "string",
+              "count": 599,
+              "values": 226
+            },
+            "authorVorname": {
+              "type": "string",
+              "count": 599,
+              "values": 188
+            },
+            "authorIsEditor": {
+              "type": "string",
+              "count": 516,
+              "values": 2
+            }
+          }
+        }
+      }
+    },
+    "year": {
+      "type": "string",
+      "count": 166,
+      "values": 10
+    },
+    "booktitle": {
+      "type": "string",
+      "count": 99,
+      "values": 73
+    },
+    "publisher": {
+      "type": "string",
+      "count": 122,
+      "values": 51
     },
     "number": {
       "type": "string",
-      "count": 45,
+      "count": 46,
       "values": 29
+    },
+    "series": {
+      "type": "string",
+      "count": 71,
+      "values": 46
+    },
+    "keywords": {
+      "type": "string",
+      "count": 166,
+      "values": 2
+    },
+    "url": {
+      "type": "string",
+      "count": 54,
+      "values": 49
+    },
+    "note": {
+      "type": "string",
+      "count": 42,
+      "values": 15
+    },
+    "terminAdress": {
+      "type": "string",
+      "count": 482,
+      "values": 227
+    },
+    "journal": {
+      "type": "string",
+      "count": 40,
+      "values": 36
     },
     "pages": {
       "type": "string",
       "count": 100,
       "values": 100
-    },
-    "url": {
-      "type": "string",
-      "count": 52,
-      "values": 48
-    },
-    "note": {
-      "type": "string",
-      "count": 40,
-      "values": 15
-    },
-    "series": {
-      "type": "string",
-      "count": 70,
-      "values": 46
     },
     "address": {
       "type": "string",
@@ -370,93 +443,10 @@
       "count": 85,
       "values": 73
     },
-    "sektionDateienDateien fal": {
-      "type": "object",
-      "count": 70,
-      "values": 0,
-      "children": {
-        "#num#": {
-          "type": "object",
-          "count": 84,
-          "values": 0,
-          "children": {
-            "datei": {
-              "type": "string",
-              "count": 84,
-              "values": 79
-            },
-            "titel": {
-              "type": "string",
-              "count": 84,
-              "values": 77
-            },
-            "vorschaubild": {
-              "type": "string",
-              "count": 84,
-              "values": 1
-            }
-          }
-        }
-      }
-    },
-    "sektionDateienDateien": {
-      "type": [
-        "string",
-        "object"
-      ],
-      "count": 70,
-      "values": 1,
-      "children": {
-        "#num#": {
-          "type": "object",
-          "count": 14,
-          "values": 0,
-          "children": {
-            "titel": {
-              "type": "string",
-              "count": 14,
-              "values": 14
-            },
-            "vorschaubild": {
-              "type": "string",
-              "count": 14,
-              "values": 1
-            }
-          }
-        }
-      }
-    },
     "doi": {
       "type": "string",
       "count": 33,
       "values": 30
-    },
-    "terminSektionOrganisation": {
-      "type": [
-        "string",
-        "object"
-      ],
-      "count": 54,
-      "values": 1,
-      "children": {
-        "#num#": {
-          "type": "object",
-          "count": 13,
-          "values": 0,
-          "children": {
-            "organisation": {
-              "type": "string",
-              "count": 13,
-              "values": 7
-            },
-            "url": {
-              "type": "string",
-              "count": 4,
-              "values": 4
-            }
-          }
-        }
-      }
     },
     "terminNote": {
       "type": "string",
@@ -513,27 +503,29 @@
       }
     },
     "sektionAudioVideoDateien": {
-      "type": [
-        "string",
-        "object"
-      ],
+      "type": "object",
       "count": 7,
-      "values": 1,
+      "values": 0,
       "children": {
         "#num#": {
           "type": "object",
-          "count": 8,
+          "count": 15,
           "values": 0,
           "children": {
             "titel": {
               "type": "string",
-              "count": 8,
-              "values": 8
+              "count": 15,
+              "values": 15
             },
             "youtube": {
               "type": "string",
-              "count": 8,
-              "values": 8
+              "count": 13,
+              "values": 13
+            },
+            "copyright": {
+              "type": "string",
+              "count": 2,
+              "values": 2
             }
           }
         }
@@ -569,9 +561,113 @@
       }
     },
     "podcastDatei": {
-      "type": "string",
+      "type": "object",
       "count": 10,
-      "values": 1
+      "values": 0,
+      "children": {
+        "#num#": {
+          "type": "object",
+          "count": 10,
+          "values": 0,
+          "children": {
+            "uid": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "pid": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "tstamp": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "last_indexed": {
+              "type": "string",
+              "count": 10,
+              "values": 5
+            },
+            "missing": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "storage": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "type": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "metadata": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "identifier": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "identifier_hash": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "folder_hash": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "extension": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "mime_type": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            },
+            "name": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "sha1": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "size": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "creation_date": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "modification_date": {
+              "type": "string",
+              "count": 10,
+              "values": 10
+            },
+            "_table": {
+              "type": "string",
+              "count": 10,
+              "values": 1
+            }
+          }
+        }
+      }
     },
     "isbn": {
       "type": "string",
@@ -583,11 +679,6 @@
       "count": 1,
       "values": 1
     },
-    "detailseiteUeberschrift": {
-      "type": "string",
-      "count": 17,
-      "values": 17
-    },
     "terminSektionParticipants": {
       "type": "object",
       "count": 1,
@@ -595,18 +686,18 @@
       "children": {
         "#num#": {
           "type": "object",
-          "count": 2,
+          "count": 3,
           "values": 0,
           "children": {
             "nachname": {
               "type": "string",
-              "count": 2,
-              "values": 2
+              "count": 3,
+              "values": 3
             },
             "vorname": {
               "type": "string",
-              "count": 2,
-              "values": 1
+              "count": 3,
+              "values": 2
             }
           }
         }
@@ -633,7 +724,7 @@
       "values": 1
     }
   },
-  "Felder Anzahl": 105,
+  "Felder Anzahl": 126,
   "Kategorien": [
     2,
     3,

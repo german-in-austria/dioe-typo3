@@ -9,6 +9,13 @@ page {
     X-UA-Compatible.httpEquivalent = 1
     viewport = width=device-width, initial-scale=1
   }
+	headerData {
+		1010 = TEXT
+		1010.value (
+		  <link rel="icon" href="fileadmin/favicon.ico" type="image/x-icon" />
+		  <link rel="apple-touch-icon" href="fileadmin/apple-touch-icon.png">
+		)
+	}
   includeCSS {
     file10 = fileadmin/css/bootstrap.min.css
     file10.disableCompression = 1
