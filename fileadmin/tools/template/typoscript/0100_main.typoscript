@@ -19,9 +19,11 @@ page {
 		file30 = fileadmin/tools/css/footer.css
     file90 = fileadmin/tools/css/style.css
   }
+	includeJSFooterlibs {
+		file10 = fileadmin/js/jquery-3.3.1.min.js
+		file10.disableCompression = 1
+	}
   includeJSFooter {
-    file10 = fileadmin/js/jquery-3.3.1.min.js
-    file10.disableCompression = 1
 		file20 = fileadmin/js/popper.min.js
 		file20.disableCompression = 1
     file30 = fileadmin/js/bootstrap.min.js
