@@ -56,6 +56,16 @@ return [
             'nestingInListModule' => '0',
             'overlayShortcutTranslation' => '0',
         ],
+        'powermail' => [
+            'disableBackendModule' => '0',
+            'disableIpLog' => '1',
+            'disableMarketingInformation' => '0',
+            'disablePluginInformation' => '0',
+            'disablePluginInformationMailPreview' => '0',
+            'enableCaching' => '0',
+            'l10n_mode_merge' => '0',
+            'replaceIrreWithElementBrowser' => '0',
+        ],
         'vhs' => [
             'disableAssetHandling' => '0',
         ],
@@ -93,12 +103,14 @@ return [
         ],
     ],
     'MAIL' => [
-        'transport' => 'sendmail',
+        'defaultMailFromAddress' => 'info@dioe.at',
+        'defaultMailFromName' => 'DiÖ',
+        'transport' => 'smtp',
         'transport_sendmail_command' => '/usr/sbin/sendmail -t -i',
-        'transport_smtp_encrypt' => '',
-        'transport_smtp_password' => '',
-        'transport_smtp_server' => '',
-        'transport_smtp_username' => '',
+        'transport_smtp_encrypt' => false,
+        'transport_smtp_password' => 'jg23cr335m',
+        'transport_smtp_server' => 'mail.dioe.at:587',
+        'transport_smtp_username' => 'typo3noreply@dioe.at',
     ],
     'SYS' => [
         'caching' => [
@@ -133,7 +145,7 @@ return [
             ],
         ],
         'devIPmask' => '',
-        'displayErrors' => 1,
+        'displayErrors' => 0,
         'encryptionKey' => '1556348364a5026ed3ef9bde96fbeddf6d5cba556cdd2bf9d65fefd47581c851ecb10d5cfda20ab224a2f31f2e0da081',
         'exceptionalErrors' => 4096,
         'features' => [
@@ -149,6 +161,7 @@ return [
         'sitename' => 'Deutsch in Österreich',
         'systemMaintainers' => [
             1,
+            2,
         ],
         'trustedHostsPattern' => 'www2021.dioe.at|iam2021.dioe.at|dioe.at|www.dioe.at|iam.dioe.at|iam-test.dioe.at|standard2018.dioe.at|typo3test.dioe.at|quiz.dioe.at|tools.dioe.at',
     ],
