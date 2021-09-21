@@ -33,7 +33,7 @@ websiteTitle: ''
 routeEnhancers:
   Dioearticlesystem:
     type: Plugin
-    limitToPages: [138,140]
+    limitToPages: 138
     routePath: '/{dioeArticle}/{action}{controller}'
     namespace: 'tx_dioearticlesystem_view'
     defaults:
