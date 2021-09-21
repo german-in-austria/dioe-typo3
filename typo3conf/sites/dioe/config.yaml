@@ -30,3 +30,14 @@ languages:
     languageId: 1
 rootPageId: 1
 websiteTitle: ''
+routeEnhancers:
+  Dioearticlesystem:
+    type: Plugin
+    limitToPages: [138,140]
+    routePath: '/{dioeArticle}/{action}{controller}'
+    namespace: 'tx_dioearticlesystem_view'
+    defaults:
+      action: 'show'
+      controller: 'DioeArticle'
+    requirements:
+      dioeArticle: '[0-9]{1,9}'

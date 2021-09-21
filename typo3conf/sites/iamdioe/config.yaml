@@ -13,20 +13,16 @@ languages:
     direction: ''
     flag: de
     languageId: 0
-  -
-    title: English
-    enabled: true
-    base: /en/
-    typo3Language: default
-    locale: en_US.UTF-8
-    iso-639-1: en
-    websiteTitle: ''
-    navigationTitle: English
-    hreflang: en-US
-    direction: ''
-    fallbackType: fallback
-    fallbacks: '0'
-    flag: en-us-gb
-    languageId: 1
 rootPageId: 60
 websiteTitle: ''
+routeEnhancers:
+  Dioearticlesystem:
+    type: Plugin
+    limitToPages: [138,140]
+    routePath: '/{dioeArticle}/{action}{controller}'
+    namespace: 'tx_dioearticlesystem_view'
+    defaults:
+      action: 'show'
+      controller: 'DioeArticle'
+    requirements:
+      dioeArticle: '[0-9]{1,9}'

@@ -77,6 +77,13 @@ return [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
+				'cacheHash' => [
+					'excludedParameters' => [
+							'tx_dioearticlesystem_view[dioeArticle]',
+							'tx_dioearticlesystem_view[action]',
+							'tx_dioearticlesystem_view[controller]',
+					],
+				],
     ],
     'GFX' => [
         'processor' => 'GraphicsMagick',
