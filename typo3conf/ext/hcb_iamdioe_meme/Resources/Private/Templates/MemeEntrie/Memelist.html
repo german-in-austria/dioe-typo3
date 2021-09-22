@@ -8,7 +8,15 @@
 				<div class="row memepreview">
 					<f:for each="{memeEntriesRandom}" as="memeEntry">
 						<div class="col-12 col-md-4">
-							<f:image src="{memeEntry.bild.uid}" width="390" class="img-fluid" treatIdAsReference="TRUE" />
+							<f:if condition="{memeEntry.bild}">
+								<f:then>
+									<f:image src="{memeEntry.bild.uid}" width="390" class="img-fluid" treatIdAsReference="TRUE" />
+								</f:then>
+								<f:else>
+									Konnte Bild nicht laden ...
+									<f:debug title="memeEntry">{memeEntry}</f:debug>
+								</f:else>
+							</f:if>
 						</div>
 					</f:for>
 				</div>
@@ -18,7 +26,15 @@
 					<f:for each="{memeEntries}" as="memeEntry" iteration="meIteration">
 						<div class="col-12 col-sm-6 col-md-4 col-lg-3">
 							<a href="#" class="meme-entry" data-toggle="modal" data-target="#meme-modal-{memeEntry.uid}">
-								<f:image src="{memeEntry.bild.uid}" width="270" class="img-fluid" treatIdAsReference="TRUE" />
+								<f:if condition="{memeEntry.bild}">
+									<f:then>
+										<f:image src="{memeEntry.bild.uid}" width="270" class="img-fluid" treatIdAsReference="TRUE" />
+									</f:then>
+									<f:else>
+										Konnte Bild nicht laden ...
+										<f:debug title="memeEntry">{memeEntry}</f:debug>
+									</f:else>
+								</f:if>
 								<f:if condition="{memeEntry.memetag}"><b>#{memeEntry.memetag}</b><br></f:if>
 								<span class="meme-votes-uid-{memeEntry.uid}">{memeEntry.votes}</span> upvotes
 							</a>
@@ -32,7 +48,9 @@
 										<div class="modal-body">
 											<div class="row">
 												<div class="col-12 col-md-6">
-													<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank"><f:image src="{memeEntry.bild.uid}" width="700" class="img-fluid" treatIdAsReference="TRUE" /></a>
+													<f:if condition="{memeEntry.bild}">
+														<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank"><f:image src="{memeEntry.bild.uid}" width="700" class="img-fluid" treatIdAsReference="TRUE" /></a>
+													</f:if>
 												</div>
 												<div class="col-12 col-md-6">
 													<f:if condition="{memeEntry.memetag}"><h2>#{memeEntry.memetag}</h2></f:if>
@@ -43,11 +61,13 @@
 														<button type="button" class="btn btn-success meme-upvote">upvote <span class="glyphicon glyphicon-thumbs-up" style="margin-left:6px;" aria-hidden="true"></span></button><br>
 														<br>
 														<h4>share</h4>
-														<a href="https://www.facebook.com/sharer/sharer.php?u={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/facebook.svg" /></a>
-														<a href="https://twitter.com/intent/tweet?url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&text={f:if(condition: memeEntry.memetag, then: '%23{memeEntry.memetag -> f:format.urlencode()}')}{f:if(condition: settings.hashtags, then: '+{settings.hashtags -> f:format.urlencode()}')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/twitter.svg" /></a>
-														<a href="https://pinterest.com/pin/create/button/?url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&media=&description={f:if(condition: memeEntry.memetag, then: '#{memeEntry.memetag}')}{f:if(condition: settings.hashtags, then: ' {settings.hashtags}')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/pinterest.svg" /></a>
-														<!-- <a href="https://www.linkedin.com/shareArticle?mini=true&url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&title=&summary={f:if(condition: memeEntry.memetag, then: '#{memeEntry.memetag}')}{f:if(condition: settings.hashtags, then: ' {settings.hashtags}')}&source=" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/linkedin.svg" /></a> -->
-														<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/download.svg" /></a>
+														<f:if condition="{memeEntry.bild}">
+															<a href="https://www.facebook.com/sharer/sharer.php?u={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/facebook.svg" /></a>
+															<a href="https://twitter.com/intent/tweet?url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&text={f:if(condition: memeEntry.memetag, then: '%23{memeEntry.memetag -> f:format.urlencode()}')}{f:if(condition: settings.hashtags, then: '+{settings.hashtags -> f:format.urlencode()}')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/twitter.svg" /></a>
+															<a href="https://pinterest.com/pin/create/button/?url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&media=&description={f:if(condition: memeEntry.memetag, then: '#{memeEntry.memetag}')}{f:if(condition: settings.hashtags, then: ' {settings.hashtags}')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/pinterest.svg" /></a>
+															<!-- <a href="https://www.linkedin.com/shareArticle?mini=true&url={f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}&title=&summary={f:if(condition: memeEntry.memetag, then: '#{memeEntry.memetag}')}{f:if(condition: settings.hashtags, then: ' {settings.hashtags}')}&source=" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/linkedin.svg" /></a> -->
+															<a href="{f:uri.image(src: '{memeEntry.bild.uid}', width:'700', treatIdAsReference:'TRUE', absolute:'TRUE')}" target="_blank" type="button" class="btn btn-primary"><f:image src="EXT:hcb_iamdioe_meme/Resources/Public/Icons/download.svg" /></a>
+														</f:if>
 													</div>
 												</div>
 											</div>
