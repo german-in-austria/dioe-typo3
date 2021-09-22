@@ -1,4 +1,4 @@
-base: 'https://iam2021.dioe.at/'
+base: 'https://iam.dioe.at/'
 languages:
   -
     title: Deutsch
@@ -14,15 +14,15 @@ languages:
     flag: de
     languageId: 0
 rootPageId: 60
-websiteTitle: ''
 routeEnhancers:
   Dioearticlesystem:
     type: Plugin
     limitToPages: 140
     routePath: '/{dioeArticle}/{action}{controller}'
-    namespace: 'tx_dioearticlesystem_view'
+    namespace: tx_dioearticlesystem_view
     defaults:
-      action: 'show'
-      controller: 'DioeArticle'
+      action: show
+      controller: DioeArticle
     requirements:
       dioeArticle: '[0-9]{1,9}'
+websiteTitle: ''
