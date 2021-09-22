@@ -84,7 +84,7 @@ This template is responsible for creating a table of domain objects.
 				</f:if>
 			</section>
 			<div class="text-center">
-				<f:link.action action="list" pageUid="{f:if(condition: '{settings.zSeite}', then: '{settings.zSeite}', else: '{settings.defaultPId}')}" arguments="{dioeArticle : dioeArticle}" class="btn btn-outline-secondary d-print-none mt-2">Alle Blogbeiträge</f:link.action>
+				<f:link.typolink parameter="{f:if(condition: '{settings.zSeite}', then: '{settings.zSeite}', else: '{settings.defaultPId}')}" class="btn btn-outline-secondary d-print-none mt-2">Alle Blogbeiträge</f:link.typolink>
 			</div>
 		</f:case>
 		<f:defaultCase>
