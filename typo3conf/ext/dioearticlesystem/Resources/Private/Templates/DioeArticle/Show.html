@@ -25,10 +25,12 @@ This template is responsible for displaying a single view for a domain object
 	<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
   	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
 		<div class="mt-4">
-			<f:if condition="{dioeArticle.detailText}">
-				<f:then><dioe:textSpezials value="{dioeArticle.detailText}" /></f:then>
-				<f:else><dioe:textSpezials value="{dioeArticle.prevText}" /></f:else>
-			</f:if>
+			<div class="clearfix">
+				<f:if condition="{dioeArticle.detailText}">
+					<f:then><dioe:textSpezials value="{dioeArticle.detailText}" /></f:then>
+					<f:else><dioe:textSpezials value="{dioeArticle.prevText}" /></f:else>
+				</f:if>
+			</div>
 
 			<f:switch expression="{dioeArticle.aType.view}">
 				<f:case value="pub"> <f:comment>Publikation</f:comment>
@@ -69,10 +71,10 @@ This template is responsible for displaying a single view for a domain object
 			</f:if>
 			<f:if condition="{dioeArticle.detailPic}">
 				<br>
-				<div class="row">
+				<div class="row article-details-prev-imgs">
 					<f:for each="{dioeArticle.detailPic}" as="image" iteration="iterator">
 						<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
-							<a href="{f:uri.image(src: '{image.originalResource.originalFile.uid}', maxWidth: '1024', maxHeight: '800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{image.originalResource.title}" data-footer="{image.originalResource.description}" class="img img-responsive img-rounded mib1e hide-url-printer">
+							<a href="{f:uri.image(src: '{image.originalResource.originalFile.uid}', maxWidth: '1024', maxHeight: '800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{image.originalResource.title}" data-footer="{image.originalResource.description}" class="img img-fluid img-rounded mib1e hide-url-printer">
 								<f:render partial="DioeArticle/ShowImage" arguments="{image: image, imageCroppingMode: dioeArticle.detailPicCroppingMode, iterator: iterator}" />
 							</a>
 						</div>
@@ -89,7 +91,7 @@ This template is responsible for displaying a single view for a domain object
 						<span class="imgfrm">
 							<span class="extension">{file.originalResource.originalFile.extension}</span>
 							<v:condition.iterator.contains needle="{file.originalResource.originalFile.extension}" haystack="{'gif','jpg','jpeg','tif','tiff','bmp','pcx','tga','png','pdf','ai'}">
-								<span class="imgbg"><f:image src="{f:uri.typolink(parameter:'file:{file.originalResource.originalFile.uid}')}" alt="" class="img-responsive w100" width="210"/></span>
+								<span class="imgbg"><f:image src="{f:uri.typolink(parameter:'file:{file.originalResource.originalFile.uid}')}" alt="" class="img-fluid w100" width="210"/></span>
 							</v:condition.iterator.contains>
 							<span class="size">{file.originalResource.originalFile.extension} - {file.originalResource.originalFile.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}</span>
 						</span>

@@ -201,6 +201,13 @@ ol ol {
 	z-index: -10;
 }
 
+.imgdescription {
+  text-align: center;
+  font-size: 80%;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";

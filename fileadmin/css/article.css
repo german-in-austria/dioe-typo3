@@ -202,3 +202,7 @@ figure.image.article-img > span.img-add.lizenz {
   background-position: center;
   background-size: 50%;
 }
+
+.article-details-prev-imgs img {
+  width: 100%;
+}

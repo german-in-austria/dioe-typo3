@@ -6,8 +6,8 @@
 	<f:image src="{image.originalResource.originalFile.uid}"
 		alt="{prevPic.title}"
 		title="{prevPic.title}"
-		width="{f:if(condition: '{iterator.total} > 9', then: '113', else: '186')}{f:if(condition: '{imageCroppingMode}', then: 'c')}" height="{f:if(condition: '{imageCroppingMode}', then: '{f:if(condition: \'{iterator.total} > 9\', then: \'113c\', else: \'186c\')}')}"
+		width="{f:if(condition: '{iterator.total} > 9', then: '154', else: '253')}{f:if(condition: '{imageCroppingMode}', then: 'c')}" height="{f:if(condition: '{imageCroppingMode}', then: '{f:if(condition: \'{iterator.total} > 9\', then: \'154c\', else: \'253c\')}')}"
 	/>
-	<div class="imgData" data-img-dg="{iterator.cycle}" data-img-url="{f:uri.image(src: '{image.originalResource.originalFile.uid}', maxWidth: '870')}"></div>
+	<div class="imgData" data-img-dg="{iterator.cycle}" data-img-url="{f:uri.image(src: '{image.originalResource.originalFile.uid}', maxWidth: '1108')}"></div>
 	<dioe:copyrights value="{f:if(condition: '{prevPic.copyright}', then: '{prevPic.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:img_copyright\')}')}" bild="1" />
 </figure>
