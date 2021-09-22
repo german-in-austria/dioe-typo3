@@ -314,6 +314,47 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     }
 
 		/**
+		 * action export2
+		 *
+		 * @return string|object|null|void
+		 */
+		public function export2Action()
+		{
+				$this->view->assign('isAdmin', $GLOBALS['BE_USER']->isAdmin());
+				if ($GLOBALS['BE_USER']->isAdmin()) {
+					$jsonFile = file_get_contents(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('EXT:dioearticlesystem/Resources/Private/Backend/Export/Json/exportCopyRights.json'));
+					$json = json_decode($jsonFile, true);
+					$processing = array();
+					$resourceFactory = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance();
+					$storage = $resourceFactory->getDefaultStorage();
+					$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+					$metadata = $objectManager->get('TYPO3\CMS\Core\Resource\Index\MetaDataRepository');
+					$dg = 0;
+					foreach ($json as &$value) {
+						$process = array(
+							'absFilename' => $value[0],
+							'import' => $value,
+						);
+						if ($storage->hasFile($value[0])) {
+							$process['fileObject'] = $storage->getFile($value[0]);
+							$newMeta = array();
+							$metadata->update($process['fileObject']->getUid(), array(
+							    'title' => $value[1],
+							    'description' => $value[2],
+							    'copyright' => $value[4],
+							));
+							$processing[] = $process;
+							$dg += 1;
+							// if ($dg > 15) {
+							// 	break;
+							// }
+						}
+					}
+					$this->view->assign('test', $processing);
+				}
+		}
+
+		/**
 		 * action export
 		 *
 		 * @return string|object|null|void
