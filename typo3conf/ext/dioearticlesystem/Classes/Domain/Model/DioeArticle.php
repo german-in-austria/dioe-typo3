@@ -922,6 +922,16 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->avFiles;
     }
 
+		/**
+     * Returns the avFiles
+     *
+     * @return string $avFiles
+     */
+    public function getAvFilesP()
+    {
+        return XmlProcessor::xmlArray($this->avFiles);
+    }
+
     /**
      * Sets the avFiles
      *

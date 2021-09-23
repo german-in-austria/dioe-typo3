@@ -251,6 +251,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
 				$this->view->assign('contentObject', $this->configurationManager->getContentObject()->data);
         $this->view->assign('dioeArticle', $dioeArticle);
+				$this->view->assign('dioeArticleAvFilesP', $dioeArticle->getAvFilesP());
     }
 
     /**

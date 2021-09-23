@@ -1,0 +1,58 @@
+{namespace dce=ArminVieweg\Dce\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="col-md-{avData.spalten} mb-3">
+  <div class="av-titel">{avData.datei.titel}</div>
+  <f:if condition="{avData.seitenverhaeltniss}"><div class="embed-responsive embed-responsive-{f:if(condition: '{avData.seitenverhaeltniss} == 1', then: '16by9', else: '4by3')}"></f:if>
+    <f:if condition="{avData.datei.youtube}">
+      <f:then>
+        <f:if condition="{avData.seitenverhaeltniss}"><f:else><div class="embed-responsive embed-responsive-16by9"></f:else></f:if>
+        <iframe src="https://www.youtube-nocookie.com/embed/{avData.datei.youtube}?rel=0&amp;showinfo=0" class="embed-responsive-item av-objekt av-youtube" frameborder="0" allowfullscreen></iframe>
+        <f:if condition="{avData.seitenverhaeltniss}"><f:else></div></f:else></f:if>
+      </f:then>
+      <f:else>
+        <f:if condition="{avData.datei.datei}">
+          <f:then>
+						<f:alias map="{aFileInfo: '{v:resource.file(identifier: avData.datei.datei, treatIdAsUid: 1)}'}">
+              <f:if condition="{aFileInfo.extension'} == 'mp4'">
+                <f:then>
+                  <video controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-mp4">
+                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei}')}" type="video/mp4">
+                  </video>
+                </f:then>
+                <f:else>
+                  <audio controls class="mw100 {f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: 'w100 ')}av-objekt av-audio">
+                    <source src="{f:uri.typolink(parameter:'file:{avData.datei.datei}')}" type="audio/{aFileInfo.extension}">
+                  </audio>
+                </f:else>
+              </f:if>
+						</f:alias>
+					</f:then>
+          <f:else>
+            <div class="{f:if(condition: '{avData.seitenverhaeltniss}', then: 'embed-responsive-item ', else: '')}av-objekt">
+              No File!
+            </div>
+          </f:else>
+        </f:if>
+      </f:else>
+    </f:if>
+  <f:if condition="{avData.seitenverhaeltniss}"></div></f:if>
+  <div class="av-copyright">
+    <f:if condition="{avData.datei.copyright}">
+      <f:then>
+				<dioe:copyrights value="{f:if(condition: '{avData.datei.copyright}', then: '{avData.datei.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:media_copyright\')}')}" klein="1" />
+      </f:then>
+      <f:else>
+        <f:if condition="{avData.datei.datei}">
+          <f:then>
+						<f:alias map="{aFileInfo: '{v:resource.file(identifier: avData.datei.datei, treatIdAsUid: 1)}'}">
+							<dioe:copyrights value="{f:if(condition: '{aFileInfo.copyright}', then: '{aFileInfo.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:media_copyright\')}')}" klein="1" />
+						</f:alias>
+          </f:then>
+          <f:else>
+            <dioe:copyrights value="{f:translate(key: 'LLL:fileadmin/template/locallang.xml:media_copyright')}" klein="1" />
+          </f:else>
+        </f:if>
+      </f:else>
+    </f:if>
+  </div>
+</div>

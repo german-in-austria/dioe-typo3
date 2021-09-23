@@ -7,157 +7,168 @@
 This template is responsible for displaying a single view for a domain object
 
 <f:section name="content">
-	<f:comment>Header:</f:comment>
-	<v:page.header.title title="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" />
-	<v:page.header.meta property="og:title" content="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" />
-	<v:page.header.meta property="og:description" content="{f:if(condition: '{dioeArticle.prevText}', then: '{dioe:removeTextSpezials(value: \'{dioeArticle.prevText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}', else: '{dioe:removeTextSpezials(value: \'{dioeArticle.detailText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}')}" />
-	<f:variable name="prevPic" value="{v:resource.file(identifier:'{dioeArticle.prevPic.originalResource.originalFile.uid}', treatIdAsUid: '1', onlyProperties: '1')}" />
-	<f:for each="{dioeArticle.detailPic}" as="image">
-		<f:if condition="{dioeArticle.prevPic.originalResource.originalFile.uid} !== {image.originalResource.originalFile.uid}">
-			<v:page.header.meta property="og:image" content="{f:uri.image(src: '{image.originalResource.originalFile.uid}', width: '600c' height: '315c', absolute: '1')}" />
+	<div class="article-detail">
+		<f:comment>Header:</f:comment>
+		<v:page.header.title title="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" />
+		<v:page.header.meta property="og:title" content="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" />
+		<v:page.header.meta property="og:description" content="{f:if(condition: '{dioeArticle.prevText}', then: '{dioe:removeTextSpezials(value: \'{dioeArticle.prevText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}', else: '{dioe:removeTextSpezials(value: \'{dioeArticle.detailText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}')}" />
+		<f:variable name="prevPic" value="{v:resource.file(identifier:'{dioeArticle.prevPic.originalResource.originalFile.uid}', treatIdAsUid: '1', onlyProperties: '1')}" />
+		<f:for each="{dioeArticle.detailPic}" as="image">
+			<f:if condition="{dioeArticle.prevPic.originalResource.originalFile.uid} !== {image.originalResource.originalFile.uid}">
+				<v:page.header.meta property="og:image" content="{f:uri.image(src: '{image.originalResource.originalFile.uid}', width: '600c' height: '315c', absolute: '1')}" />
+			</f:if>
+		</f:for>
+		<f:if condition="{dioeArticle.prevPic.originalResource.name}">
+			<v:page.header.meta property="og:image" content="{f:uri.image(src: '{dioeArticle.prevPic.originalResource.originalFile.uid}', width: '600c' height: '315c', absolute: '1')}" />
 		</f:if>
-	</f:for>
-	<f:if condition="{dioeArticle.prevPic.originalResource.name}">
-		<v:page.header.meta property="og:image" content="{f:uri.image(src: '{dioeArticle.prevPic.originalResource.originalFile.uid}', width: '600c' height: '315c', absolute: '1')}" />
-	</f:if>
-	<f:comment>Artikel:</f:comment>
-	<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
+		<f:comment>Artikel:</f:comment>
+		<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
 
-	<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
-  	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
-		<div class="mt-4">
-			<div class="clearfix">
-				<f:if condition="{dioeArticle.detailText}">
-					<f:then><dioe:textSpezials value="{dioeArticle.detailText}" /></f:then>
-					<f:else><dioe:textSpezials value="{dioeArticle.prevText}" /></f:else>
-				</f:if>
-			</div>
-
-			<f:switch expression="{dioeArticle.aType.view}">
-				<f:case value="pub"> <f:comment>Publikation</f:comment>
-					<ul class="publicationen-liste publicationen-einzeln">
-						<f:render partial="DioeArticle/ListItemPublikation" arguments="{dioeArticle:dioeArticle, settings:settings}" />
-					</ul>
-				</f:case>
-				<f:case value="vorverleh"> <f:comment>Vortrag, Veranstaltung, Lehre</f:comment>
-					<ul class="termin-liste termin-einzeln">
-						<f:render partial="DioeArticle/ListItemTermin" arguments="{dioeArticle:dioeArticle, settings:settings}" />
-					</ul>
-				</f:case>
-			</f:switch>
-
-			<f:if condition="{dioeArticle.pFile}">
-				<f:if condition="{dioeArticle.pFile.originalResource.extension} == 'mp3'">
-					<br>
-					<div>
-						<audio controls id="podcastAudio">
-							<source src="{f:uri.typolink(parameter:'file:{dioeArticle.pFile.originalResource.publicUrl}')}" type="audio/mpeg"/>
-						</audio>
-					</div>
-					<script type="text/javascript">
-						var pElement = document.getElementById('podcastAudio');
-						pElement.outerHTML = '<iframe id="podcastAudioFrm" src="about:blank" classname="podlove-webplayer-frame" style="height: 200px; width: 100%; border: none; overflow: hidden;"></iframe>';
-						var pDoc = document.getElementById('podcastAudioFrm').contentWindow.document;
-						pDoc.open();
-						var pHtml = decodeURIComponent('<f:format.urlencode><f:format.raw><f:render partial="DioeArticle/PodLove" /></f:format.raw></f:format.urlencode>'.replace(/\+/g,  " "));
-						pHtml = pHtml.replace(/###title###/g, decodeURIComponent('<f:format.urlencode>{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}</f:format.urlencode>').replace(/\+/g,  " "));
-						pHtml = pHtml.replace(/###url###/g, decodeURIComponent('<f:format.urlencode>{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}</f:format.urlencode>').replace(/\+/g,  " "));
-						pHtml = pHtml.replace(/###audioSize###/g, decodeURIComponent('<f:format.urlencode>{dioeArticle.pFile.originalResource.originalFile.size}</f:format.urlencode>').replace(/\+/g,  " "));
-						pHtml = pHtml.replace(/###audiourl###/g, decodeURIComponent('<f:format.urlencode>{f:uri.typolink(absolute: 'TRUE', parameter: 'file:{dioeArticle.pFile.originalResource.publicUrl}')}</f:format.urlencode>').replace(/\+/g,  " "));
-						console.log(pHtml);
-						pDoc.write(pHtml);
-						pDoc.close();
-					</script>
-				</f:if>
-			</f:if>
-			<f:if condition="{dioeArticle.detailPic}">
-				<br>
-				<div class="row article-details-prev-imgs">
-					<f:for each="{dioeArticle.detailPic}" as="image" iteration="iterator">
-						<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
-							<a href="{f:uri.image(src: '{image.originalResource.originalFile.uid}', maxWidth: '1024', maxHeight: '800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{image.originalResource.title}" data-footer="{image.originalResource.description}" class="img img-fluid img-rounded mib1e hide-url-printer">
-								<f:render partial="DioeArticle/ShowImage" arguments="{image: image, imageCroppingMode: dioeArticle.detailPicCroppingMode, iterator: iterator}" />
-							</a>
-						</div>
-					</f:for>
+		<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
+	  	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
+			<div class="mt-4">
+				<div class="clearfix">
+					<f:if condition="{dioeArticle.detailText}">
+						<f:then><dioe:textSpezials value="{dioeArticle.detailText}" /></f:then>
+						<f:else><dioe:textSpezials value="{dioeArticle.prevText}" /></f:else>
+					</f:if>
 				</div>
-			</f:if>
 
-			<!-- ToDo: AudioVideoDateien -->
+				<f:switch expression="{dioeArticle.aType.view}">
+					<f:case value="pub"> <f:comment>Publikation</f:comment>
+						<ul class="publicationen-liste publicationen-einzeln">
+							<f:render partial="DioeArticle/ListItemPublikation" arguments="{dioeArticle:dioeArticle, settings:settings}" />
+						</ul>
+					</f:case>
+					<f:case value="vorverleh"> <f:comment>Vortrag, Veranstaltung, Lehre</f:comment>
+						<ul class="termin-liste termin-einzeln">
+							<f:render partial="DioeArticle/ListItemTermin" arguments="{dioeArticle:dioeArticle, settings:settings}" />
+						</ul>
+					</f:case>
+				</f:switch>
 
-			<f:if condition="{dioeArticle.fFiles}">
-				<br>
-				<f:for each="{dioeArticle.fFiles}" as="file">
-					<a href="{f:uri.typolink(parameter:'file:{file.originalResource.originalFile.uid}')}" target="_BLANK" title="{file.originalResource.originalFile.name} - {file.originalResource.originalFile.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}" class="datei clearfix datei-ext-{file.originalResource.originalFile.extension}">
-						<span class="imgfrm">
-							<span class="extension">{file.originalResource.originalFile.extension}</span>
-							<v:condition.iterator.contains needle="{file.originalResource.originalFile.extension}" haystack="{'gif','jpg','jpeg','tif','tiff','bmp','pcx','tga','png','pdf','ai'}">
-								<span class="imgbg"><f:image src="{f:uri.typolink(parameter:'file:{file.originalResource.originalFile.uid}')}" alt="" class="img-fluid w100" width="210"/></span>
-							</v:condition.iterator.contains>
-							<span class="size">{file.originalResource.originalFile.extension} - {file.originalResource.originalFile.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}</span>
-						</span>
-						<span class="filefrm">
-							<f:alias map="{aFileInfo: '{v:resource.file(identifier: file.originalResource.originalFile.uid)}'}">
-								<dioe:copyrights value="{f:if(condition: '{aFileInfo.copyright}', then: '{aFileInfo.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:file_copyright\')}')}" klein="1" keinlink="1" span="1" />
-							</f:alias>
-							<p><b>{file.originalResource.title}</b></p>
-							<p><f:format.nl2br>{file.originalResource.description}</f:format.nl2br></p>
-						</span>
-					</a>
-				</f:for>
-			</f:if>
-
-			<f:if condition="{dioeArticle.aType.view} !== 'pub'">
-				<div class="card citation mt-5 mb-3">
-					<div class="card-header">{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zitation')}
-						<f:if condition='{dioeArticle.zLText}'>
-							<f:then><dioe:copyrights value="{dioeArticle.zLText}" class="float-right" /></f:then>
-							<f:else>
-								<f:if condition="{dioeArticle.zShare} != 'kl'">
-									<f:alias map="{alizenz: 'cc-by{dioeArticle.zComShare}{dioeArticle.zShare};{dioeArticle.zLName}'}">
-										<dioe:copyrights value="{alizenz}" class="float-right" />
-									</f:alias>
-								</f:if>
-							</f:else>
-						</f:if>
-					</div>
-					<div class="card-body font-sm">
-						<f:if condition='{dioeArticle.zName}'>
-							<f:then>{dioeArticle.zName}</f:then>
-							<f:else>
-								<f:if condition='{dioeArticle.zNameBE} > 0'>
-									<f:then>
-										<f:if condition='{dioeArticle.zNameBE}'>
-											<f:then>
-												{dioeArticle.zUser -> f:cObject(typoscriptObjectPath:'lib.namebe')}
-											</f:then>
-											<f:else>
-												{contentObject.cruser_id -> f:cObject(typoscriptObjectPath:'lib.namebe')}
-											</f:else>
-										</f:if>
-									</f:then>
-									<f:else>DiÖ</f:else>
-								</f:if>
-							</f:else>
-						</f:if> (<f:format.date format="Y">{f:if(condition: '{contentObject.starttime}', then: '{contentObject.starttime}', else: '{contentObject.tstamp}')}</f:format.date>): <f:if condition='{dioeArticle.zTitle}'><f:then>{dioeArticle.zTitle}.</f:then><f:else>{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}.</f:else></f:if>
-						<br class="d-inline d-sm-none">
-						In:
-						<f:switch expression="{dioeArticle.zPlace}">
-							<f:defaultCase>{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_standort_default')}</f:defaultCase>
-						</f:switch>
+				<f:if condition="{dioeArticle.pFile}">
+					<f:if condition="{dioeArticle.pFile.originalResource.extension} == 'mp3'">
 						<br>
-						URL: <span class="url">{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}</span><br>
-						[{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zugriff')}: <f:format.date date="now" format="d.m.Y" />]
+						<div>
+							<audio controls id="podcastAudio">
+								<source src="{f:uri.typolink(parameter:'file:{dioeArticle.pFile.originalResource.publicUrl}')}" type="audio/mpeg"/>
+							</audio>
+						</div>
+						<script type="text/javascript">
+							var pElement = document.getElementById('podcastAudio');
+							pElement.outerHTML = '<iframe id="podcastAudioFrm" src="about:blank" classname="podlove-webplayer-frame" style="height: 200px; width: 100%; border: none; overflow: hidden;"></iframe>';
+							var pDoc = document.getElementById('podcastAudioFrm').contentWindow.document;
+							pDoc.open();
+							var pHtml = decodeURIComponent('<f:format.urlencode><f:format.raw><f:render partial="DioeArticle/PodLove" /></f:format.raw></f:format.urlencode>'.replace(/\+/g,  " "));
+							pHtml = pHtml.replace(/###title###/g, decodeURIComponent('<f:format.urlencode>{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}</f:format.urlencode>').replace(/\+/g,  " "));
+							pHtml = pHtml.replace(/###url###/g, decodeURIComponent('<f:format.urlencode>{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}</f:format.urlencode>').replace(/\+/g,  " "));
+							pHtml = pHtml.replace(/###audioSize###/g, decodeURIComponent('<f:format.urlencode>{dioeArticle.pFile.originalResource.originalFile.size}</f:format.urlencode>').replace(/\+/g,  " "));
+							pHtml = pHtml.replace(/###audiourl###/g, decodeURIComponent('<f:format.urlencode>{f:uri.typolink(absolute: 'TRUE', parameter: 'file:{dioeArticle.pFile.originalResource.publicUrl}')}</f:format.urlencode>').replace(/\+/g,  " "));
+							console.log(pHtml);
+							pDoc.write(pHtml);
+							pDoc.close();
+						</script>
+					</f:if>
+				</f:if>
+				<f:if condition="{dioeArticle.detailPic}">
+					<br>
+					<div class="row article-details-prev-imgs">
+						<f:for each="{dioeArticle.detailPic}" as="image" iteration="iterator">
+							<div class="col-xs-6 col-md-{f:if(condition: '{iterator.total} > 9', then: '2', else: '3')}">
+								<a href="{f:uri.image(src: '{image.originalResource.originalFile.uid}', maxWidth: '1024', maxHeight: '800')}" data-toggle="lightbox" data-gallery="article-gallery" data-title="{image.originalResource.title}" data-footer="{image.originalResource.description}" class="img img-fluid img-rounded mib1e hide-url-printer">
+									<f:render partial="DioeArticle/ShowImage" arguments="{image: image, imageCroppingMode: dioeArticle.detailPicCroppingMode, iterator: iterator}" />
+								</a>
+							</div>
+						</f:for>
 					</div>
-				</div>
-			</f:if>
+				</f:if>
 
-		</div>
-	</article>
-	<div class="d-print-none mt-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
+				<!-- ToDo: AudioVideoDateien -->
 
-	<f:comment>
-		<f:render partial="DioeArticle/Properties" arguments="{dioeArticle:dioeArticle}" />
-	</f:comment>
+				<f:if condition="{dioeArticle.avFiles}">
+					<br>
+					<div class="row audiovideo">
+						<f:for each="{dioeArticleAvFilesP}" as="datei" iteration="i">
+							<f:render partial="DioeArticle/ShowAudioVideo" arguments="{avData: {datei: datei, spalten: dioeArticle.avCols, seitenverhaeltniss: dioeArticle.avAspectRatio}}"/>
+						</f:for>
+					</div>
+				</f:if>
+
+				<f:if condition="{dioeArticle.fFiles}">
+					<br>
+					<f:for each="{dioeArticle.fFiles}" as="file">
+						<a href="{f:uri.typolink(parameter:'file:{file.originalResource.originalFile.uid}')}" target="_BLANK" title="{file.originalResource.originalFile.name} - {file.originalResource.originalFile.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}" class="datei clearfix datei-ext-{file.originalResource.originalFile.extension}">
+							<span class="imgfrm">
+								<span class="extension">{file.originalResource.originalFile.extension}</span>
+								<v:condition.iterator.contains needle="{file.originalResource.originalFile.extension}" haystack="{'gif','jpg','jpeg','tif','tiff','bmp','pcx','tga','png','pdf','ai'}">
+									<span class="imgbg"><f:image src="{f:uri.typolink(parameter:'file:{file.originalResource.originalFile.uid}')}" alt="" class="img-fluid w100" width="210"/></span>
+								</v:condition.iterator.contains>
+								<span class="size">{file.originalResource.originalFile.extension} - {file.originalResource.originalFile.size -> f:format.bytes(decimals: 1, decimalSeparator: ',', thousandsSeparator: ',')}</span>
+							</span>
+							<span class="filefrm">
+								<f:alias map="{aFileInfo: '{v:resource.file(identifier: file.originalResource.originalFile.uid)}'}">
+									<dioe:copyrights value="{f:if(condition: '{aFileInfo.copyright}', then: '{aFileInfo.copyright}', else: '{f:translate(key: \'LLL:fileadmin/template/locallang.xml:file_copyright\')}')}" klein="1" keinlink="1" span="1" />
+								</f:alias>
+								<p><b>{file.originalResource.title}</b></p>
+								<p><f:format.nl2br>{file.originalResource.description}</f:format.nl2br></p>
+							</span>
+						</a>
+					</f:for>
+				</f:if>
+
+				<f:if condition="{dioeArticle.aType.view} !== 'pub'">
+					<div class="card citation mt-5 mb-3">
+						<div class="card-header">{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zitation')}
+							<f:if condition='{dioeArticle.zLText}'>
+								<f:then><dioe:copyrights value="{dioeArticle.zLText}" class="float-right" /></f:then>
+								<f:else>
+									<f:if condition="{dioeArticle.zShare} != 'kl'">
+										<f:alias map="{alizenz: 'cc-by{dioeArticle.zComShare}{dioeArticle.zShare};{dioeArticle.zLName}'}">
+											<dioe:copyrights value="{alizenz}" class="float-right" />
+										</f:alias>
+									</f:if>
+								</f:else>
+							</f:if>
+						</div>
+						<div class="card-body font-sm">
+							<f:if condition='{dioeArticle.zName}'>
+								<f:then>{dioeArticle.zName}</f:then>
+								<f:else>
+									<f:if condition='{dioeArticle.zNameBE} > 0'>
+										<f:then>
+											<f:if condition='{dioeArticle.zNameBE}'>
+												<f:then>
+													{dioeArticle.zUser -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+												</f:then>
+												<f:else>
+													{contentObject.cruser_id -> f:cObject(typoscriptObjectPath:'lib.namebe')}
+												</f:else>
+											</f:if>
+										</f:then>
+										<f:else>DiÖ</f:else>
+									</f:if>
+								</f:else>
+							</f:if> (<f:format.date format="Y">{f:if(condition: '{contentObject.starttime}', then: '{contentObject.starttime}', else: '{contentObject.tstamp}')}</f:format.date>): <f:if condition='{dioeArticle.zTitle}'><f:then>{dioeArticle.zTitle}.</f:then><f:else>{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}.</f:else></f:if>
+							<br class="d-inline d-sm-none">
+							In:
+							<f:switch expression="{dioeArticle.zPlace}">
+								<f:defaultCase>{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_standort_default')}</f:defaultCase>
+							</f:switch>
+							<br>
+							URL: <span class="url">{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}</span><br>
+							[{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zugriff')}: <f:format.date date="now" format="d.m.Y" />]
+						</div>
+					</div>
+				</f:if>
+
+			</div>
+		</article>
+		<div class="d-print-none mt-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
+
+		<f:comment>
+			<f:render partial="DioeArticle/Properties" arguments="{dioeArticle:dioeArticle}" />
+		</f:comment>
+	</div>
 </f:section>
 </html>
