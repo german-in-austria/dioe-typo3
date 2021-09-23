@@ -15,7 +15,7 @@ languages:
     languageId: 0
 rootPageId: 60
 routeEnhancers:
-  Dioearticlesystem:
+  DioearticlesystemShow:
     type: Plugin
     limitToPages: 140
     routePath: '/{dioeArticle}/{action}{controller}'
@@ -25,4 +25,12 @@ routeEnhancers:
       controller: DioeArticle
     requirements:
       dioeArticle: '[0-9]{1,9}'
+  DioearticlesystemList:
+    type: Plugin
+    limitToPages: 140
+    routePath: '/'
+    namespace: tx_dioearticlesystem_view
+    defaults:
+      action: list
+      controller: DioeArticle
 websiteTitle: ''

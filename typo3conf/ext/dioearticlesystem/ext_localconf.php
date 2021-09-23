@@ -13,7 +13,7 @@ call_user_func(
             ],
             // non-cacheable actions
             [
-                \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => 'list, ajax'
+                \DioeArticleSystem\Dioearticlesystem\Controller\DioeArticleController::class => 'list, ajax, show'
             ]
         );
 

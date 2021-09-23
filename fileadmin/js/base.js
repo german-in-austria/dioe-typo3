@@ -76,4 +76,9 @@
 			$('.imgData[data-img-dg="' + $(this).data('imgalbox') + '"]').parent().click();
 		});
 	});
+	// Lightbox
+	$(document).on('click', '[data-toggle="lightbox"]', function (event) {
+		event.preventDefault();
+		$(this).ekkoLightbox();
+	});
 })(jQuery);

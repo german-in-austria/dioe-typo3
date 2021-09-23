@@ -8,7 +8,7 @@ This template is responsible for displaying a single view for a domain object
 
 <f:section name="content">
 	<f:comment>Header:</f:comment>
-	<!-- <v:page.header.title title="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" /> -->
+	<v:page.header.title title="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" />
 	<v:page.header.meta property="og:title" content="{f:if(condition: '{dioeArticle.prevTitle}', then: '{dioeArticle.prevTitle}', else: '{dioeArticle.detailTitle}')}" />
 	<v:page.header.meta property="og:description" content="{f:if(condition: '{dioeArticle.prevText}', then: '{dioe:removeTextSpezials(value: \'{dioeArticle.prevText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}', else: '{dioe:removeTextSpezials(value: \'{dioeArticle.detailText}\') -> f:format.stripTags() -> f:format.crop(maxCharacters:\'290\',respectHtml:\'1\',respectWordBoundaries:\'1\')}')}" />
 	<f:variable name="prevPic" value="{v:resource.file(identifier:'{dioeArticle.prevPic.originalResource.originalFile.uid}', treatIdAsUid: '1', onlyProperties: '1')}" />

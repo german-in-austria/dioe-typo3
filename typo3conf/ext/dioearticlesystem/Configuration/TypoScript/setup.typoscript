@@ -67,3 +67,7 @@ ajax_das_page {
 		  dontCheckPid = 1
 		}
 }
+
+[traverse(request.getQueryParams(), 'tx_dioearticlesystem_view/dioeArticle') > 0]
+	config.noPageTitle = 2
+[END]

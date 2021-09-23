@@ -29,15 +29,23 @@ languages:
     flag: en-us-gb
     languageId: 1
 rootPageId: 1
-websiteTitle: ''
 routeEnhancers:
-  Dioearticlesystem:
+  DioearticlesystemShow:
     type: Plugin
     limitToPages: 138
     routePath: '/{dioeArticle}/{action}{controller}'
-    namespace: 'tx_dioearticlesystem_view'
+    namespace: tx_dioearticlesystem_view
     defaults:
-      action: 'show'
-      controller: 'DioeArticle'
+      action: show
+      controller: DioeArticle
     requirements:
       dioeArticle: '[0-9]{1,9}'
+  DioearticlesystemList:
+    type: Plugin
+    limitToPages: 138
+    routePath: '/'
+    namespace: tx_dioearticlesystem_view
+    defaults:
+      action: list
+      controller: DioeArticle
+websiteTitle: ''

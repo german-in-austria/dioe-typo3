@@ -19,6 +19,8 @@ page {
   includeCSS {
     file10 = fileadmin/css/bootstrap.min.css
     file10.disableCompression = 1
+		file10l = fileadmin/css/ekko-lightbox.css
+    file10l.disableCompression = 1
 		file11 = fileadmin/css/base.css
 		file12 = fileadmin/css/article.css
 		file20 = fileadmin/iam/css/fonts.css
@@ -37,6 +39,8 @@ page {
 		file20.disableCompression = 1
     file30 = fileadmin/js/bootstrap.min.js
     file30.disableCompression = 1
+		file35 = fileadmin/js/ekko-lightbox.min.js
+		file35.disableCompression = 1
 		file50 = fileadmin/js/base.js
     file90 = fileadmin/iam/js/scripts.js
   }
