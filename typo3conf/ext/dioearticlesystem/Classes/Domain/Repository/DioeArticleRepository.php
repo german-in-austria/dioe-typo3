@@ -37,7 +37,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @api
 		 */
 		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
-	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder)->execute();
+	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder);
 		}
 
 		/**
@@ -47,7 +47,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @api
 		 */
 		public function filteredCount($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
-	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder)->count();
+	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, 0, 0, $aOrder, 1);
 		}
 
 		/**
@@ -147,76 +147,113 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			return $out;
 		}
 
-		public function filteredFunc($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
-	    $query = $this->createQuery();
-			$constraints = [];
-			if ($be) {
-				$query->getQuerySettings()->setRespectSysLanguage(false);
-				$query->getQuerySettings()->setIgnoreEnableFields($be);
-				$constraints[] = $query->equals('deleted', 0);
+		public function filteredFunc($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0, $aCount = 0) {
+			$mdg = 0;
+			if ($aCount > 0) {
+				$aOffset = 0;
 			}
-	    if ($aType >= 0) {
-        $constraints[] = $query->equals('a_type', $aType);
-	    }
-			if ($aTag >= 0) {
-				if (gettype($aTag) == 'string') {
-					if (strpos($aTag, ',') > -1) {
-						$aTags = explode(",", $aTag);
-						$tagConstraints = [];
-						foreach ($aTags as &$value) {
-							$tagConstraints = $query->equals('tags.uid', intval($value));
-						}
-						$constraints[] = $query->logicalOr($tagConstraints);
-					} else {
-						$aTag = intval($aTag);
-						if ($aTag > 0) {
-							$constraints[] = $query->equals('tags.uid', $aTag);
-						}
-					}
-				} else {
-					$constraints[] = $query->equals('tags.uid', $aTag);
+			if ($aSPin > 0 && $aOffset == 0) {
+				$mdg++;
+				$pinName = 'startPin';
+			} else if ($aCPin > 0 && $aOffset == 0) {
+				$mdg++;
+				$pinName = 'catPin';
+			}
+			$dg = 0;
+			$query = array();
+			for ($dg = 0; $dg <= $mdg; $dg++) {
+		    $query[$dg] = $this->createQuery();
+				$constraints = [];
+				if ($be) {
+					$query[$dg]->getQuerySettings()->setRespectSysLanguage(false);
+					$query[$dg]->getQuerySettings()->setIgnoreEnableFields($be);
+					$constraints[] = $query[$dg]->equals('deleted', 0);
 				}
-	    }
-			if ($aHome >= 0) {
-        $constraints[] = $query->equals('a_home', $aHome);
-	    }
-			if ($aCluster > -1 && $aCluster && $aCluster !== 'a,b,c,d,e') {
-				if ($aCluster == 'sfb') {
-					$constraints[] = $query->equals('aTaskCluster', 'a,b,c,d,e');
-				} else {
-					if (gettype($aCluster) == 'string') {
-						if (strpos($aCluster, ',') > -1) {
-							$aTasks = explode(",", $aCluster);
-							$taskConstraints = [];
-							foreach ($aTasks as &$value) {
-								$taskConstraints = $query->contains('aTaskCluster', $value);
+		    if ($aType >= 0) {
+	        $constraints[] = $query[$dg]->equals('a_type', $aType);
+		    }
+				if ($aTag >= 0) {
+					if (gettype($aTag) == 'string') {
+						if (strpos($aTag, ',') > -1) {
+							$aTags = explode(",", $aTag);
+							$tagConstraints = [];
+							foreach ($aTags as &$value) {
+								$tagConstraints = $query[$dg]->equals('tags.uid', intval($value));
 							}
-							$constraints[] = $query->logicalOr($taskConstraints);
+							$constraints[] = $query[$dg]->logicalOr($tagConstraints);
 						} else {
-							$constraints[] = $query->contains('aTaskCluster', $aCluster);
+							$xTag = intval($aTag);
+							if ($xTag > 0) {
+								$constraints[] = $query[$dg]->equals('tags.uid', $xTag);
+							}
 						}
 					} else {
-						$constraints[] = $query->contains('aTaskCluster', $aCluster);
+						$constraints[] = $query[$dg]->equals('tags.uid', $aTag);
 					}
-					$constraints[] = $query->logicalNot($query->equals('aTaskCluster', 'a,b,c,d,e'));
+		    }
+				if ($aHome >= 0) {
+	        $constraints[] = $query[$dg]->equals('a_home', $aHome);
+		    }
+				if ($aCluster > -1 && $aCluster && $aCluster !== 'a,b,c,d,e') {
+					if ($aCluster == 'sfb') {
+						$constraints[] = $query[$dg]->equals('aTaskCluster', 'a,b,c,d,e');
+					} else {
+						if (gettype($aCluster) == 'string') {
+							if (strpos($aCluster, ',') > -1) {
+								$aTasks = explode(",", $aCluster);
+								$taskConstraints = [];
+								foreach ($aTasks as &$value) {
+									$taskConstraints = $query[$dg]->contains('aTaskCluster', $value);
+								}
+								$constraints[] = $query[$dg]->logicalOr($taskConstraints);
+							} else {
+								$constraints[] = $query[$dg]->contains('aTaskCluster', $aCluster);
+							}
+						} else {
+							$constraints[] = $query[$dg]->contains('aTaskCluster', $aCluster);
+						}
+						$constraints[] = $query[$dg]->logicalNot($query[$dg]->equals('aTaskCluster', 'a,b,c,d,e'));
+					}
+		    }
+				if ($aLang == 0 || $aLang == 1) {
+					$constraints[] = $query[$dg]->logicalOr($query[$dg]->equals('sys_language_uid', $aLang), $query[$dg]->equals('sys_language_uid',-1));
 				}
-	    }
-			if ($aLang == 0 || $aLang == 1) {
-				$constraints[] = $query->logicalOr($query->equals('sys_language_uid', $aLang), $query->equals('sys_language_uid',-1));
+				if ($mdg > 0 && $aOffset == 0) {
+					$bDate = new \DateTime('-30 days');
+					$fxQuery = $query[$dg]->logicalAnd($query[$dg]->equals($pinName, 1), $query[$dg]->greaterThanOrEqual('aDate', $bDate));
+					if ($dg > 0) {
+						$constraints[] = $query[$dg]->logicalNot($fxQuery);
+					} else {
+						$constraints[] = $fxQuery;
+					}
+				}
+				if ($constraints) {
+					$query[$dg]->matching($query[$dg]->logicalAnd($constraints));
+				}
+				if ($aOffset > 0) {
+					$query[$dg]->setOffset($aOffset);
+				}
+				if ($aLimit > 0 && ($mdg == 0 || $dg > 0)) {
+					$query[$dg]->setLimit($aLimit);
+				}
+				if ($aOrder > 0) {
+					$query[$dg]->setOrderings(['aDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
+				}
+				$query[$dg] = $query[$dg]->execute();
+				// \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($query[$dg]);
 			}
-			if ($constraints) {
-				$query->matching($query->logicalAnd($constraints));
+			if ($aCount > 0) {
+				return $query[0]->count();
+			} else {
+				if ($mdg > 0) {
+					for ($dg = 1; $dg <= $mdg; $dg++) {
+						foreach ($query[$dg]->toArray() as $result) {
+							$query[0]->offsetSet(($query[0]->count()), $result);
+						}
+					}
+				}
+				return $query[0];
 			}
-			if ($aOffset > 0) {
-				$query->setOffset($aOffset);
-			}
-			if ($aLimit > 0) {
-				$query->setLimit($aLimit);
-			}
-			if ($aOrder > 0) {
-				$query->setOrderings(['aDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
-			}
-	    return $query;
 		}
 
 		public function findHiddenByUid($uid) {
