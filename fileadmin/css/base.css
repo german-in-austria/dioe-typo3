@@ -212,6 +212,25 @@ ekko-lightbox-nav-overlay a span {
   text-shadow: 1px 1px 2px #000;
 }
 
+.ce-textpic.ce-left.ce-intext .ce-gallery {
+  padding-right: 1rem;
+}
+
+.ce-textpic.ce-right.ce-intext .ce-gallery {
+  padding-left: 1rem;
+}
+
+
+@media (max-width: 900px) {
+	.ce-intext.ce-right .ce-gallery, .ce-intext.ce-left .ce-gallery {
+	  float: none;
+	  width: 100%;
+	  max-width: 100%;
+	  display: block;
+    padding: 0!important;
+	}
+}
+
 @media print {
   a.hide-url-printer:link:after, a.hide-url-printer:visited:after {
     content: "";
