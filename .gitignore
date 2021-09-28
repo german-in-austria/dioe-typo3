@@ -1,4 +1,5 @@
 .ftpconfig
 /fileadmin/user_upload/*
 /fileadmin/memebilder/*
+LocalConfiguration.php
 ENABLE_INSTALL_TOOL
