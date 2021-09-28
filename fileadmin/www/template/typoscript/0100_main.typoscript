@@ -1,9 +1,16 @@
 page = PAGE
 page {
   bodyTag >
-  bodyTagCObject = TEXT
-  bodyTagCObject.field = uid
-  bodyTagCObject.wrap = <body id="hp|">
+	bodyTagCObject = COA
+  bodyTagCObject {
+		10 = TEXT
+	  10.field = uid
+	  10.noTrimWrap = | id="hp|"|
+		20 = TEXT
+	  20.data = siteLanguage:twoLetterIsoCode
+	  20.noTrimWrap = | class="lan-|"|
+		stdWrap.noTrimWrap = |<body|>|
+	}
   meta {
     X-UA-Compatible = IE=edge,chrome=1
     X-UA-Compatible.httpEquivalent = 1
