@@ -154,7 +154,7 @@ This template is responsible for displaying a single view for a domain object
 								<f:defaultCase>{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_standort_default')}</f:defaultCase>
 							</f:switch>
 							<br>
-							URL: <span class="url">{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}</span><br>
+							URL: <span class="url">{f:uri.page(absolute: 'TRUE', addQueryString: 'TRUE')}/{dioeArticle.uid}</span><br>
 							[{f:translate(key: 'LLL:fileadmin/template/locallang.xml:zitation_zugriff')}: <f:format.date date="now" format="d.m.Y" />]
 						</div>
 					</div>
