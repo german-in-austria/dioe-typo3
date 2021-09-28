@@ -2295,10 +2295,19 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getAType()
     {
+				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
+				$sys_language_uid = $languageAspect->getId();
+				if ($sys_language_uid == 1) {
+					$typSing = ['Article', 'Publication', 'Presentation', 'Event', 'Teaching'];
+					$typPlur = ['Articles', 'Publications', 'Presentations', 'Events', 'Teachings'];
+				} else {
+					$typSing = ['Beitrag', 'Publikation', 'Vortrag', 'Veranstaltung', 'Lehre'];
+					$typPlur = ['Beiträge', 'Publikationen', 'Vorträge', 'Veranstaltungen', 'Lehren'];
+				}
         return [
 					'val' => $this->aType,
-					'txt' => ['Beitrag', 'Publikation', 'Vortrag', 'Veranstaltung', 'Lehre'][$this->aType],
-					'txtp' => ['Beiträge', 'Publikationen', 'Vorträge', 'Veranstaltungen', 'Lehren'][$this->aType],
+					'txt' => $typSing[$this->aType],
+					'txtp' => $typPlur[$this->aType],
 					'color' => ['#66be5e','#5dc3e9','#3757a7','#f15f7d','#fbc820'][$this->aType],
 					'view' => ['bei','pub','vorverleh','vorverleh','vorverleh'][$this->aType]
 				];
@@ -2343,6 +2352,8 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getATaskCluster()
     {
+			$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
+			$sys_language_uid = $languageAspect->getId();
 			$val = $this->aTaskCluster;
 			$classes = '';
 			$txt = '';
@@ -2353,9 +2364,9 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 			} else {
 				if ($val == 'a,b,c,d,e') {
 					$txt = $txt . 'SFB';
-					$txtl = $txtl . 'Gesamt-SFB';
+					$txtl = $txtl . ($sys_language_uid == 1 ? 'All SFB' : 'Gesamt-SFB');
 					$classes = $classes . ' cluster-all';
-					$list[] = ['txt' => 'SFB', 'txtl' => 'Gesamt-SFB', 'classes' => 'cluster-all'];
+					$list[] = ['txt' => 'SFB', 'txtl' => ($sys_language_uid == 1 ? 'All SFB' : 'Gesamt-SFB'), 'classes' => 'cluster-all'];
 				} else {
 					foreach (explode(",", $val) as $aCluster) {
 						$txt = $txt . 'TC' . strtoupper($aCluster) . ', ';

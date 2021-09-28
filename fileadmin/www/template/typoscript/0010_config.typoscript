@@ -22,7 +22,9 @@ config {
 }
 
 [globalVar = GP:L = 1]
-	language = en
-	sys_language_uid = 1
-	htmlTag_setParams = lang="en" dir="ltr"
+	config {
+		language = en
+		sys_language_uid = 1
+		htmlTag_setParams = lang="en" dir="ltr"
+	}
 [end]

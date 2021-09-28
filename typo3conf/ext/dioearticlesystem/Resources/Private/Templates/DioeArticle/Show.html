@@ -22,7 +22,7 @@ This template is responsible for displaying a single view for a domain object
 			<v:page.header.meta property="og:image" content="{f:uri.image(src: '{dioeArticle.prevPic.originalResource.originalFile.uid}', width: '600c' height: '315c', absolute: '1')}" />
 		</f:if>
 		<f:comment>Artikel:</f:comment>
-		<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
+		<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.btn_zurueck')}</a></div>
 
 		<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
 	  	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
@@ -162,7 +162,7 @@ This template is responsible for displaying a single view for a domain object
 
 			</div>
 		</article>
-		<div class="d-print-none mt-5"><a href="#" onclick="window.history.back();return false;">&lt; Zurück</a></div>
+		<div class="d-print-none mt-5"><a href="#" onclick="window.history.back();return false;">&lt; {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.btn_zurueck')}</a></div>
 
 		<f:comment>
 			<f:render partial="DioeArticle/Properties" arguments="{dioeArticle:dioeArticle}" />
