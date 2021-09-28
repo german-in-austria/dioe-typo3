@@ -157,6 +157,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
 				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
 				$sys_language_uid = $languageAspect->getId();
+				$this->view->assign('layout', $this->settings['alayout']);
 				$aType = intval($this->settings['atype']);
 				$aTag = $this->settings['atags'];
 				$aCluster = $this->settings['ataskcluster'];

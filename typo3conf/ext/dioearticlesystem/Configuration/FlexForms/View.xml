@@ -9,7 +9,7 @@
                 <el>
 										<settings.alayout>
 												<TCEforms>
-														<label>LLL:EXT:dioearticlesystem/Resources/Private/Language/locallang_db.xlf:tx_dioearticlesystem_domain_model_dioearticle.a_home</label>
+														<label>Layout</label>
 														<config>
 																<type>select</type>
 																<renderType>selectSingle</renderType>
