@@ -1,4 +1,4 @@
-base: 'https://www2021.dioe.at/'
+base: 'https://www.dioe.at/'
 languages:
   -
     title: Deutsch
@@ -43,7 +43,7 @@ routeEnhancers:
   DioearticlesystemList:
     type: Plugin
     limitToPages: 138
-    routePath: '/'
+    routePath: /
     namespace: tx_dioearticlesystem_view
     defaults:
       action: list
