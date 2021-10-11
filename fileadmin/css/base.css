@@ -220,6 +220,16 @@ ekko-lightbox-nav-overlay a span {
   padding-left: 1rem;
 }
 
+.tx-powermail .container-fluid {
+  padding: 0;
+}
+legend.powermail_legend, form.powermail_form > h3 {
+  display: none;
+}
+.powermail_fieldwrap_datenschutz, .powermail_fieldwrap_einwilligung {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
 
 @media (max-width: 900px) {
 	.ce-intext.ce-right .ce-gallery, .ce-intext.ce-left .ce-gallery {
