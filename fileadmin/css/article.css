@@ -270,3 +270,12 @@ article.preview h1.title {
 	right: -2rem;
   top: -0.25rem;
 }
+.article-preview-content {
+  text-align: justify;
+}
+.article-detail .article-preview {
+  text-align: justify;
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+}

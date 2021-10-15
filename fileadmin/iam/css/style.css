@@ -244,6 +244,11 @@ h1 b, h2 b, h3 b {
 	border-radius: 50%;
 	margin: 0 0 0 5px;
 }
+.article-detail .article-preview {
+  font-size: 108.3333%;
+  line-height: 163%;
+}
+
 @media (min-width: 1200px) {
 }
 
