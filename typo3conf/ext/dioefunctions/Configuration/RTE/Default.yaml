@@ -13,7 +13,7 @@ editor:
 
     format_tags: "p;h1;h2;h3;h4;h5;pre"
 
-    extraAllowedContent: "p(*);span(*);h1(*);h2(*);h3(*);h4(*);table(*);tr(*);td(*);abbr(*)"
+    extraAllowedContent: "p(*);span(*);h1(*);h2(*);h3(*);h4(*);table(*)[*];tr(*)[*];td(*)[*];abbr(*)[*]"
 
     contentsCss: ["EXT:rte_ckeditor/Resources/Public/Css/contents.css", "EXT:dioefunctions/Resources/Public/RTE/fc_ckeditor.css"]
 
@@ -55,3 +55,8 @@ editor:
     removeButtons:
       - Anchor
       - Font
+
+processing:
+
+  allowTags:
+    - abbr
