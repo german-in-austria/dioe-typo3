@@ -1287,6 +1287,7 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 					if (in_array($this->pubType, [1, 2, 3]) && $this->pubVolume && strlen($this->pubVolume) > 0) {
 						$txt .= ($sys_language_uid == 0 ? 'Band ' : 'volume ') . htmlspecialchars($this->pubVolume) . '. ';
 					}
+					$pubPoint = false;
 					if (in_array($this->pubType, [2, 3]) && $this->pubEdition && strlen($this->pubEdition) > 0) {
 						$txt .= htmlspecialchars($this->pubEdition) . ' ';
 					}
@@ -1295,12 +1296,20 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 					}
 					if ($this->pubType == 1 && $this->pubPages && strlen($this->pubPages) > 0) {
 						$txt .= htmlspecialchars($this->pubPages) . ' ';
+						$pubPoint = true;
 					}
 					if (in_array($this->pubType, [2, 3]) && $this->pubAddress && strlen($this->pubAddress) > 0) {
 						$txt .= htmlspecialchars($this->pubAddress) . ': ';
 					}
 					if ($this->pubType == 2 && $this->pubPublisher && strlen($this->pubPublisher) > 0) {
-						$txt .= htmlspecialchars($this->pubPublisher) . '. ';
+						$txt .= htmlspecialchars($this->pubPublisher);
+						$pubPoint = true;
+					}
+					if ($pubPoint) {
+						$tTxt = trim($txt);
+						if (substr($tTxt, -1)  != '.') {
+							$txt = $tTxt . '. ';
+						}
 					}
 					if ($this->pubType == 2 && $this->pubSeries && strlen($this->pubSeries) > 0) {
 						$txt .= htmlspecialchars($this->pubSeries);
