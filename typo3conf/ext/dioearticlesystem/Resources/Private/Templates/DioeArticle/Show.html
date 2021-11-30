@@ -29,8 +29,8 @@ This template is responsible for displaying a single view for a domain object
 			<div class="mt-4">
 				<div class="clearfix">
 					<f:if condition="{dioeArticle.detailText}">
-						<f:then><dioe:textSpezials value="{dioeArticle.detailText}" /></f:then>
-						<f:else><dioe:textSpezials value="{dioeArticle.prevText}" /></f:else>
+						<f:then><f:format.html><dioe:textSpezials value="{dioeArticle.detailText}" /></f:format.html></f:then>
+						<f:else><f:format.html><dioe:textSpezials value="{dioeArticle.prevText}" /></f:format.html></f:else>
 					</f:if>
 				</div>
 
