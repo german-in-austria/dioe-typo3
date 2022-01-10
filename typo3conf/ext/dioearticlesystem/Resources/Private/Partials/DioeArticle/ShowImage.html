@@ -2,7 +2,7 @@
 {namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
 
 <figure class="article-img image border border-light">
-	<f:variable name="prevPic" value="{v:resource.file(identifier:'{image.originalResource.originalFile.uid}', onlyProperties: '1')}" />
+	<f:variable name="prevPic" value="{v:resource.file(identifier:'{image.originalResource.originalFile.uid}', onlyProperties: '1',  treatIdAsUid: '1')}" />
 	<f:image src="{image.originalResource.originalFile.uid}"
 		alt="{prevPic.title}"
 		title="{prevPic.title}"
