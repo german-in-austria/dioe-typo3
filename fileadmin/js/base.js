@@ -60,7 +60,12 @@
 				};
 			};
 			var aimgrw = '<span class="d-inline-block ' + ((aimgwidth == '100%') ? ' mb-3' : 'float-' + aimgalign + ((aimgalign == 'left') ? ' mr-3 mb-3' : ' ml-3 mb-3')) + '" style="width:' + aimgwidth + ';">';
-			aimgrw += '<figure class="image border border-light w-100"><img src="' + $('.imgData[data-img-dg="' + aimgnr + '"]').data('img-url') + '" alt="" class="w-100">' + $('.imgData[data-img-dg="' + aimgnr + '"]').siblings('.img-add')[0].outerHTML + '</figure>';
+			var imgAdd = '';
+			var imgAddHtml = $('.imgData[data-img-dg="' + aimgnr + '"]').siblings('.img-add');
+			if (imgAddHtml.length > 0) {
+				imgAdd = imgAddHtml[0].outerHTML;
+			}
+			aimgrw += '<figure class="image border border-light w-100"><img src="' + $('.imgData[data-img-dg="' + aimgnr + '"]').data('img-url') + '" alt="" class="w-100">' + imgAdd + '</figure>';
 			var aimgFooter = $('.imgData[data-img-dg="' + aimgnr + '"]').parent().parent().data('footer');
 			if (aimgFooter && aimgFooter.length > 0) {
 				aimgrw += '<div class="imgdescription">' + aimgFooter + '</div>';
