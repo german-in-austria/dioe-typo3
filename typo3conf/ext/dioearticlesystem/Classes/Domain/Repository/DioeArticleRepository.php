@@ -56,7 +56,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return array
 		 * @api
 		 */
-		public function pubViewFX($aLang = 0) {
+		public function pubViewFX($aLang = 0, $vLang = 0) {
 			$out = [];
 			$queryBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
 			$yearsQ = $queryBuilder->select('pub_year')
@@ -88,7 +88,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 					$query->matching($query->logicalAnd($constraints));
 				}
 				$out[] = [
-					'title' => ($year > 9 ? $year : ($aLang == 0 ? 'bevorstehend' : 'forthcoming')),
+					'title' => ($year > 9 ? $year : ($vLang == 0 ? 'bevorstehend' : 'forthcoming')),
 					'array' => $query->execute()
 				];
 			}
@@ -101,7 +101,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return array
 		 * @api
 		 */
-		public function meeViewFX($aLang = 0, $aType = 2) {
+		public function meeViewFX($aLang = 0, $vLang = 0, $aType = 2) {
 			$out = [];
 			$queryBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)->getQueryBuilderForTable('tx_dioearticlesystem_domain_model_dioearticle');
 			$yearsQ = $queryBuilder->addSelectLiteral("Year(FROM_UNIXTIME(mee_time)) as fxyear")
@@ -138,9 +138,13 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 				if ($constraints) {
 					$query->matching($query->logicalAnd($constraints));
 				}
-				$query->setOrderings(['mee_time' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
+				if ($year > 9) {
+					$query->setOrderings(['mee_time' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
+				} else {
+					$query->setOrderings(['mee_time' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
+				}
 				$out[] = [
-					'title' => ($year > 9 ? $year : ($aLang == 0 ? 'geplant' : 'planned')),
+					'title' => ($year > 9 ? $year : ($vLang == 0 ? 'geplant' : 'planned')),
 					'array' => $query->execute()
 				];
 			}

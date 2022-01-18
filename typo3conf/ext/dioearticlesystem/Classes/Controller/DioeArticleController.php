@@ -51,10 +51,10 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 				$this->view->assign('cObj', $this->configurationManager->getContentObject()->data);
 				$this->view->assign('layout', $this->settings['alayout']);
 				if ($this->settings['alayout'] == 'pubview') {
-					$dioeArticlesArray = $this->dioeArticleRepository->pubViewFX(-1);
+					$dioeArticlesArray = $this->dioeArticleRepository->pubViewFX(-1, $sys_language_uid);
 		      $this->view->assign('dioeArticlesArray', $dioeArticlesArray);
 				} elseif ($this->settings['alayout'] == 'meeview') {
-					$dioeArticlesArray = $this->dioeArticleRepository->meeViewFX(-1, intval($this->settings['atype']));
+					$dioeArticlesArray = $this->dioeArticleRepository->meeViewFX(-1, $sys_language_uid, intval($this->settings['atype']));
 		      $this->view->assign('dioeArticlesArray', $dioeArticlesArray);
 				} else {
 					$aType = intval($this->settings['atype']);
