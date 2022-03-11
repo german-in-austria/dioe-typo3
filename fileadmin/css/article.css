@@ -83,6 +83,10 @@
 .publicationen-liste a, .termin-liste a {
   word-break: break-all;
 }
+ul.publicationen-liste {
+  display: flex;
+  flex-direction: column;
+}
 .publicationen-einzeln .detaillnk, .termin-einzeln .detaillnk {
   display: none;
 }

@@ -86,4 +86,23 @@
 		event.preventDefault();
 		$(this).ekkoLightbox();
 	});
+	$(document).on('change', '#filter-publicationen #pl-sort', function (event) {
+		var asel = parseInt($(this).val());
+		if (asel === 2) { /* Alphabetisch */
+			console.log('Sortierung: Alphabetisch');
+			$('ul.publicationen-liste').each(function () {
+				let pubs = [];
+				$(this).children('li').each(function () {
+					pubs.push({el: $(this), t: $(this).data('pub-title')});
+				});
+				pubs.sort((a, b) => (a.t > b.t) ? 1 : ((b.t > a.t) ? -1 : 0));
+				pubs.forEach(function (pub, pubDg) {
+					pub.el.css('order', pubDg);
+				});
+				// console.log(pubs);
+			});
+		} else {
+			$('ul.publicationen-liste li').css('order', '');
+		}
+	});
 })(jQuery);
