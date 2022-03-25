@@ -80,6 +80,7 @@
 			e.preventDefault();
 			$('.imgData[data-img-dg="' + $(this).data('imgalbox') + '"]').parent().click();
 		});
+		$('#filter-publicationen #pl-sort').val('1').change();
 	});
 	// Lightbox
 	$(document).on('click', '[data-toggle="lightbox"]', function (event) {
