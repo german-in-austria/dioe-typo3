@@ -1239,6 +1239,26 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
 		/**
+		 * Returns the pubBibTexAuthors
+		 *
+		 * @return string $pubBibTexAuthors
+		 */
+		public function getPubBibTexAuthors()
+		{
+			$txt = '';
+			// Autoren und Editoren
+			$pae = $this->getPubEditorsSec();
+			$txt .= htmlspecialchars($pae['txtAuthor']);
+			if ($this->pubType !== 3 && strlen($pae['txtEditor']) > 0) {
+				if (strlen($pae['txtAuthor']) > 0 && strlen($pae['txtEditor']) > 0) {
+					$txt .= ' / ';
+				}
+				$txt .= htmlspecialchars($pae['txtEditor']) . ' (Hg.)';
+			}
+			return $txt;
+		}
+
+		/**
 		 * Returns the pubBibTex
 		 *
 		 * @return string $pubBibTex
@@ -1248,7 +1268,7 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 				$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
 				$sys_language_uid = $languageAspect->getId();
 				$txt = '';
-				// Authoren und Editoren
+				// Autoren und Editoren
 				$pae = $this->getPubEditorsSec();
 				$txt .= htmlspecialchars($pae['txtAuthor']);
 				if ($this->pubType !== 3 && strlen($pae['txtEditor']) > 0) {

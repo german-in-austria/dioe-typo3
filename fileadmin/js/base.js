@@ -88,12 +88,13 @@
 	});
 	$(document).on('change', '#filter-publicationen #pl-sort', function (event) {
 		var asel = parseInt($(this).val());
-		if (asel === 2) { /* Alphabetisch */
-			console.log('Sortierung: Alphabetisch');
+		if (asel === 1 || asel === 2) { /* Alphabetisch */
+			let dataSrc = ['', 'pub-authors', 'pub-title'][asel];
+			// console.log('Sortierung: Alphabetisch', asel, dataSrc);
 			$('ul.publicationen-liste').each(function () {
 				let pubs = [];
 				$(this).children('li').each(function () {
-					pubs.push({el: $(this), t: $(this).data('pub-title')});
+					pubs.push({el: $(this), t: $(this).data(dataSrc)});
 				});
 				pubs.sort((a, b) => (a.t > b.t) ? 1 : ((b.t > a.t) ? -1 : 0));
 				pubs.forEach(function (pub, pubDg) {
