@@ -32,6 +32,9 @@ h1 b, h2 b, h3 b {
 .nobr {
   white-space: nowrap;
 }
+.arial {
+	font-family: arial;
+}
 
 .mw-med {
   max-width: 720px;

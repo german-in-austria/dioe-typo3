@@ -28,6 +28,9 @@ tr.no-border, tr.no-border > td {
 .nobr {
   white-space: nowrap;
 }
+.arial {
+	font-family: arial;
+}
 .ml-md-5 {
 	margin-left: 3rem!important;
 }

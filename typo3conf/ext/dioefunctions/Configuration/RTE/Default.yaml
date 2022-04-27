@@ -30,6 +30,7 @@ editor:
       - { name: "Einschub", element: ["p"], attributes: { class: "ml-4 ml-md-5"}}
       # Span
       - { name: "nobr", element: "span", attributes: { class: "nobr"}}
+      - { name: "Arial", element: "span", attributes: { class: "arial"}}
 
     toolbarGroups:
       - { name: styles, groups: [ styles, format ] }

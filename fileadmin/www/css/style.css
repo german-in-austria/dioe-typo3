@@ -32,6 +32,9 @@ h3, .h3 {
 .nobr {
   white-space: nowrap;
 }
+.arial {
+	font-family: arial;
+}
 
 .content {
   min-height: 80vh;
