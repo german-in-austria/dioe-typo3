@@ -1,0 +1,103 @@
+page = PAGE
+page {
+  bodyTag >
+  bodyTagCObject = TEXT
+  bodyTagCObject.field = uid
+  bodyTagCObject.wrap = <body id="hp|">
+  meta {
+    X-UA-Compatible = IE=edge,chrome=1
+    X-UA-Compatible.httpEquivalent = 1
+    viewport = width=device-width, initial-scale=1
+  }
+  includeCSS {
+    file10 = fileadmin/css/bootstrap.min.css
+    file10.disableCompression = 1
+		file11 = fileadmin/css/base.css
+		file20 = fileadmin/oeda/css/fonts.css
+		file21 = fileadmin/oeda/css/header.css
+		file22 = fileadmin/oeda/css/navbar.css
+		file30 = fileadmin/oeda/css/footer.css
+    file90 = fileadmin/oeda/css/style.css
+  }
+	includeJSFooterlibs {
+		file10 = fileadmin/js/jquery-3.3.1.min.js
+		file10.disableCompression = 1
+	}
+  includeJSFooter {
+		file20 = fileadmin/js/popper.min.js
+		file20.disableCompression = 1
+    file30 = fileadmin/js/bootstrap.min.js
+    file30.disableCompression = 1
+		file50 = fileadmin/js/base.js
+    file90 = fileadmin/oeda/js/scripts.js
+  }
+  10 = FLUIDTEMPLATE
+  10 {
+    partialRootPath = fileadmin/oeda/template/fluid/Partials/
+    layoutRootPath = fileadmin/oeda/template/fluid/Layouts/
+    file = fileadmin/oeda/template/fluid/main.html
+    variables {
+      topNavCatID = TEXT
+      topNavCatID.value = {$optionen.topNavCatID}
+      footNavCatID = TEXT
+      footNavCatID.value = {$optionen.footNavCatID}
+			mainPID = TEXT
+			mainPID.value = {$optionen.homeID}
+    }
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      10 {
+        special = directory
+        special.value = {$optionen.homeID}
+        entryLevel = 0
+        levels = 10
+        as = allNav
+      }
+    }
+  }
+}
+
+
+lib.inhalt < styles.content.get
+lib.inhalt.select.where = colPos = 0
+
+lib.inhalt1 < styles.content.get
+lib.inhalt1.select.where = colPos = 1
+
+lib.inhalt2 < styles.content.get
+lib.inhalt2.select.where = colPos = 2
+
+lib.footerLeft < styles.content.get
+lib.footerLeft.select.where = colPos = 0
+lib.footerLeft.select.pidInList = {$optionen.footerID}
+
+lib.footerRight < styles.content.get
+lib.footerRight.select.where = colPos = 1
+lib.footerRight.select.pidInList = {$optionen.footerID}
+
+lib.titelbild < styles.content.get
+lib.titelbild.select.where = colPos = 99
+
+lib.navCat = HMENU
+lib.navCat {
+  special = categories
+  special.value.current = {$optionen.topNavCatID}
+  entryLevel = 0
+  1 = TMENU
+  1 {
+    expAll=1
+    NO = 1
+    NO {
+      doNotLinkIt = 1
+      stdWrap.override.cObject = TEXT
+      stdWrap.override.cObject {
+        field = uid
+      }
+      linkWrap = |,|*||,|*||
+    }
+  }
+}
+
+[page["uid"] == {$optionen.homeID}]
+page.10.dataProcessing.10.alwaysActivePIDlist = {$optionen.navHomeID}
+[END]

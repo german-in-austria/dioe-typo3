@@ -1,0 +1,20 @@
+
+footer {
+  padding: 5rem 0 2rem 0;
+  background: #ddd;
+}
+
+.footer-left {
+	font-size: 0.95rem;
+	line-height: 1.4;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.95rem;
+}
+
+footer .fxnav > li {
+  display: inline-block;
+}

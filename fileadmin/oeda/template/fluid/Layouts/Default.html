@@ -6,15 +6,15 @@
 			<li><a href="https://www.dioe.at/">SFB DiÖ</a></li>
 			<li><a href="https://iam.dioe.at/">IamDiÖ</a></li>
 			<li><a href="https://lex.dioe.at/">Wortgut</a></li>
-			<li><a href="https://tools.dioe.at/" class="active">Tools</a></li>
+			<li><a href="https://oeda-app.dioe.at/" class="active">OeDa</a></li>
 		</ul>
 	</div>
 	<f:alias map="{daten: '{topNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'topNavCat')}</f:alias>
 	<div class="nav-frm">
 	  <nav class="navbar navbar-expand-lg navbar-light" data-fx="fixed">
 	    <div class="container">
-				<f:link.typolink parameter="{mainPID}" class="navbar-brand" title="Tools">
-					Tools
+				<f:link.typolink parameter="{mainPID}" class="navbar-brand" title="OeDa">
+					OeDa
 				</f:link.typolink>
 	      <button class="navbar-toggler mt-auto" type="button" data-toggle="collapse" data-target="#topnav" aria-controls="topnav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
