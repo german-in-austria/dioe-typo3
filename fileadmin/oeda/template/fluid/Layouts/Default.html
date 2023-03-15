@@ -6,7 +6,7 @@
 			<li><a href="https://www.dioe.at/">SFB DiÖ</a></li>
 			<li><a href="https://iam.dioe.at/">IamDiÖ</a></li>
 			<li><a href="https://lex.dioe.at/">Wortgut</a></li>
-			<li><a href="https://oeda-app.dioe.at/" class="active">OeDa</a></li>
+			<li><a href="https://oeda-app.dioe.at/?from=nav" class="active">OeDa</a></li>
 		</ul>
 	</div>
 	<f:alias map="{daten: '{topNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'topNavCat')}</f:alias>

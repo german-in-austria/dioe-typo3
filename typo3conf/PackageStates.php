@@ -74,11 +74,17 @@ return [
         'felogin' => [
             'packagePath' => 'typo3/sysext/felogin/',
         ],
+        'filemetadata' => [
+            'packagePath' => 'typo3/sysext/filemetadata/',
+        ],
         'info' => [
             'packagePath' => 'typo3/sysext/info/',
         ],
         'lowlevel' => [
             'packagePath' => 'typo3/sysext/lowlevel/',
+        ],
+        'recycler' => [
+            'packagePath' => 'typo3/sysext/recycler/',
         ],
         'seo' => [
             'packagePath' => 'typo3/sysext/seo/',
@@ -94,6 +100,30 @@ return [
         ],
         'viewpage' => [
             'packagePath' => 'typo3/sysext/viewpage/',
+        ],
+        'gridelements' => [
+            'packagePath' => 'typo3conf/ext/gridelements/',
+        ],
+        'bootstrap_grids' => [
+            'packagePath' => 'typo3conf/ext/bootstrap_grids/',
+        ],
+        'vhs' => [
+            'packagePath' => 'typo3conf/ext/vhs/',
+        ],
+        'dioearticlesystem' => [
+            'packagePath' => 'typo3conf/ext/dioearticlesystem/',
+        ],
+        'dioefunctions' => [
+            'packagePath' => 'typo3conf/ext/dioefunctions/',
+        ],
+        'dce' => [
+            'packagePath' => 'typo3conf/ext/dce/',
+        ],
+        'hcb_iamdioe_meme' => [
+            'packagePath' => 'typo3conf/ext/hcb_iamdioe_meme/',
+        ],
+        'powermail' => [
+            'packagePath' => 'typo3conf/ext/powermail/',
         ],
     ],
     'version' => 5,
