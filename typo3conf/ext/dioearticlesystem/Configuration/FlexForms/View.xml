@@ -125,6 +125,62 @@
 													</config>
 											</TCEforms>
 									</settings.ataskcluster>
+                  <settings.aprojectpart>
+											<TCEforms>
+													<label>LLL:EXT:dioearticlesystem/Resources/Private/Language/locallang_db.xlf:tx_dioearticlesystem_domain_model_dioearticle.a_projectpart</label>
+													<config>
+															<type>select</type>
+															<renderType>selectCheckBox</renderType>
+															<items>
+																<numIndex index="1" type="array">
+																		<numIndex index="0">PP01</numIndex>
+																		<numIndex index="1">PP01</numIndex>
+																</numIndex>
+                                <numIndex index="2" type="array">
+																		<numIndex index="0">PP02</numIndex>
+																		<numIndex index="1">PP02</numIndex>
+																</numIndex>
+                                <numIndex index="3" type="array">
+                                    <numIndex index="0">PP03</numIndex>
+                                    <numIndex index="1">PP03</numIndex>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <numIndex index="0">PP04</numIndex>
+                                    <numIndex index="1">PP04</numIndex>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <numIndex index="0">PP05</numIndex>
+                                    <numIndex index="1">PP05</numIndex>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <numIndex index="0">PP06</numIndex>
+                                    <numIndex index="1">PP06</numIndex>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <numIndex index="0">PP07</numIndex>
+                                    <numIndex index="1">PP07</numIndex>
+                                </numIndex>
+                                <numIndex index="8" type="array">
+                                    <numIndex index="0">PP08</numIndex>
+                                    <numIndex index="1">PP08</numIndex>
+                                </numIndex>
+                                <numIndex index="9" type="array">
+                                    <numIndex index="0">PP09</numIndex>
+                                    <numIndex index="1">PP09</numIndex>
+                                </numIndex>
+                                <numIndex index="10" type="array">
+                                    <numIndex index="0">PP10</numIndex>
+                                    <numIndex index="1">PP10</numIndex>
+                                </numIndex>
+                                <numIndex index="11" type="array">
+                                    <numIndex index="0">PP11</numIndex>
+                                    <numIndex index="1">PP11</numIndex>
+                                </numIndex>
+															</items>
+															<default></default>
+													</config>
+											</TCEforms>
+									</settings.aprojectpart>
 									<settings.atags>
 											<TCEforms>
 													<label>Tags</label>

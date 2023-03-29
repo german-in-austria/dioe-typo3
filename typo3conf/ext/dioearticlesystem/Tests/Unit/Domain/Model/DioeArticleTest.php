@@ -168,6 +168,17 @@ class DioeArticleTest extends UnitTestCase
     /**
      * @test
      */
+    public function getAProjectpartReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getAProjectpart()
+        );
+    }
+
+    /**
+     * @test
+     */
     public function setATaskClusterForStringSetsATaskCluster()
     {
         $this->subject->setATaskCluster('Conceived at T3CON10');
@@ -175,6 +186,20 @@ class DioeArticleTest extends UnitTestCase
         self::assertAttributeEquals(
             'Conceived at T3CON10',
             'aTaskCluster',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setAProjectpartForStringSetsAProjectpart()
+    {
+        $this->subject->setAProjectpart('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'aProjectpart',
             $this->subject
         );
     }

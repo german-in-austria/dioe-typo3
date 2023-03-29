@@ -7,6 +7,7 @@ CREATE TABLE tx_dioearticlesystem_domain_model_dioearticle (
 	prev_title varchar(510) DEFAULT '' NOT NULL,
 	prev_text text,
 	a_task_cluster varchar(64) DEFAULT '' NOT NULL,
+	a_projectpart varchar(255) DEFAULT '' NOT NULL,
 	start_pin smallint(5) unsigned DEFAULT '0' NOT NULL,
 	cat_pin smallint(5) unsigned DEFAULT '0' NOT NULL,
 	prev_pic int(11) unsigned NOT NULL default '0',

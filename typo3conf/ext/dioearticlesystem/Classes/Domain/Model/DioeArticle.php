@@ -94,6 +94,14 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected $aTaskCluster = '';
 
+		/**
+     * Projectpart
+     *
+     *
+     * @var string
+     */
+    protected $aProjectpart = '';
+
     /**
      * Auf Startseite Pinnen
      *
@@ -2374,7 +2382,7 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->aHome = $aHome;
     }
 
-    /**
+		/**
      * Returns the aTaskCluster
      *
      * @return string $aTaskCluster
@@ -2419,5 +2427,45 @@ class DioeArticle extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setATaskCluster($aTaskCluster)
     {
         $this->aTaskCluster = $aTaskCluster;
+    }
+
+    /**
+     * Returns the aProjectpart
+     *
+     * @return string $aProjectpart
+     */
+    public function getAProjectpart()
+    {
+			$languageAspect = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Context\Context::class)->getAspect('language');
+			$sys_language_uid = $languageAspect->getId();
+			$val = $this->aProjectpart;
+			$classes = '';
+			$txt = '';
+			$txtl = '';
+			$list = [];
+			if (!$val) {
+				$classes = 'pp-none';
+			} else {
+				foreach (explode(",", $val) as $aPP) {
+					$txt = $txt . strtoupper($aPP) . ', ';
+					$txtl = $txtl . strtoupper($aPP) . ', ';
+					$classes = $classes . ' pp-' . strtolower($aPP);
+					$list[] = ['txt' => strtoupper($aPP), 'txtl' => strtoupper($aPP), 'classes' => ' pp-' . strtolower($aPP)];
+				}
+				$txt = rtrim($txt, ", ");
+				$txtl = rtrim($txtl, ", ");
+			}
+      return ['val' => $val, 'classes' => trim($classes), 'txt' => $txt, 'txtl' => $txtl, 'list' => $list];
+    }
+
+    /**
+     * Sets the aProjectpart
+     *
+     * @param string $aProjectpart
+     * @return void
+     */
+    public function setAProjectpart($aProjectpart)
+    {
+        $this->aProjectpart = $aProjectpart;
     }
 }

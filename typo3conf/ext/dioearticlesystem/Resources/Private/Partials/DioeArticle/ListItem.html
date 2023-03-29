@@ -1,7 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 {namespace dioe=Dioevendor\Dioefunctions\ViewHelpers}
 
-<article class="article-preview article-preview-layout-t{layout} article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}{f:if(condition:'{fxClasses}', then:' {fxClasses}')}" id="a{dioeArticle.uId}">
+<article class="article-preview article-preview-layout-t{layout} article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes} {dioeArticle.aProjectpart.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}{f:if(condition:'{fxClasses}', then:' {fxClasses}')}" id="a{dioeArticle.uId}">
 	<f:switch expression="{layout}">
 		<f:case value="xxx">
 			xxx

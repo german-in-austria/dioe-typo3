@@ -21,6 +21,9 @@
 			<trans-unit id="a_task_cluster.description" resname="a_task_cluster.description">
 				<source>Kategorien (Einen Task-Cluster und ggf. eine weitere Kategorie auswählen.)</source>
 			</trans-unit>
+			<trans-unit id="a_projectpart.description" resname="a_projectpart.description">
+				<source>Project Part</source>
+			</trans-unit>
 			<trans-unit id="start_pin.description" resname="start_pin.description">
 				<source>Auf Startseite Pinnen</source>
 			</trans-unit>

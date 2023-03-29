@@ -24,6 +24,9 @@
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_task_cluster" resname="tx_dioearticlesystem_domain_model_dioearticle.a_task_cluster">
 				<source>Task-Cluster</source>
 			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_projectpart" resname="tx_dioearticlesystem_domain_model_dioearticle.a_projectpart">
+				<source>Project-Part</source>
+			</trans-unit>
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.start_pin" resname="tx_dioearticlesystem_domain_model_dioearticle.start_pin">
 				<source>Auf Startseite Pinnen</source>
 			</trans-unit>

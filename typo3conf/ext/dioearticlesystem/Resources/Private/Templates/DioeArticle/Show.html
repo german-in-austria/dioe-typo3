@@ -24,7 +24,7 @@ This template is responsible for displaying a single view for a domain object
 		<f:comment>Artikel:</f:comment>
 		<div class="d-print-none mb-5"><a href="#" onclick="window.history.back();return false;">&lt; {f:translate(key: 'tx_dioearticlesystem_domain_model_dioearticle.btn_zurueck')}</a></div>
 
-		<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
+		<article class="article-preview article-type-{dioeArticle.aType.val} {dioeArticle.aTaskCluster.classes} {dioeArticle.aProjectpart.classes}{f:if(condition:'{dioeArticle.startPin}', then:' articleStartPinned')}{f:if(condition:'{dioeArticle.catPin}', then:' articleKategoriePinned')}" id="a{dioeArticle.uId}">
 	  	<f:render partial="DioeArticle/ListItemHeader" arguments="{dioeArticle:dioeArticle}" />
 			<div class="mt-4">
 				<div class="clearfix">

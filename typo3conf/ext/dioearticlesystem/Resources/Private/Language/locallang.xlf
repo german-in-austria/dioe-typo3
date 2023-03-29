@@ -84,6 +84,9 @@
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_task_cluster" resname="tx_dioearticlesystem_domain_model_dioearticle.a_task_cluster">
 				<source>A Task Cluster</source>
 			</trans-unit>
+			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.a_projectpart" resname="tx_dioearticlesystem_domain_model_dioearticle.a_projectpart">
+				<source>A Projectpart</source>
+			</trans-unit>
 			<trans-unit id="tx_dioearticlesystem_domain_model_dioearticle.start_pin" resname="tx_dioearticlesystem_domain_model_dioearticle.start_pin">
 				<source>Start Pin</source>
 			</trans-unit>

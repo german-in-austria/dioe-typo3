@@ -36,8 +36,8 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return QueryResultInterface|array
 		 * @api
 		 */
-		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
-	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder);
+		public function filtered($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aPP = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
+	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aPP, $aLang, $aLimit, $aOffset, $aSPin, $aCPin, $aOrder);
 		}
 
 		/**
@@ -46,8 +46,8 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 		 * @return int
 		 * @api
 		 */
-		public function filteredCount($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
-	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aLang, $aLimit, $aOffset, 0, 0, $aOrder, 1);
+		public function filteredCount($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aPP = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0) {
+	    return $this->filteredFunc($be, $aType, $aTag, $aHome, $aCluster, $aPP, $aLang, $aLimit, $aOffset, 0, 0, $aOrder, 1);
 		}
 
 		/**
@@ -151,7 +151,7 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 			return $out;
 		}
 
-		public function filteredFunc($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0, $aCount = 0) {
+		public function filteredFunc($be = false, $aType = -1, $aTag = -1, $aHome = -1, $aCluster = -1, $aPP = -1, $aLang = 0, $aLimit = 0, $aOffset = 0, $aSPin = 0, $aCPin = 0, $aOrder = 0, $aCount = 0) {
 			$mdg = 0;
 			if ($aCount > 0) {
 				$aOffset = 0;
@@ -219,6 +219,18 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 						$constraints[] = $query[$dg]->logicalNot($query[$dg]->equals('aTaskCluster', 'a,b,c,d,e'));
 					}
 		    }
+        if ($aPP > -1) {
+          if (gettype($aPP) == 'string') {
+            if (strpos($aPP, ',') > -1) {
+              $aTasks = explode(",", $aPP);
+              $ppConstraints = [];
+              foreach ($aTasks as &$value) {
+                $ppConstraints = $query[$dg]->contains('aTaskCluster', $value);
+              }
+              $constraints[] = $query[$dg]->logicalOr($ppConstraints);
+            }
+          }
+        }
 				if ($aLang == 0 || $aLang == 1) {
 					$constraints[] = $query[$dg]->logicalOr($query[$dg]->equals('sys_language_uid', $aLang), $query[$dg]->equals('sys_language_uid',-1));
 				}

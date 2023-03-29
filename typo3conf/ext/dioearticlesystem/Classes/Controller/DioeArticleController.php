@@ -60,6 +60,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 					$aType = intval($this->settings['atype']);
 					$aTag = $this->settings['atags'];
 					$aCluster = $this->settings['ataskcluster'];
+          $aPP = $this->settings['aprojectpart'];
 					$aOrder = 0;
 					if ($aCluster == 'a,b,c,d,e') {
 						$aCluster = -1;
@@ -161,7 +162,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 						}
 						$aOrder = $args['saorder'];
 					}
-					$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $aCluster, -1, intval($this->settings['amax']), 0, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
+					$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $aCluster, $aPP, -1, intval($this->settings['amax']), 0, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
 		      $this->view->assign('dioeArticles', $dioeArticles);
 				}
     }
@@ -179,6 +180,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 				$aType = intval($this->settings['atype']);
 				$aTag = $this->settings['atags'];
 				$aCluster = $this->settings['ataskcluster'];
+        $aPP = $this->settings['aprojectpart'];
 				$aOrder = 0;
 				if ($aCluster == 'a,b,c,d,e') {
 					$aCluster = -1;
@@ -202,7 +204,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 				}
 				$dstart = intval($this->request->getArguments()['start']);
 				// ToDo: spin, cpin !!!
-				$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $aCluster, -1, intval($this->settings['amax']), $dstart, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
+				$dioeArticles = $this->dioeArticleRepository->filtered(false, $aType, $aTag, $this->settings['ahome'], $aCluster, $aPP, -1, intval($this->settings['amax']), $dstart, intval($this->settings['spin']), intval($this->settings['cpin']), $aOrder);
 	      $this->view->assign('dioeArticles', $dioeArticles);
 				$this->view->assign('cObj', $this->configurationManager->getContentObject()->data);
 				$this->view->assign('dstart', $dstart);
@@ -491,6 +493,7 @@ class DioeArticleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 									'prev_title' => isset($aJson['uebersichtUeberschrift']) ? $aJson['uebersichtUeberschrift'] : '',
 									'prev_text' => isset($aJson['uebersichtText']) ? $this->linkCheck($aJson['uebersichtText']) : '',
 									'a_task_cluster' => $this->getCluster($aJson['kategorien']),
+                  // 'a_projectpart' => ...,
 									'a_home' => 0,
 									'a_type' => isset($pid2type[$aJson['pid']]) ? $pid2type[$aJson['pid']] : 0,
 									'start_pin' => str_contains($aJson['kategorien'], '21') ? 1 : 0,
