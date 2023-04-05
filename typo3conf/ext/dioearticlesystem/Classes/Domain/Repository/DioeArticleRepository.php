@@ -225,9 +225,11 @@ class DioeArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
               $aTasks = explode(",", $aPP);
               $ppConstraints = [];
               foreach ($aTasks as &$value) {
-                $ppConstraints = $query[$dg]->contains('aTaskCluster', $value);
+                $ppConstraints = $query[$dg]->contains('aProjectpart', $value);
               }
               $constraints[] = $query[$dg]->logicalOr($ppConstraints);
+            } else {
+              $constraints[] = $query[$dg]->contains('aProjectpart', $aPP);
             }
           }
         }
