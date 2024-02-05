@@ -128,6 +128,17 @@ tr.no-border, tr.no-border > td {
 .dioe-nav > ul > li {
 	-ms-flex: 1 1 auto!important;
 	flex: 1 1 auto!important;
+	position: relative;
+}
+
+.dioe-nav .dropdown-menu {
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  border-radius: 0;
+  padding: 0;
+  background: #eee;
+  border: none;
 }
 
 .dioe-nav > ul > li > a {

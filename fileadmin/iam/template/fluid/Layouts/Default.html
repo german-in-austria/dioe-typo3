@@ -4,9 +4,14 @@
 	<div class="dioe-nav">
 		<ul>
 			<li><a href="https://www.dioe.at/">SFB DiÖ</a></li>
-			<li><a href="https://iam.dioe.at/" class="active">IamDiÖ</a></li>
-			<li><a href="https://lex.dioe.at/">Wortgut</a></li>
-			<!-- <li><a href="https://tools.dioe.at/">Tools</a></li> -->
+			<li><a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Mitmachen</a>
+				<div class="dropdown-menu">
+			    <a class="dropdown-item" href="https://www.zooniverse.org/projects/de/dschopper/the-abcs-of-dialect">ABC der Dialekte</a>
+			    <a class="dropdown-item" href="https://iam.dioe.at/">IamDiÖ</a>
+					<a class="dropdown-item" href="https://oeda-app.dioe.at/">OeDA</a>
+			    <a class="dropdown-item" href="https://lex.dioe.at/">Wortgut</a>
+			  </div>
+			</li>
 		</ul>
 	</div>
 	<f:alias map="{daten: '{topNavCatID}'}">{daten -> f:cObject(typoscriptObjectPath:'lib.navCat') -> v:iterator.explode(glue: ',') -> v:variable.set(name: 'topNavCat')}</f:alias>
